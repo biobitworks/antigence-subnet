@@ -1,0 +1,107 @@
+{
+  "run_id": "phase93-20260403T050500Z",
+  "experiment": {
+    "_key": "antigence_phase93_policy",
+    "exp_id": "EXP-093",
+    "title": "Phase 93 Decision Policy ADR",
+    "project": "antigence-bittensor",
+    "status": "completed",
+    "description": "Select the operator-facing decision policy from the locked Phase 92 benchmark canon without changing the detector contract.",
+    "methodology": "Read the committed Phase 92 benchmark canon, compare approved policy overlays, and record the accepted operator default in the Phase 93 ADR and migration guide.",
+    "outcome": "positive",
+    "agent": "codex",
+    "run_ids": [
+      "phase93-20260403T050500Z"
+    ],
+    "artifact_path": ".planning/phases/93-decision-policy-adr-operator-migration/93-ADR.md",
+    "note_path": ".planning/phases/93-decision-policy-adr-operator-migration/93-ADR.md",
+    "result_paths": [
+      "data/benchmarks/phase92-continuous-benchmark.json",
+      ".planning/phases/93-decision-policy-adr-operator-migration/93-ADR.md",
+      ".planning/phases/93-decision-policy-adr-operator-migration/93-migration-guide.md",
+      "data/overwatch/phase93-policy-claims.json"
+    ],
+    "visibility": "shared",
+    "created_at": "2026-04-03T05:05:00+00:00",
+    "updated_at": "2026-04-03T05:05:00+00:00"
+  },
+  "claims": [
+    {
+      "_key": "phase93_policy_parity",
+      "text": "The locked Phase 92 canon measured parity across global_threshold, domain_thresholds, and operator_multiband on the approved score surfaces.",
+      "classification": "MEASURED",
+      "claim_type": "benchmark_result",
+      "created_at": "2026-04-03T05:05:00+00:00",
+      "updated_at": "2026-04-03T05:05:00+00:00",
+      "visibility": "shared",
+      "confidence": 0.95,
+      "source_project": "antigence-bittensor",
+      "exp_id": "EXP-093",
+      "status": "active",
+      "derived_from": {
+        "derivation_method": "artifact_review",
+        "run_id": "phase93-20260403T050500Z",
+        "evidence_refs": [
+          "local:data/benchmarks/phase92-continuous-benchmark.json",
+          "local:.planning/phases/93-decision-policy-adr-operator-migration/93-ADR.md"
+        ]
+      }
+    },
+    {
+      "_key": "phase93_operator_multiband_default",
+      "text": "operator_multiband is the selected default because it preserves measured parity while exposing allow, review, and block semantics for operators.",
+      "classification": "INFERRED",
+      "claim_type": "decision",
+      "created_at": "2026-04-03T05:05:00+00:00",
+      "updated_at": "2026-04-03T05:05:00+00:00",
+      "visibility": "shared",
+      "confidence": 0.9,
+      "source_project": "antigence-bittensor",
+      "exp_id": "EXP-093",
+      "status": "active",
+      "derived_from": {
+        "derivation_method": "policy_selection",
+        "run_id": "phase93-20260403T050500Z",
+        "evidence_refs": [
+          "local:data/benchmarks/phase92-continuous-benchmark.json",
+          "local:.planning/phases/93-decision-policy-adr-operator-migration/93-ADR.md"
+        ]
+      }
+    },
+    {
+      "_key": "phase93_detector_contract_unchanged",
+      "text": "Phase 93 keeps the detector contract unchanged by preserving score and confidence as detector truth and limiting the change to the policy layer.",
+      "classification": "MEASURED",
+      "claim_type": "architecture_boundary",
+      "created_at": "2026-04-03T05:05:00+00:00",
+      "updated_at": "2026-04-03T05:05:00+00:00",
+      "visibility": "shared",
+      "confidence": 0.95,
+      "source_project": "antigence-bittensor",
+      "exp_id": "EXP-093",
+      "status": "active",
+      "derived_from": {
+        "derivation_method": "artifact_review",
+        "run_id": "phase93-20260403T050500Z",
+        "evidence_refs": [
+          "local:data/benchmarks/phase92-continuous-benchmark.json",
+          "local:.planning/phases/93-decision-policy-adr-operator-migration/93-ADR.md"
+        ]
+      }
+    }
+  ],
+  "citations": [
+    {
+      "source": "local:data/benchmarks/phase92-continuous-benchmark.json",
+      "citation_context": "Measured parity and selected multiband defaults."
+    },
+    {
+      "source": "local:.planning/phases/92-continuous-antibody-benchmark-canon/92-benchmark-report.md",
+      "citation_context": "Human-readable policy comparison narrative."
+    },
+    {
+      "source": "local:.planning/phases/84-swarm-literature-review-adversarial-pre-analysis-fast-fail-spike/84-go-no-go-adr.md",
+      "citation_context": "Phase 84 NO-GO boundary that keeps swarm closed."
+    }
+  ]
+}

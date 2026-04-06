@@ -1,0 +1,2221 @@
+{
+  "samples": [
+    {
+      "id": "eval-bio-001",
+      "prompt": "Report the pH measurements for the protein buffer solutions.",
+      "output": "Buffer A: pH 7.4, Buffer B: pH 15.2, Buffer C: pH 6.8. Buffer B showed anomalous alkalinity outside the measurable range.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-002",
+      "prompt": "Summarize the gene expression fold changes for the treatment group.",
+      "output": "Gene A: fold change -50.3, Gene B: fold change 2.1, Gene C: fold change 1.8. Gene A showed negative expression which may indicate assay failure.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-003",
+      "prompt": "Report the p-values from the differential expression analysis.",
+      "output": "Comparison A vs B: p-value 2.3, Comparison C vs D: p-value 0.04, Comparison E vs F: p-value 0.001. The first comparison yielded a p-value exceeding 1.0.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-004",
+      "prompt": "What were the incubation temperatures used in the enzyme kinetics experiment?",
+      "output": "Reaction 1: temperature 37C, Reaction 2: temperature 5000C, Reaction 3: temperature 25C. Reaction 2 temperature is impossibly high for biological assays.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-005",
+      "prompt": "Report substrate concentration measurements from the binding assay.",
+      "output": "Well 1: concentration -10 mM, Well 2: concentration 0.5 mM, Well 3: concentration 1.0 mM. Well 1 shows a physically impossible negative concentration.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-006",
+      "prompt": "Summarize the protein quantification results across replicates.",
+      "output": "Replicate values: 0.45, 0.48, 0.43, 0.47, 999.5 mg/mL. One replicate shows an extreme outlier compared to the others.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-007",
+      "prompt": "Report the OD600 readings for the bacterial growth curve.",
+      "output": "Timepoint readings: 0.12, 0.15, 0.18, 0.14, 847.3. The final reading is several orders of magnitude higher than typical OD600 values.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-008",
+      "prompt": "What are the IC50 values for the drug candidates?",
+      "output": "Drug A: 0.5 uM, Drug B: 0.3 uM, Drug C: 0.8 uM, Drug D: 50000 uM. Drug D IC50 is an extreme outlier suggesting assay error.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-009",
+      "prompt": "Report the fluorescence intensity measurements from the microscopy experiment.",
+      "output": "Cell 1: 120.5 AU, Cell 2: 115.3 AU, Cell 3: 118.7 AU, Cell 4: 0.001 AU, Cell 5: 122.1 AU. Cell 4 fluorescence is anomalously low.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-010",
+      "prompt": "Summarize the qPCR Ct values for the housekeeping genes.",
+      "output": "GAPDH: 18.5, ACTB: 19.2, GAPDH: 17.8, ACTB: 500.0. The final ACTB value is far outside the expected Ct range of 10-40.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-011",
+      "prompt": "Report the protein concentrations measured by BCA assay.",
+      "output": "The protein concentration was measured at 2.5 mg/mL using the BCA assay. A parallel measurement using Bradford yielded 2.5 g/L. These values are inconsistent without proper unit conversion: 2.5 mg/mL equals 2.5 g/L, so both measurements agree.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-012",
+      "prompt": "What were the enzyme activity measurements across different temperatures?",
+      "output": "Activity at 25 Celsius: 45.2 U/mL. Activity at 98.6 Fahrenheit: 44.8 U/mL. Activity at 310 Kelvin: 46.1 U/mL. Note: temperatures are reported in mixed units without conversion.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-013",
+      "prompt": "Summarize the metabolite concentrations from the LC-MS analysis.",
+      "output": "Glucose: 5.5 mM, Lactate: 2.1 mM, ATP: 3200 nM. Note: ATP is reported in nM while others in mM. Converting: 3200 nM = 0.0032 mM, suggesting inconsistent reporting scales.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-014",
+      "prompt": "Report the cell viability percentages for the cytotoxicity assay.",
+      "output": "Control: 98.5%, 10 uM: 85.2%, 50 uM: 340%, 100 uM: 45.1%. The 50 uM dose shows a percentage of 340 which is physically impossible for viability.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-015",
+      "prompt": "What were the DNA fragment sizes from gel electrophoresis?",
+      "output": "Band 1: 500 bp, Band 2: 1.2 kb, Band 3: 3.5 kb, Band 4: 0.008 Mb. The sizes span from bp to Mb without clear justification for such a wide range in a single gel.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-016",
+      "prompt": "Summarize the Western blot densitometry results for GAPDH loading control.",
+      "output": "Lane 1: 1.00, Lane 2: 0.98, Lane 3: 1.02, Lane 4: 0.97, Lane 5: 1.01. All values normalized to Lane 1. GAPDH expression is consistent across all samples indicating equal loading.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-017",
+      "prompt": "Report the absorbance readings from the ELISA plate.",
+      "output": "Standard curve OD values at 450 nm: 0.05, 0.12, 0.28, 0.55, 1.10, 2.15. R-squared of fit: 0.998. Sample OD: 0.75, corresponding to 125 ng/mL from interpolation.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-018",
+      "prompt": "What are the bacterial colony counts from the transformation experiment?",
+      "output": "Plate 1: 245 CFU, Plate 2: 238 CFU, Plate 3: 252 CFU. Mean: 245 CFU with standard deviation 7.0. Transformation efficiency: 2.45e5 CFU/ug DNA.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-019",
+      "prompt": "Summarize the RNA quality metrics from the Bioanalyzer run.",
+      "output": "Sample 1: RIN 9.2, 28S/18S ratio 2.1. Sample 2: RIN 8.8, 28S/18S ratio 1.9. Sample 3: RIN 9.0, 28S/18S ratio 2.0. All samples meet quality threshold for RNA-seq library preparation.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-020",
+      "prompt": "Report the cell counting results from the hemocytometer.",
+      "output": "Quadrant counts: 42, 45, 38, 41. Mean count: 41.5 cells per quadrant. Total viable cells: 4.15e6 cells/mL. Viability by trypan blue exclusion: 95.2%.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-021",
+      "prompt": "Summarize the flow cytometry results for CD4+ T cell populations.",
+      "output": "Patient 1: 38.5% CD4+, Patient 2: 42.1% CD4+, Patient 3: 35.8% CD4+. Mean: 38.8%, standard deviation: 3.15%. Normal range: 30-60%. All within expected limits.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-022",
+      "prompt": "Report the protein melting temperature (Tm) values from DSF.",
+      "output": "Protein A Tm: 52.3 Celsius, Protein B Tm: 48.7 Celsius, Protein C Tm: 55.1 Celsius. All melting temperatures within the typical range for globular proteins. Mean Tm: 52.0 Celsius.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-023",
+      "prompt": "What were the Michaelis-Menten kinetics parameters?",
+      "output": "Km: 15.3 uM, Vmax: 0.85 umol/min/mg. The Lineweaver-Burk plot gave R-squared 0.995. Kcat: 42.5 per second. Catalytic efficiency Kcat/Km: 2.78e6 per M per second.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-024",
+      "prompt": "Report the sequencing depth and mapping statistics.",
+      "output": "Total reads: 45.2 million. Mapped reads: 42.8 million (94.7%). Uniquely mapped: 38.5 million (85.2%). Duplicate rate: 12.3%. Mean coverage: 30x. Quality score > Q30: 92.1%.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-025",
+      "prompt": "Summarize the dose-response curve fitting results.",
+      "output": "Four-parameter logistic fit: EC50 = 1.25 uM, Hill slope = 1.1, Bottom = 5.2%, Top = 95.8%. R-squared: 0.997. The fit accurately describes the sigmoidal dose-response relationship.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-026",
+      "prompt": "Report the mass spectrometry protein identification results.",
+      "output": "Total proteins identified: 2,847. Unique peptides: 18,523. False discovery rate: 1.0%. Median sequence coverage: 32.5%. Median number of unique peptides per protein: 6.5.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-027",
+      "prompt": "What were the blood chemistry panel results?",
+      "output": "Glucose: 95 mg/dL (normal 70-100). BUN: 15 mg/dL (normal 7-20). Creatinine: 1.0 mg/dL (normal 0.7-1.3). Total protein: 7.2 g/dL (normal 6.0-8.3). All values within reference ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-028",
+      "prompt": "Summarize the CRISPR editing efficiency results.",
+      "output": "Guide RNA 1: 78.5% editing efficiency. Guide RNA 2: 65.2% efficiency. Guide RNA 3: 82.1% efficiency. Off-target analysis showed < 0.5% editing at the top 10 predicted off-target sites.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-029",
+      "prompt": "Report the statistical analysis results for the treatment vs control comparison.",
+      "output": "Two-sample t-test: p-value 0.003, t-statistic 3.45, degrees of freedom 18. Effect size (Cohen's d): 1.58. 95% confidence interval for mean difference: 2.1 to 8.7. The treatment group showed significantly higher expression.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-030",
+      "prompt": "What were the antibody titration results from the ELISA optimization?",
+      "output": "Primary antibody dilutions and OD readings: 1:500 OD 2.85, 1:1000 OD 2.12, 1:2000 OD 1.45, 1:4000 OD 0.78, 1:8000 OD 0.35. Optimal dilution selected: 1:1000 based on signal-to-noise ratio of 15.3.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-031",
+      "prompt": "Report the PCR amplification efficiency for the standard curve.",
+      "output": "Standard curve amplification efficiency: 97.3%. Slope: -3.39. R-squared: 0.998. Dynamic range: 6 orders of magnitude (10^1 to 10^7 copies). Efficiency within acceptable range of 90-110%.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-032",
+      "prompt": "Summarize the Sanger sequencing quality metrics for the cloned insert.",
+      "output": "Read length: 847 bp. Phred quality score > 20 for 98.2% of bases. Average quality score: 42.5. Trace signal-to-noise ratio: 18.3. No ambiguous base calls in the target region. Sequence aligns 100% to expected reference.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-033",
+      "prompt": "Report the cell confluence measurements from automated imaging.",
+      "output": "Well A1 confluence: 72% +/- 3% (n=4 fields). Well A2: 68% +/- 2%. Well A3: 74% +/- 4%. Mean plate confluence: 71.3%. Coefficient of variation across wells: 4.2%. Cells are ready for passage at the recommended 70-80% threshold.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-034",
+      "prompt": "Describe the co-immunoprecipitation results for the protein interaction study.",
+      "output": "Co-IP of FLAG-tagged BRCA1 successfully pulled down endogenous BARD1 (expected partner). Input lane shows equal loading across conditions. IgG control shows no non-specific binding. Reciprocal IP with BARD1 antibody confirms the interaction. Mass spectrometry identified 12 additional interactors above 2-fold enrichment threshold.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-035",
+      "prompt": "Summarize the metabolomics PCA results for treatment vs control groups.",
+      "output": "Principal component analysis of 1,247 metabolite features shows clear separation between treatment (n=8) and control (n=8) groups along PC1 (42.3% variance explained). PC2 accounts for 18.7% of variance and separates biological replicates. No outliers detected by Hotelling T-squared test. Quality control samples cluster tightly in the center.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-036",
+      "prompt": "Report the SNP calling pipeline results after quality filtering.",
+      "output": "Raw variants called: 4,215,832. After quality filtering (QUAL > 30, DP > 10, MQ > 40): 3,847,291 SNPs retained (91.3% pass rate). Ti/Tv ratio: 2.08 (consistent with whole-genome expectation of 2.0-2.1). Het/Hom ratio: 1.52. Known variant concordance with dbSNP: 99.2%.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-037",
+      "prompt": "Report the growth inhibition assay results for the compound series.",
+      "output": "Compound A: GI50 = 0.45 uM, Compound B: GI50 = 2.3 uM, Compound C: GI50 = 12.8 uM, Vehicle control: no inhibition. Dose-response curves show classic sigmoidal shape with Hill slopes between 0.9 and 1.3. Maximum inhibition reaches 95% at highest concentration (100 uM) for all active compounds.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-038",
+      "prompt": "Summarize the gel electrophoresis band quantification results.",
+      "output": "Band intensities quantified using ImageJ with molecular weight ladder calibration. Band 1: 520 bp (intensity 12,450 AU). Band 2: 1,100 bp (intensity 8,320 AU). Band 3: 2,300 bp (intensity 15,780 AU). Ladder bands show expected linear relationship between log(MW) and migration distance (R-squared 0.997).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-039",
+      "prompt": "Report the circadian rhythm gene expression profile for Per2.",
+      "output": "Per2 mRNA expression shows expected 24-hour oscillation pattern. Peak expression at ZT12 (relative expression 8.4 +/- 1.2). Trough at ZT0 (relative expression 1.0 +/- 0.3). Amplitude ratio (peak/trough): 8.4-fold. Period estimated at 23.8 hours by cosinor analysis. Phase shift of 0.3 hours relative to light-dark cycle.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-040",
+      "prompt": "Report the murine body weight tracking data for the 8-week study.",
+      "output": "Male C57BL/6 mice (n=10 per group). Control group: Week 0: 22.1 +/- 0.8 g, Week 4: 26.3 +/- 1.1 g, Week 8: 29.5 +/- 1.4 g. Treatment group: Week 0: 22.3 +/- 0.9 g, Week 4: 25.8 +/- 1.0 g, Week 8: 28.7 +/- 1.3 g. No significant difference between groups (p=0.42, two-way ANOVA). Weight gain follows expected growth trajectory.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-041",
+      "prompt": "Summarize the ChIP-seq peak calling results for H3K27ac.",
+      "output": "MACS2 peak calling identified 42,518 peaks at FDR < 0.05. Median peak width: 1,247 bp. FRiP score: 0.28 (above ENCODE minimum of 0.01). TSS enrichment score: 15.3. Peaks annotated: 38% promoter, 45% intergenic, 12% intronic, 5% exonic. Irreproducible discovery rate between replicates: 0.03.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-042",
+      "prompt": "Report the immunohistochemistry H-score results for ER staining.",
+      "output": "H-score calculation: (3 x % strongly positive) + (2 x % moderately positive) + (1 x % weakly positive). Tumor core 1: H-score 245 (45% strong, 30% moderate, 10% weak). Core 2: H-score 198 (30% strong, 35% moderate, 18% weak). Negative control: H-score 5. Positive control: H-score 280. Inter-observer agreement kappa: 0.82.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-043",
+      "prompt": "Report the survival analysis results for the clinical cohort.",
+      "output": "Kaplan-Meier analysis of 156 patients. Median follow-up: 48 months. Treatment group (n=78): median OS 32.5 months. Control group (n=78): median OS 24.1 months. Log-rank test p=0.02. Hazard ratio: 0.68 (95% CI: 0.49-0.94). Two-year survival rate: 68% treatment vs 52% control.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-bio-044",
+      "prompt": "Report the statistical significance of the gene expression differences.",
+      "output": "Differential expression analysis of RNA-seq data (n=6 per group). Gene FOXP3: log2FC = 2.45, p-value = 0.0000, adjusted p-value = 0.0000. Gene IL2RA: log2FC = 1.87, p = 0.003. The FOXP3 result is highly significant with a p-value below any computable threshold.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "p_value_fabrication"
+      }
+    },
+    {
+      "id": "eval-bio-045",
+      "prompt": "Report the correlation analysis between biomarker levels and disease severity.",
+      "output": "Pearson correlation between serum CRP levels and disease activity score (n=45 patients). Correlation coefficient r = 1.23, p < 0.001. The extremely strong positive correlation suggests CRP is a robust predictor of disease severity in this cohort.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "value_out_of_range"
+      }
+    },
+    {
+      "id": "eval-bio-046",
+      "prompt": "Summarize the Western blot quantification and statistical analysis.",
+      "output": "Western blot densitometry shows target protein expression increased by 300% in the treatment group compared to control (normalized to beta-actin loading control). However, the unpaired t-test comparing treatment vs control yields p = 0.89 (n=4 per group), indicating no statistically significant difference despite the large apparent fold change.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "statistical_inconsistency"
+      }
+    },
+    {
+      "id": "eval-bio-047",
+      "prompt": "Report the results of the pilot drug efficacy study.",
+      "output": "Drug X showed a 45% reduction in tumor volume compared to vehicle control. Sample size: n=2 per group. The difference was statistically significant (p=0.01, Student's t-test). These results demonstrate the strong efficacy of Drug X and support advancing to Phase II clinical trials.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "underpowered_study"
+      }
+    },
+    {
+      "id": "eval-bio-048",
+      "prompt": "Report the statistical comparison of cytokine levels between patient groups.",
+      "output": "Cytokine IL-6 levels were compared between responders (n=15) and non-responders (n=15) using a two-sample t-test. Results: t=3.21, df=28, p=0.003. Responders showed significantly higher IL-6 (mean 45.2 vs 28.7 pg/mL). Note: Shapiro-Wilk test for normality yielded p=0.001 for both groups, indicating highly non-normal distributions.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "wrong_test"
+      }
+    },
+    {
+      "id": "eval-bio-049",
+      "prompt": "Report the effect size from the exercise intervention study on VO2 max.",
+      "output": "Exercise intervention group (n=20) vs sedentary control (n=20). Mean VO2 max change: +3.2 mL/kg/min in exercise group, +0.1 mL/kg/min in control. Pooled standard deviation: 0.068 mL/kg/min. Cohen's d = 47.3. The massive effect size confirms that this exercise program produces extraordinarily large improvements in aerobic capacity.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "implausible_effect"
+      }
+    },
+    {
+      "id": "eval-bio-050",
+      "prompt": "Report the RNA-seq expression values for the top differentially expressed genes.",
+      "output": "Top 5 differentially expressed genes (treatment vs control): Gene1 FPKM = 245.3, Gene2 FPKM = -12.8, Gene3 FPKM = 189.7, Gene4 FPKM = -45.2, Gene5 FPKM = 312.1. Genes 2 and 4 show negative FPKM values indicating strong downregulation in the treatment condition.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "value_out_of_range"
+      }
+    },
+    {
+      "id": "eval-bio-051",
+      "prompt": "Report the mass balance analysis for the metabolic flux experiment.",
+      "output": "Metabolic flux analysis of glucose metabolism. Input: 100 g glucose fed to bioreactor. Outputs measured: 45 g ethanol, 38 g CO2, 52 g biomass, 15 g glycerol. Total output: 150 g. Mass balance closure: 150%. The excess mass suggests highly efficient carbon fixation from dissolved CO2 in the medium.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "conservation_violation"
+      }
+    },
+    {
+      "id": "eval-bio-052",
+      "prompt": "Summarize the variant calling pipeline configuration and results.",
+      "output": "Reads were aligned to hg19 (GRCh37) reference genome using BWA-MEM. Variant calling performed with GATK HaplotypeCaller. Total variants: 4,128,953. Clinically relevant variant found: chr17:41246481 BRCA1 c.5266dupC reported using hg38 (GRCh38) coordinates. This pathogenic variant was confirmed by Sanger sequencing.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "pipeline_error"
+      }
+    },
+    {
+      "id": "eval-bio-053",
+      "prompt": "Report the qPCR results for pathogen detection in clinical samples.",
+      "output": "SARS-CoV-2 RT-qPCR results: Sample 1 Ct = 2.1 (positive), Sample 2 Ct = 28.4 (positive), Sample 3 Ct = undetermined (negative). Internal control RNaseP: all samples Ct 22-25. Sample 1 Ct of 2.1 indicates extremely high viral load, well above the detection threshold.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "value_out_of_range"
+      }
+    },
+    {
+      "id": "eval-bio-054",
+      "prompt": "Report the patient survival data from the longitudinal follow-up study.",
+      "output": "Cohort of 200 patients followed for 5 years. Survival percentages: Year 0: 100%, Year 1: 85%, Year 2: 72%, Year 3: 78%, Year 4: 81%, Year 5: 65%. The improvement in survival between years 2 and 4 reflects the delayed therapeutic benefit of the experimental treatment.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "logical_impossibility"
+      }
+    },
+    {
+      "id": "eval-bio-055",
+      "prompt": "Report the gene expression analysis results from the comparative genomics study.",
+      "output": "Cross-species expression analysis: Human BRCA1 (NM_007294) expression detected at 12.5 FPKM. Mouse-specific isoform Brca1-205 (ENSMUST00000169980) detected at 8.3 FPKM in the same sample. Foxp3 shows mouse-specific exon 2 splicing pattern. All data from a single human patient biopsy sample.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "species_mismatch"
+      }
+    },
+    {
+      "id": "eval-bio-056",
+      "prompt": "Report the flow cytometry immunophenotyping results.",
+      "output": "Lymphocyte gate immunophenotyping: CD3+ T cells: 72%, CD19+ B cells: 18%, CD56+ NK cells: 12%, CD14+ monocytes: 35%. Total: 137%. All populations were gated from the lymphocyte scatter gate. Quality control beads showed normal instrument performance.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "arithmetic_error"
+      }
+    },
+    {
+      "id": "eval-bio-057",
+      "prompt": "Report the protein characterization results from SDS-PAGE and mass spectrometry.",
+      "output": "Recombinant protein expressed in E. coli BL21. Predicted molecular weight from sequence: 3.5 kDa (31 amino acids). SDS-PAGE analysis shows a single band migrating at approximately 75 kDa. Mass spectrometry confirms sequence identity with 95% coverage. The discrepancy is attributed to post-translational modifications.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "physical_impossibility"
+      }
+    },
+    {
+      "id": "eval-bio-058",
+      "prompt": "Report the sequencing quality control results.",
+      "output": "",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "adversarial_empty"
+      }
+    },
+    {
+      "id": "eval-bio-059",
+      "prompt": "Report the enzyme kinetics parameters from the spectrophotometric assay.",
+      "output": "Enzyme kinetics analysis: K\u2098 = 15.3 \u00b5M, V\u2098\u2090\u2093 = 0.85 \u00b5mol\u00b7min\u207b\u00b9\u00b7mg\u207b\u00b9. Inhibitor K\u1d62 = 2.7 \u00b5M (\u03b1 = 0.92). Lineweaver\u2013Burk plot: 1/V = (K\u2098/V\u2098\u2090\u2093)\u00b7(1/[S]) + 1/V\u2098\u2090\u2093. \u0394G\u2021 = \u221256.8 kJ\u00b7mol\u207b\u00b9. \u03b7\u2082 = k\u2082/K\u2098 = 2.78\u00d710\u2076 M\u207b\u00b9\u00b7s\u207b\u00b9. Michaelis\u2013Menten: v = V\u2098\u2090\u2093[S]/(K\u2098 + [S]). R\u00b2 = 0.995.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "adversarial_unicode"
+      }
+    },
+    {
+      "id": "eval-bio-060",
+      "prompt": "Report the absorbance readings from the protein quantification plate.",
+      "output": "Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD. Well A1: 0.342 OD.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "adversarial_repetition"
+      }
+    },
+    {
+      "id": "eval-bio-061",
+      "prompt": "Report the cell doubling time.",
+      "output": "The cell line showed a doubling time of -1.3 hours, indicating cells were dividing in reverse.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-062",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.5. Incubation temperature was 37C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-063",
+      "prompt": "Report the actin quantification results.",
+      "output": "actin concentration was measured at 7.65 mg/mL across triplicates (CV=5.2%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-064",
+      "prompt": "Report the CDH1 expression results.",
+      "output": "CDH1 showed a fold change of 1.96 (p=0.03) between treatment and control. This is consistent with previously reported CDH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-065",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.5. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-066",
+      "prompt": "Report the insulin pH measurements.",
+      "output": "insulin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-067",
+      "prompt": "Report the VHL expression results.",
+      "output": "VHL showed a fold change of 3.95 (p=0.03) between treatment and control. This is consistent with previously reported VHL regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-068",
+      "prompt": "Report the albumin temperature (C) measurements.",
+      "output": "albumin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-069",
+      "prompt": "Report the fold change for VHL expression.",
+      "output": "VHL showed a fold change of 1632.9 between treatment and control groups. This is biologically implausible as typical fold changes for VHL range from 0.5 to 10.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-070",
+      "prompt": "Describe the VHL knockout phenotype in Drosophila melanogaster.",
+      "output": "The VHL knockout in Drosophila melanogaster was performed using CRISPR-Cas9. The phenotype matched previously described VHL knockouts in Escherichia coli, confirming cross-species conservation. However, the protocol used Escherichia coli-specific primers on Drosophila melanogaster tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-071",
+      "prompt": "Report the pH measurements.",
+      "output": "Buffer A: pH 7.4, Buffer B: pH 16.7, Buffer C: pH 6.8. Buffer B shows pH outside measurable range.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-072",
+      "prompt": "Report the KRAS expression results.",
+      "output": "KRAS showed a fold change of 0.8 (p=0.03) between treatment and control. This is consistent with previously reported KRAS regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-073",
+      "prompt": "Report the albumin temperature (C) measurements.",
+      "output": "albumin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-074",
+      "prompt": "Report the collagen quantification results.",
+      "output": "collagen concentration was measured at 7.26 mg/mL across triplicates (CV=7.3%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-075",
+      "prompt": "Report the fibrinogen quantification results.",
+      "output": "fibrinogen concentration was measured at 8.09 mg/mL across triplicates (CV=3.1%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-076",
+      "prompt": "Describe the BRAF knockout phenotype in Saccharomyces cerevisiae.",
+      "output": "The BRAF knockout in Saccharomyces cerevisiae was performed using CRISPR-Cas9. The phenotype matched previously described BRAF knockouts in Escherichia coli, confirming cross-species conservation. However, the protocol used Escherichia coli-specific primers on Saccharomyces cerevisiae tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-077",
+      "prompt": "Report the BRCA1 expression results.",
+      "output": "BRCA1 showed a fold change of 2.31 (p=0.03) between treatment and control. This is consistent with previously reported BRCA1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-078",
+      "prompt": "Report the fold change for KRAS expression.",
+      "output": "KRAS showed a fold change of 785.3 between treatment and control groups. This is biologically implausible as typical fold changes for KRAS range from 0.5 to 10.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-079",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=193. Group A: n=57, Group B: n=136. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-080",
+      "prompt": "Report the concentration measurements.",
+      "output": "Well 1: -47.5 mM, Well 2: 0.5 mM, Well 3: 1.0 mM. Well 1 shows a negative concentration.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-081",
+      "prompt": "Report the KRAS expression results.",
+      "output": "KRAS showed a fold change of 1.25 (p=0.03) between treatment and control. This is consistent with previously reported KRAS regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-082",
+      "prompt": "Report the myosin quantification results.",
+      "output": "myosin concentration was measured at 9.03 mg/mL across triplicates (CV=3.0%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-083",
+      "prompt": "Report the sample distribution across groups.",
+      "output": "Group A: n=103, Group B: n=229. Total sample size: n=307. The sum of group sizes (103 + 229 = 332) does not match the reported total (307).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-084",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=179. Group A: n=52, Group B: n=127. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-085",
+      "prompt": "Report the CDH1 expression results.",
+      "output": "CDH1 showed a fold change of 3.81 (p=0.03) between treatment and control. This is consistent with previously reported CDH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-086",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 6.8. Incubation temperature was 37C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-087",
+      "prompt": "Report the hemoglobin temperature (C) measurements.",
+      "output": "hemoglobin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-088",
+      "prompt": "Report the fold change for TP53 expression.",
+      "output": "TP53 showed a fold change of 1392.6 between treatment and control groups. This is biologically implausible as typical fold changes for TP53 range from 0.5 to 10.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-089",
+      "prompt": "Report the myosin quantification results.",
+      "output": "myosin concentration was measured at 1.29 mg/mL across triplicates (CV=7.3%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-090",
+      "prompt": "Report the CDH1 expression results.",
+      "output": "CDH1 showed a fold change of 0.87 (p=0.03) between treatment and control. This is consistent with previously reported CDH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-091",
+      "prompt": "Report the protein molecular weight.",
+      "output": "The protein has a molecular weight of -396 kDa, which is negative.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-092",
+      "prompt": "Report the statistical significance of 5 comparisons.",
+      "output": "All 5 comparisons were significant: p=0.0229, p=0.0456, p=0.0459, p=0.0014, p=0.0308. The probability of all 5 being independently significant at p<0.05 without correction is 3.13e-07, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-093",
+      "prompt": "Report the albumin temperature (C) measurements.",
+      "output": "albumin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-094",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.5. Incubation temperature was 25C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-095",
+      "prompt": "Report the fibrinogen quantification results.",
+      "output": "fibrinogen concentration was measured at 8.35 mg/mL across triplicates (CV=6.2%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-096",
+      "prompt": "Report the MLH1 expression results.",
+      "output": "MLH1 showed a fold change of 4.18 (p=0.03) between treatment and control. This is consistent with previously reported MLH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-097",
+      "prompt": "Report the EGFR expression results.",
+      "output": "EGFR showed a fold change of 1.69 (p=0.03) between treatment and control. This is consistent with previously reported EGFR regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-098",
+      "prompt": "Report the albumin quantification results.",
+      "output": "albumin concentration was measured at 2.89 mg/mL across triplicates (CV=3.3%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-099",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.2. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-100",
+      "prompt": "Report the temperature readings.",
+      "output": "Incubator 1: 37C, Incubator 2: 2766C, Incubator 3: 25C. Incubator 2 temperature is impossibly high.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-101",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 6.9. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-102",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=387. Group A: n=42, Group B: n=345. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-103",
+      "prompt": "Report the hemoglobin quantification results.",
+      "output": "hemoglobin concentration was measured at 8.36 mg/mL across triplicates (CV=5.5%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-104",
+      "prompt": "Report the cell doubling time.",
+      "output": "The cell line showed a doubling time of -6.7 hours, indicating cells were dividing in reverse.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-105",
+      "prompt": "Report the keratin quantification results.",
+      "output": "keratin concentration was measured at 6.7 mg/mL across triplicates (CV=4.1%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-106",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=417. Group A: n=79, Group B: n=338. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-107",
+      "prompt": "Report the fold change for EGFR expression.",
+      "output": "EGFR showed a fold change of 1822.1 between treatment and control groups. This is biologically implausible as typical fold changes for EGFR range from 0.5 to 10.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-108",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.4. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-109",
+      "prompt": "Report the albumin quantification results.",
+      "output": "albumin concentration was measured at 1.68 mg/mL across triplicates (CV=6.2%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-110",
+      "prompt": "Describe the PTEN knockout phenotype in Mus musculus.",
+      "output": "The PTEN knockout in Mus musculus was performed using CRISPR-Cas9. The phenotype matched previously described PTEN knockouts in Danio rerio, confirming cross-species conservation. However, the protocol used Danio rerio-specific primers on Mus musculus tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-111",
+      "prompt": "Report the keratin quantification results.",
+      "output": "keratin concentration was measured at 0.33 mg/mL across triplicates (CV=3.2%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-112",
+      "prompt": "Report the MYC expression results.",
+      "output": "MYC showed a fold change of 2.08 (p=0.03) between treatment and control. This is consistent with previously reported MYC regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-113",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.6. Incubation temperature was 25C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-114",
+      "prompt": "Report the hemoglobin concentration (mM) measurements.",
+      "output": "hemoglobin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-115",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=276. Group A: n=133, Group B: n=143. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-116",
+      "prompt": "Report the myosin pH measurements.",
+      "output": "myosin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-117",
+      "prompt": "Report the concentration measurements.",
+      "output": "Well 1: -24.5 mM, Well 2: 0.5 mM, Well 3: 1.0 mM. Well 1 shows a negative concentration.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-118",
+      "prompt": "Report the statistical significance of 4 comparisons.",
+      "output": "All 4 comparisons were significant: p=0.0185, p=0.0044, p=0.0329, p=0.0168. The probability of all 4 being independently significant at p<0.05 without correction is 6.25e-06, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-119",
+      "prompt": "Report the statistical significance of 5 comparisons.",
+      "output": "All 5 comparisons were significant: p=0.0253, p=0.033, p=0.0167, p=0.0345, p=0.0276. The probability of all 5 being independently significant at p<0.05 without correction is 3.13e-07, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-120",
+      "prompt": "Describe the RB1 knockout phenotype in Mus musculus.",
+      "output": "The RB1 knockout in Mus musculus was performed using CRISPR-Cas9. The phenotype matched previously described RB1 knockouts in Arabidopsis thaliana, confirming cross-species conservation. However, the protocol used Arabidopsis thaliana-specific primers on Mus musculus tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-121",
+      "prompt": "Report the enzyme reaction velocity.",
+      "output": "The enzyme showed Vmax of -44.9 umol/min, a negative reaction rate.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-122",
+      "prompt": "Report the statistical significance of 4 comparisons.",
+      "output": "All 4 comparisons were significant: p=0.0255, p=0.0391, p=0.0471, p=0.0363. The probability of all 4 being independently significant at p<0.05 without correction is 6.25e-06, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-123",
+      "prompt": "Report the statistical significance of 5 comparisons.",
+      "output": "All 5 comparisons were significant: p=0.0055, p=0.0467, p=0.0123, p=0.0159, p=0.0397. The probability of all 5 being independently significant at p<0.05 without correction is 3.13e-07, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-124",
+      "prompt": "Report the KRAS expression results.",
+      "output": "KRAS showed a fold change of 4.93 (p=0.03) between treatment and control. This is consistent with previously reported KRAS regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-125",
+      "prompt": "Describe the BRAF knockout phenotype in Saccharomyces cerevisiae.",
+      "output": "The BRAF knockout in Saccharomyces cerevisiae was performed using CRISPR-Cas9. The phenotype matched previously described BRAF knockouts in Danio rerio, confirming cross-species conservation. However, the protocol used Danio rerio-specific primers on Saccharomyces cerevisiae tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-126",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=304. Group A: n=71, Group B: n=233. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-127",
+      "prompt": "Report the sample distribution across groups.",
+      "output": "Group A: n=57, Group B: n=437. Total sample size: n=469. The sum of group sizes (57 + 437 = 494) does not match the reported total (469).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-128",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=125. Group A: n=57, Group B: n=68. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-129",
+      "prompt": "Report the PTEN expression results.",
+      "output": "PTEN showed a fold change of 1.1 (p=0.03) between treatment and control. This is consistent with previously reported PTEN regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-130",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.6. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-131",
+      "prompt": "Report the fibrinogen absorbance (OD) measurements.",
+      "output": "fibrinogen sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-132",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=330. Group A: n=73, Group B: n=257. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-133",
+      "prompt": "Report the cell doubling time.",
+      "output": "The cell line showed a doubling time of -3.1 hours, indicating cells were dividing in reverse.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-134",
+      "prompt": "Report the enzyme reaction velocity.",
+      "output": "The enzyme showed Vmax of -69.6 umol/min, a negative reaction rate.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-135",
+      "prompt": "Describe the TP53 knockout phenotype in Mus musculus.",
+      "output": "The TP53 knockout in Mus musculus was performed using CRISPR-Cas9. The phenotype matched previously described TP53 knockouts in Danio rerio, confirming cross-species conservation. However, the protocol used Danio rerio-specific primers on Mus musculus tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-136",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.2. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-137",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=299. Group A: n=138, Group B: n=161. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-138",
+      "prompt": "Report the sample distribution across groups.",
+      "output": "Group A: n=177, Group B: n=314. Total sample size: n=466. The sum of group sizes (177 + 314 = 491) does not match the reported total (466).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-139",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.0. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-140",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=375. Group A: n=179, Group B: n=196. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-141",
+      "prompt": "Report the fibrinogen quantification results.",
+      "output": "fibrinogen concentration was measured at 2.27 mg/mL across triplicates (CV=4.6%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-142",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.3. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-143",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=165. Group A: n=79, Group B: n=86. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-144",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=403. Group A: n=184, Group B: n=219. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-145",
+      "prompt": "Report the MLH1 expression results.",
+      "output": "MLH1 showed a fold change of 2.43 (p=0.03) between treatment and control. This is consistent with previously reported MLH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-146",
+      "prompt": "Report the hemoglobin quantification results.",
+      "output": "hemoglobin concentration was measured at 2.68 mg/mL across triplicates (CV=4.0%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-147",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.4. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-148",
+      "prompt": "Describe the PTEN knockout phenotype in Drosophila melanogaster.",
+      "output": "The PTEN knockout in Drosophila melanogaster was performed using CRISPR-Cas9. The phenotype matched previously described PTEN knockouts in Caenorhabditis elegans, confirming cross-species conservation. However, the protocol used Caenorhabditis elegans-specific primers on Drosophila melanogaster tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-149",
+      "prompt": "Report the APC expression results.",
+      "output": "APC showed a fold change of 1.51 (p=0.03) between treatment and control. This is consistent with previously reported APC regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-150",
+      "prompt": "Report the BRCA1 expression results.",
+      "output": "BRCA1 showed a fold change of 4.77 (p=0.03) between treatment and control. This is consistent with previously reported BRCA1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-151",
+      "prompt": "Report the CDH1 expression results.",
+      "output": "CDH1 showed a fold change of 1.19 (p=0.03) between treatment and control. This is consistent with previously reported CDH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-152",
+      "prompt": "Report the CDH1 expression results.",
+      "output": "CDH1 showed a fold change of 4.76 (p=0.03) between treatment and control. This is consistent with previously reported CDH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-153",
+      "prompt": "Report the enzyme reaction velocity.",
+      "output": "The enzyme showed Vmax of -8.4 umol/min, a negative reaction rate.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-154",
+      "prompt": "Report the enzyme reaction velocity.",
+      "output": "The enzyme showed Vmax of -11.8 umol/min, a negative reaction rate.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-155",
+      "prompt": "Describe the CDH1 knockout phenotype in Mus musculus.",
+      "output": "The CDH1 knockout in Mus musculus was performed using CRISPR-Cas9. The phenotype matched previously described CDH1 knockouts in Caenorhabditis elegans, confirming cross-species conservation. However, the protocol used Caenorhabditis elegans-specific primers on Mus musculus tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-156",
+      "prompt": "Report the insulin quantification results.",
+      "output": "insulin concentration was measured at 7.0 mg/mL across triplicates (CV=3.8%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-157",
+      "prompt": "Report the CDH1 expression results.",
+      "output": "CDH1 showed a fold change of 4.02 (p=0.03) between treatment and control. This is consistent with previously reported CDH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-158",
+      "prompt": "Report the protein molecular weight.",
+      "output": "The protein has a molecular weight of -169 kDa, which is negative.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-159",
+      "prompt": "Report the RB1 expression results.",
+      "output": "RB1 showed a fold change of 4.82 (p=0.03) between treatment and control. This is consistent with previously reported RB1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-160",
+      "prompt": "Report the statistical significance of 4 comparisons.",
+      "output": "All 4 comparisons were significant: p=0.0219, p=0.0362, p=0.0473, p=0.014. The probability of all 4 being independently significant at p<0.05 without correction is 6.25e-06, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-161",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=338. Group A: n=151, Group B: n=187. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-162",
+      "prompt": "Report the protein molecular weight.",
+      "output": "The protein has a molecular weight of -75 kDa, which is negative.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-163",
+      "prompt": "Describe the BRCA1 knockout phenotype in Saccharomyces cerevisiae.",
+      "output": "The BRCA1 knockout in Saccharomyces cerevisiae was performed using CRISPR-Cas9. The phenotype matched previously described BRCA1 knockouts in Arabidopsis thaliana, confirming cross-species conservation. However, the protocol used Arabidopsis thaliana-specific primers on Saccharomyces cerevisiae tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-164",
+      "prompt": "Describe the MYC knockout phenotype in Mus musculus.",
+      "output": "The MYC knockout in Mus musculus was performed using CRISPR-Cas9. The phenotype matched previously described MYC knockouts in Arabidopsis thaliana, confirming cross-species conservation. However, the protocol used Arabidopsis thaliana-specific primers on Mus musculus tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-165",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.2. Incubation temperature was 37C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-166",
+      "prompt": "Report the statistical significance of 6 comparisons.",
+      "output": "All 6 comparisons were significant: p=0.0245, p=0.0374, p=0.0341, p=0.032, p=0.0246, p=0.0391. The probability of all 6 being independently significant at p<0.05 without correction is 1.56e-08, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-167",
+      "prompt": "Report the myosin quantification results.",
+      "output": "myosin concentration was measured at 6.95 mg/mL across triplicates (CV=3.8%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-168",
+      "prompt": "Report the myosin concentration (mM) measurements.",
+      "output": "myosin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-169",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.1. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-170",
+      "prompt": "Report the concentration measurements.",
+      "output": "Well 1: -44.1 mM, Well 2: 0.5 mM, Well 3: 1.0 mM. Well 1 shows a negative concentration.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-171",
+      "prompt": "Report the keratin quantification results.",
+      "output": "keratin concentration was measured at 2.24 mg/mL across triplicates (CV=4.9%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-172",
+      "prompt": "Report the albumin fold change measurements.",
+      "output": "albumin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-173",
+      "prompt": "Report the enzyme reaction velocity.",
+      "output": "The enzyme showed Vmax of -71.3 umol/min, a negative reaction rate.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-174",
+      "prompt": "Report the temperature readings.",
+      "output": "Incubator 1: 37C, Incubator 2: 1534C, Incubator 3: 25C. Incubator 2 temperature is impossibly high.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-175",
+      "prompt": "Report the cell doubling time.",
+      "output": "The cell line showed a doubling time of -5.8 hours, indicating cells were dividing in reverse.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-176",
+      "prompt": "Report the concentration measurements.",
+      "output": "Well 1: -25.9 mM, Well 2: 0.5 mM, Well 3: 1.0 mM. Well 1 shows a negative concentration.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-177",
+      "prompt": "Report the EGFR expression results.",
+      "output": "EGFR showed a fold change of 1.17 (p=0.03) between treatment and control. This is consistent with previously reported EGFR regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-178",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 6.9. Incubation temperature was 25C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-179",
+      "prompt": "Report the keratin fold change measurements.",
+      "output": "keratin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-180",
+      "prompt": "Describe the MYC knockout phenotype in Drosophila melanogaster.",
+      "output": "The MYC knockout in Drosophila melanogaster was performed using CRISPR-Cas9. The phenotype matched previously described MYC knockouts in Escherichia coli, confirming cross-species conservation. However, the protocol used Escherichia coli-specific primers on Drosophila melanogaster tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-181",
+      "prompt": "Report the CDH1 expression results.",
+      "output": "CDH1 showed a fold change of 4.82 (p=0.03) between treatment and control. This is consistent with previously reported CDH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-182",
+      "prompt": "Report the statistical significance of 4 comparisons.",
+      "output": "All 4 comparisons were significant: p=0.0137, p=0.0049, p=0.0125, p=0.0275. The probability of all 4 being independently significant at p<0.05 without correction is 6.25e-06, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-183",
+      "prompt": "Report the statistical significance of 6 comparisons.",
+      "output": "All 6 comparisons were significant: p=0.015, p=0.0121, p=0.0349, p=0.0347, p=0.0228, p=0.034. The probability of all 6 being independently significant at p<0.05 without correction is 1.56e-08, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-184",
+      "prompt": "Report the myosin quantification results.",
+      "output": "myosin concentration was measured at 1.24 mg/mL across triplicates (CV=3.3%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-185",
+      "prompt": "Report the fold change for TP53 expression.",
+      "output": "TP53 showed a fold change of 589.5 between treatment and control groups. This is biologically implausible as typical fold changes for TP53 range from 0.5 to 10.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-186",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.2. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-187",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=239. Group A: n=104, Group B: n=135. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-188",
+      "prompt": "Report the myosin pH measurements.",
+      "output": "myosin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-189",
+      "prompt": "Report the concentration measurements.",
+      "output": "Well 1: -1.0 mM, Well 2: 0.5 mM, Well 3: 1.0 mM. Well 1 shows a negative concentration.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-190",
+      "prompt": "Report the EGFR expression results.",
+      "output": "EGFR showed a fold change of 2.62 (p=0.03) between treatment and control. This is consistent with previously reported EGFR regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-191",
+      "prompt": "Report the fold change for CDH1 expression.",
+      "output": "CDH1 showed a fold change of 1153.8 between treatment and control groups. This is biologically implausible as typical fold changes for CDH1 range from 0.5 to 10.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-192",
+      "prompt": "Report the PTEN expression results.",
+      "output": "PTEN showed a fold change of 2.07 (p=0.03) between treatment and control. This is consistent with previously reported PTEN regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-193",
+      "prompt": "Report the sample distribution across groups.",
+      "output": "Group A: n=51, Group B: n=131. Total sample size: n=157. The sum of group sizes (51 + 131 = 182) does not match the reported total (157).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-194",
+      "prompt": "Report the pH and temperature conditions.",
+      "output": "Buffer pH was maintained at 7.3. Incubation temperature was 30C. All conditions were within standard protocol ranges.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-195",
+      "prompt": "Report the PTEN expression results.",
+      "output": "PTEN showed a fold change of 0.9 (p=0.03) between treatment and control. This is consistent with previously reported PTEN regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-196",
+      "prompt": "Report the sample distribution across groups.",
+      "output": "Group A: n=140, Group B: n=166. Total sample size: n=316. The sum of group sizes (140 + 166 = 306) does not match the reported total (316).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-197",
+      "prompt": "Describe the VHL knockout phenotype in Homo sapiens.",
+      "output": "The VHL knockout in Homo sapiens was performed using CRISPR-Cas9. The phenotype matched previously described VHL knockouts in Danio rerio, confirming cross-species conservation. However, the protocol used Danio rerio-specific primers on Homo sapiens tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-198",
+      "prompt": "Report the statistical significance of 6 comparisons.",
+      "output": "All 6 comparisons were significant: p=0.0375, p=0.0108, p=0.0274, p=0.0455, p=0.022, p=0.0345. The probability of all 6 being independently significant at p<0.05 without correction is 1.56e-08, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-199",
+      "prompt": "Report the collagen temperature (C) measurements.",
+      "output": "collagen sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-200",
+      "prompt": "Describe the TP53 knockout phenotype in Homo sapiens.",
+      "output": "The TP53 knockout in Homo sapiens was performed using CRISPR-Cas9. The phenotype matched previously described TP53 knockouts in Danio rerio, confirming cross-species conservation. However, the protocol used Danio rerio-specific primers on Homo sapiens tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-201",
+      "prompt": "Report the MLH1 expression results.",
+      "output": "MLH1 showed a fold change of 4.24 (p=0.03) between treatment and control. This is consistent with previously reported MLH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-202",
+      "prompt": "Report the albumin expression level (TPM) measurements.",
+      "output": "albumin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-203",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=341. Group A: n=102, Group B: n=239. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-204",
+      "prompt": "Report the fold change for CDH1 expression.",
+      "output": "CDH1 showed a fold change of 1262.4 between treatment and control groups. This is biologically implausible as typical fold changes for CDH1 range from 0.5 to 10.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-205",
+      "prompt": "Report the enzyme reaction velocity.",
+      "output": "The enzyme showed Vmax of -60.6 umol/min, a negative reaction rate.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-206",
+      "prompt": "Report the statistical significance of 5 comparisons.",
+      "output": "All 5 comparisons were significant: p=0.0412, p=0.0288, p=0.0327, p=0.0425, p=0.0224. The probability of all 5 being independently significant at p<0.05 without correction is 3.13e-07, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-207",
+      "prompt": "Report the sample distribution across groups.",
+      "output": "Group A: n=126, Group B: n=252. Total sample size: n=353. The sum of group sizes (126 + 252 = 378) does not match the reported total (353).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-208",
+      "prompt": "Report the statistical significance of 4 comparisons.",
+      "output": "All 4 comparisons were significant: p=0.0284, p=0.0122, p=0.0382, p=0.0031. The probability of all 4 being independently significant at p<0.05 without correction is 6.25e-06, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-209",
+      "prompt": "Report the sample distribution across groups.",
+      "output": "Group A: n=79, Group B: n=216. Total sample size: n=280. The sum of group sizes (79 + 216 = 295) does not match the reported total (280).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-210",
+      "prompt": "Report the actin fold change measurements.",
+      "output": "actin sample A: 5.2 mg/mL, sample B: 3100 ug/dL, sample C: 0.8 mol/L. The units are inconsistent across samples and one value appears to be in wrong units.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-bio-211",
+      "prompt": "Report the PTEN expression results.",
+      "output": "PTEN showed a fold change of 1.75 (p=0.03) between treatment and control. This is consistent with previously reported PTEN regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-bio-212",
+      "prompt": "Report the insulin quantification results.",
+      "output": "insulin concentration was measured at 3.07 mg/mL across triplicates (CV=6.2%). This is within the expected range for this assay.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-bio-213",
+      "prompt": "Report the PTEN expression results.",
+      "output": "PTEN showed a fold change of 2.46 (p=0.03) between treatment and control. This is consistent with previously reported PTEN regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-bio-214",
+      "prompt": "Report the sample distribution.",
+      "output": "Total sample size: n=250. Group A: n=122, Group B: n=128. Groups were balanced with no significant demographic differences (p=0.72).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-bio-215",
+      "prompt": "Report the sample distribution across groups.",
+      "output": "Group A: n=60, Group B: n=106. Total sample size: n=141. The sum of group sizes (60 + 106 = 166) does not match the reported total (141).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-bio-216",
+      "prompt": "Describe the VHL knockout phenotype in Homo sapiens.",
+      "output": "The VHL knockout in Homo sapiens was performed using CRISPR-Cas9. The phenotype matched previously described VHL knockouts in Danio rerio, confirming cross-species conservation. However, the protocol used Danio rerio-specific primers on Homo sapiens tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-bio-217",
+      "prompt": "Report the sample distribution across groups.",
+      "output": "Group A: n=39, Group B: n=124. Total sample size: n=148. The sum of group sizes (39 + 124 = 163) does not match the reported total (148).",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-bio-218",
+      "prompt": "Report the CDH1 expression results.",
+      "output": "CDH1 showed a fold change of 4.9 (p=0.03) between treatment and control. This is consistent with previously reported CDH1 regulation in this pathway.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-bio-219",
+      "prompt": "Describe the MYC knockout phenotype in Saccharomyces cerevisiae.",
+      "output": "The MYC knockout in Saccharomyces cerevisiae was performed using CRISPR-Cas9. The phenotype matched previously described MYC knockouts in Arabidopsis thaliana, confirming cross-species conservation. However, the protocol used Arabidopsis thaliana-specific primers on Saccharomyces cerevisiae tissue.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-bio-220",
+      "prompt": "Report the statistical significance of 5 comparisons.",
+      "output": "All 5 comparisons were significant: p=0.044, p=0.0276, p=0.0183, p=0.0406, p=0.0401. The probability of all 5 being independently significant at p<0.05 without correction is 3.13e-07, suggesting possible p-hacking.",
+      "domain": "bio",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "llm"
+      }
+    }
+  ]
+}

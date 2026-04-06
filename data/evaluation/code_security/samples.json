@@ -1,0 +1,2441 @@
+{
+  "samples": [
+    {
+      "id": "eval-cs-001",
+      "prompt": "Write a function to look up a user by ID",
+      "output": "",
+      "code": "def get_user(uid):\n    cursor.execute('SELECT * FROM users WHERE id=' + uid)\n    return cursor.fetchone()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-002",
+      "prompt": "Create a login query function",
+      "output": "",
+      "code": "def login(username, password):\n    query = f\"SELECT * FROM accounts WHERE user='{username}' AND pass='{password}'\"\n    cursor.execute(query)\n    return cursor.fetchone()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-003",
+      "prompt": "Write a search function for products",
+      "output": "",
+      "code": "def search_products(term):\n    sql = 'SELECT * FROM products WHERE name LIKE ' + \"'%\" + term + \"%'\"\n    return db.execute(sql)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-004",
+      "prompt": "Delete a record by ID",
+      "output": "",
+      "code": "def delete_record(table, record_id):\n    cursor.execute('DELETE FROM ' + table + ' WHERE id=' + str(record_id))\n    conn.commit()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-005",
+      "prompt": "Update user email",
+      "output": "",
+      "code": "def update_email(uid, email):\n    cursor.execute(\"UPDATE users SET email='\" + email + \"' WHERE id=\" + str(uid))\n    conn.commit()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-006",
+      "prompt": "Run a system command to list files",
+      "output": "",
+      "code": "import os\ndef list_files(directory):\n    os.system('ls -la ' + directory)\n    return True",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-007",
+      "prompt": "Execute a shell command from user input",
+      "output": "",
+      "code": "import subprocess\ndef run_command(cmd):\n    result = subprocess.call(cmd, shell=True)\n    return result",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-008",
+      "prompt": "Ping a host provided by the user",
+      "output": "",
+      "code": "import os\ndef ping_host(host):\n    os.popen('ping -c 3 ' + host).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-009",
+      "prompt": "Store database credentials in config",
+      "output": "",
+      "code": "db_password = \"SuperSecret123!\"\napi_key = \"AKIAIOSFODNN7EXAMPLE\"\ndb_host = \"localhost\"",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-010",
+      "prompt": "Configure the application with secrets",
+      "output": "",
+      "code": "class Config:\n    secret = \"my_jwt_secret_key_2024\"\n    token = \"ghp_xxxxxxxxxxxxxxxxxxxx\"\n    database_url = \"postgres://localhost/mydb\"",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-011",
+      "prompt": "Set up API authentication",
+      "output": "",
+      "code": "api_secret_key = \"sk-1234567890abcdef\"\ndef authenticate(request):\n    return request.headers.get('Authorization') == api_secret_key",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-012",
+      "prompt": "Deserialize user-uploaded data",
+      "output": "",
+      "code": "import pickle\ndef load_user_data(data_bytes):\n    return pickle.loads(data_bytes)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-013",
+      "prompt": "Load configuration from YAML",
+      "output": "",
+      "code": "import yaml\ndef load_config(config_str):\n    return yaml.load(config_str)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-014",
+      "prompt": "Read a file based on user-provided path",
+      "output": "",
+      "code": "def read_file(filepath):\n    with open(filepath, 'r') as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-015",
+      "prompt": "Serve a file from a directory",
+      "output": "",
+      "code": "import os\ndef serve_file(base_dir, filename):\n    path = os.path.join(base_dir, filename)\n    with open(path, 'rb') as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-016",
+      "prompt": "Write a function to look up a user by ID securely",
+      "output": "",
+      "code": "def get_user(uid):\n    cursor.execute('SELECT * FROM users WHERE id = %s', (uid,))\n    return cursor.fetchone()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-017",
+      "prompt": "Create a secure login query function",
+      "output": "",
+      "code": "def login(username, password):\n    cursor.execute(\n        'SELECT * FROM accounts WHERE user = %s AND pass = %s',\n        (username, password)\n    )\n    return cursor.fetchone()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-018",
+      "prompt": "Search products safely",
+      "output": "",
+      "code": "def search_products(term):\n    cursor.execute(\n        'SELECT * FROM products WHERE name LIKE %s',\n        (f'%{term}%',)\n    )\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-019",
+      "prompt": "Read configuration from environment variables",
+      "output": "",
+      "code": "import os\ndef get_config():\n    return {\n        'db_password': os.environ.get('DB_PASSWORD', ''),\n        'api_key': os.environ.get('API_KEY', ''),\n        'secret': os.environ.get('SECRET_KEY', ''),\n    }",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-020",
+      "prompt": "Load data from a JSON file",
+      "output": "",
+      "code": "import json\ndef load_data(filepath):\n    with open(filepath, 'r') as f:\n        return json.load(f)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-021",
+      "prompt": "Calculate the factorial of a number",
+      "output": "",
+      "code": "def factorial(n):\n    if n <= 1:\n        return 1\n    return n * factorial(n - 1)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-022",
+      "prompt": "Sort a list of numbers",
+      "output": "",
+      "code": "def merge_sort(arr):\n    if len(arr) <= 1:\n        return arr\n    mid = len(arr) // 2\n    left = merge_sort(arr[:mid])\n    right = merge_sort(arr[mid:])\n    return merge(left, right)\n\ndef merge(left, right):\n    result = []\n    i = j = 0\n    while i < len(left) and j < len(right):\n        if left[i] <= right[j]:\n            result.append(left[i])\n            i += 1\n        else:\n            result.append(right[j])\n            j += 1\n    result.extend(left[i:])\n    result.extend(right[j:])\n    return result",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-023",
+      "prompt": "Validate an email address",
+      "output": "",
+      "code": "import re\ndef validate_email(email):\n    pattern = r'^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\\.[a-zA-Z]{2,}$'\n    return bool(re.match(pattern, email))",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-024",
+      "prompt": "Hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef hash_password(password):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', password.encode(), salt.encode(), 100000)\n    return f'{salt}:{hashed.hex()}'",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-025",
+      "prompt": "Safely deserialize data with JSON",
+      "output": "",
+      "code": "import json\n\ndef safe_deserialize(data_str):\n    try:\n        return json.loads(data_str)\n    except json.JSONDecodeError:\n        return None",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-026",
+      "prompt": "Run a subprocess safely",
+      "output": "",
+      "code": "import subprocess\n\ndef run_safe(args):\n    result = subprocess.run(args, capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-027",
+      "prompt": "Read a file with path validation",
+      "output": "",
+      "code": "import os\n\ndef safe_read(base_dir, filename):\n    full_path = os.path.realpath(os.path.join(base_dir, filename))\n    if not full_path.startswith(os.path.realpath(base_dir)):\n        raise ValueError('Path traversal detected')\n    with open(full_path, 'r') as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-028",
+      "prompt": "Create a simple HTTP client",
+      "output": "",
+      "code": "import urllib.request\n\ndef fetch_url(url):\n    with urllib.request.urlopen(url) as response:\n        return response.read().decode('utf-8')",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-029",
+      "prompt": "Implement a binary search function",
+      "output": "",
+      "code": "def binary_search(arr, target):\n    low, high = 0, len(arr) - 1\n    while low <= high:\n        mid = (low + high) // 2\n        if arr[mid] == target:\n            return mid\n        elif arr[mid] < target:\n            low = mid + 1\n        else:\n            high = mid - 1\n    return -1",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-030",
+      "prompt": "Build a simple stack data structure",
+      "output": "",
+      "code": "class Stack:\n    def __init__(self):\n        self._items = []\n\n    def push(self, item):\n        self._items.append(item)\n\n    def pop(self):\n        if not self._items:\n            raise IndexError('pop from empty stack')\n        return self._items.pop()\n\n    def peek(self):\n        if not self._items:\n            raise IndexError('peek at empty stack')\n        return self._items[-1]\n\n    def is_empty(self):\n        return len(self._items) == 0",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-031",
+      "prompt": "Insert a new user record into the database",
+      "output": "",
+      "code": "def insert_user(cursor, name, email):\n    cursor.execute(\n        'INSERT INTO users (name, email) VALUES (%s, %s)',\n        (name, email)\n    )\n    cursor.connection.commit()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-032",
+      "prompt": "Hash a user password with bcrypt",
+      "output": "",
+      "code": "import bcrypt\n\ndef hash_password(password: str) -> bytes:\n    salt = bcrypt.gensalt(rounds=12)\n    return bcrypt.hashpw(password.encode('utf-8'), salt)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-033",
+      "prompt": "Generate and validate a CSRF token for a form",
+      "output": "",
+      "code": "import secrets\nimport hmac\n\ndef generate_csrf_token(session_id: str, secret: bytes) -> str:\n    token = secrets.token_hex(32)\n    sig = hmac.new(secret, (session_id + token).encode(), 'sha256').hexdigest()\n    return f'{token}:{sig}'\n\ndef validate_csrf_token(csrf: str, session_id: str, secret: bytes) -> bool:\n    parts = csrf.split(':')\n    if len(parts) != 2:\n        return False\n    token, sig = parts\n    expected = hmac.new(secret, (session_id + token).encode(), 'sha256').hexdigest()\n    return hmac.compare_digest(sig, expected)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-034",
+      "prompt": "Implement a sliding window rate limiter",
+      "output": "",
+      "code": "import time\nfrom collections import defaultdict\n\nclass RateLimiter:\n    def __init__(self, max_requests: int, window_seconds: int):\n        self.max_requests = max_requests\n        self.window = window_seconds\n        self._hits = defaultdict(list)\n\n    def is_allowed(self, client_id: str) -> bool:\n        now = time.monotonic()\n        cutoff = now - self.window\n        self._hits[client_id] = [\n            t for t in self._hits[client_id] if t > cutoff\n        ]\n        if len(self._hits[client_id]) >= self.max_requests:\n            return False\n        self._hits[client_id].append(now)\n        return True",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-035",
+      "prompt": "Sanitize user input using an allowlist regex",
+      "output": "",
+      "code": "import re\n\ndef sanitize_username(username: str) -> str:\n    cleaned = re.sub(r'[^a-zA-Z0-9_\\-]', '', username)\n    return cleaned[:64]",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-036",
+      "prompt": "Handle a file upload with extension whitelist and size limit",
+      "output": "",
+      "code": "import os\n\nALLOWED_EXTENSIONS = {'.png', '.jpg', '.jpeg', '.gif', '.pdf'}\nMAX_SIZE_BYTES = 5 * 1024 * 1024  # 5 MB\n\ndef save_upload(upload_bytes: bytes, filename: str, upload_dir: str) -> str:\n    ext = os.path.splitext(filename)[1].lower()\n    if ext not in ALLOWED_EXTENSIONS:\n        raise ValueError(f'File type {ext} not allowed')\n    if len(upload_bytes) > MAX_SIZE_BYTES:\n        raise ValueError('File exceeds 5 MB limit')\n    safe_name = os.path.basename(filename)\n    dest = os.path.join(upload_dir, safe_name)\n    with open(dest, 'wb') as f:\n        f.write(upload_bytes)\n    return dest",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-037",
+      "prompt": "Verify a JWT token and check expiry",
+      "output": "",
+      "code": "import jwt\nimport time\n\ndef verify_token(token: str, secret: str) -> dict:\n    try:\n        payload = jwt.decode(token, secret, algorithms=['HS256'])\n    except jwt.ExpiredSignatureError:\n        raise ValueError('Token has expired')\n    except jwt.InvalidTokenError:\n        raise ValueError('Invalid token')\n    if payload.get('exp', 0) < time.time():\n        raise ValueError('Token has expired')\n    return payload",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-038",
+      "prompt": "Query users with SQLAlchemy ORM",
+      "output": "",
+      "code": "from sqlalchemy.orm import Session\nfrom models import User\n\ndef get_active_users(db: Session, min_age: int):\n    return (\n        db.query(User)\n        .filter(User.is_active == True, User.age >= min_age)\n        .order_by(User.created_at.desc())\n        .all()\n    )",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-039",
+      "prompt": "Load application config from environment variables with defaults",
+      "output": "",
+      "code": "import os\n\nclass AppConfig:\n    DEBUG = os.environ.get('APP_DEBUG', 'false').lower() == 'true'\n    DATABASE_URL = os.environ.get('DATABASE_URL', 'sqlite:///default.db')\n    SECRET_KEY = os.environ.get('SECRET_KEY', '')\n    MAX_UPLOAD_MB = int(os.environ.get('MAX_UPLOAD_MB', '10'))\n    LOG_LEVEL = os.environ.get('LOG_LEVEL', 'INFO')",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-040",
+      "prompt": "Verify HMAC signature on an incoming webhook",
+      "output": "",
+      "code": "import hmac\nimport hashlib\n\ndef verify_webhook_signature(payload: bytes, signature: str, secret: bytes) -> bool:\n    expected = hmac.new(secret, payload, hashlib.sha256).hexdigest()\n    return hmac.compare_digest(f'sha256={expected}', signature)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-041",
+      "prompt": "Generate a secure random token for password reset",
+      "output": "",
+      "code": "import secrets\n\ndef generate_reset_token(nbytes: int = 32) -> str:\n    return secrets.token_urlsafe(nbytes)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-042",
+      "prompt": "Set Content-Security-Policy headers on a Flask response",
+      "output": "",
+      "code": "from flask import Flask, make_response\n\napp = Flask(__name__)\n\n@app.after_request\ndef set_csp(response):\n    response.headers['Content-Security-Policy'] = (\n        \"default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:;\"\n    )\n    response.headers['X-Content-Type-Options'] = 'nosniff'\n    response.headers['X-Frame-Options'] = 'DENY'\n    return response",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-043",
+      "prompt": "Validate input length before querying the database",
+      "output": "",
+      "code": "def search_by_name(cursor, name: str):\n    if not name or len(name) > 200:\n        raise ValueError('Name must be between 1 and 200 characters')\n    cursor.execute(\n        'SELECT * FROM users WHERE name = %s',\n        (name,)\n    )\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-cs-044",
+      "prompt": "Render a user greeting page from form input",
+      "output": "",
+      "code": "from flask import Flask, request\n\napp = Flask(__name__)\n\n@app.route('/greet')\ndef greet():\n    name = request.args.get('name', 'Guest')\n    return f'<html><body><h1>Hello, {name}!</h1></body></html>'",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "xss"
+      }
+    },
+    {
+      "id": "eval-cs-045",
+      "prompt": "Fetch metadata from a URL provided by the user",
+      "output": "",
+      "code": "import requests\n\ndef fetch_metadata(url: str) -> dict:\n    resp = requests.get(url, timeout=10)\n    return {'status': resp.status_code, 'length': len(resp.content), 'type': resp.headers.get('Content-Type')}",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "ssrf"
+      }
+    },
+    {
+      "id": "eval-cs-046",
+      "prompt": "Download a file to a user-specified directory",
+      "output": "",
+      "code": "import os\n\ndef save_download(data: bytes, base_dir: str, user_path: str) -> str:\n    dest = os.path.join(base_dir, user_path)\n    os.makedirs(os.path.dirname(dest), exist_ok=True)\n    with open(dest, 'wb') as f:\n        f.write(data)\n    return dest",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "path_traversal"
+      }
+    },
+    {
+      "id": "eval-cs-047",
+      "prompt": "Generate a session token for user login",
+      "output": "",
+      "code": "import random\nimport string\n\ndef generate_session_token(length: int = 32) -> str:\n    chars = string.ascii_letters + string.digits\n    return ''.join(random.choice(chars) for _ in range(length))",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "weak_crypto"
+      }
+    },
+    {
+      "id": "eval-cs-048",
+      "prompt": "Build a calculator that evaluates user math expressions",
+      "output": "",
+      "code": "def calculate(expression: str) -> float:\n    return eval(expression)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "code_injection"
+      }
+    },
+    {
+      "id": "eval-cs-049",
+      "prompt": "Parse an XML configuration file uploaded by the user",
+      "output": "",
+      "code": "import xml.etree.ElementTree as ET\n\ndef parse_xml_config(xml_string: str) -> dict:\n    root = ET.fromstring(xml_string)\n    config = {}\n    for child in root:\n        config[child.tag] = child.text\n    return config",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "xxe"
+      }
+    },
+    {
+      "id": "eval-cs-050",
+      "prompt": "Initialize the AWS S3 client for file uploads",
+      "output": "",
+      "code": "import boto3\n\nclass S3Uploader:\n    AWS_ACCESS_KEY = 'AKIAIOSFODNN7EXAMPLE'\n    AWS_SECRET_KEY = 'wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY'\n    BUCKET = 'my-app-uploads'\n\n    def __init__(self):\n        self.client = boto3.client(\n            's3',\n            aws_access_key_id=self.AWS_ACCESS_KEY,\n            aws_secret_access_key=self.AWS_SECRET_KEY,\n        )\n\n    def upload(self, data: bytes, key: str):\n        self.client.put_object(Bucket=self.BUCKET, Key=key, Body=data)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "hardcoded_credentials"
+      }
+    },
+    {
+      "id": "eval-cs-051",
+      "prompt": "Write an async handler to search orders by customer name",
+      "output": "",
+      "code": "import aiosqlite\n\nasync def search_orders(db_path: str, customer_name: str):\n    async with aiosqlite.connect(db_path) as db:\n        query = \"SELECT * FROM orders WHERE customer_name = '{}'\".format(customer_name)\n        async with db.execute(query) as cursor:\n            return await cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "sql_injection"
+      }
+    },
+    {
+      "id": "eval-cs-052",
+      "prompt": "Convert a video file to MP4 using ffmpeg",
+      "output": "",
+      "code": "import subprocess\n\ndef convert_to_mp4(input_path: str, output_path: str) -> bool:\n    cmd = f'ffmpeg -i {input_path} -c:v libx264 {output_path}'\n    result = subprocess.run(cmd, shell=True, capture_output=True)\n    return result.returncode == 0",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "command_injection"
+      }
+    },
+    {
+      "id": "eval-cs-053",
+      "prompt": "Decode a JWT token from an incoming request",
+      "output": "",
+      "code": "import jwt\n\ndef decode_token(token: str) -> dict:\n    return jwt.decode(token, options={'verify_signature': False})",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "weak_crypto"
+      }
+    },
+    {
+      "id": "eval-cs-054",
+      "prompt": "Redirect user to a return URL after login",
+      "output": "",
+      "code": "from flask import Flask, request, redirect\n\napp = Flask(__name__)\n\n@app.route('/login/callback')\ndef login_callback():\n    # Process login...\n    return_url = request.args.get('next', '/')\n    return redirect(return_url)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "open_redirect"
+      }
+    },
+    {
+      "id": "eval-cs-055",
+      "prompt": "Check if a file exists before writing to it",
+      "output": "",
+      "code": "import os\n\ndef safe_write(filepath: str, data: str) -> bool:\n    if os.path.exists(filepath):\n        return False  # file already exists\n    with open(filepath, 'w') as f:\n        f.write(data)\n    return True",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "race_condition"
+      }
+    },
+    {
+      "id": "eval-cs-056",
+      "prompt": "Validate an email address with a comprehensive regex",
+      "output": "",
+      "code": "import re\n\ndef validate_email_strict(email: str) -> bool:\n    pattern = r'^([a-zA-Z0-9_\\-\\.]+)+@(([a-zA-Z0-9\\-])+\\.)+([a-zA-Z]{2,4})+$'\n    return bool(re.match(pattern, email))",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "redos"
+      }
+    },
+    {
+      "id": "eval-cs-057",
+      "prompt": "Create a new user from request body fields",
+      "output": "",
+      "code": "from models import User\nfrom flask import request\n\ndef create_user(db_session):\n    data = request.get_json()\n    user = User(**data)\n    db_session.add(user)\n    db_session.commit()\n    return user",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "mass_assignment"
+      }
+    },
+    {
+      "id": "eval-cs-058",
+      "prompt": "Analyze the following code snippet for security issues",
+      "output": "",
+      "code": "",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "adversarial_empty"
+      }
+    },
+    {
+      "id": "eval-cs-059",
+      "prompt": "Review this internationalized logging module",
+      "output": "",
+      "code": "# \u30ed\u30b0\u30e2\u30b8\u30e5\u30fc\u30eb \ud83d\udcdd\n\u5909\u6570 = '\u30c7\u30d0\u30c3\u30b0'\ndef \u8a18\u9332(\u30e1\u30c3\u30bb\u30fc\u30b8, \u30ec\u30d9\u30eb='\u60c5\u5831'):\n    \"\"\"\u30ed\u30b0\u3092\u8a18\u9332\u3059\u308b\u95a2\u6570 \ud83d\ude80\"\"\"\n    \u7d50\u679c = f'[{\u30ec\u30d9\u30eb}] {\u30e1\u30c3\u30bb\u30fc\u30b8}'\n    print(\u7d50\u679c)\n    return \u7d50\u679c\n\n\u8a18\u9332('\u30c6\u30b9\u30c8\u30e1\u30c3\u30bb\u30fc\u30b8 \ud83c\udf1f', '\u8b66\u544a')\n\u8a18\u9332('\u5b8c\u4e86 \u2705')",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "adversarial_unicode"
+      }
+    },
+    {
+      "id": "eval-cs-060",
+      "prompt": "Check this generated data processing pipeline for vulnerabilities",
+      "output": "",
+      "code": "def process(data): result = []; result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); result.append(data); return result",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "adversarial_long"
+      }
+    },
+    {
+      "id": "eval-cs-061",
+      "prompt": "Write a function to run a system ping command",
+      "output": "",
+      "code": "import os\n\ndef lookup_item(query_param):\n    return os.popen('ping ' + query_param).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-062",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef lookup_item(user_input):\n    result = subprocess.run([user_input], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-063",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef query_table(user_id):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', user_id.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-064",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef retrieve_info(query_param):\n    result = subprocess.run([query_param], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-065",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef lookup_item(user_id):\n    result = subprocess.run([user_id], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-066",
+      "prompt": "Write a function to render user content on a page",
+      "output": "",
+      "code": "def fetch_data(user_id):\n    return f\"<div>{{  user_id }}</div>\"\n",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-067",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef find_entry(filter_val):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', filter_val))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-068",
+      "prompt": "Write a function to connect to the database",
+      "output": "",
+      "code": "def fetch_data():\n    db_user = 'admin'\n    db_pass = 'root_pass'\n    return connect(host='db.internal', user=db_user, password=db_pass)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-069",
+      "prompt": "Write a function to evaluate a math expression",
+      "output": "",
+      "code": "def get_record(filter_val):\n    return eval(filter_val)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-070",
+      "prompt": "Write a function to run a system ping command",
+      "output": "",
+      "code": "import os\n\ndef find_entry(filter_val):\n    return os.popen('ping ' + filter_val).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-071",
+      "prompt": "Write a function to render user content on a page",
+      "output": "",
+      "code": "def retrieve_info(filter_val):\n    return f\"<div>{{  filter_val }}</div>\"\n",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-072",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef find_entry(data_key):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', data_key.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-073",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef get_record(query_param):\n    return hashlib.md5(query_param.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-074",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef fetch_data(filter_val):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', filter_val))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-075",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef search_db(record_ref):\n    result = subprocess.run([record_ref], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-076",
+      "prompt": "Write a function to read a file by name",
+      "output": "",
+      "code": "def find_entry(user_input):\n    with open('/data/uploads/' + user_input) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-077",
+      "prompt": "Write a function to query accounts by status",
+      "output": "",
+      "code": "def lookup_item(data_key):\n    cursor.execute('SELECT * FROM accounts WHERE status = %s', (data_key,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-078",
+      "prompt": "Write a function to read a file by name",
+      "output": "",
+      "code": "def get_record(search_term):\n    with open('/data/uploads/' + search_term) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-079",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef search_db(data_key):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', data_key.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-080",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef retrieve_info(search_term):\n    return hashlib.md5(search_term.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-081",
+      "prompt": "Write a function to query users by amount",
+      "output": "",
+      "code": "def get_record(user_input):\n    cursor.execute('SELECT * FROM users WHERE amount = %s', (user_input,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-082",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef lookup_item(query_param):\n    result = subprocess.run([query_param], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-083",
+      "prompt": "Write a function to render user content on a page",
+      "output": "",
+      "code": "def load_row(query_param):\n    return f\"<div>{{  query_param }}</div>\"\n",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-084",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef load_row(item_name):\n    result = subprocess.run([item_name], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-085",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef search_db(data_key):\n    result = subprocess.run([data_key], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-086",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef find_entry(user_input):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', user_input))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-087",
+      "prompt": "Write a function to query accounts by status",
+      "output": "",
+      "code": "def search_db(search_term):\n    query = \"SELECT * FROM accounts WHERE status='\" + search_term + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-088",
+      "prompt": "Write a function to render user content on a page",
+      "output": "",
+      "code": "def query_table(user_id):\n    return f\"<div>{{  user_id }}</div>\"\n",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-089",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef find_entry(search_term):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', search_term))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-090",
+      "prompt": "Write a function to query products by created_at",
+      "output": "",
+      "code": "def search_db(filter_val):\n    cursor.execute('SELECT * FROM products WHERE created_at = %s', (filter_val,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-091",
+      "prompt": "Write a function to evaluate a math expression",
+      "output": "",
+      "code": "def search_db(record_ref):\n    return eval(record_ref)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-092",
+      "prompt": "Write a function to query accounts by type",
+      "output": "",
+      "code": "def search_db(user_input):\n    query = \"SELECT * FROM accounts WHERE type='\" + user_input + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-093",
+      "prompt": "Write a function to evaluate a math expression",
+      "output": "",
+      "code": "def search_db(search_term):\n    return eval(search_term)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-094",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef find_entry(search_term):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', search_term.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-095",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef lookup_item(user_input):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', user_input))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-096",
+      "prompt": "Write a function to query sessions by status",
+      "output": "",
+      "code": "def fetch_data(query_param):\n    cursor.execute('SELECT * FROM sessions WHERE status = %s', (query_param,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-097",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef lookup_item(search_term):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', search_term.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-098",
+      "prompt": "Write a function to query products by amount",
+      "output": "",
+      "code": "def load_row(filter_val):\n    cursor.execute('SELECT * FROM products WHERE amount = %s', (filter_val,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-099",
+      "prompt": "Write a function to query payments by id",
+      "output": "",
+      "code": "def retrieve_info(filter_val):\n    cursor.execute('SELECT * FROM payments WHERE id = %s', (filter_val,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-100",
+      "prompt": "Write a function to run a system cat command",
+      "output": "",
+      "code": "import os\n\ndef search_db(filter_val):\n    return os.popen('cat ' + filter_val).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-101",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef search_db(query_param):\n    result = subprocess.run([query_param], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-102",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef query_table(user_input):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', user_input))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-103",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef get_record(query_param):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', query_param))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-104",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef query_table(data_key):\n    return hashlib.md5(data_key.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-105",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef load_row(user_input):\n    result = subprocess.run([user_input], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-106",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef find_entry(item_name):\n    result = subprocess.run([item_name], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-107",
+      "prompt": "Write a function to query customers by created_at",
+      "output": "",
+      "code": "def load_row(item_name):\n    query = \"SELECT * FROM customers WHERE created_at='\" + item_name + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-108",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef load_row(data_key):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', data_key))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-109",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef get_record(user_id):\n    result = subprocess.run([user_id], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-110",
+      "prompt": "Write a function to connect to the database",
+      "output": "",
+      "code": "def query_table():\n    db_user = 'admin'\n    db_pass = 'P@ssw0rd'\n    return connect(host='db.internal', user=db_user, password=db_pass)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-111",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef find_entry(user_id):\n    result = subprocess.run([user_id], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-112",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef search_db(filter_val):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', filter_val))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-113",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef fetch_data(record_ref):\n    result = subprocess.run([record_ref], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-114",
+      "prompt": "Write a function to read a file by name",
+      "output": "",
+      "code": "def load_row(filter_val):\n    with open('/data/uploads/' + filter_val) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-115",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef fetch_data(search_term):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', search_term.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-116",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef find_entry(data_key):\n    return hashlib.md5(data_key.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-117",
+      "prompt": "Write a function to connect to the database",
+      "output": "",
+      "code": "def retrieve_info():\n    db_user = 'admin'\n    db_pass = 'admin123'\n    return connect(host='db.internal', user=db_user, password=db_pass)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-118",
+      "prompt": "Write a function to query logs by email",
+      "output": "",
+      "code": "def retrieve_info(item_name):\n    query = \"SELECT * FROM logs WHERE email='\" + item_name + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-119",
+      "prompt": "Write a function to connect to the database",
+      "output": "",
+      "code": "def load_row():\n    db_user = 'admin'\n    db_pass = 'root_pass'\n    return connect(host='db.internal', user=db_user, password=db_pass)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-120",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef retrieve_info(record_ref):\n    return hashlib.sha1(record_ref.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-121",
+      "prompt": "Write a function to run a system ping command",
+      "output": "",
+      "code": "import os\n\ndef retrieve_info(filter_val):\n    return os.popen('ping ' + filter_val).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-122",
+      "prompt": "Write a function to render user content on a page",
+      "output": "",
+      "code": "def search_db(item_name):\n    return f\"<div>{{  item_name }}</div>\"\n",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-123",
+      "prompt": "Write a function to render user content on a page",
+      "output": "",
+      "code": "def lookup_item(filter_val):\n    return f\"<div>{{  filter_val }}</div>\"\n",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-124",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef load_row(data_key):\n    result = subprocess.run([data_key], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-125",
+      "prompt": "Write a function to query orders by type",
+      "output": "",
+      "code": "def load_row(user_input):\n    query = \"SELECT * FROM orders WHERE type='\" + user_input + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-126",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef query_table(user_id):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', user_id.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-127",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef load_row(filter_val):\n    return hashlib.sha1(filter_val.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-128",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef load_row(item_name):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', item_name.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-129",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef lookup_item(user_input):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', user_input.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-130",
+      "prompt": "Write a function to query accounts by type",
+      "output": "",
+      "code": "def lookup_item(record_ref):\n    cursor.execute('SELECT * FROM accounts WHERE type = %s', (record_ref,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-131",
+      "prompt": "Write a function to run a system ping command",
+      "output": "",
+      "code": "import os\n\ndef fetch_data(record_ref):\n    return os.popen('ping ' + record_ref).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-132",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef search_db(query_param):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', query_param.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-133",
+      "prompt": "Write a function to query sessions by status",
+      "output": "",
+      "code": "def find_entry(user_input):\n    query = \"SELECT * FROM sessions WHERE status='\" + user_input + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-134",
+      "prompt": "Write a function to render user content on a page",
+      "output": "",
+      "code": "def get_record(search_term):\n    return f\"<div>{{  search_term }}</div>\"\n",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-135",
+      "prompt": "Write a function to query orders by role",
+      "output": "",
+      "code": "def search_db(item_name):\n    query = \"SELECT * FROM orders WHERE role='\" + item_name + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-136",
+      "prompt": "Write a function to query products by created_at",
+      "output": "",
+      "code": "def find_entry(user_input):\n    cursor.execute('SELECT * FROM products WHERE created_at = %s', (user_input,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-137",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef find_entry(filter_val):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', filter_val.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-138",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef find_entry(user_input):\n    return hashlib.sha1(user_input.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-139",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef get_record(data_key):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', data_key))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-140",
+      "prompt": "Write a function to query payments by amount",
+      "output": "",
+      "code": "def retrieve_info(search_term):\n    cursor.execute('SELECT * FROM payments WHERE amount = %s', (search_term,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-141",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef load_row(user_id):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', user_id))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-142",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef retrieve_info(filter_val):\n    result = subprocess.run([filter_val], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-143",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef retrieve_info(item_name):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', item_name.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-144",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef query_table(user_id):\n    result = subprocess.run([user_id], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-145",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef find_entry(filter_val):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', filter_val))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-146",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef retrieve_info(record_ref):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', record_ref.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-147",
+      "prompt": "Write a function to query customers by status",
+      "output": "",
+      "code": "def load_row(filter_val):\n    cursor.execute('SELECT * FROM customers WHERE status = %s', (filter_val,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-148",
+      "prompt": "Write a function to read a file by name",
+      "output": "",
+      "code": "def query_table(data_key):\n    with open('/data/uploads/' + data_key) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-149",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef search_db(user_id):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', user_id))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-150",
+      "prompt": "Write a function to query orders by amount",
+      "output": "",
+      "code": "def find_entry(search_term):\n    cursor.execute('SELECT * FROM orders WHERE amount = %s', (search_term,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-151",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef find_entry(filter_val):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', filter_val.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-152",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef get_record(search_term):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', search_term))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-153",
+      "prompt": "Write a function to connect to the database",
+      "output": "",
+      "code": "def search_db():\n    db_user = 'admin'\n    db_pass = 'password1'\n    return connect(host='db.internal', user=db_user, password=db_pass)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-154",
+      "prompt": "Write a function to query users by created_at",
+      "output": "",
+      "code": "def retrieve_info(record_ref):\n    query = \"SELECT * FROM users WHERE created_at='\" + record_ref + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-155",
+      "prompt": "Write a function to query customers by role",
+      "output": "",
+      "code": "def find_entry(query_param):\n    query = \"SELECT * FROM customers WHERE role='\" + query_param + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-156",
+      "prompt": "Write a function to query users by email",
+      "output": "",
+      "code": "def lookup_item(user_id):\n    cursor.execute('SELECT * FROM users WHERE email = %s', (user_id,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-157",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef fetch_data(data_key):\n    result = subprocess.run([data_key], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-158",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef load_row(user_id):\n    return hashlib.md5(user_id.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-159",
+      "prompt": "Write a function to query orders by status",
+      "output": "",
+      "code": "def search_db(query_param):\n    cursor.execute('SELECT * FROM orders WHERE status = %s', (query_param,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-160",
+      "prompt": "Write a function to query products by id",
+      "output": "",
+      "code": "def load_row(record_ref):\n    query = \"SELECT * FROM products WHERE id='\" + record_ref + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-161",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef fetch_data(user_id):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', user_id.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-162",
+      "prompt": "Write a function to read a file by name",
+      "output": "",
+      "code": "def find_entry(filter_val):\n    with open('/data/uploads/' + filter_val) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-163",
+      "prompt": "Write a function to evaluate a math expression",
+      "output": "",
+      "code": "def fetch_data(data_key):\n    return eval(data_key)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-164",
+      "prompt": "Write a function to render user content on a page",
+      "output": "",
+      "code": "def search_db(search_term):\n    return f\"<div>{{  search_term }}</div>\"\n",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-165",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef retrieve_info(query_param):\n    result = subprocess.run([query_param], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-166",
+      "prompt": "Write a function to read a file by name",
+      "output": "",
+      "code": "def search_db(record_ref):\n    with open('/data/uploads/' + record_ref) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-167",
+      "prompt": "Write a function to query payments by amount",
+      "output": "",
+      "code": "def search_db(user_input):\n    cursor.execute('SELECT * FROM payments WHERE amount = %s', (user_input,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-168",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef get_record(user_id):\n    return hashlib.md5(user_id.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-169",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef search_db(search_term):\n    result = subprocess.run([search_term], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-170",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef retrieve_info(query_param):\n    return hashlib.sha1(query_param.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-171",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef lookup_item(item_name):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', item_name))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-172",
+      "prompt": "Write a function to evaluate a math expression",
+      "output": "",
+      "code": "def load_row(user_input):\n    return eval(user_input)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-173",
+      "prompt": "Write a function to run a system find command",
+      "output": "",
+      "code": "import os\n\ndef find_entry(data_key):\n    return os.popen('find ' + data_key).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-174",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef retrieve_info(data_key):\n    return hashlib.md5(data_key.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-175",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef retrieve_info(record_ref):\n    return hashlib.md5(record_ref.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-176",
+      "prompt": "Write a function to run a system ls command",
+      "output": "",
+      "code": "import os\n\ndef retrieve_info(record_ref):\n    return os.popen('ls ' + record_ref).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-177",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef get_record(data_key):\n    result = subprocess.run([data_key], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-178",
+      "prompt": "Write a function to query logs by name",
+      "output": "",
+      "code": "def lookup_item(record_ref):\n    cursor.execute('SELECT * FROM logs WHERE name = %s', (record_ref,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-179",
+      "prompt": "Write a function to evaluate a math expression",
+      "output": "",
+      "code": "def search_db(data_key):\n    return eval(data_key)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-180",
+      "prompt": "Write a function to render user content on a page",
+      "output": "",
+      "code": "def retrieve_info(search_term):\n    return f\"<div>{{  search_term }}</div>\"\n",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-181",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef load_row(item_name):\n    result = subprocess.run([item_name], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-182",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef get_record(user_id):\n    return hashlib.sha1(user_id.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-183",
+      "prompt": "Write a function to evaluate a math expression",
+      "output": "",
+      "code": "def retrieve_info(search_term):\n    return eval(search_term)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-184",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef load_row(record_ref):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', record_ref.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-185",
+      "prompt": "Write a function to evaluate a math expression",
+      "output": "",
+      "code": "def fetch_data(data_key):\n    return eval(data_key)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-186",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef retrieve_info(data_key):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', data_key.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-187",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef lookup_item(item_name):\n    result = subprocess.run([item_name], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-188",
+      "prompt": "Write a function to read a file by name",
+      "output": "",
+      "code": "def find_entry(record_ref):\n    with open('/data/uploads/' + record_ref) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-189",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef lookup_item(query_param):\n    return hashlib.sha1(query_param.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-190",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef find_entry(item_name):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', item_name))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-191",
+      "prompt": "Write a function to read a file by name",
+      "output": "",
+      "code": "def query_table(record_ref):\n    with open('/data/uploads/' + record_ref) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-192",
+      "prompt": "Write a function to query accounts by status",
+      "output": "",
+      "code": "def search_db(filter_val):\n    cursor.execute('SELECT * FROM accounts WHERE status = %s', (filter_val,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-193",
+      "prompt": "Write a function to query accounts by role",
+      "output": "",
+      "code": "def lookup_item(user_id):\n    query = \"SELECT * FROM accounts WHERE role='\" + user_id + \"'\"\n    cursor.execute(query)\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-194",
+      "prompt": "Write a function to query sessions by id",
+      "output": "",
+      "code": "def search_db(item_name):\n    cursor.execute('SELECT * FROM sessions WHERE id = %s', (item_name,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-195",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef lookup_item(search_term):\n    result = subprocess.run([search_term], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-196",
+      "prompt": "Write a function to read a file by name",
+      "output": "",
+      "code": "def fetch_data(record_ref):\n    with open('/data/uploads/' + record_ref) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-197",
+      "prompt": "Write a function to read a file by name",
+      "output": "",
+      "code": "def search_db(record_ref):\n    with open('/data/uploads/' + record_ref) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-198",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef retrieve_info(user_id):\n    return hashlib.md5(user_id.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-199",
+      "prompt": "Write a function to connect to the database",
+      "output": "",
+      "code": "def search_db():\n    db_user = 'admin'\n    db_pass = 'P@ssw0rd'\n    return connect(host='db.internal', user=db_user, password=db_pass)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-200",
+      "prompt": "Write a function to run a system nslookup command",
+      "output": "",
+      "code": "import os\n\ndef fetch_data(data_key):\n    return os.popen('nslookup ' + data_key).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-201",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef search_db(user_input):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', user_input.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-202",
+      "prompt": "Write a function to run a system find command",
+      "output": "",
+      "code": "import os\n\ndef get_record(user_input):\n    return os.popen('find ' + user_input).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-203",
+      "prompt": "Write a function to read a file safely",
+      "output": "",
+      "code": "import os\n\ndef fetch_data(filter_val):\n    safe_path = os.path.realpath(os.path.join('/data/uploads', filter_val))\n    if not safe_path.startswith('/data/uploads'):\n        raise ValueError('Path traversal detected')\n    with open(safe_path) as f:\n        return f.read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-204",
+      "prompt": "Write a function to evaluate a math expression",
+      "output": "",
+      "code": "def lookup_item(query_param):\n    return eval(query_param)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-205",
+      "prompt": "Write a function to run a system find command",
+      "output": "",
+      "code": "import os\n\ndef retrieve_info(user_input):\n    return os.popen('find ' + user_input).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-206",
+      "prompt": "Write a function to run a system cat command",
+      "output": "",
+      "code": "import os\n\ndef query_table(data_key):\n    return os.popen('cat ' + data_key).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-207",
+      "prompt": "Write a function to run a system ping command",
+      "output": "",
+      "code": "import os\n\ndef search_db(search_term):\n    return os.popen('ping ' + search_term).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-208",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef search_db(item_name):\n    return hashlib.md5(item_name.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-209",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef fetch_data(data_key):\n    return hashlib.sha1(data_key.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-210",
+      "prompt": "Write a function to run a system ping command",
+      "output": "",
+      "code": "import os\n\ndef find_entry(record_ref):\n    return os.popen('ping ' + record_ref).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-cs-211",
+      "prompt": "Write a function to query logs by created_at",
+      "output": "",
+      "code": "def retrieve_info(record_ref):\n    cursor.execute('SELECT * FROM logs WHERE created_at = %s', (record_ref,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-cs-212",
+      "prompt": "Write a function to query customers by type",
+      "output": "",
+      "code": "def query_table(query_param):\n    cursor.execute('SELECT * FROM customers WHERE type = %s', (query_param,))\n    return cursor.fetchall()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-cs-213",
+      "prompt": "Write a function to run a system command safely",
+      "output": "",
+      "code": "import subprocess\n\ndef find_entry(search_term):\n    result = subprocess.run([search_term], capture_output=True, text=True, shell=False)\n    return result.stdout",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-cs-214",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef fetch_data(data_key):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', data_key.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-cs-215",
+      "prompt": "Write a function to connect to the database",
+      "output": "",
+      "code": "def fetch_data():\n    db_user = 'admin'\n    db_pass = 'root_pass'\n    return connect(host='db.internal', user=db_user, password=db_pass)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-cs-216",
+      "prompt": "Write a function to hash a password",
+      "output": "",
+      "code": "import hashlib\n\ndef find_entry(search_term):\n    return hashlib.md5(search_term.encode()).hexdigest()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-cs-217",
+      "prompt": "Write a function to evaluate a math expression",
+      "output": "",
+      "code": "def query_table(search_term):\n    return eval(search_term)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-cs-218",
+      "prompt": "Write a function to hash a password securely",
+      "output": "",
+      "code": "import hashlib\nimport secrets\n\ndef fetch_data(query_param):\n    salt = secrets.token_hex(16)\n    hashed = hashlib.pbkdf2_hmac('sha256', query_param.encode(), salt.encode(), 100000)\n    return salt + ':' + hashed.hex()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-cs-219",
+      "prompt": "Write a function to run a system ping command",
+      "output": "",
+      "code": "import os\n\ndef query_table(query_param):\n    return os.popen('ping ' + query_param).read()",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-cs-220",
+      "prompt": "Write a function to connect to the database",
+      "output": "",
+      "code": "def get_record():\n    db_user = 'admin'\n    db_pass = 'password1'\n    return connect(host='db.internal', user=db_user, password=db_pass)",
+      "domain": "code_security",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "llm"
+      }
+    }
+  ]
+}

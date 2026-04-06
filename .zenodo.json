@@ -1,0 +1,36 @@
+{
+  "title": "Antigence Subnet: Decentralized Verification for AI Outputs on Bittensor",
+  "description": "A decentralized verification subnet for Bittensor where miners run anomaly detectors (antibodies), validators apply selection pressure through hidden evaluation datasets, and the network produces a shared trust score for AI outputs. Transforms Antigence's immune-inspired self/non-self detection paradigm into an economic incentive system. Verification-as-a-service: any Bittensor subnet can consume the trust signal.",
+  "creators": [
+    {
+      "name": "BiobitWorks"
+    }
+  ],
+  "upload_type": "software",
+  "access_right": "open",
+  "license": "MIT",
+  "version": "10.0.0",
+  "keywords": [
+    "Bittensor",
+    "subnet",
+    "anomaly-detection",
+    "Artificial Immune System",
+    "Negative Selection",
+    "LLM Safety",
+    "verification-as-a-service",
+    "decentralized-AI"
+  ],
+  "related_identifiers": [
+    {
+      "identifier": "10.5281/zenodo.18109862",
+      "relation": "isPartOf",
+      "scheme": "doi"
+    },
+    {
+      "identifier": "https://github.com/biobitworks/antigence-bittensor",
+      "relation": "isSupplementTo",
+      "scheme": "url"
+    }
+  ],
+  "notes": "Part of the Antigence platform for immune-inspired AI verification. This subnet extends the standalone Antigence system (DOI: 10.5281/zenodo.18109862) into a decentralized incentive network on Bittensor."
+}

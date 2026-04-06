@@ -1,0 +1,110 @@
+# Antigence Subnet - Docker Compose Configuration
+# Compose Specification (no version key required)
+#
+# Usage:
+#   docker compose --profile validator up          # validator only
+#   docker compose --profile miner up              # miner only
+#   docker compose --profile api up                # API server only
+#   docker compose --profile validator --profile miner --profile api up  # all
+#
+# NOTE: Running `docker compose up` without --profile starts nothing
+# because all services use profiles for selective startup.
+
+services:
+  validator:
+    build:
+      context: .
+      target: validator
+    profiles: ["validator"]
+    volumes:
+      - ${BT_WALLET_PATH:-~/.bittensor/wallets}:/home/antigence/.bittensor/wallets:ro
+      - validator-state:/home/antigence/.bittensor/neurons
+      - ./data:/app/data:ro
+      # Optional: mount TOML config file (auto-discovered in /app)
+      # - ./antigence_subnet.toml:/app/antigence_subnet.toml:ro
+    environment:
+      - SUBTENSOR_NETWORK=${SUBTENSOR_NETWORK:-test}
+      - NETUID=${NETUID:-1}
+      - WALLET_NAME=${WALLET_NAME:-default}
+      - WALLET_HOTKEY=${WALLET_HOTKEY:-default}
+    command:
+      - python
+      - neurons/validator.py
+      - --subtensor.network
+      - ${SUBTENSOR_NETWORK:-test}
+      - --netuid
+      - ${NETUID:-1}
+      - --wallet.name
+      - ${WALLET_NAME:-default}
+      - --wallet.hotkey
+      - ${WALLET_HOTKEY:-default}
+    networks:
+      - subnet
+
+  miner:
+    build:
+      context: .
+      target: miner
+    profiles: ["miner"]
+    volumes:
+      - ${BT_WALLET_PATH:-~/.bittensor/wallets}:/home/antigence/.bittensor/wallets:ro
+      - miner-state:/home/antigence/.bittensor/neurons
+      - ./data:/app/data:ro
+      # Optional: mount TOML config file (auto-discovered in /app)
+      # - ./antigence_subnet.toml:/app/antigence_subnet.toml:ro
+    environment:
+      - SUBTENSOR_NETWORK=${SUBTENSOR_NETWORK:-test}
+      - NETUID=${NETUID:-1}
+      - WALLET_NAME=${WALLET_NAME:-default}
+      - WALLET_HOTKEY=${WALLET_HOTKEY:-default}
+    command:
+      - python
+      - neurons/miner.py
+      - --subtensor.network
+      - ${SUBTENSOR_NETWORK:-test}
+      - --netuid
+      - ${NETUID:-1}
+      - --wallet.name
+      - ${WALLET_NAME:-default}
+      - --wallet.hotkey
+      - ${WALLET_HOTKEY:-default}
+    networks:
+      - subnet
+
+  api:
+    build:
+      context: .
+      target: api
+    profiles: ["api"]
+    ports:
+      - "${API_PORT:-8080}:8080"
+    volumes:
+      - ${BT_WALLET_PATH:-~/.bittensor/wallets}:/home/antigence/.bittensor/wallets:ro
+      - validator-state:/home/antigence/.bittensor/neurons
+      - ./data:/app/data:ro
+      # Optional: mount TOML config file (auto-discovered in /app)
+      # - ./antigence_subnet.toml:/app/antigence_subnet.toml:ro
+    environment:
+      - SUBTENSOR_NETWORK=${SUBTENSOR_NETWORK:-test}
+      - NETUID=${NETUID:-1}
+      - WALLET_NAME=${WALLET_NAME:-default}
+      - WALLET_HOTKEY=${WALLET_HOTKEY:-default}
+    command:
+      - python
+      - neurons/api_server.py
+      - --port
+      - "8080"
+      - --subtensor.network
+      - ${SUBTENSOR_NETWORK:-test}
+      - --netuid
+      - ${NETUID:-1}
+    networks:
+      - subnet
+
+volumes:
+  validator-state:
+  miner-state:
+
+networks:
+  subnet:
+    driver: bridge

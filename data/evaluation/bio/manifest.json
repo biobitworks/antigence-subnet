@@ -1,0 +1,1102 @@
+{
+  "eval-bio-001": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-002": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-003": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-004": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": true
+  },
+  "eval-bio-005": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-006": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-007": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-008": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-009": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-010": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-011": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-012": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-013": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-014": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-015": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-016": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-017": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-018": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-019": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-020": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-021": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-022": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": true
+  },
+  "eval-bio-023": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-024": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-025": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-026": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-027": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-028": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-029": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-030": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-031": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": true
+  },
+  "eval-bio-032": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-033": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-034": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-035": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-036": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-037": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-038": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-039": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-040": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": true
+  },
+  "eval-bio-041": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-042": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-043": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-044": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": true
+  },
+  "eval-bio-045": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": true
+  },
+  "eval-bio-046": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-047": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "underpowered_study",
+    "is_honeypot": false
+  },
+  "eval-bio-048": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "wrong_test",
+    "is_honeypot": false
+  },
+  "eval-bio-049": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "implausible_effect",
+    "is_honeypot": false
+  },
+  "eval-bio-050": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-051": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "conservation_violation",
+    "is_honeypot": false
+  },
+  "eval-bio-052": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "pipeline_error",
+    "is_honeypot": false
+  },
+  "eval-bio-053": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-054": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_impossibility",
+    "is_honeypot": true
+  },
+  "eval-bio-055": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-056": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-bio-057": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": false
+  },
+  "eval-bio-058": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "adversarial_empty",
+    "is_honeypot": true
+  },
+  "eval-bio-059": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "adversarial_unicode",
+    "is_honeypot": false
+  },
+  "eval-bio-060": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "adversarial_repetition",
+    "is_honeypot": false
+  },
+  "eval-bio-061": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": false
+  },
+  "eval-bio-062": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-063": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-064": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-065": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-066": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-067": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-068": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-069": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-070": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-071": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-072": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-073": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-074": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-075": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-076": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-077": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-078": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-079": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-080": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-081": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-082": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-083": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-bio-084": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-085": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-086": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-087": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-088": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": true
+  },
+  "eval-bio-089": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-090": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-091": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": false
+  },
+  "eval-bio-092": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": false
+  },
+  "eval-bio-093": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": true
+  },
+  "eval-bio-094": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-095": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-096": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-097": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-098": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-099": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-100": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-101": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-102": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-103": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-104": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": true
+  },
+  "eval-bio-105": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-106": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-107": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-108": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-109": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-110": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": true
+  },
+  "eval-bio-111": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-112": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-113": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-114": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-115": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-116": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-117": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-118": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": false
+  },
+  "eval-bio-119": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": false
+  },
+  "eval-bio-120": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-121": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": true
+  },
+  "eval-bio-122": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": false
+  },
+  "eval-bio-123": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": false
+  },
+  "eval-bio-124": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-125": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-126": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-127": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-bio-128": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-129": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-130": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-131": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-132": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-133": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": false
+  },
+  "eval-bio-134": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": true
+  },
+  "eval-bio-135": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-136": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-137": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-138": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-bio-139": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-140": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-141": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-142": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-143": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-144": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-145": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-146": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-147": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-148": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-149": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-150": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-151": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-152": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-153": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": false
+  },
+  "eval-bio-154": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": false
+  },
+  "eval-bio-155": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-156": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-157": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-158": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": false
+  },
+  "eval-bio-159": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-160": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": false
+  },
+  "eval-bio-161": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-162": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": false
+  },
+  "eval-bio-163": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-164": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-165": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-166": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": true
+  },
+  "eval-bio-167": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-168": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-169": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-170": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-171": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-172": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-173": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": false
+  },
+  "eval-bio-174": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-175": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": true
+  },
+  "eval-bio-176": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-177": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-178": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-179": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-180": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-181": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-182": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": false
+  },
+  "eval-bio-183": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": false
+  },
+  "eval-bio-184": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-185": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-186": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-187": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-188": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-189": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "value_out_of_range",
+    "is_honeypot": false
+  },
+  "eval-bio-190": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-191": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-192": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-193": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-bio-194": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-195": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-196": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": true
+  },
+  "eval-bio-197": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-198": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": false
+  },
+  "eval-bio-199": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-200": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": true
+  },
+  "eval-bio-201": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-202": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": false
+  },
+  "eval-bio-203": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-204": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "statistical_anomaly",
+    "is_honeypot": false
+  },
+  "eval-bio-205": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "physical_impossibility",
+    "is_honeypot": false
+  },
+  "eval-bio-206": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": true
+  },
+  "eval-bio-207": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-bio-208": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": false
+  },
+  "eval-bio-209": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-bio-210": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_inconsistency",
+    "is_honeypot": true
+  },
+  "eval-bio-211": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-212": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-213": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-214": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-215": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-bio-216": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-217": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-bio-218": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-bio-219": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "species_mismatch",
+    "is_honeypot": false
+  },
+  "eval-bio-220": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "p_value_fabrication",
+    "is_honeypot": true
+  }
+}

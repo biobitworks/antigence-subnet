@@ -1,0 +1,375 @@
+{
+  "timestamp": "2026-04-02T02:22:41.307640+00:00",
+  "elapsed_seconds": 15.0,
+  "domains": {
+    "hallucination": {
+      "flat_ensemble": {
+        "tp": 30,
+        "fp": 0,
+        "fn": 2,
+        "tn": 28,
+        "precision": 1.0,
+        "recall": 0.9375,
+        "f1": 0.9677,
+        "accuracy": 0.9667,
+        "mean_normal": 0.2527,
+        "mean_anomalous": 0.4696
+      },
+      "orchestrator": {
+        "tp": 30,
+        "fp": 0,
+        "fn": 2,
+        "tn": 28,
+        "precision": 1.0,
+        "recall": 0.9375,
+        "f1": 0.9677,
+        "accuracy": 0.9667,
+        "mean_normal": 0.2527,
+        "mean_anomalous": 0.4844,
+        "nk_trigger_rate": 0.0167,
+        "dca_distribution": {
+          "immature": 37,
+          "semi_mature": 0,
+          "mature": 1
+        }
+      },
+      "v9_orchestrator": {
+        "tp": 30,
+        "fp": 0,
+        "fn": 2,
+        "tn": 28,
+        "precision": 1.0,
+        "recall": 0.9375,
+        "f1": 0.9677,
+        "accuracy": 0.9667,
+        "mean_normal": 0.2527,
+        "mean_anomalous": 0.4844,
+        "slm_nk_trigger_rate": 0.0,
+        "bcell_embedding_hit_rate": 0.0,
+        "dca_distribution": {
+          "immature": 37,
+          "semi_mature": 0,
+          "mature": 1
+        }
+      },
+      "kl_divergence": 0.016951,
+      "f1_delta": 0.0,
+      "kl_divergence_v9": 0.0,
+      "f1_delta_v9": 0.0
+    },
+    "code_security": {
+      "flat_ensemble": {
+        "tp": 31,
+        "fp": 0,
+        "fn": 1,
+        "tn": 28,
+        "precision": 1.0,
+        "recall": 0.9688,
+        "f1": 0.9841,
+        "accuracy": 0.9833,
+        "mean_normal": 0.2637,
+        "mean_anomalous": 0.4852
+      },
+      "orchestrator": {
+        "tp": 31,
+        "fp": 1,
+        "fn": 1,
+        "tn": 27,
+        "precision": 0.9688,
+        "recall": 0.9688,
+        "f1": 0.9688,
+        "accuracy": 0.9667,
+        "mean_normal": 0.2848,
+        "mean_anomalous": 0.4852,
+        "nk_trigger_rate": 0.0167,
+        "dca_distribution": {
+          "immature": 7,
+          "semi_mature": 0,
+          "mature": 0
+        }
+      },
+      "v9_orchestrator": {
+        "tp": 31,
+        "fp": 1,
+        "fn": 1,
+        "tn": 27,
+        "precision": 0.9688,
+        "recall": 0.9688,
+        "f1": 0.9688,
+        "accuracy": 0.9667,
+        "mean_normal": 0.2848,
+        "mean_anomalous": 0.4852,
+        "slm_nk_trigger_rate": 0.0,
+        "bcell_embedding_hit_rate": 0.0,
+        "dca_distribution": {
+          "immature": 7,
+          "semi_mature": 0,
+          "mature": 0
+        }
+      },
+      "kl_divergence": 0.020273,
+      "f1_delta": -0.0153,
+      "kl_divergence_v9": 0.0,
+      "f1_delta_v9": 0.0
+    },
+    "reasoning": {
+      "flat_ensemble": {
+        "tp": 32,
+        "fp": 0,
+        "fn": 0,
+        "tn": 28,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "mean_normal": 0.1613,
+        "mean_anomalous": 0.5753
+      },
+      "orchestrator": {
+        "tp": 32,
+        "fp": 0,
+        "fn": 0,
+        "tn": 28,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "mean_normal": 0.1613,
+        "mean_anomalous": 0.591,
+        "nk_trigger_rate": 0.0167,
+        "dca_distribution": {
+          "immature": 45,
+          "semi_mature": 0,
+          "mature": 0
+        }
+      },
+      "v9_orchestrator": {
+        "tp": 32,
+        "fp": 0,
+        "fn": 0,
+        "tn": 28,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "mean_normal": 0.1613,
+        "mean_anomalous": 0.587,
+        "slm_nk_trigger_rate": 0.0333,
+        "bcell_embedding_hit_rate": 0.0,
+        "dca_distribution": {
+          "immature": 45,
+          "semi_mature": 0,
+          "mature": 0
+        }
+      },
+      "kl_divergence": 0.002107,
+      "f1_delta": 0.0,
+      "kl_divergence_v9": 0.018595,
+      "f1_delta_v9": 0.0
+    },
+    "bio": {
+      "flat_ensemble": {
+        "tp": 32,
+        "fp": 0,
+        "fn": 0,
+        "tn": 28,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "mean_normal": 0.1596,
+        "mean_anomalous": 0.6029
+      },
+      "orchestrator": {
+        "tp": 32,
+        "fp": 0,
+        "fn": 0,
+        "tn": 28,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "mean_normal": 0.1596,
+        "mean_anomalous": 0.6152,
+        "nk_trigger_rate": 0.0333,
+        "dca_distribution": {
+          "immature": 57,
+          "semi_mature": 0,
+          "mature": 0
+        }
+      },
+      "v9_orchestrator": {
+        "tp": 32,
+        "fp": 0,
+        "fn": 0,
+        "tn": 28,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0,
+        "accuracy": 1.0,
+        "mean_normal": 0.1596,
+        "mean_anomalous": 0.6277,
+        "slm_nk_trigger_rate": 0.0333,
+        "bcell_embedding_hit_rate": 0.0,
+        "dca_distribution": {
+          "immature": 57,
+          "semi_mature": 0,
+          "mature": 0
+        }
+      },
+      "kl_divergence": 0.301141,
+      "f1_delta": 0.0,
+      "kl_divergence_v9": 0.017057,
+      "f1_delta_v9": 0.0
+    }
+  },
+  "validation": {
+    "all_passed": true,
+    "checks": [
+      {
+        "check": "Hallucination F1 >= flat baseline",
+        "expected": ">= 0.9477 (flat=0.9677, tolerance=0.02)",
+        "actual": "0.9677",
+        "passed": true
+      },
+      {
+        "check": "code_security F1 regression <= 0.02",
+        "expected": "delta <= 0.02 (flat=0.9841)",
+        "actual": "delta=0.0153",
+        "passed": true
+      },
+      {
+        "check": "reasoning F1 regression <= 0.02",
+        "expected": "delta <= 0.02 (flat=1.0)",
+        "actual": "delta=0.0",
+        "passed": true
+      },
+      {
+        "check": "bio F1 regression <= 0.02",
+        "expected": "delta <= 0.02 (flat=1.0)",
+        "actual": "delta=0.0",
+        "passed": true
+      },
+      {
+        "check": "hallucination KL-div < 0.5",
+        "expected": "< 0.5",
+        "actual": "0.016951",
+        "passed": true
+      },
+      {
+        "check": "code_security KL-div < 0.5",
+        "expected": "< 0.5",
+        "actual": "0.020273",
+        "passed": true
+      },
+      {
+        "check": "reasoning KL-div < 0.5",
+        "expected": "< 0.5",
+        "actual": "0.002107",
+        "passed": true
+      },
+      {
+        "check": "bio KL-div < 0.5",
+        "expected": "< 0.5",
+        "actual": "0.301141",
+        "passed": true
+      },
+      {
+        "check": "hallucination mean normal in [0, 0.3]",
+        "expected": "[0.0, 0.3]",
+        "actual": "0.2527",
+        "passed": true
+      },
+      {
+        "check": "code_security mean normal in [0, 0.3]",
+        "expected": "[0.0, 0.3]",
+        "actual": "0.2848",
+        "passed": true
+      },
+      {
+        "check": "reasoning mean normal in [0, 0.3]",
+        "expected": "[0.0, 0.3]",
+        "actual": "0.1613",
+        "passed": true
+      },
+      {
+        "check": "bio mean normal in [0, 0.3]",
+        "expected": "[0.0, 0.3]",
+        "actual": "0.1596",
+        "passed": true
+      },
+      {
+        "check": "hallucination mean anomalous >= flat baseline",
+        "expected": ">= 0.4696 (flat baseline)",
+        "actual": "0.4844",
+        "passed": true
+      },
+      {
+        "check": "code_security mean anomalous >= flat baseline",
+        "expected": ">= 0.4852 (flat baseline)",
+        "actual": "0.4852",
+        "passed": true
+      },
+      {
+        "check": "reasoning mean anomalous >= flat baseline",
+        "expected": ">= 0.5753 (flat baseline)",
+        "actual": "0.591",
+        "passed": true
+      },
+      {
+        "check": "bio mean anomalous >= flat baseline",
+        "expected": ">= 0.6029 (flat baseline)",
+        "actual": "0.6152",
+        "passed": true
+      },
+      {
+        "check": "hallucination v9.0 F1 >= v8.0 F1 - 0.02",
+        "expected": ">= 0.9477 (v8=0.9677, tolerance=0.02)",
+        "actual": "0.9677",
+        "passed": true
+      },
+      {
+        "check": "code_security v9.0 F1 >= v8.0 F1 - 0.02",
+        "expected": ">= 0.9488 (v8=0.9688, tolerance=0.02)",
+        "actual": "0.9688",
+        "passed": true
+      },
+      {
+        "check": "reasoning v9.0 F1 >= v8.0 F1 - 0.02",
+        "expected": ">= 0.98 (v8=1.0, tolerance=0.02)",
+        "actual": "1.0",
+        "passed": true
+      },
+      {
+        "check": "bio v9.0 F1 >= v8.0 F1 - 0.02",
+        "expected": ">= 0.98 (v8=1.0, tolerance=0.02)",
+        "actual": "1.0",
+        "passed": true
+      },
+      {
+        "check": "hallucination v9.0 mean normal in [0, 0.3]",
+        "expected": "[0.0, 0.3]",
+        "actual": "0.2527",
+        "passed": true
+      },
+      {
+        "check": "code_security v9.0 mean normal in [0, 0.3]",
+        "expected": "[0.0, 0.3]",
+        "actual": "0.2848",
+        "passed": true
+      },
+      {
+        "check": "reasoning v9.0 mean normal in [0, 0.3]",
+        "expected": "[0.0, 0.3]",
+        "actual": "0.1613",
+        "passed": true
+      },
+      {
+        "check": "bio v9.0 mean normal in [0, 0.3]",
+        "expected": "[0.0, 0.3]",
+        "actual": "0.1596",
+        "passed": true
+      }
+    ]
+  }
+}

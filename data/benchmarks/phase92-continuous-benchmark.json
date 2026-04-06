@@ -1,0 +1,1556 @@
+{
+  "baseline_reference": "data/benchmarks/v9.2-baseline.json",
+  "generated_at": "2026-04-03T03:56:20.961752+00:00",
+  "paired_bootstrap": {
+    "design": "shared_sample_ids_per_round",
+    "round_count": 5,
+    "rounds": [
+      {
+        "candidate_names": [
+          "control_equal",
+          "weighted_ocsvm_0.20_negsel_0.80",
+          "weighted_ocsvm_0.35_negsel_0.65",
+          "weighted_ocsvm_0.50_negsel_0.50",
+          "weighted_ocsvm_0.65_negsel_0.35",
+          "weighted_ocsvm_0.80_negsel_0.20",
+          "confidence_modulated_static"
+        ],
+        "round_index": 0,
+        "sample_ids": [
+          "sample-4",
+          "sample-3",
+          "sample-1"
+        ],
+        "samples_by_candidate": {
+          "confidence_modulated_static": [
+            "sample-4",
+            "sample-3",
+            "sample-1"
+          ],
+          "control_equal": [
+            "sample-4",
+            "sample-3",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.20_negsel_0.80": [
+            "sample-4",
+            "sample-3",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.35_negsel_0.65": [
+            "sample-4",
+            "sample-3",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.50_negsel_0.50": [
+            "sample-4",
+            "sample-3",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.65_negsel_0.35": [
+            "sample-4",
+            "sample-3",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.80_negsel_0.20": [
+            "sample-4",
+            "sample-3",
+            "sample-1"
+          ]
+        }
+      },
+      {
+        "candidate_names": [
+          "control_equal",
+          "weighted_ocsvm_0.20_negsel_0.80",
+          "weighted_ocsvm_0.35_negsel_0.65",
+          "weighted_ocsvm_0.50_negsel_0.50",
+          "weighted_ocsvm_0.65_negsel_0.35",
+          "weighted_ocsvm_0.80_negsel_0.20",
+          "confidence_modulated_static"
+        ],
+        "round_index": 1,
+        "sample_ids": [
+          "sample-4",
+          "sample-2",
+          "sample-1"
+        ],
+        "samples_by_candidate": {
+          "confidence_modulated_static": [
+            "sample-4",
+            "sample-2",
+            "sample-1"
+          ],
+          "control_equal": [
+            "sample-4",
+            "sample-2",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.20_negsel_0.80": [
+            "sample-4",
+            "sample-2",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.35_negsel_0.65": [
+            "sample-4",
+            "sample-2",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.50_negsel_0.50": [
+            "sample-4",
+            "sample-2",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.65_negsel_0.35": [
+            "sample-4",
+            "sample-2",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.80_negsel_0.20": [
+            "sample-4",
+            "sample-2",
+            "sample-1"
+          ]
+        }
+      },
+      {
+        "candidate_names": [
+          "control_equal",
+          "weighted_ocsvm_0.20_negsel_0.80",
+          "weighted_ocsvm_0.35_negsel_0.65",
+          "weighted_ocsvm_0.50_negsel_0.50",
+          "weighted_ocsvm_0.65_negsel_0.35",
+          "weighted_ocsvm_0.80_negsel_0.20",
+          "confidence_modulated_static"
+        ],
+        "round_index": 2,
+        "sample_ids": [
+          "sample-3",
+          "sample-1",
+          "sample-1"
+        ],
+        "samples_by_candidate": {
+          "confidence_modulated_static": [
+            "sample-3",
+            "sample-1",
+            "sample-1"
+          ],
+          "control_equal": [
+            "sample-3",
+            "sample-1",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.20_negsel_0.80": [
+            "sample-3",
+            "sample-1",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.35_negsel_0.65": [
+            "sample-3",
+            "sample-1",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.50_negsel_0.50": [
+            "sample-3",
+            "sample-1",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.65_negsel_0.35": [
+            "sample-3",
+            "sample-1",
+            "sample-1"
+          ],
+          "weighted_ocsvm_0.80_negsel_0.20": [
+            "sample-3",
+            "sample-1",
+            "sample-1"
+          ]
+        }
+      },
+      {
+        "candidate_names": [
+          "control_equal",
+          "weighted_ocsvm_0.20_negsel_0.80",
+          "weighted_ocsvm_0.35_negsel_0.65",
+          "weighted_ocsvm_0.50_negsel_0.50",
+          "weighted_ocsvm_0.65_negsel_0.35",
+          "weighted_ocsvm_0.80_negsel_0.20",
+          "confidence_modulated_static"
+        ],
+        "round_index": 3,
+        "sample_ids": [
+          "sample-1",
+          "sample-2",
+          "sample-2"
+        ],
+        "samples_by_candidate": {
+          "confidence_modulated_static": [
+            "sample-1",
+            "sample-2",
+            "sample-2"
+          ],
+          "control_equal": [
+            "sample-1",
+            "sample-2",
+            "sample-2"
+          ],
+          "weighted_ocsvm_0.20_negsel_0.80": [
+            "sample-1",
+            "sample-2",
+            "sample-2"
+          ],
+          "weighted_ocsvm_0.35_negsel_0.65": [
+            "sample-1",
+            "sample-2",
+            "sample-2"
+          ],
+          "weighted_ocsvm_0.50_negsel_0.50": [
+            "sample-1",
+            "sample-2",
+            "sample-2"
+          ],
+          "weighted_ocsvm_0.65_negsel_0.35": [
+            "sample-1",
+            "sample-2",
+            "sample-2"
+          ],
+          "weighted_ocsvm_0.80_negsel_0.20": [
+            "sample-1",
+            "sample-2",
+            "sample-2"
+          ]
+        }
+      },
+      {
+        "candidate_names": [
+          "control_equal",
+          "weighted_ocsvm_0.20_negsel_0.80",
+          "weighted_ocsvm_0.35_negsel_0.65",
+          "weighted_ocsvm_0.50_negsel_0.50",
+          "weighted_ocsvm_0.65_negsel_0.35",
+          "weighted_ocsvm_0.80_negsel_0.20",
+          "confidence_modulated_static"
+        ],
+        "round_index": 4,
+        "sample_ids": [
+          "sample-2",
+          "sample-4",
+          "sample-4"
+        ],
+        "samples_by_candidate": {
+          "confidence_modulated_static": [
+            "sample-2",
+            "sample-4",
+            "sample-4"
+          ],
+          "control_equal": [
+            "sample-2",
+            "sample-4",
+            "sample-4"
+          ],
+          "weighted_ocsvm_0.20_negsel_0.80": [
+            "sample-2",
+            "sample-4",
+            "sample-4"
+          ],
+          "weighted_ocsvm_0.35_negsel_0.65": [
+            "sample-2",
+            "sample-4",
+            "sample-4"
+          ],
+          "weighted_ocsvm_0.50_negsel_0.50": [
+            "sample-2",
+            "sample-4",
+            "sample-4"
+          ],
+          "weighted_ocsvm_0.65_negsel_0.35": [
+            "sample-2",
+            "sample-4",
+            "sample-4"
+          ],
+          "weighted_ocsvm_0.80_negsel_0.20": [
+            "sample-2",
+            "sample-4",
+            "sample-4"
+          ]
+        }
+      }
+    ]
+  },
+  "phase": "92",
+  "plan": "02",
+  "policy_overlays": {
+    "domain_thresholds": {
+      "deltas_vs_control": {
+        "confidence_modulated_static": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "control_equal": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "weighted_ocsvm_0.20_negsel_0.80": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "weighted_ocsvm_0.35_negsel_0.65": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "weighted_ocsvm_0.50_negsel_0.50": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "weighted_ocsvm_0.65_negsel_0.35": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "weighted_ocsvm_0.80_negsel_0.20": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        }
+      },
+      "detector_reruns": 0,
+      "source_control_surface": "control_equal",
+      "source_surface": "saved_score_quality_surfaces",
+      "surface_results": {
+        "confidence_modulated_static": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "thresholds_by_domain": {
+              "hallucination": 0.5,
+              "prompt_injection": 0.5
+            }
+          }
+        },
+        "control_equal": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "thresholds_by_domain": {
+              "hallucination": 0.5,
+              "prompt_injection": 0.5
+            }
+          }
+        },
+        "weighted_ocsvm_0.20_negsel_0.80": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "thresholds_by_domain": {
+              "hallucination": 0.5,
+              "prompt_injection": 0.5
+            }
+          }
+        },
+        "weighted_ocsvm_0.35_negsel_0.65": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "thresholds_by_domain": {
+              "hallucination": 0.5,
+              "prompt_injection": 0.5
+            }
+          }
+        },
+        "weighted_ocsvm_0.50_negsel_0.50": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "thresholds_by_domain": {
+              "hallucination": 0.5,
+              "prompt_injection": 0.5
+            }
+          }
+        },
+        "weighted_ocsvm_0.65_negsel_0.35": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "thresholds_by_domain": {
+              "hallucination": 0.5,
+              "prompt_injection": 0.5
+            }
+          }
+        },
+        "weighted_ocsvm_0.80_negsel_0.20": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "thresholds_by_domain": {
+              "hallucination": 0.5,
+              "prompt_injection": 0.5
+            }
+          }
+        }
+      },
+      "uses_saved_scores": true
+    },
+    "global_threshold": {
+      "deltas_vs_control": {
+        "confidence_modulated_static": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "control_equal": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "weighted_ocsvm_0.20_negsel_0.80": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "weighted_ocsvm_0.35_negsel_0.65": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "weighted_ocsvm_0.50_negsel_0.50": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "weighted_ocsvm_0.65_negsel_0.35": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        },
+        "weighted_ocsvm_0.80_negsel_0.20": {
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0
+        }
+      },
+      "detector_reruns": 0,
+      "source_control_surface": "control_equal",
+      "source_surface": "saved_score_quality_surfaces",
+      "surface_results": {
+        "confidence_modulated_static": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "threshold": 0.5
+          }
+        },
+        "control_equal": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "threshold": 0.5
+          }
+        },
+        "weighted_ocsvm_0.20_negsel_0.80": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "threshold": 0.5
+          }
+        },
+        "weighted_ocsvm_0.35_negsel_0.65": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "threshold": 0.5
+          }
+        },
+        "weighted_ocsvm_0.50_negsel_0.50": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "threshold": 0.5
+          }
+        },
+        "weighted_ocsvm_0.65_negsel_0.35": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "threshold": 0.5
+          }
+        },
+        "weighted_ocsvm_0.80_negsel_0.20": {
+          "metrics": {
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0
+          },
+          "predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "sample_count": 4,
+          "selection": {
+            "threshold": 0.5
+          }
+        }
+      },
+      "uses_saved_scores": true
+    },
+    "operator_multiband": {
+      "deltas_vs_control": {
+        "confidence_modulated_static": {
+          "auto_decision_coverage_delta": 0.0,
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0,
+          "review_rate_delta": 0.0
+        },
+        "control_equal": {
+          "auto_decision_coverage_delta": 0.0,
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0,
+          "review_rate_delta": 0.0
+        },
+        "weighted_ocsvm_0.20_negsel_0.80": {
+          "auto_decision_coverage_delta": 0.0,
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0,
+          "review_rate_delta": 0.0
+        },
+        "weighted_ocsvm_0.35_negsel_0.65": {
+          "auto_decision_coverage_delta": 0.0,
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0,
+          "review_rate_delta": 0.0
+        },
+        "weighted_ocsvm_0.50_negsel_0.50": {
+          "auto_decision_coverage_delta": 0.0,
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0,
+          "review_rate_delta": 0.0
+        },
+        "weighted_ocsvm_0.65_negsel_0.35": {
+          "auto_decision_coverage_delta": 0.0,
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0,
+          "review_rate_delta": 0.0
+        },
+        "weighted_ocsvm_0.80_negsel_0.20": {
+          "auto_decision_coverage_delta": 0.0,
+          "balanced_accuracy_delta": 0.0,
+          "f1_delta": 0.0,
+          "policy_reward_delta": 0.0,
+          "precision_delta": 0.0,
+          "recall_delta": 0.0,
+          "review_rate_delta": 0.0
+        }
+      },
+      "detector_reruns": 0,
+      "source_control_surface": "control_equal",
+      "source_surface": "saved_score_quality_surfaces",
+      "surface_results": {
+        "confidence_modulated_static": {
+          "bands": [
+            "allow",
+            "review",
+            "block"
+          ],
+          "binary_predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "decision_counts": {
+            "allow": 2,
+            "block": 2,
+            "review": 0
+          },
+          "decisions": [
+            "block",
+            "allow",
+            "block",
+            "allow"
+          ],
+          "metrics": {
+            "auto_decision_coverage": 1.0,
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "review_rate": 0.0
+          },
+          "sample_count": 4,
+          "selection": {
+            "high_threshold": 0.5,
+            "low_threshold": 0.493536,
+            "min_confidence": 0.6
+          }
+        },
+        "control_equal": {
+          "bands": [
+            "allow",
+            "review",
+            "block"
+          ],
+          "binary_predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "decision_counts": {
+            "allow": 2,
+            "block": 2,
+            "review": 0
+          },
+          "decisions": [
+            "block",
+            "allow",
+            "block",
+            "allow"
+          ],
+          "metrics": {
+            "auto_decision_coverage": 1.0,
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "review_rate": 0.0
+          },
+          "sample_count": 4,
+          "selection": {
+            "high_threshold": 0.5,
+            "low_threshold": 0.495,
+            "min_confidence": 0.6
+          }
+        },
+        "weighted_ocsvm_0.20_negsel_0.80": {
+          "bands": [
+            "allow",
+            "review",
+            "block"
+          ],
+          "binary_predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "decision_counts": {
+            "allow": 2,
+            "block": 2,
+            "review": 0
+          },
+          "decisions": [
+            "block",
+            "allow",
+            "block",
+            "allow"
+          ],
+          "metrics": {
+            "auto_decision_coverage": 1.0,
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "review_rate": 0.0
+          },
+          "sample_count": 4,
+          "selection": {
+            "high_threshold": 0.5,
+            "low_threshold": 0.498,
+            "min_confidence": 0.6
+          }
+        },
+        "weighted_ocsvm_0.35_negsel_0.65": {
+          "bands": [
+            "allow",
+            "review",
+            "block"
+          ],
+          "binary_predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "decision_counts": {
+            "allow": 2,
+            "block": 2,
+            "review": 0
+          },
+          "decisions": [
+            "block",
+            "allow",
+            "block",
+            "allow"
+          ],
+          "metrics": {
+            "auto_decision_coverage": 1.0,
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "review_rate": 0.0
+          },
+          "sample_count": 4,
+          "selection": {
+            "high_threshold": 0.5,
+            "low_threshold": 0.4965,
+            "min_confidence": 0.6
+          }
+        },
+        "weighted_ocsvm_0.50_negsel_0.50": {
+          "bands": [
+            "allow",
+            "review",
+            "block"
+          ],
+          "binary_predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "decision_counts": {
+            "allow": 2,
+            "block": 2,
+            "review": 0
+          },
+          "decisions": [
+            "block",
+            "allow",
+            "block",
+            "allow"
+          ],
+          "metrics": {
+            "auto_decision_coverage": 1.0,
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "review_rate": 0.0
+          },
+          "sample_count": 4,
+          "selection": {
+            "high_threshold": 0.5,
+            "low_threshold": 0.495,
+            "min_confidence": 0.6
+          }
+        },
+        "weighted_ocsvm_0.65_negsel_0.35": {
+          "bands": [
+            "allow",
+            "review",
+            "block"
+          ],
+          "binary_predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "decision_counts": {
+            "allow": 2,
+            "block": 2,
+            "review": 0
+          },
+          "decisions": [
+            "block",
+            "allow",
+            "block",
+            "allow"
+          ],
+          "metrics": {
+            "auto_decision_coverage": 1.0,
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "review_rate": 0.0
+          },
+          "sample_count": 4,
+          "selection": {
+            "high_threshold": 0.5,
+            "low_threshold": 0.4935,
+            "min_confidence": 0.6
+          }
+        },
+        "weighted_ocsvm_0.80_negsel_0.20": {
+          "bands": [
+            "allow",
+            "review",
+            "block"
+          ],
+          "binary_predictions": [
+            1,
+            0,
+            1,
+            0
+          ],
+          "decision_counts": {
+            "allow": 2,
+            "block": 2,
+            "review": 0
+          },
+          "decisions": [
+            "block",
+            "allow",
+            "block",
+            "allow"
+          ],
+          "metrics": {
+            "auto_decision_coverage": 1.0,
+            "balanced_accuracy": 1.0,
+            "f1": 1.0,
+            "policy_reward": 1.0,
+            "precision": 1.0,
+            "recall": 1.0,
+            "review_rate": 0.0
+          },
+          "sample_count": 4,
+          "selection": {
+            "high_threshold": 0.5,
+            "low_threshold": 0.492,
+            "min_confidence": 0.6
+          }
+        }
+      },
+      "uses_saved_scores": true
+    }
+  },
+  "samples": [
+    {
+      "domain": "prompt_injection",
+      "label": 1,
+      "latency_ms": 5.0,
+      "memory_mb": 32.0,
+      "per_detector": {
+        "NegSel": {
+          "confidence": 0.73,
+          "score": 0.78
+        },
+        "OCSVM": {
+          "confidence": 0.81,
+          "score": 0.92
+        }
+      },
+      "sample_id": "sample-1"
+    },
+    {
+      "domain": "prompt_injection",
+      "label": 0,
+      "latency_ms": 4.5,
+      "memory_mb": 31.0,
+      "per_detector": {
+        "NegSel": {
+          "confidence": 0.76,
+          "score": 0.28
+        },
+        "OCSVM": {
+          "confidence": 0.84,
+          "score": 0.18
+        }
+      },
+      "sample_id": "sample-2"
+    },
+    {
+      "domain": "hallucination",
+      "label": 1,
+      "latency_ms": 5.8,
+      "memory_mb": 33.0,
+      "per_detector": {
+        "NegSel": {
+          "confidence": 0.69,
+          "score": 0.65
+        },
+        "OCSVM": {
+          "confidence": 0.66,
+          "score": 0.71
+        }
+      },
+      "sample_id": "sample-3"
+    },
+    {
+      "domain": "hallucination",
+      "label": 0,
+      "latency_ms": 4.7,
+      "memory_mb": 30.5,
+      "per_detector": {
+        "NegSel": {
+          "confidence": 0.82,
+          "score": 0.35
+        },
+        "OCSVM": {
+          "confidence": 0.79,
+          "score": 0.27
+        }
+      },
+      "sample_id": "sample-4"
+    }
+  ],
+  "score_quality": {
+    "detector_set": [
+      "OCSVM",
+      "NegSel"
+    ],
+    "surface_names": [
+      "control_equal",
+      "weighted_ocsvm_0.20_negsel_0.80",
+      "weighted_ocsvm_0.35_negsel_0.65",
+      "weighted_ocsvm_0.50_negsel_0.50",
+      "weighted_ocsvm_0.65_negsel_0.35",
+      "weighted_ocsvm_0.80_negsel_0.20",
+      "confidence_modulated_static"
+    ],
+    "surfaces": {
+      "confidence_modulated_static": {
+        "confidence_mode": "weighted_by_confidence",
+        "metrics": {
+          "average_precision": 1.0,
+          "avg_latency_ms": 5.0,
+          "brier_loss": 0.061847,
+          "ece": 0.232696,
+          "peak_memory_mb": 33.0,
+          "reliability_bins": [
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.727333,
+              "count": 2,
+              "lower": 0.6,
+              "upper": 0.8
+            },
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.807275,
+              "count": 2,
+              "lower": 0.8,
+              "upper": 1.0
+            }
+          ],
+          "roc_auc": 1.0,
+          "separation": 0.525603
+        },
+        "per_sample": [
+          {
+            "confidence": 0.783862,
+            "domain": "prompt_injection",
+            "label": 1,
+            "sample_id": "sample-1",
+            "score": 0.874258
+          },
+          {
+            "confidence": 0.813793,
+            "domain": "prompt_injection",
+            "label": 0,
+            "sample_id": "sample-2",
+            "score": 0.212759
+          },
+          {
+            "confidence": 0.670805,
+            "domain": "hallucination",
+            "label": 1,
+            "sample_id": "sample-3",
+            "score": 0.688389
+          },
+          {
+            "confidence": 0.800756,
+            "domain": "hallucination",
+            "label": 0,
+            "sample_id": "sample-4",
+            "score": 0.298682
+          }
+        ],
+        "weights": {
+          "NegSel": 0.35,
+          "OCSVM": 0.65
+        }
+      },
+      "control_equal": {
+        "confidence_mode": "mean",
+        "metrics": {
+          "average_precision": 1.0,
+          "avg_latency_ms": 5.0,
+          "brier_loss": 0.068475,
+          "ece": 0.2375,
+          "peak_memory_mb": 33.0,
+          "reliability_bins": [
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.7225,
+              "count": 2,
+              "lower": 0.6,
+              "upper": 0.8
+            },
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.8025,
+              "count": 2,
+              "lower": 0.8,
+              "upper": 1.0
+            }
+          ],
+          "roc_auc": 1.0,
+          "separation": 0.495
+        },
+        "per_sample": [
+          {
+            "confidence": 0.77,
+            "domain": "prompt_injection",
+            "label": 1,
+            "sample_id": "sample-1",
+            "score": 0.85
+          },
+          {
+            "confidence": 0.8,
+            "domain": "prompt_injection",
+            "label": 0,
+            "sample_id": "sample-2",
+            "score": 0.23
+          },
+          {
+            "confidence": 0.675,
+            "domain": "hallucination",
+            "label": 1,
+            "sample_id": "sample-3",
+            "score": 0.68
+          },
+          {
+            "confidence": 0.805,
+            "domain": "hallucination",
+            "label": 0,
+            "sample_id": "sample-4",
+            "score": 0.31
+          }
+        ],
+        "weights": {
+          "NegSel": 0.5,
+          "OCSVM": 0.5
+        }
+      },
+      "weighted_ocsvm_0.20_negsel_0.80": {
+        "confidence_mode": "mean",
+        "metrics": {
+          "average_precision": 1.0,
+          "avg_latency_ms": 5.0,
+          "brier_loss": 0.082566,
+          "ece": 0.245,
+          "peak_memory_mb": 33.0,
+          "reliability_bins": [
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.735333,
+              "count": 3,
+              "lower": 0.6,
+              "upper": 0.8
+            },
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.814,
+              "count": 1,
+              "lower": 0.8,
+              "upper": 1.0
+            }
+          ],
+          "roc_auc": 1.0,
+          "separation": 0.438
+        },
+        "per_sample": [
+          {
+            "confidence": 0.746,
+            "domain": "prompt_injection",
+            "label": 1,
+            "sample_id": "sample-1",
+            "score": 0.808
+          },
+          {
+            "confidence": 0.776,
+            "domain": "prompt_injection",
+            "label": 0,
+            "sample_id": "sample-2",
+            "score": 0.26
+          },
+          {
+            "confidence": 0.684,
+            "domain": "hallucination",
+            "label": 1,
+            "sample_id": "sample-3",
+            "score": 0.662
+          },
+          {
+            "confidence": 0.814,
+            "domain": "hallucination",
+            "label": 0,
+            "sample_id": "sample-4",
+            "score": 0.334
+          }
+        ],
+        "weights": {
+          "NegSel": 0.8,
+          "OCSVM": 0.2
+        }
+      },
+      "weighted_ocsvm_0.35_negsel_0.65": {
+        "confidence_mode": "mean",
+        "metrics": {
+          "average_precision": 1.0,
+          "avg_latency_ms": 5.0,
+          "brier_loss": 0.075298,
+          "ece": 0.24125,
+          "peak_memory_mb": 33.0,
+          "reliability_bins": [
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.741833,
+              "count": 3,
+              "lower": 0.6,
+              "upper": 0.8
+            },
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.8095,
+              "count": 1,
+              "lower": 0.8,
+              "upper": 1.0
+            }
+          ],
+          "roc_auc": 1.0,
+          "separation": 0.4665
+        },
+        "per_sample": [
+          {
+            "confidence": 0.758,
+            "domain": "prompt_injection",
+            "label": 1,
+            "sample_id": "sample-1",
+            "score": 0.829
+          },
+          {
+            "confidence": 0.788,
+            "domain": "prompt_injection",
+            "label": 0,
+            "sample_id": "sample-2",
+            "score": 0.245
+          },
+          {
+            "confidence": 0.6795,
+            "domain": "hallucination",
+            "label": 1,
+            "sample_id": "sample-3",
+            "score": 0.671
+          },
+          {
+            "confidence": 0.8095,
+            "domain": "hallucination",
+            "label": 0,
+            "sample_id": "sample-4",
+            "score": 0.322
+          }
+        ],
+        "weights": {
+          "NegSel": 0.65,
+          "OCSVM": 0.35
+        }
+      },
+      "weighted_ocsvm_0.50_negsel_0.50": {
+        "confidence_mode": "mean",
+        "metrics": {
+          "average_precision": 1.0,
+          "avg_latency_ms": 5.0,
+          "brier_loss": 0.068475,
+          "ece": 0.2375,
+          "peak_memory_mb": 33.0,
+          "reliability_bins": [
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.7225,
+              "count": 2,
+              "lower": 0.6,
+              "upper": 0.8
+            },
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.8025,
+              "count": 2,
+              "lower": 0.8,
+              "upper": 1.0
+            }
+          ],
+          "roc_auc": 1.0,
+          "separation": 0.495
+        },
+        "per_sample": [
+          {
+            "confidence": 0.77,
+            "domain": "prompt_injection",
+            "label": 1,
+            "sample_id": "sample-1",
+            "score": 0.85
+          },
+          {
+            "confidence": 0.8,
+            "domain": "prompt_injection",
+            "label": 0,
+            "sample_id": "sample-2",
+            "score": 0.23
+          },
+          {
+            "confidence": 0.675,
+            "domain": "hallucination",
+            "label": 1,
+            "sample_id": "sample-3",
+            "score": 0.68
+          },
+          {
+            "confidence": 0.805,
+            "domain": "hallucination",
+            "label": 0,
+            "sample_id": "sample-4",
+            "score": 0.31
+          }
+        ],
+        "weights": {
+          "NegSel": 0.5,
+          "OCSVM": 0.5
+        }
+      },
+      "weighted_ocsvm_0.65_negsel_0.35": {
+        "confidence_mode": "mean",
+        "metrics": {
+          "average_precision": 1.0,
+          "avg_latency_ms": 5.0,
+          "brier_loss": 0.062098,
+          "ece": 0.23375,
+          "peak_memory_mb": 33.0,
+          "reliability_bins": [
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.72625,
+              "count": 2,
+              "lower": 0.6,
+              "upper": 0.8
+            },
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.80625,
+              "count": 2,
+              "lower": 0.8,
+              "upper": 1.0
+            }
+          ],
+          "roc_auc": 1.0,
+          "separation": 0.5235
+        },
+        "per_sample": [
+          {
+            "confidence": 0.782,
+            "domain": "prompt_injection",
+            "label": 1,
+            "sample_id": "sample-1",
+            "score": 0.871
+          },
+          {
+            "confidence": 0.812,
+            "domain": "prompt_injection",
+            "label": 0,
+            "sample_id": "sample-2",
+            "score": 0.215
+          },
+          {
+            "confidence": 0.6705,
+            "domain": "hallucination",
+            "label": 1,
+            "sample_id": "sample-3",
+            "score": 0.689
+          },
+          {
+            "confidence": 0.8005,
+            "domain": "hallucination",
+            "label": 0,
+            "sample_id": "sample-4",
+            "score": 0.298
+          }
+        ],
+        "weights": {
+          "NegSel": 0.35,
+          "OCSVM": 0.65
+        }
+      },
+      "weighted_ocsvm_0.80_negsel_0.20": {
+        "confidence_mode": "mean",
+        "metrics": {
+          "average_precision": 1.0,
+          "avg_latency_ms": 5.0,
+          "brier_loss": 0.056166,
+          "ece": 0.23,
+          "peak_memory_mb": 33.0,
+          "reliability_bins": [
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.752,
+              "count": 3,
+              "lower": 0.6,
+              "upper": 0.8
+            },
+            {
+              "avg_accuracy": 1.0,
+              "avg_confidence": 0.824,
+              "count": 1,
+              "lower": 0.8,
+              "upper": 1.0
+            }
+          ],
+          "roc_auc": 1.0,
+          "separation": 0.552
+        },
+        "per_sample": [
+          {
+            "confidence": 0.794,
+            "domain": "prompt_injection",
+            "label": 1,
+            "sample_id": "sample-1",
+            "score": 0.892
+          },
+          {
+            "confidence": 0.824,
+            "domain": "prompt_injection",
+            "label": 0,
+            "sample_id": "sample-2",
+            "score": 0.2
+          },
+          {
+            "confidence": 0.666,
+            "domain": "hallucination",
+            "label": 1,
+            "sample_id": "sample-3",
+            "score": 0.698
+          },
+          {
+            "confidence": 0.796,
+            "domain": "hallucination",
+            "label": 0,
+            "sample_id": "sample-4",
+            "score": 0.286
+          }
+        ],
+        "weights": {
+          "NegSel": 0.2,
+          "OCSVM": 0.8
+        }
+      }
+    }
+  }
+}

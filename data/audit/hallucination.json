@@ -1,0 +1,415 @@
+{
+  "domain": "hallucination",
+  "n_samples": 60,
+  "feature_names": [
+    "claim_density",
+    "citation_count",
+    "hedging_ratio",
+    "specificity",
+    "numeric_density",
+    "pamp_score",
+    "exaggeration",
+    "certainty",
+    "controversy",
+    "danger_signal"
+  ],
+  "feature_stats": {
+    "claim_density": {
+      "index": 0,
+      "mean": 0.5066666666666667,
+      "std": 0.024944382578492935,
+      "min": 0.5,
+      "max": 0.6,
+      "percentiles": {
+        "p5": 0.5,
+        "p25": 0.5,
+        "p50": 0.5,
+        "p75": 0.5,
+        "p95": 0.6
+      },
+      "unique_count": 2,
+      "unique_values": [
+        0.5,
+        0.6
+      ],
+      "is_binary": false,
+      "is_constant": false
+    },
+    "citation_count": {
+      "index": 1,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 1,
+      "unique_values": [
+        0.0
+      ],
+      "is_binary": true,
+      "is_constant": true
+    },
+    "hedging_ratio": {
+      "index": 2,
+      "mean": 0.06666666666666667,
+      "std": 0.2494438257849294,
+      "min": 0.0,
+      "max": 1.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 1.0
+      },
+      "unique_count": 2,
+      "unique_values": [
+        0.0,
+        1.0
+      ],
+      "is_binary": true,
+      "is_constant": false
+    },
+    "specificity": {
+      "index": 3,
+      "mean": 0.7405870858443707,
+      "std": 0.24741472018741814,
+      "min": 0.0,
+      "max": 1.0,
+      "percentiles": {
+        "p5": 0.3616447590158409,
+        "p25": 0.5558035714285714,
+        "p50": 0.7774725274725275,
+        "p75": 1.0,
+        "p95": 1.0
+      },
+      "unique_count": 31,
+      "unique_values": [
+        0.0,
+        0.2808988764044944,
+        0.3488372093023256,
+        0.36231884057971014,
+        0.3731343283582089,
+        0.38461538461538464,
+        0.41666666666666663,
+        0.4375,
+        0.4545454545454546,
+        0.472972972972973,
+        0.47619047619047616,
+        0.49382716049382713,
+        0.5223880597014925,
+        0.5232558139534884,
+        0.5357142857142857,
+        0.5625,
+        0.5797101449275363,
+        0.5813953488372093,
+        0.5952380952380952,
+        0.6024096385542168,
+        0.625,
+        0.7142857142857142,
+        0.7333333333333334,
+        0.7692307692307693,
+        0.7857142857142857,
+        0.8333333333333333,
+        0.8441558441558441,
+        0.8666666666666667,
+        0.9230769230769231,
+        0.9285714285714286,
+        1.0
+      ],
+      "is_binary": false,
+      "is_constant": false
+    },
+    "numeric_density": {
+      "index": 4,
+      "mean": 0.23333333333333334,
+      "std": 0.42295258468165065,
+      "min": 0.0,
+      "max": 1.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 1.0
+      },
+      "unique_count": 2,
+      "unique_values": [
+        0.0,
+        1.0
+      ],
+      "is_binary": true,
+      "is_constant": false
+    },
+    "pamp_score": {
+      "index": 5,
+      "mean": 0.005555555555555555,
+      "std": 0.04267303193260337,
+      "min": 0.0,
+      "max": 0.3333333333333333,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 2,
+      "unique_values": [
+        0.0,
+        0.3333333333333333
+      ],
+      "is_binary": false,
+      "is_constant": false
+    },
+    "exaggeration": {
+      "index": 6,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 1,
+      "unique_values": [
+        0.0
+      ],
+      "is_binary": true,
+      "is_constant": true
+    },
+    "certainty": {
+      "index": 7,
+      "mean": 0.03333333333333333,
+      "std": 0.17950549357115012,
+      "min": 0.0,
+      "max": 1.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 2,
+      "unique_values": [
+        0.0,
+        1.0
+      ],
+      "is_binary": true,
+      "is_constant": false
+    },
+    "controversy": {
+      "index": 8,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 1,
+      "unique_values": [
+        0.0
+      ],
+      "is_binary": true,
+      "is_constant": true
+    },
+    "danger_signal": {
+      "index": 9,
+      "mean": 0.0033333333333333335,
+      "std": 0.025603819159562037,
+      "min": 0.0,
+      "max": 0.2,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 2,
+      "unique_values": [
+        0.0,
+        0.2
+      ],
+      "is_binary": false,
+      "is_constant": false
+    }
+  },
+  "correlation_matrix": [
+    [
+      1.0,
+      null,
+      1.0,
+      -0.302879,
+      0.168505,
+      -0.034794,
+      null,
+      -0.049629,
+      null,
+      -0.034794
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      1.0,
+      null,
+      1.0,
+      -0.302879,
+      0.168505,
+      -0.034794,
+      null,
+      -0.049629,
+      null,
+      -0.034794
+    ],
+    [
+      -0.302879,
+      null,
+      -0.302879,
+      1.0,
+      -0.131694,
+      0.023746,
+      null,
+      -0.059948,
+      null,
+      0.023746
+    ],
+    [
+      0.168505,
+      null,
+      0.168505,
+      -0.131694,
+      1.0,
+      0.235987,
+      null,
+      0.117079,
+      null,
+      0.235987
+    ],
+    [
+      -0.034794,
+      null,
+      -0.034794,
+      0.023746,
+      0.235987,
+      1.0,
+      null,
+      0.701089,
+      null,
+      1.0
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      -0.049629,
+      null,
+      -0.049629,
+      -0.059948,
+      0.117079,
+      0.701089,
+      null,
+      1.0,
+      null,
+      0.701089
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      -0.034794,
+      null,
+      -0.034794,
+      0.023746,
+      0.235987,
+      1.0,
+      null,
+      0.701089,
+      null,
+      1.0
+    ]
+  ],
+  "high_correlations": [
+    {
+      "features": [
+        "claim_density",
+        "hedging_ratio"
+      ],
+      "r": 1.0,
+      "note": "claim_density includes +0.1 for hedging_ratio presence. r=1.0000. Partial algebraic dependency."
+    },
+    {
+      "features": [
+        "pamp_score",
+        "certainty"
+      ],
+      "r": 0.701089,
+      "note": "Moderate positive correlation (r=0.7011)."
+    },
+    {
+      "features": [
+        "pamp_score",
+        "danger_signal"
+      ],
+      "r": 1.0,
+      "note": "Algebraic dependency: both derived from same danger pattern matches (pamp=matches/3, danger=matches/5). r=1.0000. DCA must assign to same signal category to avoid double-counting."
+    },
+    {
+      "features": [
+        "certainty",
+        "danger_signal"
+      ],
+      "r": 0.701089,
+      "note": "Moderate positive correlation (r=0.7011)."
+    }
+  ],
+  "metadata": {
+    "audit_timestamp": "2026-04-01T07:24:49.512752+00:00",
+    "extractor_class": "DendriticFeatureExtractor",
+    "data_dir": "/Users/byron/projects/active/antigence-bittensor/.claude/worktrees/agent-aae2a82a/data/evaluation"
+  }
+}

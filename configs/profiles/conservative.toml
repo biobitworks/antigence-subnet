@@ -1,0 +1,110 @@
+# Conservative Profile -- Antigence Subnet
+# ==========================================
+#
+# Purpose: Minimize false positives. Only flag outputs with very strong
+# anomaly signals, accepting that some true anomalies will be missed.
+#
+# Key behavioral differences from other profiles:
+#   - NK Cell z_threshold is very high (8.0 vs 3.0 balanced) -- only extreme
+#     statistical outliers trigger the fast-path gate.
+#   - Danger Theory modulation is disabled entirely (alpha=0.0) -- no
+#     contextual amplification of signals.
+#   - B Cell memory has minimal influence (weight=0.1) -- past detections
+#     barely affect current scoring.
+#   - SLM NK similarity threshold is high (0.5) -- semantic flagging
+#     requires strong evidence.
+#
+# When to use:
+#   - Operating in domains where false positives are costly (e.g., medical,
+#     financial, legal AI outputs).
+#   - Early deployment where trust in the detector pipeline is still being
+#     established.
+#   - Validators with strict precision requirements.
+#
+# Usage: cp configs/profiles/conservative.toml antigence_subnet.toml
+
+[miner.orchestrator]
+enabled = true
+
+[miner.orchestrator.nk]
+z_threshold = 8.0
+
+[miner.orchestrator.dca]
+pamp_threshold = 0.5
+adaptive = false
+
+[miner.orchestrator.danger]
+alpha = 0.0
+enabled = false
+
+[miner.orchestrator.bcell]
+max_memory = 1000
+k = 5
+bcell_weight = 0.1
+half_life = 0.9
+eviction_threshold = 0.1
+jitter_sigma = 0.05
+embedding_mode = true
+embedding_sigma = 0.01
+
+[miner.orchestrator.slm_nk]
+enabled = true
+similarity_threshold = 0.5
+
+[miner.orchestrator.feedback]
+enabled = false
+lookback_rounds = 5
+
+[miner.orchestrator.telemetry]
+window_size = 100
+
+[miner.model]
+model_name = "all-MiniLM-L6-v2"
+device = "auto"
+
+# Challenge rotation -- conservative uses larger window to prevent repeat exposure
+[validator.rotation]
+enabled = true
+window = 15
+
+[validator.policy]
+mode = "global_threshold"
+high_threshold = 0.6
+low_threshold = 0.6
+min_confidence = 0.0
+
+# Collusion detection -- lower threshold for more aggressive detection
+[validator.collusion]
+similarity_threshold = 0.98
+min_group_size = 3
+penalty = "zero"
+enabled = true
+
+# Per-domain overrides -- conservative across all domains
+[miner.orchestrator.domains.hallucination]
+nk_z_threshold = 8.0
+dca_pamp_threshold = 0.5
+danger_alpha = 0.0
+danger_enabled = false
+slm_nk_similarity_threshold = 0.5
+
+[miner.orchestrator.domains.code_security]
+nk_z_threshold = 8.0
+dca_pamp_threshold = 0.5
+danger_alpha = 0.0
+danger_enabled = false
+slm_nk_similarity_threshold = 0.5
+
+[miner.orchestrator.domains.reasoning]
+nk_z_threshold = 8.0
+dca_pamp_threshold = 0.5
+danger_alpha = 0.0
+danger_enabled = false
+slm_nk_similarity_threshold = 0.5
+
+[miner.orchestrator.domains.bio]
+nk_z_threshold = 8.0
+dca_pamp_threshold = 0.5
+danger_alpha = 0.0
+danger_enabled = false
+slm_nk_similarity_threshold = 0.5

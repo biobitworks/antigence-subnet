@@ -1,0 +1,460 @@
+{
+  "run_id": "phase81-20260402T194348Z",
+  "experiment": {
+    "_key": "antigence_phase81_nondeterminism",
+    "exp_id": "EXP-081",
+    "title": "Phase 81 Non-Determinism Impact Measurement",
+    "project": "antigence-bittensor",
+    "status": "completed",
+    "description": "10x per-domain repeated measurement separating fixed-input response variance from round-metric variance.",
+    "methodology": "Fixed-input repetitions plus repeated full round measurements against the Phase 80 baseline path.",
+    "outcome": "positive",
+    "agent": "codex",
+    "run_ids": [
+      "phase81-20260402T194348Z"
+    ],
+    "script_path": "scripts/phase81_nondeterminism.py",
+    "note_path": ".planning/phases/81-non-determinism-research-impact-measurement/81-nondeterminism.md",
+    "result_paths": [
+      "data/benchmarks/phase81-nondeterminism-impact.json",
+      "data/overwatch/phase81-nondeterminism-claims.json"
+    ],
+    "visibility": "shared",
+    "created_at": "2026-04-02T19:43:48.522855+00:00",
+    "updated_at": "2026-04-02T19:43:48.522855+00:00"
+  },
+  "publications": [
+    {
+      "_key": "phase81_arxiv_2408_04667",
+      "title": "LLM temperature=0 variance up to 15% (arXiv 2408.04667)",
+      "url": "https://arxiv.org/html/2408.04667v5",
+      "publication_type": "preprint",
+      "year": 2024,
+      "visibility": "shared",
+      "created_at": "2026-04-02T19:43:48.522855+00:00",
+      "updated_at": "2026-04-02T19:43:48.522855+00:00"
+    },
+    {
+      "_key": "phase81_vllm_reproducibility",
+      "title": "vLLM Reproducibility Documentation",
+      "url": "https://docs.vllm.ai/en/latest/usage/reproducibility/",
+      "publication_type": "documentation",
+      "year": 2026,
+      "visibility": "shared",
+      "created_at": "2026-04-02T19:43:48.522855+00:00",
+      "updated_at": "2026-04-02T19:43:48.522855+00:00"
+    },
+    {
+      "_key": "phase81_llm_nondeterminism_article",
+      "title": "Why LLMs Are Not Deterministic",
+      "url": "https://mbrenndoerfer.com/writing/why-llms-are-not-deterministic",
+      "publication_type": "web_article",
+      "year": 2025,
+      "visibility": "shared",
+      "created_at": "2026-04-02T19:43:48.522855+00:00",
+      "updated_at": "2026-04-02T19:43:48.522855+00:00"
+    }
+  ],
+  "claims": [
+    {
+      "_key": "phase81_hallucination_variance",
+      "text": "hallucination showed measured validator-facing variance across repeated local runs; miners remain adversarial, determinism is best-effort only, validators cannot force exact miner inference behavior, and future controls must remain backward-compatible and commodity-hardware feasible.",
+      "classification": "MEASURED",
+      "claim_type": "statistical",
+      "created_at": "2026-04-02T19:43:48.522855+00:00",
+      "updated_at": "2026-04-02T19:43:48.522855+00:00",
+      "visibility": "shared",
+      "confidence": 0.75,
+      "supporting_evidence": [
+        "artifact/phase81_hallucination"
+      ],
+      "source_project": "antigence-bittensor",
+      "exp_id": "EXP-081",
+      "status": "active",
+      "observed_variance": [
+        "hallucination fixed-input mean score std=0.0000 with 0 fixed-input threshold flips."
+      ],
+      "inferred_sources": [
+        "The repeated score spread may reflect nondeterministic GPU kernel execution or runtime-level scheduling effects in the local stack.",
+        "The response diversity may reflect request batching or scheduling sensitivity even when validator-controlled inputs are held constant.",
+        "Near-threshold movement may reflect floating-point accumulation order or kernel-level numeric drift rather than a semantic behavior change.",
+        "This source is validator-controlled harness randomness, not miner behavior, and must stay separated from runtime variance when interpreting results."
+      ],
+      "recommended_mitigations": [
+        "Treat single-run scores as provisional and size future validator thresholds against repeated-run spread before tightening penalties.",
+        "Benchmark threshold choices on a stable local load profile and compare spread before and after serving-stack changes.",
+        "Prefer margin-aware or repeated-run validator comparisons in later phases instead of treating exact threshold crossings as fully stable.",
+        "Keep the Phase 81 measurement path fixed-input only, and preserve the existing seed-increment baseline path for comparability without conflating the two."
+      ],
+      "source_decomposition": {
+        "gpu_kernel": {
+          "observed_signal": "hallucination fixed-input reward spread std=0.0000 with 0 threshold flips.",
+          "evidence_refs": [
+            "resource.knowledge_resource.arxiv_2408_04667",
+            "local:hallucination#gpu_kernel"
+          ],
+          "inference": "The repeated score spread may reflect nondeterministic GPU kernel execution or runtime-level scheduling effects in the local stack.",
+          "mitigation": "Treat single-run scores as provisional and size future validator thresholds against repeated-run spread before tightening penalties."
+        },
+        "batching_scheduling": {
+          "observed_signal": "hallucination produced 1 unique repeated responses under a fixed seed and fixed sample IDs.",
+          "evidence_refs": [
+            "resource.knowledge_resource.vllm_reproducibility",
+            "local:hallucination#batching_scheduling"
+          ],
+          "inference": "The response diversity may reflect request batching or scheduling sensitivity even when validator-controlled inputs are held constant.",
+          "mitigation": "Benchmark threshold choices on a stable local load profile and compare spread before and after serving-stack changes."
+        },
+        "floating_point_kernel": {
+          "observed_signal": "hallucination response-score band ranged from 0.3451 to 0.3451 around DECISION_THRESHOLD=0.5.",
+          "evidence_refs": [
+            "resource.knowledge_resource.llm_nondeterminism_article",
+            "local:hallucination#floating_point_kernel"
+          ],
+          "inference": "Near-threshold movement may reflect floating-point accumulation order or kernel-level numeric drift rather than a semantic behavior change.",
+          "mitigation": "Prefer margin-aware or repeated-run validator comparisons in later phases instead of treating exact threshold crossings as fully stable."
+        },
+        "harness_level_randomness": {
+          "observed_signal": "hallucination fixed-input repeats reused sample_ids=['eval-hall-164', 'eval-hall-029', 'eval-hall-007', 'eval-hall-190', 'eval-hall-071', 'eval-hall-063', 'eval-hall-058', 'eval-hall-036', 'eval-hall-189', 'eval-hall-027', 'eval-hall-174', 'eval-hall-140', 'eval-hall-023', 'eval-hall-152', 'eval-hall-109', 'eval-hall-009', 'eval-hall-008', 'eval-hall-024', 'eval-hall-056', 'eval-hall-060'] and seed=42 while the baseline runner still increments round seeds.",
+          "evidence_refs": [
+            "data/benchmarks/v9.2-baseline.json",
+            "local:hallucination#harness_level_randomness"
+          ],
+          "inference": "This source is validator-controlled harness randomness, not miner behavior, and must stay separated from runtime variance when interpreting results.",
+          "mitigation": "Keep the Phase 81 measurement path fixed-input only, and preserve the existing seed-increment baseline path for comparability without conflating the two."
+        }
+      },
+      "derived_from": {
+        "derivation_method": "statistical_analysis",
+        "run_id": "phase81-20260402T194348Z",
+        "evidence_refs": [
+          "local:data/benchmarks/phase81-nondeterminism-impact.json",
+          "local:.planning/phases/81-non-determinism-research-impact-measurement/81-nondeterminism.md"
+        ]
+      },
+      "citations": [
+        {
+          "publication_key": "phase81_arxiv_2408_04667",
+          "citation_context": "Observed repeated-run variance motivates measuring spread, not single-point scores.",
+          "evidence_refs": [
+            "resource.knowledge_resource.arxiv_2408_04667"
+          ]
+        },
+        {
+          "publication_key": "phase81_vllm_reproducibility",
+          "citation_context": "Runtime reproducibility remains scoped to environment and scheduling controls.",
+          "evidence_refs": [
+            "resource.knowledge_resource.vllm_reproducibility"
+          ]
+        },
+        {
+          "publication_key": "phase81_llm_nondeterminism_article",
+          "citation_context": "Floating-point, batching, and hardware execution order remain plausible sources of variance.",
+          "evidence_refs": [
+            "resource.knowledge_resource.llm_nondeterminism_article"
+          ]
+        }
+      ]
+    },
+    {
+      "_key": "phase81_code_security_variance",
+      "text": "code_security showed measured validator-facing variance across repeated local runs; miners remain adversarial, determinism is best-effort only, validators cannot force exact miner inference behavior, and future controls must remain backward-compatible and commodity-hardware feasible.",
+      "classification": "MEASURED",
+      "claim_type": "statistical",
+      "created_at": "2026-04-02T19:43:48.522855+00:00",
+      "updated_at": "2026-04-02T19:43:48.522855+00:00",
+      "visibility": "shared",
+      "confidence": 0.75,
+      "supporting_evidence": [
+        "artifact/phase81_code_security"
+      ],
+      "source_project": "antigence-bittensor",
+      "exp_id": "EXP-081",
+      "status": "active",
+      "observed_variance": [
+        "code_security fixed-input mean score std=0.0000 with 0 fixed-input threshold flips."
+      ],
+      "inferred_sources": [
+        "The repeated score spread may reflect nondeterministic GPU kernel execution or runtime-level scheduling effects in the local stack.",
+        "The response diversity may reflect request batching or scheduling sensitivity even when validator-controlled inputs are held constant.",
+        "Near-threshold movement may reflect floating-point accumulation order or kernel-level numeric drift rather than a semantic behavior change.",
+        "This source is validator-controlled harness randomness, not miner behavior, and must stay separated from runtime variance when interpreting results."
+      ],
+      "recommended_mitigations": [
+        "Treat single-run scores as provisional and size future validator thresholds against repeated-run spread before tightening penalties.",
+        "Benchmark threshold choices on a stable local load profile and compare spread before and after serving-stack changes.",
+        "Prefer margin-aware or repeated-run validator comparisons in later phases instead of treating exact threshold crossings as fully stable.",
+        "Keep the Phase 81 measurement path fixed-input only, and preserve the existing seed-increment baseline path for comparability without conflating the two."
+      ],
+      "source_decomposition": {
+        "gpu_kernel": {
+          "observed_signal": "code_security fixed-input reward spread std=0.0000 with 0 threshold flips.",
+          "evidence_refs": [
+            "resource.knowledge_resource.arxiv_2408_04667",
+            "local:code_security#gpu_kernel"
+          ],
+          "inference": "The repeated score spread may reflect nondeterministic GPU kernel execution or runtime-level scheduling effects in the local stack.",
+          "mitigation": "Treat single-run scores as provisional and size future validator thresholds against repeated-run spread before tightening penalties."
+        },
+        "batching_scheduling": {
+          "observed_signal": "code_security produced 1 unique repeated responses under a fixed seed and fixed sample IDs.",
+          "evidence_refs": [
+            "resource.knowledge_resource.vllm_reproducibility",
+            "local:code_security#batching_scheduling"
+          ],
+          "inference": "The response diversity may reflect request batching or scheduling sensitivity even when validator-controlled inputs are held constant.",
+          "mitigation": "Benchmark threshold choices on a stable local load profile and compare spread before and after serving-stack changes."
+        },
+        "floating_point_kernel": {
+          "observed_signal": "code_security response-score band ranged from 0.4318 to 0.4318 around DECISION_THRESHOLD=0.5.",
+          "evidence_refs": [
+            "resource.knowledge_resource.llm_nondeterminism_article",
+            "local:code_security#floating_point_kernel"
+          ],
+          "inference": "Near-threshold movement may reflect floating-point accumulation order or kernel-level numeric drift rather than a semantic behavior change.",
+          "mitigation": "Prefer margin-aware or repeated-run validator comparisons in later phases instead of treating exact threshold crossings as fully stable."
+        },
+        "harness_level_randomness": {
+          "observed_signal": "code_security fixed-input repeats reused sample_ids=['eval-cs-164', 'eval-cs-029', 'eval-cs-007', 'eval-cs-190', 'eval-cs-071', 'eval-cs-063', 'eval-cs-058', 'eval-cs-036', 'eval-cs-189', 'eval-cs-027', 'eval-cs-174', 'eval-cs-140', 'eval-cs-023', 'eval-cs-152', 'eval-cs-109', 'eval-cs-009', 'eval-cs-008', 'eval-cs-024', 'eval-cs-056', 'eval-cs-060'] and seed=42 while the baseline runner still increments round seeds.",
+          "evidence_refs": [
+            "data/benchmarks/v9.2-baseline.json",
+            "local:code_security#harness_level_randomness"
+          ],
+          "inference": "This source is validator-controlled harness randomness, not miner behavior, and must stay separated from runtime variance when interpreting results.",
+          "mitigation": "Keep the Phase 81 measurement path fixed-input only, and preserve the existing seed-increment baseline path for comparability without conflating the two."
+        }
+      },
+      "derived_from": {
+        "derivation_method": "statistical_analysis",
+        "run_id": "phase81-20260402T194348Z",
+        "evidence_refs": [
+          "local:data/benchmarks/phase81-nondeterminism-impact.json",
+          "local:.planning/phases/81-non-determinism-research-impact-measurement/81-nondeterminism.md"
+        ]
+      },
+      "citations": [
+        {
+          "publication_key": "phase81_arxiv_2408_04667",
+          "citation_context": "Observed repeated-run variance motivates measuring spread, not single-point scores.",
+          "evidence_refs": [
+            "resource.knowledge_resource.arxiv_2408_04667"
+          ]
+        },
+        {
+          "publication_key": "phase81_vllm_reproducibility",
+          "citation_context": "Runtime reproducibility remains scoped to environment and scheduling controls.",
+          "evidence_refs": [
+            "resource.knowledge_resource.vllm_reproducibility"
+          ]
+        },
+        {
+          "publication_key": "phase81_llm_nondeterminism_article",
+          "citation_context": "Floating-point, batching, and hardware execution order remain plausible sources of variance.",
+          "evidence_refs": [
+            "resource.knowledge_resource.llm_nondeterminism_article"
+          ]
+        }
+      ]
+    },
+    {
+      "_key": "phase81_reasoning_variance",
+      "text": "reasoning showed measured validator-facing variance across repeated local runs; miners remain adversarial, determinism is best-effort only, validators cannot force exact miner inference behavior, and future controls must remain backward-compatible and commodity-hardware feasible.",
+      "classification": "MEASURED",
+      "claim_type": "statistical",
+      "created_at": "2026-04-02T19:43:48.522855+00:00",
+      "updated_at": "2026-04-02T19:43:48.522855+00:00",
+      "visibility": "shared",
+      "confidence": 0.75,
+      "supporting_evidence": [
+        "artifact/phase81_reasoning"
+      ],
+      "source_project": "antigence-bittensor",
+      "exp_id": "EXP-081",
+      "status": "active",
+      "observed_variance": [
+        "reasoning fixed-input mean score std=0.0000 with 0 fixed-input threshold flips."
+      ],
+      "inferred_sources": [
+        "The repeated score spread may reflect nondeterministic GPU kernel execution or runtime-level scheduling effects in the local stack.",
+        "The response diversity may reflect request batching or scheduling sensitivity even when validator-controlled inputs are held constant.",
+        "Near-threshold movement may reflect floating-point accumulation order or kernel-level numeric drift rather than a semantic behavior change.",
+        "This source is validator-controlled harness randomness, not miner behavior, and must stay separated from runtime variance when interpreting results."
+      ],
+      "recommended_mitigations": [
+        "Treat single-run scores as provisional and size future validator thresholds against repeated-run spread before tightening penalties.",
+        "Benchmark threshold choices on a stable local load profile and compare spread before and after serving-stack changes.",
+        "Prefer margin-aware or repeated-run validator comparisons in later phases instead of treating exact threshold crossings as fully stable.",
+        "Keep the Phase 81 measurement path fixed-input only, and preserve the existing seed-increment baseline path for comparability without conflating the two."
+      ],
+      "source_decomposition": {
+        "gpu_kernel": {
+          "observed_signal": "reasoning fixed-input reward spread std=0.0000 with 0 threshold flips.",
+          "evidence_refs": [
+            "resource.knowledge_resource.arxiv_2408_04667",
+            "local:reasoning#gpu_kernel"
+          ],
+          "inference": "The repeated score spread may reflect nondeterministic GPU kernel execution or runtime-level scheduling effects in the local stack.",
+          "mitigation": "Treat single-run scores as provisional and size future validator thresholds against repeated-run spread before tightening penalties."
+        },
+        "batching_scheduling": {
+          "observed_signal": "reasoning produced 2 unique repeated responses under a fixed seed and fixed sample IDs.",
+          "evidence_refs": [
+            "resource.knowledge_resource.vllm_reproducibility",
+            "local:reasoning#batching_scheduling"
+          ],
+          "inference": "The response diversity may reflect request batching or scheduling sensitivity even when validator-controlled inputs are held constant.",
+          "mitigation": "Benchmark threshold choices on a stable local load profile and compare spread before and after serving-stack changes."
+        },
+        "floating_point_kernel": {
+          "observed_signal": "reasoning response-score band ranged from 0.4087 to 0.4087 around DECISION_THRESHOLD=0.5.",
+          "evidence_refs": [
+            "resource.knowledge_resource.llm_nondeterminism_article",
+            "local:reasoning#floating_point_kernel"
+          ],
+          "inference": "Near-threshold movement may reflect floating-point accumulation order or kernel-level numeric drift rather than a semantic behavior change.",
+          "mitigation": "Prefer margin-aware or repeated-run validator comparisons in later phases instead of treating exact threshold crossings as fully stable."
+        },
+        "harness_level_randomness": {
+          "observed_signal": "reasoning fixed-input repeats reused sample_ids=['eval-rea-164', 'eval-rea-029', 'eval-rea-007', 'eval-rea-190', 'eval-rea-071', 'eval-rea-063', 'eval-rea-058', 'eval-rea-036', 'eval-rea-189', 'eval-rea-027', 'eval-rea-174', 'eval-rea-140', 'eval-rea-023', 'eval-rea-152', 'eval-rea-109', 'eval-rea-009', 'eval-rea-008', 'eval-rea-024', 'eval-rea-056', 'eval-rea-060'] and seed=42 while the baseline runner still increments round seeds.",
+          "evidence_refs": [
+            "data/benchmarks/v9.2-baseline.json",
+            "local:reasoning#harness_level_randomness"
+          ],
+          "inference": "This source is validator-controlled harness randomness, not miner behavior, and must stay separated from runtime variance when interpreting results.",
+          "mitigation": "Keep the Phase 81 measurement path fixed-input only, and preserve the existing seed-increment baseline path for comparability without conflating the two."
+        }
+      },
+      "derived_from": {
+        "derivation_method": "statistical_analysis",
+        "run_id": "phase81-20260402T194348Z",
+        "evidence_refs": [
+          "local:data/benchmarks/phase81-nondeterminism-impact.json",
+          "local:.planning/phases/81-non-determinism-research-impact-measurement/81-nondeterminism.md"
+        ]
+      },
+      "citations": [
+        {
+          "publication_key": "phase81_arxiv_2408_04667",
+          "citation_context": "Observed repeated-run variance motivates measuring spread, not single-point scores.",
+          "evidence_refs": [
+            "resource.knowledge_resource.arxiv_2408_04667"
+          ]
+        },
+        {
+          "publication_key": "phase81_vllm_reproducibility",
+          "citation_context": "Runtime reproducibility remains scoped to environment and scheduling controls.",
+          "evidence_refs": [
+            "resource.knowledge_resource.vllm_reproducibility"
+          ]
+        },
+        {
+          "publication_key": "phase81_llm_nondeterminism_article",
+          "citation_context": "Floating-point, batching, and hardware execution order remain plausible sources of variance.",
+          "evidence_refs": [
+            "resource.knowledge_resource.llm_nondeterminism_article"
+          ]
+        }
+      ]
+    },
+    {
+      "_key": "phase81_bio_variance",
+      "text": "bio showed measured validator-facing variance across repeated local runs; miners remain adversarial, determinism is best-effort only, validators cannot force exact miner inference behavior, and future controls must remain backward-compatible and commodity-hardware feasible.",
+      "classification": "MEASURED",
+      "claim_type": "statistical",
+      "created_at": "2026-04-02T19:43:48.522855+00:00",
+      "updated_at": "2026-04-02T19:43:48.522855+00:00",
+      "visibility": "shared",
+      "confidence": 0.75,
+      "supporting_evidence": [
+        "artifact/phase81_bio"
+      ],
+      "source_project": "antigence-bittensor",
+      "exp_id": "EXP-081",
+      "status": "active",
+      "observed_variance": [
+        "bio fixed-input mean score std=0.0000 with 0 fixed-input threshold flips."
+      ],
+      "inferred_sources": [
+        "The repeated score spread may reflect nondeterministic GPU kernel execution or runtime-level scheduling effects in the local stack.",
+        "The response diversity may reflect request batching or scheduling sensitivity even when validator-controlled inputs are held constant.",
+        "Near-threshold movement may reflect floating-point accumulation order or kernel-level numeric drift rather than a semantic behavior change.",
+        "This source is validator-controlled harness randomness, not miner behavior, and must stay separated from runtime variance when interpreting results."
+      ],
+      "recommended_mitigations": [
+        "Treat single-run scores as provisional and size future validator thresholds against repeated-run spread before tightening penalties.",
+        "Benchmark threshold choices on a stable local load profile and compare spread before and after serving-stack changes.",
+        "Prefer margin-aware or repeated-run validator comparisons in later phases instead of treating exact threshold crossings as fully stable.",
+        "Keep the Phase 81 measurement path fixed-input only, and preserve the existing seed-increment baseline path for comparability without conflating the two."
+      ],
+      "source_decomposition": {
+        "gpu_kernel": {
+          "observed_signal": "bio fixed-input reward spread std=0.0000 with 0 threshold flips.",
+          "evidence_refs": [
+            "resource.knowledge_resource.arxiv_2408_04667",
+            "local:bio#gpu_kernel"
+          ],
+          "inference": "The repeated score spread may reflect nondeterministic GPU kernel execution or runtime-level scheduling effects in the local stack.",
+          "mitigation": "Treat single-run scores as provisional and size future validator thresholds against repeated-run spread before tightening penalties."
+        },
+        "batching_scheduling": {
+          "observed_signal": "bio produced 1 unique repeated responses under a fixed seed and fixed sample IDs.",
+          "evidence_refs": [
+            "resource.knowledge_resource.vllm_reproducibility",
+            "local:bio#batching_scheduling"
+          ],
+          "inference": "The response diversity may reflect request batching or scheduling sensitivity even when validator-controlled inputs are held constant.",
+          "mitigation": "Benchmark threshold choices on a stable local load profile and compare spread before and after serving-stack changes."
+        },
+        "floating_point_kernel": {
+          "observed_signal": "bio response-score band ranged from 0.3854 to 0.3854 around DECISION_THRESHOLD=0.5.",
+          "evidence_refs": [
+            "resource.knowledge_resource.llm_nondeterminism_article",
+            "local:bio#floating_point_kernel"
+          ],
+          "inference": "Near-threshold movement may reflect floating-point accumulation order or kernel-level numeric drift rather than a semantic behavior change.",
+          "mitigation": "Prefer margin-aware or repeated-run validator comparisons in later phases instead of treating exact threshold crossings as fully stable."
+        },
+        "harness_level_randomness": {
+          "observed_signal": "bio fixed-input repeats reused sample_ids=['eval-bio-164', 'eval-bio-029', 'eval-bio-007', 'eval-bio-190', 'eval-bio-071', 'eval-bio-063', 'eval-bio-058', 'eval-bio-036', 'eval-bio-189', 'eval-bio-027', 'eval-bio-174', 'eval-bio-140', 'eval-bio-023', 'eval-bio-152', 'eval-bio-109', 'eval-bio-009', 'eval-bio-008', 'eval-bio-024', 'eval-bio-056', 'eval-bio-060'] and seed=42 while the baseline runner still increments round seeds.",
+          "evidence_refs": [
+            "data/benchmarks/v9.2-baseline.json",
+            "local:bio#harness_level_randomness"
+          ],
+          "inference": "This source is validator-controlled harness randomness, not miner behavior, and must stay separated from runtime variance when interpreting results.",
+          "mitigation": "Keep the Phase 81 measurement path fixed-input only, and preserve the existing seed-increment baseline path for comparability without conflating the two."
+        }
+      },
+      "derived_from": {
+        "derivation_method": "statistical_analysis",
+        "run_id": "phase81-20260402T194348Z",
+        "evidence_refs": [
+          "local:data/benchmarks/phase81-nondeterminism-impact.json",
+          "local:.planning/phases/81-non-determinism-research-impact-measurement/81-nondeterminism.md"
+        ]
+      },
+      "citations": [
+        {
+          "publication_key": "phase81_arxiv_2408_04667",
+          "citation_context": "Observed repeated-run variance motivates measuring spread, not single-point scores.",
+          "evidence_refs": [
+            "resource.knowledge_resource.arxiv_2408_04667"
+          ]
+        },
+        {
+          "publication_key": "phase81_vllm_reproducibility",
+          "citation_context": "Runtime reproducibility remains scoped to environment and scheduling controls.",
+          "evidence_refs": [
+            "resource.knowledge_resource.vllm_reproducibility"
+          ]
+        },
+        {
+          "publication_key": "phase81_llm_nondeterminism_article",
+          "citation_context": "Floating-point, batching, and hardware execution order remain plausible sources of variance.",
+          "evidence_refs": [
+            "resource.knowledge_resource.llm_nondeterminism_article"
+          ]
+        }
+      ]
+    }
+  ]
+}

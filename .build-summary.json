@@ -1,0 +1,831 @@
+{
+  "excluded_count": 114,
+  "excluded_files": [
+    {
+      "path": ".continue-here.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/.DS_Store",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/HANDOFF.json",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MASTER-ROADMAP.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONE-CONTEXT-v10.0.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONE-CONTEXT-v9.1.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONE-CONTEXT-v9.2.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONE-CONTEXT-v9.3.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONE-CONTEXT-v9.4.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONE-CONTEXT-v9.5.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONE-CONTEXT-v9.6.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONE-CONTEXT-v9.7.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONE-CONTEXT-v9.8.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONE-CONTEXT-v9.9.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/MILESTONES.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/PROJECT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/REQUIREMENTS.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/RETROSPECTIVE.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/ROADMAP.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/STATE.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/config.json",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v1.0-MILESTONE-AUDIT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v1.0-REQUIREMENTS.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v1.0-ROADMAP.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-REQUIREMENTS.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-ROADMAP.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/10-network-integration-tests/10-01-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/10-network-integration-tests/10-01-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/10-network-integration-tests/10-02-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/10-network-integration-tests/10-02-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/10-network-integration-tests/10-CONTEXT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/10-network-integration-tests/10-VERIFICATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/11-network-resilience/11-01-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/11-network-resilience/11-01-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/11-network-resilience/11-02-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/11-network-resilience/11-02-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/11-network-resilience/11-03-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/11-network-resilience/11-03-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/11-network-resilience/11-CONTEXT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/11-network-resilience/11-VERIFICATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/12-monitoring-observability/12-01-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/12-monitoring-observability/12-01-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/12-monitoring-observability/12-02-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/12-monitoring-observability/12-02-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/12-monitoring-observability/12-CONTEXT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/12-monitoring-observability/12-VERIFICATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/13-operations-documentation/13-01-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/13-operations-documentation/13-01-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/13-operations-documentation/13-CONTEXT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v2.0-phases/13-operations-documentation/13-VERIFICATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-MILESTONE-AUDIT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-REQUIREMENTS.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-ROADMAP.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/14-correctness-production-hardening/14-01-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/14-correctness-production-hardening/14-01-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/14-correctness-production-hardening/14-02-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/14-correctness-production-hardening/14-02-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/14-correctness-production-hardening/14-03-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/14-correctness-production-hardening/14-03-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/14-correctness-production-hardening/14-CONTEXT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/14-correctness-production-hardening/14-RESEARCH.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/14-correctness-production-hardening/14-VERIFICATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/15-configuration-multi-domain-miner/15-01-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/15-configuration-multi-domain-miner/15-01-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/15-configuration-multi-domain-miner/15-02-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/15-configuration-multi-domain-miner/15-02-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/15-configuration-multi-domain-miner/15-CONTEXT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/15-configuration-multi-domain-miner/15-RESEARCH.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/15-configuration-multi-domain-miner/15-VALIDATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/15-configuration-multi-domain-miner/15-VERIFICATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/16-deployment-infrastructure/16-01-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/16-deployment-infrastructure/16-01-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/16-deployment-infrastructure/16-02-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/16-deployment-infrastructure/16-02-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/16-deployment-infrastructure/16-CONTEXT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/16-deployment-infrastructure/16-DISCUSSION-LOG.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/16-deployment-infrastructure/16-RESEARCH.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/16-deployment-infrastructure/16-VALIDATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/16-deployment-infrastructure/16-VERIFICATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/17-community-onboarding/17-01-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/17-community-onboarding/17-01-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/17-community-onboarding/17-02-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/17-community-onboarding/17-02-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/17-community-onboarding/17-CONTEXT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/17-community-onboarding/17-DISCUSSION-LOG.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/17-community-onboarding/17-RESEARCH.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/17-community-onboarding/17-VALIDATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v3.0-phases/17-community-onboarding/17-VERIFICATION.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v5.0-MILESTONE-AUDIT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v5.0-REQUIREMENTS.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v5.0-ROADMAP.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v6.0-MILESTONE-AUDIT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v6.0-REQUIREMENTS.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v6.0-ROADMAP.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v7.0-REQUIREMENTS.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/milestones/v7.0-ROADMAP.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/phases/102-commit-rebuild-mirror/102-01-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/phases/102-commit-rebuild-mirror/102-01-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/phases/102-commit-rebuild-mirror/102-02-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/phases/102-commit-rebuild-mirror/102-CONTEXT.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/phases/102-commit-rebuild-mirror/102-DISCUSSION-LOG.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/research/ARCHITECTURE.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/research/FEATURES-v1.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/research/FEATURES.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/research/PITFALLS.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/research/STACK.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/research/SUMMARY-v1.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/research/SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": "CHANGELOG.md",
+      "reason": "not-included"
+    },
+    {
+      "path": "CLAUDE.md",
+      "reason": "not-included"
+    },
+    {
+      "path": "PUBLIC_RELEASE.md",
+      "reason": "not-included"
+    },
+    {
+      "path": "docs/pitch/DISCORD-PARTNER-PITCH.md",
+      "reason": "excluded"
+    },
+    {
+      "path": "docs/pitch/TAO5-APPLICATION.md",
+      "reason": "excluded"
+    },
+    {
+      "path": "docs/pitch/YUMA-APPLICATION.md",
+      "reason": "excluded"
+    }
+  ],
+  "generated_at_utc": "2026-04-06T21:58:52.591769+00:00",
+  "generated_tree": "dist/public-mirror",
+  "included_count": 300,
+  "included_files": [
+    ".env.example",
+    ".env.phase94.example",
+    ".github/workflows/ci.yml",
+    ".gitignore",
+    ".zenodo.json",
+    "CITATION.cff",
+    "CONTRIBUTING.md",
+    "Dockerfile",
+    "LICENSE",
+    "Makefile",
+    "README.md",
+    "antigence_subnet.toml.example",
+    "antigence_subnet/__init__.py",
+    "antigence_subnet/api/__init__.py",
+    "antigence_subnet/api/health.py",
+    "antigence_subnet/api/metrics.py",
+    "antigence_subnet/api/trust_score.py",
+    "antigence_subnet/api/verify.py",
+    "antigence_subnet/base/__init__.py",
+    "antigence_subnet/base/miner.py",
+    "antigence_subnet/base/neuron.py",
+    "antigence_subnet/base/utils/__init__.py",
+    "antigence_subnet/base/utils/weight_utils.py",
+    "antigence_subnet/base/validator.py",
+    "antigence_subnet/miner/__init__.py",
+    "antigence_subnet/miner/data.py",
+    "antigence_subnet/miner/detector.py",
+    "antigence_subnet/miner/detectors/__init__.py",
+    "antigence_subnet/miner/detectors/autoencoder.py",
+    "antigence_subnet/miner/detectors/dendritic_features.py",
+    "antigence_subnet/miner/detectors/domain_packs/__init__.py",
+    "antigence_subnet/miner/detectors/domain_packs/bio/__init__.py",
+    "antigence_subnet/miner/detectors/domain_packs/bio/detector.py",
+    "antigence_subnet/miner/detectors/domain_packs/bio/features.py",
+    "antigence_subnet/miner/detectors/domain_packs/code_security/__init__.py",
+    "antigence_subnet/miner/detectors/domain_packs/code_security/detector.py",
+    "antigence_subnet/miner/detectors/domain_packs/code_security/features.py",
+    "antigence_subnet/miner/detectors/domain_packs/hallucination/__init__.py",
+    "antigence_subnet/miner/detectors/domain_packs/hallucination/detector.py",
+    "antigence_subnet/miner/detectors/domain_packs/hallucination/features.py",
+    "antigence_subnet/miner/detectors/domain_packs/reasoning/__init__.py",
+    "antigence_subnet/miner/detectors/domain_packs/reasoning/detector.py",
+    "antigence_subnet/miner/detectors/domain_packs/reasoning/features.py",
+    "antigence_subnet/miner/detectors/embeddings.py",
+    "antigence_subnet/miner/detectors/features.py",
+    "antigence_subnet/miner/detectors/fractal_complexity.py",
+    "antigence_subnet/miner/detectors/fractal_features.py",
+    "antigence_subnet/miner/detectors/isolation_forest.py",
+    "antigence_subnet/miner/detectors/negsel.py",
+    "antigence_subnet/miner/detectors/sklearn_backends.py",
+    "antigence_subnet/miner/ensemble.py",
+    "antigence_subnet/miner/forward.py",
+    "antigence_subnet/miner/orchestrator/__init__.py",
+    "antigence_subnet/miner/orchestrator/adaptive_weights.py",
+    "antigence_subnet/miner/orchestrator/b_cell.py",
+    "antigence_subnet/miner/orchestrator/cells.py",
+    "antigence_subnet/miner/orchestrator/config.py",
+    "antigence_subnet/miner/orchestrator/danger.py",
+    "antigence_subnet/miner/orchestrator/dendritic_cell.py",
+    "antigence_subnet/miner/orchestrator/feedback.py",
+    "antigence_subnet/miner/orchestrator/model_manager.py",
+    "antigence_subnet/miner/orchestrator/nk_cell.py",
+    "antigence_subnet/miner/orchestrator/orchestrator.py",
+    "antigence_subnet/miner/orchestrator/registry.py",
+    "antigence_subnet/miner/orchestrator/slm_nk_cell.py",
+    "antigence_subnet/miner/orchestrator/telemetry.py",
+    "antigence_subnet/mock.py",
+    "antigence_subnet/protocol.py",
+    "antigence_subnet/utils/__init__.py",
+    "antigence_subnet/utils/config.py",
+    "antigence_subnet/utils/config_file.py",
+    "antigence_subnet/utils/runtime_metrics.py",
+    "antigence_subnet/utils/structured_logging.py",
+    "antigence_subnet/utils/uids.py",
+    "antigence_subnet/validate_config.py",
+    "antigence_subnet/validator/__init__.py",
+    "antigence_subnet/validator/agreement.py",
+    "antigence_subnet/validator/calibration.py",
+    "antigence_subnet/validator/challenge.py",
+    "antigence_subnet/validator/cold_start.py",
+    "antigence_subnet/validator/collusion.py",
+    "antigence_subnet/validator/diversity.py",
+    "antigence_subnet/validator/evaluation.py",
+    "antigence_subnet/validator/forward.py",
+    "antigence_subnet/validator/metagraph_monitor.py",
+    "antigence_subnet/validator/microglia.py",
+    "antigence_subnet/validator/perturbation.py",
+    "antigence_subnet/validator/reward.py",
+    "antigence_subnet/validator/rotation.py",
+    "antigence_subnet/validator/scoring.py",
+    "antigence_subnet/validator/validation.py",
+    "antigence_subnet/validator/weight_audit.py",
+    "configs/profiles/aggressive.toml",
+    "configs/profiles/balanced.toml",
+    "configs/profiles/conservative.toml",
+    "configs/tuned/.gitkeep",
+    "data/audit/SUMMARY.md",
+    "data/audit/bio.json",
+    "data/audit/code_security.json",
+    "data/audit/hallucination.json",
+    "data/audit/reasoning.json",
+    "data/benchmarks/.gitkeep",
+    "data/benchmarks/phase81-nondeterminism-impact.json",
+    "data/benchmarks/phase83-scoring-variance.json",
+    "data/benchmarks/phase84-swarm-spike.json",
+    "data/benchmarks/phase92-continuous-benchmark.json",
+    "data/benchmarks/v9.2-baseline-detectors.json",
+    "data/benchmarks/v9.2-baseline-ollama-bio.json",
+    "data/benchmarks/v9.2-baseline-ollama-code_security.json",
+    "data/benchmarks/v9.2-baseline-ollama-hallucination.json",
+    "data/benchmarks/v9.2-baseline-ollama-reasoning.json",
+    "data/benchmarks/v9.2-baseline-orchestrator.json",
+    "data/benchmarks/v9.2-baseline-orchestrator.md",
+    "data/benchmarks/v9.2-baseline.json",
+    "data/evaluation/bio/generation_log.json",
+    "data/evaluation/bio/manifest.json",
+    "data/evaluation/bio/samples.json",
+    "data/evaluation/code_security/generation_log.json",
+    "data/evaluation/code_security/manifest.json",
+    "data/evaluation/code_security/samples.json",
+    "data/evaluation/hallucination/generation_log.json",
+    "data/evaluation/hallucination/manifest.json",
+    "data/evaluation/hallucination/samples.json",
+    "data/evaluation/reasoning/generation_log.json",
+    "data/evaluation/reasoning/manifest.json",
+    "data/evaluation/reasoning/samples.json",
+    "data/overwatch/phase81-nondeterminism-claims.json",
+    "data/overwatch/phase81-nondeterminism-writeback-report.json",
+    "data/overwatch/phase84-swarm-publications.json",
+    "data/overwatch/phase93-policy-claims.json",
+    "data/overwatch/phase93-policy-writeback-report.json",
+    "data/overwatch/registration-payload.json",
+    "data/tuning/.gitkeep",
+    "dev-requirements.txt",
+    "docker-compose.yml",
+    "docs/benchmarks/ensemble-combinations.json",
+    "docs/benchmarks/ensemble-combinations.md",
+    "docs/benchmarks/negsel-cross-domain.json",
+    "docs/benchmarks/negsel-cross-domain.md",
+    "docs/benchmarks/orchestrator-vs-ensemble.json",
+    "docs/benchmarks/orchestrator-vs-ensemble.md",
+    "docs/benchmarks/v9-orchestrator-benchmark.json",
+    "docs/benchmarks/v9-orchestrator-benchmark.md",
+    "docs/manuscript.md",
+    "docs/manuscript.pdf",
+    "docs/miner-training-data.md",
+    "docs/performance-tuning.md",
+    "docs/publication-strategy.md",
+    "docs/release/public-github-publish-checklist.md",
+    "docs/release/v10.0-release-notes.md",
+    "docs/release/v10.0-zenodo-handoff.md",
+    "docs/submission/arxiv-package/CHECKLIST.md",
+    "docs/submission/arxiv-package/manuscript.pdf",
+    "docs/submission/biorxiv-package/CHECKLIST.md",
+    "docs/submission/biorxiv-package/manuscript.pdf",
+    "docs/submission/biorxiv-package/supplementary-data.zip",
+    "docs/submission/computers-security-package/CHECKLIST.md",
+    "docs/submission/computers-security-package/COVER_LETTER.md",
+    "docs/submission/computers-security-package/FIGURE_NOTES.md",
+    "docs/submission/computers-security-package/SUPPLEMENTARY.md",
+    "docs/submission/computers-security-package/manuscript.pdf",
+    "docs/submission/computers-security-package/supplementary-data.zip",
+    "docs/testnet-setup.md",
+    "docs/troubleshooting.md",
+    "min_compute.yml",
+    "neurons/__init__.py",
+    "neurons/api_server.py",
+    "neurons/miner.py",
+    "neurons/validator.py",
+    "pyproject.toml",
+    "requirements-test.txt",
+    "requirements.txt",
+    "scripts/__init__.py",
+    "scripts/benchmark_all_strategies.py",
+    "scripts/benchmark_detectors.py",
+    "scripts/benchmark_orchestrator.py",
+    "scripts/build_public_mirror.py",
+    "scripts/combine_baselines.py",
+    "scripts/feature_audit.py",
+    "scripts/generate_eval_data.py",
+    "scripts/generate_phase94_governance_artifacts.py",
+    "scripts/ollama_test_harness.py",
+    "scripts/phase81_nondeterminism.py",
+    "scripts/phase83_scoring_benchmark.py",
+    "scripts/phase84_swarm_spike.py",
+    "scripts/phase92_continuous_benchmark.py",
+    "scripts/phase94_collect_metrics.py",
+    "scripts/phase94_preflight.py",
+    "scripts/run_api.sh",
+    "scripts/run_miner.sh",
+    "scripts/run_validator.sh",
+    "scripts/tune_orchestrator.py",
+    "scripts/validate_eval_data.py",
+    "scripts/validate_testnet.py",
+    "setup.py",
+    "tests/__init__.py",
+    "tests/conftest.py",
+    "tests/test_adaptive_weights.py",
+    "tests/test_api_retry.py",
+    "tests/test_autoencoder_parity.py",
+    "tests/test_b_cell.py",
+    "tests/test_baseline_integrity.py",
+    "tests/test_benchmark_negsel.py",
+    "tests/test_bio_pack.py",
+    "tests/test_blacklist_priority.py",
+    "tests/test_build_public_mirror.py",
+    "tests/test_calibration.py",
+    "tests/test_challenge.py",
+    "tests/test_challenge_rotation.py",
+    "tests/test_code_security_pack.py",
+    "tests/test_cold_start.py",
+    "tests/test_collusion.py",
+    "tests/test_config_externalization.py",
+    "tests/test_config_file.py",
+    "tests/test_config_profiles.py",
+    "tests/test_danger_modulator.py",
+    "tests/test_data_expansion.py",
+    "tests/test_dendritic_cell.py",
+    "tests/test_detectors.py",
+    "tests/test_domain_packs_integration.py",
+    "tests/test_domain_routing.py",
+    "tests/test_e2e_cycle.py",
+    "tests/test_ensemble.py",
+    "tests/test_eval_data_integrity.py",
+    "tests/test_evaluation.py",
+    "tests/test_evaluation_exclusion.py",
+    "tests/test_feature_audit.py",
+    "tests/test_feedback.py",
+    "tests/test_forward_hardened.py",
+    "tests/test_forward_integration.py",
+    "tests/test_fractal_complexity.py",
+    "tests/test_generate_eval_data.py",
+    "tests/test_hallucination_pack.py",
+    "tests/test_health_api.py",
+    "tests/test_hotkey_rotation.py",
+    "tests/test_immune_orchestrator.py",
+    "tests/test_immune_registry.py",
+    "tests/test_log_level.py",
+    "tests/test_metagraph_monitor.py",
+    "tests/test_metrics_api.py",
+    "tests/test_microglia.py",
+    "tests/test_microglia_integration.py",
+    "tests/test_miner.py",
+    "tests/test_miner_state_restore.py",
+    "tests/test_mock.py",
+    "tests/test_model_manager.py",
+    "tests/test_multi_domain_miner.py",
+    "tests/test_negsel.py",
+    "tests/test_network_integration.py",
+    "tests/test_nk_cell.py",
+    "tests/test_ollama_harness.py",
+    "tests/test_orchestrator_backward_compat.py",
+    "tests/test_orchestrator_benchmark.py",
+    "tests/test_orchestrator_config.py",
+    "tests/test_orchestrator_integration_e2e.py",
+    "tests/test_path_resolution.py",
+    "tests/test_perturbation.py",
+    "tests/test_phase81_nondeterminism.py",
+    "tests/test_phase83_scoring_benchmark.py",
+    "tests/test_phase92_benchmark_canon.py",
+    "tests/test_phase92_policy_metrics.py",
+    "tests/test_phase93_policy_claims.py",
+    "tests/test_phase93_policy_config.py",
+    "tests/test_phase93_policy_docs.py",
+    "tests/test_phase94_governance_artifacts.py",
+    "tests/test_phase94_preflight.py",
+    "tests/test_phase94_runtime_metrics.py",
+    "tests/test_phase95_report_contract.py",
+    "tests/test_phase96_release_artifacts.py",
+    "tests/test_phase97_submission_package.py",
+    "tests/test_protocol.py",
+    "tests/test_rate_limiter_purge.py",
+    "tests/test_reasoning_pack.py",
+    "tests/test_reference_miner.py",
+    "tests/test_resilience_miner.py",
+    "tests/test_resilience_state.py",
+    "tests/test_resilience_validator.py",
+    "tests/test_reward.py",
+    "tests/test_sbert_embedding.py",
+    "tests/test_scoring_modes.py",
+    "tests/test_signal_handling.py",
+    "tests/test_sklearn_backends.py",
+    "tests/test_sklearn_parity.py",
+    "tests/test_slm_nk_cell.py",
+    "tests/test_slm_nk_orchestrator.py",
+    "tests/test_spec_version.py",
+    "tests/test_state_persistence.py",
+    "tests/test_structured_logging.py",
+    "tests/test_swarm_spike.py",
+    "tests/test_telemetry.py",
+    "tests/test_trust_score_api.py",
+    "tests/test_tune_orchestrator.py",
+    "tests/test_validate_config.py",
+    "tests/test_validate_testnet.py",
+    "tests/test_validation.py",
+    "tests/test_validator.py",
+    "tests/test_validator_agreement.py",
+    "tests/test_verify_library.py",
+    "tests/test_weight_audit.py",
+    "tests/test_weight_utils.py"
+  ],
+  "manifest": "/tmp/antigence-mirror-build/99-public-mirror-manifest.json",
+  "manifest_rules": {
+    "approval_later_paths": [
+      "docs/pitch/TAO5-APPLICATION.md",
+      "docs/pitch/DISCORD-PARTNER-PITCH.md",
+      "docs/pitch/YUMA-APPLICATION.md",
+      "tests/",
+      "data/evaluation/",
+      "data/overwatch/",
+      "docs/manuscript.md",
+      "docs/manuscript.pdf",
+      "docs/publication-strategy.md",
+      "docs/submission/"
+    ],
+    "exclude_paths": [
+      "CLAUDE.md",
+      ".continue-here.md",
+      ".planning/HANDOFF.json",
+      ".planning/runs/",
+      ".antigence/",
+      ".claude/",
+      ".pytest_cache/",
+      ".ruff_cache/",
+      "PUBLIC_RELEASE.md",
+      "docs/pitch/",
+      "testnet-results/"
+    ],
+    "include_paths": [
+      ".github/",
+      ".env.example",
+      ".env.phase94.example",
+      ".gitignore",
+      ".planning/phases/94-testnet-deployment-of-winning-ensemble-policy/artifacts/governance/",
+      ".zenodo.json",
+      "CITATION.cff",
+      "CONTRIBUTING.md",
+      "Dockerfile",
+      "LICENSE",
+      "Makefile",
+      "README.md",
+      "antigence_subnet/",
+      "antigence_subnet.toml.example",
+      "configs/",
+      "data/",
+      "dev-requirements.txt",
+      "docker-compose.yml",
+      "docs/",
+      "min_compute.yml",
+      "neurons/",
+      "pyproject.toml",
+      "requirements-test.txt",
+      "requirements.txt",
+      "scripts/",
+      "setup.py",
+      "tests/"
+    ],
+    "mirror_only_paths": [
+      ".planning/"
+    ],
+    "rewrite_later_paths": [
+      "docs/testnet-setup.md",
+      "docs/troubleshooting.md",
+      "tests/test_network_integration.py"
+    ]
+  }
+}

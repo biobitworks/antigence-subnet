@@ -1,0 +1,48 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+*.egg
+dist/
+build/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+.claude/
+
+# Testing
+.pytest_cache/
+.coverage
+htmlcov/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Bittensor
+*.npz
+wallets/
+
+# Environment files (secrets)
+.env
+.env.phase94
+
+# Testnet validation artifacts
+testnet-results/
+
+# Auto-tuning runtime outputs (keep .gitkeep, ignore generated files)
+data/tuning/*.json
+configs/tuned/*.toml
+
+# GSD planning artifacts (keep in history but prevent future additions)
+.planning/

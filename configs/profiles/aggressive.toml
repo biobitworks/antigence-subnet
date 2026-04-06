@@ -1,0 +1,114 @@
+# Aggressive Profile -- Antigence Subnet
+# ========================================
+#
+# Purpose: Maximize recall (catch as many anomalies as possible), accepting
+# a higher false positive rate. Every detection subsystem runs at high
+# sensitivity with adaptive feedback enabled.
+#
+# Key behavioral differences from other profiles:
+#   - NK Cell z_threshold is low (2.0 vs 3.0 balanced) -- flags more
+#     outputs for full pipeline analysis.
+#   - DCA adaptive mode is ON -- signal weights adjust from evaluation
+#     outcomes rather than remaining static.
+#   - Danger Theory modulation active (alpha=0.3) with full contextual
+#     amplification.
+#   - B Cell memory has strong influence (weight=0.3) -- past detections
+#     heavily inform current scoring.
+#   - SLM NK similarity threshold very low (0.15) -- flags aggressively
+#     on semantic divergence.
+#   - Validator feedback loop enabled -- miner adapts from weight changes.
+#
+# When to use:
+#   - High-stakes environments where missed anomalies are more costly than
+#     false alarms (e.g., security auditing, safety-critical AI outputs).
+#   - Experienced operators comfortable tuning down from high sensitivity.
+#   - Miners competing for maximum detection coverage in validator scoring.
+#
+# Usage: cp configs/profiles/aggressive.toml antigence_subnet.toml
+
+[miner.orchestrator]
+enabled = true
+
+[miner.orchestrator.nk]
+z_threshold = 2.0
+
+[miner.orchestrator.dca]
+pamp_threshold = 0.2
+adaptive = true
+adapt_alpha = 0.1
+
+[miner.orchestrator.danger]
+alpha = 0.3
+enabled = true
+
+[miner.orchestrator.bcell]
+max_memory = 2000
+k = 7
+bcell_weight = 0.3
+half_life = 0.95
+eviction_threshold = 0.05
+jitter_sigma = 0.03
+embedding_mode = true
+embedding_sigma = 0.01
+
+[miner.orchestrator.slm_nk]
+enabled = true
+similarity_threshold = 0.15
+
+[miner.orchestrator.feedback]
+enabled = true
+lookback_rounds = 10
+
+[miner.orchestrator.telemetry]
+window_size = 200
+
+[miner.model]
+model_name = "all-MiniLM-L6-v2"
+device = "auto"
+
+# Challenge rotation -- aggressive uses smaller window for more sample variety
+[validator.rotation]
+enabled = true
+window = 5
+
+[validator.policy]
+mode = "global_threshold"
+high_threshold = 0.4
+low_threshold = 0.4
+min_confidence = 0.0
+
+# Collusion detection -- catches pairs, higher sim threshold to reduce false positives
+[validator.collusion]
+similarity_threshold = 0.995
+min_group_size = 2
+penalty = "zero"
+enabled = true
+
+# Per-domain overrides -- aggressive across all domains
+[miner.orchestrator.domains.hallucination]
+nk_z_threshold = 1.8
+dca_pamp_threshold = 0.15
+danger_alpha = 0.4
+danger_enabled = true
+slm_nk_similarity_threshold = 0.12
+
+[miner.orchestrator.domains.code_security]
+nk_z_threshold = 1.5
+dca_pamp_threshold = 0.15
+danger_alpha = 0.5
+danger_enabled = true
+slm_nk_similarity_threshold = 0.1
+
+[miner.orchestrator.domains.reasoning]
+nk_z_threshold = 2.0
+dca_pamp_threshold = 0.2
+danger_alpha = 0.35
+danger_enabled = true
+slm_nk_similarity_threshold = 0.15
+
+[miner.orchestrator.domains.bio]
+nk_z_threshold = 1.8
+dca_pamp_threshold = 0.15
+danger_alpha = 0.45
+danger_enabled = true
+slm_nk_similarity_threshold = 0.12

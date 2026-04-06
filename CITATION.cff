@@ -1,0 +1,34 @@
+cff-version: 1.2.0
+message: "If you use this software, cite the repository metadata below. A subnet-specific Zenodo DOI will be added after the v10 release handoff is completed."
+authors:
+  - name: "BiobitWorks"
+title: "Antigence Subnet: Decentralized Verification for AI Outputs on Bittensor"
+version: 10.0.0
+date-released: 2026-04-05
+repository-code: "https://github.com/biobitworks/antigence-bittensor"
+abstract: >-
+  A decentralized verification subnet for Bittensor where miners run anomaly
+  detectors (antibodies), validators apply selection pressure through hidden
+  evaluation datasets, and the network produces a shared trust score for AI
+  outputs. Transforms Antigence's immune-inspired self/non-self detection
+  paradigm into an economic incentive system. Verification-as-a-service:
+  any Bittensor subnet can consume the trust signal.
+license: MIT
+keywords:
+  - Bittensor
+  - subnet
+  - anomaly-detection
+  - Artificial Immune System
+  - Negative Selection
+  - LLM Safety
+  - verification-as-a-service
+  - decentralized-AI
+references:
+  - type: software
+    title: "Antigence: Bio-inspired Artificial Immune System for AI Verification"
+    doi: "10.5281/zenodo.18109862"
+    authors:
+      - name: "BiobitWorks"
+    version: 1.0.0
+    date-released: 2026-01-05
+    repository-code: "https://github.com/biobitworks/antigence-beta"

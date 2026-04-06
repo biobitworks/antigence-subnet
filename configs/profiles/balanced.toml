@@ -1,0 +1,105 @@
+# Balanced Profile -- Antigence Subnet
+# =====================================
+#
+# Purpose: Match current code defaults exactly. This is the safe starting
+# point -- upgrading from v7.0/v8.0 with this profile produces identical
+# behavior to the existing defaults.
+#
+# Key behavioral differences from other profiles:
+#   - All parameters match the code-level defaults in config.py.
+#   - Danger Theory is enabled with standard alpha (0.3).
+#   - B Cell memory has moderate influence (weight=0.2).
+#   - SLM NK operates at default sensitivity (0.3).
+#
+# When to use:
+#   - First-time orchestrator deployment (safe upgrade path).
+#   - General-purpose anomaly detection across mixed domains.
+#   - As a baseline before tuning toward conservative or aggressive.
+#
+# Usage: cp configs/profiles/balanced.toml antigence_subnet.toml
+
+[miner.orchestrator]
+enabled = true
+
+[miner.orchestrator.nk]
+z_threshold = 3.0
+
+[miner.orchestrator.dca]
+pamp_threshold = 0.3
+adaptive = false
+
+[miner.orchestrator.danger]
+alpha = 0.3
+enabled = true
+
+[miner.orchestrator.bcell]
+max_memory = 1000
+k = 5
+bcell_weight = 0.2
+half_life = 0.9
+eviction_threshold = 0.1
+jitter_sigma = 0.05
+embedding_mode = true
+embedding_sigma = 0.01
+
+[miner.orchestrator.slm_nk]
+enabled = true
+similarity_threshold = 0.3
+
+[miner.orchestrator.feedback]
+enabled = false
+lookback_rounds = 5
+
+[miner.orchestrator.telemetry]
+window_size = 100
+
+[miner.model]
+model_name = "all-MiniLM-L6-v2"
+device = "auto"
+
+# Challenge rotation -- balanced uses default window
+[validator.rotation]
+enabled = true
+window = 10
+
+[validator.policy]
+mode = "operator_multiband"
+high_threshold = 0.5
+low_threshold = 0.493536
+min_confidence = 0.6
+
+# Collusion detection -- default parameters
+[validator.collusion]
+similarity_threshold = 0.99
+min_group_size = 3
+penalty = "zero"
+enabled = true
+
+# Per-domain overrides -- use default values (match code defaults)
+[miner.orchestrator.domains.hallucination]
+nk_z_threshold = 3.0
+dca_pamp_threshold = 0.3
+danger_alpha = 0.3
+danger_enabled = true
+slm_nk_similarity_threshold = 0.3
+
+[miner.orchestrator.domains.code_security]
+nk_z_threshold = 3.0
+dca_pamp_threshold = 0.3
+danger_alpha = 0.3
+danger_enabled = true
+slm_nk_similarity_threshold = 0.3
+
+[miner.orchestrator.domains.reasoning]
+nk_z_threshold = 3.0
+dca_pamp_threshold = 0.3
+danger_alpha = 0.3
+danger_enabled = true
+slm_nk_similarity_threshold = 0.3
+
+[miner.orchestrator.domains.bio]
+nk_z_threshold = 3.0
+dca_pamp_threshold = 0.3
+danger_alpha = 0.3
+danger_enabled = true
+slm_nk_similarity_threshold = 0.3

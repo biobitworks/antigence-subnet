@@ -1,0 +1,108 @@
+# antigence_subnet.toml -- Antigence Subnet Configuration
+# CLI args override any value set here.
+# Copy to antigence_subnet.toml and customize.
+
+# Config Profiles
+# ---------------
+# Pre-built configuration presets are available in configs/profiles/:
+#   conservative.toml -- High thresholds, minimal false positives
+#   balanced.toml     -- Default parameters, safe starting point
+#   aggressive.toml   -- Low thresholds, maximum anomaly detection
+#
+# Usage: cp configs/profiles/balanced.toml antigence_subnet.toml
+# Then customize as needed. CLI args override any value set here.
+
+[neuron]
+device = "cpu"
+shutdown_timeout = 30
+
+[neuron.logging]
+level = "info"
+
+[validator]
+sample_size = 16
+timeout = 12.0
+moving_average_alpha = 0.1
+eval_domain = "hallucination"
+samples_per_round = 10
+n_honeypots = 2
+set_weights_interval = 100
+
+[validator.reward]
+base_weight = 0.70
+calibration_weight = 0.10
+robustness_weight = 0.10
+diversity_weight = 0.10
+
+[validator.policy]
+mode = "operator_multiband"
+high_threshold = 0.5
+low_threshold = 0.493536
+min_confidence = 0.6
+
+# Legacy compatibility alias for one release only:
+# [validator.reward]
+# decision_threshold = 0.5
+
+[validator.microglia]
+enabled = true
+interval = 100
+inactive_threshold = 10
+stale_threshold = 5
+deregistration_threshold = 50
+alert_cooldown = 10
+
+[miner]
+training_data_dir = "data/evaluation"
+
+[miner.detectors]
+# Optimal ensemble config (benchmark-validated 2026-03-31):
+#   hallucination: OCSVM+AE → F1=0.955 (vs 0.722 single HallPack)
+#   bio:           LOF+OCSVM+AE → F1=1.000 (vs 0.740 single BioPack)
+#   code_security: AE solo → F1=0.918 (ensemble doesn't improve)
+#   reasoning:     AE solo → F1=0.985 (ensemble doesn't improve)
+hallucination = [
+    "antigence_subnet.miner.detectors.sklearn_backends.OCSVMDetector",
+    "antigence_subnet.miner.detectors.autoencoder.AutoencoderDetector"
+]
+code_security = "antigence_subnet.miner.detectors.autoencoder.AutoencoderDetector"
+reasoning = "antigence_subnet.miner.detectors.autoencoder.AutoencoderDetector"
+bio = [
+    "antigence_subnet.miner.detectors.sklearn_backends.LOFDetector",
+    "antigence_subnet.miner.detectors.sklearn_backends.OCSVMDetector",
+    "antigence_subnet.miner.detectors.autoencoder.AutoencoderDetector"
+]
+
+# Domain pack fallback (CPU-only, no torch required):
+# hallucination = "antigence_subnet.miner.detectors.domain_packs.hallucination.detector.HallucinationDetector"
+# code_security = "antigence_subnet.miner.detectors.domain_packs.code_security.detector.CodeSecurityDetector"
+# reasoning = "antigence_subnet.miner.detectors.domain_packs.reasoning.detector.ReasoningDetector"
+# bio = "antigence_subnet.miner.detectors.domain_packs.bio.detector.BioDetector"
+
+# Immune orchestrator pipeline (v7.0+)
+# [miner.orchestrator]
+# enabled = true
+#
+# [miner.orchestrator.nk]
+# z_threshold = 3.0
+#
+# [miner.orchestrator.dca]
+# pamp_threshold = 0.3
+#
+# [miner.orchestrator.danger]
+# alpha = 0.3
+# enabled = true
+
+# Per-domain orchestrator overrides (optional).
+# Any omitted key falls back to the global [miner.orchestrator.*] value above.
+# [miner.orchestrator.domains.hallucination]
+# nk_z_threshold = 2.5
+# dca_pamp_threshold = 0.2
+# danger_alpha = 0.4
+#
+# [miner.orchestrator.domains.code_security]
+# nk_z_threshold = 2.0
+# danger_enabled = false
+
+[api]
+port = 8080

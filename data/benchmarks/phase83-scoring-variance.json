@@ -1,0 +1,448 @@
+{
+  "run_id": "phase83-20260402T211949Z",
+  "phase": "83",
+  "environment": {
+    "python_executable": "/Users/byron/projects/active/antigence-bittensor/.venv/bin/python",
+    "python_version": "3.13.9",
+    "ollama_version": "ollama version is 0.13.0",
+    "model": "qwen2.5:1.5b",
+    "timestamp": "2026-04-02T21:19:49.425396+00:00"
+  },
+  "config": {
+    "model": "qwen2.5:1.5b",
+    "rounds": 10,
+    "seed": 42,
+    "samples_per_round": 12,
+    "modes": [
+      "exact",
+      "statistical",
+      "semantic"
+    ],
+    "pilot_domain": "reasoning"
+  },
+  "pilot": {
+    "domain": "reasoning",
+    "rounds": 10,
+    "modes": {
+      "exact": {
+        "reward_spread": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "samples_per_round": 10
+      },
+      "statistical": {
+        "reward_spread": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "samples_per_round": 10
+      },
+      "semantic": {
+        "reward_spread": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples_per_round": 10
+      }
+    },
+    "threshold_evaluation": {
+      "exact": {
+        "target": ">15.0%",
+        "observed": 0.0,
+        "passed": false,
+        "status": "failed"
+      },
+      "statistical": {
+        "target": "descriptive-only",
+        "observed": 0.0,
+        "passed": null,
+        "status": "descriptive"
+      },
+      "semantic": {
+        "target": "<5.0%",
+        "observed": 0.0,
+        "passed": true,
+        "status": "passed"
+      }
+    }
+  },
+  "modes": [
+    "exact",
+    "statistical",
+    "semantic"
+  ],
+  "domains": {
+    "hallucination": {
+      "exact": {
+        "reward_spread": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "samples_per_round": 10
+      },
+      "statistical": {
+        "reward_spread": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "samples_per_round": 10
+      },
+      "semantic": {
+        "reward_spread": {
+          "mean": 0.8333333134651184,
+          "std": 0.0,
+          "min": 0.8333333134651184,
+          "max": 0.8333333134651184,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          0.8333333134651184,
+          0.8333333134651184,
+          0.8333333134651184,
+          0.8333333134651184,
+          0.8333333134651184,
+          0.8333333134651184,
+          0.8333333134651184,
+          0.8333333134651184,
+          0.8333333134651184,
+          0.8333333134651184
+        ],
+        "samples_per_round": 10
+      }
+    },
+    "code_security": {
+      "exact": {
+        "reward_spread": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "samples_per_round": 10
+      },
+      "statistical": {
+        "reward_spread": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "samples_per_round": 10
+      },
+      "semantic": {
+        "reward_spread": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples_per_round": 10
+      }
+    },
+    "reasoning": {
+      "exact": {
+        "reward_spread": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "samples_per_round": 10
+      },
+      "statistical": {
+        "reward_spread": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "samples_per_round": 10
+      },
+      "semantic": {
+        "reward_spread": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples_per_round": 10
+      }
+    },
+    "bio": {
+      "exact": {
+        "reward_spread": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "samples_per_round": 10
+      },
+      "statistical": {
+        "reward_spread": {
+          "mean": 1.0,
+          "std": 0.0,
+          "min": 1.0,
+          "max": 1.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0,
+          1.0
+        ],
+        "samples_per_round": 10
+      },
+      "semantic": {
+        "reward_spread": {
+          "mean": 0.0,
+          "std": 0.0,
+          "min": 0.0,
+          "max": 0.0,
+          "cv": 0.0,
+          "flip_count": 0,
+          "variance_pct": 0.0
+        },
+        "per_round_rewards": [
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0,
+          0.0
+        ],
+        "samples_per_round": 10
+      }
+    }
+  },
+  "threshold_evaluation": {
+    "exact": {
+      "target": ">15.0%",
+      "observed": 0.0,
+      "passed": false,
+      "status": "failed"
+    },
+    "statistical": {
+      "target": "descriptive-only",
+      "observed": 0.0,
+      "passed": null,
+      "status": "descriptive"
+    },
+    "semantic": {
+      "target": "<5.0%",
+      "observed": 0.0,
+      "passed": true,
+      "status": "passed"
+    }
+  },
+  "boundaries": {
+    "seed_compliance": "best-effort miner hint only; validator cannot prove compliance",
+    "swarm_scope": "swarm work remains out of scope for Phase 83"
+  }
+}

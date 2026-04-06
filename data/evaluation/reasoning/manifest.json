@@ -1,0 +1,1102 @@
+{
+  "eval-rea-001": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-002": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-003": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": true
+  },
+  "eval-rea-004": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-005": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-006": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-007": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-008": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-009": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-010": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-011": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-012": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-013": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-014": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-015": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-016": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-017": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-018": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": true
+  },
+  "eval-rea-019": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-020": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-021": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-022": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-023": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-024": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-025": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-026": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-027": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-028": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-029": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-030": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-031": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": true
+  },
+  "eval-rea-032": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-033": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-034": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-035": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-036": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-037": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-038": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-039": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-040": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-041": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-042": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": true
+  },
+  "eval-rea-043": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-044": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-045": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": true
+  },
+  "eval-rea-046": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-047": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": true
+  },
+  "eval-rea-048": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": true
+  },
+  "eval-rea-049": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-050": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-051": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-052": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-053": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "equivocation",
+    "is_honeypot": false
+  },
+  "eval-rea-054": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "unit_error",
+    "is_honeypot": false
+  },
+  "eval-rea-055": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "cherry_picking",
+    "is_honeypot": false
+  },
+  "eval-rea-056": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "interpretation_error",
+    "is_honeypot": false
+  },
+  "eval-rea-057": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "straw_man",
+    "is_honeypot": false
+  },
+  "eval-rea-058": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "adversarial_empty",
+    "is_honeypot": true
+  },
+  "eval-rea-059": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "adversarial_unicode",
+    "is_honeypot": false
+  },
+  "eval-rea-060": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "adversarial_repetition",
+    "is_honeypot": false
+  },
+  "eval-rea-061": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-062": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-063": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-064": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-065": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-066": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-067": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-068": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-069": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": true
+  },
+  "eval-rea-070": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-071": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-072": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-073": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-074": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-075": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-076": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-077": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-078": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-079": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-080": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-081": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-082": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-083": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-084": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-085": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-086": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-087": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-088": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-089": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-090": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-091": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-092": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-093": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-094": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-095": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-096": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-097": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-098": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-099": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-100": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-101": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-102": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-103": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-104": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-105": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-106": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-107": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-108": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-109": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-110": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-111": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-112": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-113": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-114": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-115": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-116": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-117": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-118": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-119": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-120": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-121": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-122": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-123": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-124": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-125": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-126": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-127": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-128": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-129": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-130": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-131": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-132": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-133": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-134": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-135": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-136": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-137": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-138": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-139": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-140": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-141": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-142": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-143": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-144": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-145": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-146": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-147": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-148": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-149": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-150": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-151": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-152": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-153": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-154": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-155": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-156": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-157": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-158": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-159": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-160": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-161": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-162": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-163": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-164": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-165": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-166": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-167": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-168": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-169": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-170": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-171": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-172": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-173": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-174": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": true
+  },
+  "eval-rea-175": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-176": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-177": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-178": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-179": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-180": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-181": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-182": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-183": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-184": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-185": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-186": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-187": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-188": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-189": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-190": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-191": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-192": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-193": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-194": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-195": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-196": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-197": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-198": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-199": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-200": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "arithmetic_error",
+    "is_honeypot": false
+  },
+  "eval-rea-201": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-202": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-203": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-204": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_fallacy",
+    "is_honeypot": false
+  },
+  "eval-rea-205": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-206": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-207": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-208": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-209": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-210": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "logical_contradiction",
+    "is_honeypot": false
+  },
+  "eval-rea-211": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-212": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-213": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-214": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-215": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "circular_reasoning",
+    "is_honeypot": false
+  },
+  "eval-rea-216": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": true
+  },
+  "eval-rea-217": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  },
+  "eval-rea-218": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-rea-219": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "constraint_violation",
+    "is_honeypot": false
+  },
+  "eval-rea-220": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "non_sequitur",
+    "is_honeypot": false
+  }
+}

@@ -1,0 +1,1078 @@
+{
+  "harness_version": "1.0",
+  "timestamp": "2026-04-02T14:35:57.563782+00:00",
+  "config": {
+    "model": "qwen2.5:1.5b",
+    "detector": "IsolationForest",
+    "domain": "bio",
+    "rounds": 50,
+    "samples_per_round": 20
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.125,
+        "precision": 0.16666666666666666,
+        "recall": 0.1,
+        "accuracy": 0.3,
+        "reward": 0.14666666666666667
+      },
+      "latency": {
+        "ollama_generate_ms": 646.421458,
+        "detection_avg_ms": 2.6516978978179395,
+        "detection_total_ms": 53.03395795635879,
+        "round_total_ms": 2116.3551670033485
+      },
+      "samples_evaluated": 20,
+      "seed": 42
+    },
+    {
+      "round": 2,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.13333333333333333,
+        "precision": 0.2,
+        "recall": 0.1,
+        "accuracy": 0.35,
+        "reward": 0.16999999999999998
+      },
+      "latency": {
+        "ollama_generate_ms": 519.770375,
+        "detection_avg_ms": 4.075491700496059,
+        "detection_total_ms": 81.50983400992118,
+        "round_total_ms": 709.7015419858508
+      },
+      "samples_evaluated": 20,
+      "seed": 43
+    },
+    {
+      "round": 3,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.3,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 611.691292,
+        "detection_avg_ms": 2.655189545475878,
+        "detection_total_ms": 53.103790909517556,
+        "round_total_ms": 746.9519169826526
+      },
+      "samples_evaluated": 20,
+      "seed": 44
+    },
+    {
+      "round": 4,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.1,
+        "precision": 0.16666666666666666,
+        "recall": 0.07142857142857142,
+        "accuracy": 0.1,
+        "reward": 0.13809523809523808
+      },
+      "latency": {
+        "ollama_generate_ms": 1576.329916,
+        "detection_avg_ms": 2.9849520986317657,
+        "detection_total_ms": 59.699041972635314,
+        "round_total_ms": 1725.4230409744196
+      },
+      "samples_evaluated": 20,
+      "seed": 45
+    },
+    {
+      "round": 5,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.19999999999999998,
+        "precision": 0.2222222222222222,
+        "recall": 0.18181818181818182,
+        "accuracy": 0.2,
+        "reward": 0.21010101010101007
+      },
+      "latency": {
+        "ollama_generate_ms": 3724.562792,
+        "detection_avg_ms": 3.150133245799225,
+        "detection_total_ms": 63.0026649159845,
+        "round_total_ms": 3880.5370409972966
+      },
+      "samples_evaluated": 20,
+      "seed": 46
+    },
+    {
+      "round": 6,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.26666666666666666,
+        "precision": 0.4,
+        "recall": 0.2,
+        "accuracy": 0.45,
+        "reward": 0.33999999999999997
+      },
+      "latency": {
+        "ollama_generate_ms": 3738.342792,
+        "detection_avg_ms": 2.3646979505429044,
+        "detection_total_ms": 47.29395901085809,
+        "round_total_ms": 3853.077874984592
+      },
+      "samples_evaluated": 20,
+      "seed": 47
+    },
+    {
+      "round": 7,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.2,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 474.146125,
+        "detection_avg_ms": 2.354247943731025,
+        "detection_total_ms": 47.0849588746205,
+        "round_total_ms": 579.6774160116911
+      },
+      "samples_evaluated": 20,
+      "seed": 48
+    },
+    {
+      "round": 8,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.2,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 606.385292,
+        "detection_avg_ms": 2.581354150606785,
+        "detection_total_ms": 51.6270830121357,
+        "round_total_ms": 719.5223330054432
+      },
+      "samples_evaluated": 20,
+      "seed": 49
+    },
+    {
+      "round": 9,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.25,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 3312.156625,
+        "detection_avg_ms": 2.7872082515386865,
+        "detection_total_ms": 55.74416503077373,
+        "round_total_ms": 3432.2325839893892
+      },
+      "samples_evaluated": 20,
+      "seed": 50
+    },
+    {
+      "round": 10,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.35,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 3040.138958,
+        "detection_avg_ms": 2.3483647004468367,
+        "detection_total_ms": 46.96729400893673,
+        "round_total_ms": 3147.207666974282
+      },
+      "samples_evaluated": 20,
+      "seed": 51
+    },
+    {
+      "round": 11,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.14285714285714288,
+        "precision": 0.16666666666666666,
+        "recall": 0.125,
+        "accuracy": 0.4,
+        "reward": 0.15416666666666665
+      },
+      "latency": {
+        "ollama_generate_ms": 3287.455958,
+        "detection_avg_ms": 2.2541084530530497,
+        "detection_total_ms": 45.082169061060995,
+        "round_total_ms": 3395.374665997224
+      },
+      "samples_evaluated": 20,
+      "seed": 52
+    },
+    {
+      "round": 12,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.3,
+        "precision": 0.375,
+        "recall": 0.25,
+        "accuracy": 0.3,
+        "reward": 0.33749999999999997
+      },
+      "latency": {
+        "ollama_generate_ms": 413.298083,
+        "detection_avg_ms": 2.3014020000118762,
+        "detection_total_ms": 46.028040000237525,
+        "round_total_ms": 520.640833012294
+      },
+      "samples_evaluated": 20,
+      "seed": 53
+    },
+    {
+      "round": 13,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.4,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 2424.187625,
+        "detection_avg_ms": 2.3683103019720875,
+        "detection_total_ms": 47.36620603944175,
+        "round_total_ms": 2544.017584004905
+      },
+      "samples_evaluated": 20,
+      "seed": 54
+    },
+    {
+      "round": 14,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.23529411764705882,
+        "precision": 0.2857142857142857,
+        "recall": 0.2,
+        "accuracy": 0.35,
+        "reward": 0.26
+      },
+      "latency": {
+        "ollama_generate_ms": 3009.551125,
+        "detection_avg_ms": 2.55672719940776,
+        "detection_total_ms": 51.1345439881552,
+        "round_total_ms": 3125.1638749963604
+      },
+      "samples_evaluated": 20,
+      "seed": 55
+    },
+    {
+      "round": 15,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.25,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 3092.566709,
+        "detection_avg_ms": 2.532100002281368,
+        "detection_total_ms": 50.642000045627356,
+        "round_total_ms": 3203.5756669938564
+      },
+      "samples_evaluated": 20,
+      "seed": 56
+    },
+    {
+      "round": 16,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.125,
+        "precision": 0.16666666666666666,
+        "recall": 0.1,
+        "accuracy": 0.3,
+        "reward": 0.14666666666666667
+      },
+      "latency": {
+        "ollama_generate_ms": 308.012708,
+        "detection_avg_ms": 2.2920729490579106,
+        "detection_total_ms": 45.84145898115821,
+        "round_total_ms": 415.2300000132527
+      },
+      "samples_evaluated": 20,
+      "seed": 57
+    },
+    {
+      "round": 17,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.2222222222222222,
+        "precision": 0.4,
+        "recall": 0.15384615384615385,
+        "accuracy": 0.3,
+        "reward": 0.3261538461538461
+      },
+      "latency": {
+        "ollama_generate_ms": 3326.625959,
+        "detection_avg_ms": 2.550729153153952,
+        "detection_total_ms": 51.014583063079044,
+        "round_total_ms": 3446.9304160156753
+      },
+      "samples_evaluated": 20,
+      "seed": 58
+    },
+    {
+      "round": 18,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.15,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 748.601416,
+        "detection_avg_ms": 2.2955834050662816,
+        "detection_total_ms": 45.91166810132563,
+        "round_total_ms": 856.4262079889886
+      },
+      "samples_evaluated": 20,
+      "seed": 59
+    },
+    {
+      "round": 19,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.3333333333333333,
+        "precision": 0.5,
+        "recall": 0.25,
+        "accuracy": 0.4,
+        "reward": 0.425
+      },
+      "latency": {
+        "ollama_generate_ms": 640.554416,
+        "detection_avg_ms": 2.3272083504707552,
+        "detection_total_ms": 46.544167009415105,
+        "round_total_ms": 761.2683330080472
+      },
+      "samples_evaluated": 20,
+      "seed": 60
+    },
+    {
+      "round": 20,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.11111111111111112,
+        "precision": 0.25,
+        "recall": 0.07142857142857142,
+        "accuracy": 0.2,
+        "reward": 0.19642857142857142
+      },
+      "latency": {
+        "ollama_generate_ms": 2699.467917,
+        "detection_avg_ms": 2.39497909497004,
+        "detection_total_ms": 47.8995818994008,
+        "round_total_ms": 2811.3213749893475
+      },
+      "samples_evaluated": 20,
+      "seed": 61
+    },
+    {
+      "round": 21,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.18181818181818182,
+        "precision": 0.3333333333333333,
+        "recall": 0.125,
+        "accuracy": 0.1,
+        "reward": 0.2708333333333333
+      },
+      "latency": {
+        "ollama_generate_ms": 488.822625,
+        "detection_avg_ms": 2.3666665540076792,
+        "detection_total_ms": 47.333331080153584,
+        "round_total_ms": 597.4387919995934
+      },
+      "samples_evaluated": 20,
+      "seed": 62
+    },
+    {
+      "round": 22,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.4,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 490.890292,
+        "detection_avg_ms": 2.455631145858206,
+        "detection_total_ms": 49.11262291716412,
+        "round_total_ms": 607.0542499946896
+      },
+      "samples_evaluated": 20,
+      "seed": 63
+    },
+    {
+      "round": 23,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.05,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 572.000792,
+        "detection_avg_ms": 2.2950061975279823,
+        "detection_total_ms": 45.900123950559646,
+        "round_total_ms": 680.167208018247
+      },
+      "samples_evaluated": 20,
+      "seed": 64
+    },
+    {
+      "round": 24,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.1111111111111111,
+        "precision": 0.16666666666666666,
+        "recall": 0.08333333333333333,
+        "accuracy": 0.2,
+        "reward": 0.14166666666666666
+      },
+      "latency": {
+        "ollama_generate_ms": 3176.384542,
+        "detection_avg_ms": 3.1518125935690477,
+        "detection_total_ms": 63.036251871380955,
+        "round_total_ms": 3315.841708012158
+      },
+      "samples_evaluated": 20,
+      "seed": 65
+    },
+    {
+      "round": 25,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.10526315789473685,
+        "precision": 0.1111111111111111,
+        "recall": 0.1,
+        "accuracy": 0.15,
+        "reward": 0.10777777777777776
+      },
+      "latency": {
+        "ollama_generate_ms": 2346.536292,
+        "detection_avg_ms": 2.540999953635037,
+        "detection_total_ms": 50.81999907270074,
+        "round_total_ms": 2457.9898749943823
+      },
+      "samples_evaluated": 20,
+      "seed": 66
+    },
+    {
+      "round": 26,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.1111111111111111,
+        "precision": 0.16666666666666666,
+        "recall": 0.08333333333333333,
+        "accuracy": 0.2,
+        "reward": 0.14166666666666666
+      },
+      "latency": {
+        "ollama_generate_ms": 2565.245792,
+        "detection_avg_ms": 2.336193702649325,
+        "detection_total_ms": 46.7238740529865,
+        "round_total_ms": 2675.32987499726
+      },
+      "samples_evaluated": 20,
+      "seed": 67
+    },
+    {
+      "round": 27,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.45,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 1743.845333,
+        "detection_avg_ms": 2.3107499961042777,
+        "detection_total_ms": 46.21499992208555,
+        "round_total_ms": 1854.6831250132527
+      },
+      "samples_evaluated": 20,
+      "seed": 68
+    },
+    {
+      "round": 28,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.11764705882352942,
+        "precision": 0.16666666666666666,
+        "recall": 0.09090909090909091,
+        "accuracy": 0.25,
+        "reward": 0.14393939393939392
+      },
+      "latency": {
+        "ollama_generate_ms": 455.872208,
+        "detection_avg_ms": 2.362556350999512,
+        "detection_total_ms": 47.251127019990236,
+        "round_total_ms": 563.342040986754
+      },
+      "samples_evaluated": 20,
+      "seed": 69
+    },
+    {
+      "round": 29,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.10526315789473684,
+        "precision": 0.16666666666666666,
+        "recall": 0.07692307692307693,
+        "accuracy": 0.15,
+        "reward": 0.13974358974358975
+      },
+      "latency": {
+        "ollama_generate_ms": 669.074375,
+        "detection_avg_ms": 2.424693798820954,
+        "detection_total_ms": 48.493875976419076,
+        "round_total_ms": 778.9032080036122
+      },
+      "samples_evaluated": 20,
+      "seed": 70
+    },
+    {
+      "round": 30,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.2,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 2507.190375,
+        "detection_avg_ms": 2.4219332946813665,
+        "detection_total_ms": 48.43866589362733,
+        "round_total_ms": 2620.206583000254
+      },
+      "samples_evaluated": 20,
+      "seed": 71
+    },
+    {
+      "round": 31,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.13333333333333333,
+        "precision": 0.14285714285714285,
+        "recall": 0.125,
+        "accuracy": 0.35,
+        "reward": 0.13749999999999998
+      },
+      "latency": {
+        "ollama_generate_ms": 1454.231333,
+        "detection_avg_ms": 2.3629456976777874,
+        "detection_total_ms": 47.25891395355575,
+        "round_total_ms": 1566.2470000097528
+      },
+      "samples_evaluated": 20,
+      "seed": 72
+    },
+    {
+      "round": 32,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.25,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 3413.337416,
+        "detection_avg_ms": 2.354133248445578,
+        "detection_total_ms": 47.08266496891156,
+        "round_total_ms": 3526.326541992603
+      },
+      "samples_evaluated": 20,
+      "seed": 73
+    },
+    {
+      "round": 33,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.23529411764705882,
+        "precision": 0.2857142857142857,
+        "recall": 0.2,
+        "accuracy": 0.35,
+        "reward": 0.26
+      },
+      "latency": {
+        "ollama_generate_ms": 530.880292,
+        "detection_avg_ms": 2.10555414960254,
+        "detection_total_ms": 42.1110829920508,
+        "round_total_ms": 634.7585420007817
+      },
+      "samples_evaluated": 20,
+      "seed": 74
+    },
+    {
+      "round": 34,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.10526315789473685,
+        "precision": 0.1111111111111111,
+        "recall": 0.1,
+        "accuracy": 0.15,
+        "reward": 0.10777777777777776
+      },
+      "latency": {
+        "ollama_generate_ms": 3089.908166,
+        "detection_avg_ms": 2.382641648000572,
+        "detection_total_ms": 47.65283296001144,
+        "round_total_ms": 3227.6119159942027
+      },
+      "samples_evaluated": 20,
+      "seed": 75
+    },
+    {
+      "round": 35,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.14285714285714285,
+        "precision": 0.5,
+        "recall": 0.08333333333333333,
+        "accuracy": 0.4,
+        "reward": 0.375
+      },
+      "latency": {
+        "ollama_generate_ms": 326.5575,
+        "detection_avg_ms": 2.4796374564175494,
+        "detection_total_ms": 49.59274912835099,
+        "round_total_ms": 442.739416990662
+      },
+      "samples_evaluated": 20,
+      "seed": 76
+    },
+    {
+      "round": 36,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.25,
+        "precision": 0.25,
+        "recall": 0.25,
+        "accuracy": 0.4,
+        "reward": 0.25
+      },
+      "latency": {
+        "ollama_generate_ms": 2656.663625,
+        "detection_avg_ms": 3.0870042537571862,
+        "detection_total_ms": 61.740085075143725,
+        "round_total_ms": 2781.7481250094716
+      },
+      "samples_evaluated": 20,
+      "seed": 77
+    },
+    {
+      "round": 37,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.15,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 686.240166,
+        "detection_avg_ms": 2.5195416441420093,
+        "detection_total_ms": 50.390832882840186,
+        "round_total_ms": 803.1051250000019
+      },
+      "samples_evaluated": 20,
+      "seed": 78
+    },
+    {
+      "round": 38,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.35,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 456.330792,
+        "detection_avg_ms": 2.4108542027533986,
+        "detection_total_ms": 48.21708405506797,
+        "round_total_ms": 576.9417920091655
+      },
+      "samples_evaluated": 20,
+      "seed": 79
+    },
+    {
+      "round": 39,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.5,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 295.620791,
+        "detection_avg_ms": 3.671104248496704,
+        "detection_total_ms": 73.42208496993408,
+        "round_total_ms": 472.79749999870546
+      },
+      "samples_evaluated": 20,
+      "seed": 80
+    },
+    {
+      "round": 40,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.11111111111111112,
+        "precision": 0.125,
+        "recall": 0.1,
+        "accuracy": 0.2,
+        "reward": 0.1175
+      },
+      "latency": {
+        "ollama_generate_ms": 389.061833,
+        "detection_avg_ms": 3.1188751469017006,
+        "detection_total_ms": 62.37750293803401,
+        "round_total_ms": 524.1384170076344
+      },
+      "samples_evaluated": 20,
+      "seed": 81
+    },
+    {
+      "round": 41,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.25,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 2653.533167,
+        "detection_avg_ms": 2.772691748396028,
+        "detection_total_ms": 55.45383496792056,
+        "round_total_ms": 2785.9290420019533
+      },
+      "samples_evaluated": 20,
+      "seed": 82
+    },
+    {
+      "round": 42,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.10526315789473685,
+        "precision": 0.14285714285714285,
+        "recall": 0.08333333333333333,
+        "accuracy": 0.15,
+        "reward": 0.12499999999999999
+      },
+      "latency": {
+        "ollama_generate_ms": 862.576208,
+        "detection_avg_ms": 2.797560251201503,
+        "detection_total_ms": 55.95120502403006,
+        "round_total_ms": 988.0744999973103
+      },
+      "samples_evaluated": 20,
+      "seed": 83
+    },
+    {
+      "round": 43,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.25,
+        "precision": 0.3333333333333333,
+        "recall": 0.2,
+        "accuracy": 0.4,
+        "reward": 0.29333333333333333
+      },
+      "latency": {
+        "ollama_generate_ms": 513.511667,
+        "detection_avg_ms": 2.9060772038064897,
+        "detection_total_ms": 58.121544076129794,
+        "round_total_ms": 634.9367919901852
+      },
+      "samples_evaluated": 20,
+      "seed": 84
+    },
+    {
+      "round": 44,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.0,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 358.025666,
+        "detection_avg_ms": 3.417260399146471,
+        "detection_total_ms": 68.34520798292942,
+        "round_total_ms": 515.968208987033
+      },
+      "samples_evaluated": 20,
+      "seed": 85
+    },
+    {
+      "round": 45,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.2,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 712.426167,
+        "detection_avg_ms": 3.8395792493247427,
+        "detection_total_ms": 76.79158498649485,
+        "round_total_ms": 900.3895829955582
+      },
+      "samples_evaluated": 20,
+      "seed": 86
+    },
+    {
+      "round": 46,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.3,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 3396.628666,
+        "detection_avg_ms": 2.2505750515847467,
+        "detection_total_ms": 45.011501031694934,
+        "round_total_ms": 3504.8965829773806
+      },
+      "samples_evaluated": 20,
+      "seed": 87
+    },
+    {
+      "round": 47,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.11764705882352941,
+        "precision": 0.25,
+        "recall": 0.07692307692307693,
+        "accuracy": 0.25,
+        "reward": 0.19807692307692307
+      },
+      "latency": {
+        "ollama_generate_ms": 393.092625,
+        "detection_avg_ms": 2.3282915542949922,
+        "detection_total_ms": 46.565831085899845,
+        "round_total_ms": 507.7315000235103
+      },
+      "samples_evaluated": 20,
+      "seed": 88
+    },
+    {
+      "round": 48,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.11764705882352941,
+        "precision": 0.1,
+        "recall": 0.14285714285714285,
+        "accuracy": 0.25,
+        "reward": 0.11285714285714285
+      },
+      "latency": {
+        "ollama_generate_ms": 3028.086792,
+        "detection_avg_ms": 2.3250915997778066,
+        "detection_total_ms": 46.50183199555613,
+        "round_total_ms": 3137.4632920196746
+      },
+      "samples_evaluated": 20,
+      "seed": 89
+    },
+    {
+      "round": 49,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.3,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 3270.28775,
+        "detection_avg_ms": 2.3210043014842086,
+        "detection_total_ms": 46.42008602968417,
+        "round_total_ms": 3378.051041974686
+      },
+      "samples_evaluated": 20,
+      "seed": 90
+    },
+    {
+      "round": 50,
+      "domain": "bio",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.25,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 557.618167,
+        "detection_avg_ms": 2.31056880147662,
+        "detection_total_ms": 46.2113760295324,
+        "round_total_ms": 664.6903340006247
+      },
+      "samples_evaluated": 20,
+      "seed": 91
+    }
+  ],
+  "summary": {
+    "avg_f1": 0.09190895688418908,
+    "avg_precision": 0.13303174603174603,
+    "avg_recall": 0.07448934398934398,
+    "std_f1": 0.09600781577119902,
+    "std_precision": 0.1450157149110972,
+    "std_recall": 0.07901356553239001,
+    "avg_reward": 0.1154690254190254,
+    "std_reward": 0.12239166105021954,
+    "avg_ollama_latency_ms": 1645.21497912,
+    "avg_detection_latency_ms": 2.605075876781484,
+    "total_rounds": 50,
+    "total_samples": 1000,
+    "total_time_s": 89.72747924999567
+  }
+}

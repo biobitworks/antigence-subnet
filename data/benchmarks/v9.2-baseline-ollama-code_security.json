@@ -1,0 +1,1078 @@
+{
+  "harness_version": "1.0",
+  "timestamp": "2026-04-02T14:31:56.916097+00:00",
+  "config": {
+    "model": "qwen2.5:1.5b",
+    "detector": "IsolationForest",
+    "domain": "code_security",
+    "rounds": 50,
+    "samples_per_round": 20
+  },
+  "rounds": [
+    {
+      "round": 1,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.23529411764705882,
+        "precision": 0.2857142857142857,
+        "recall": 0.2,
+        "accuracy": 0.35,
+        "reward": 0.26
+      },
+      "latency": {
+        "ollama_generate_ms": 1323.204709,
+        "detection_avg_ms": 1.8623665979248472,
+        "detection_total_ms": 37.24733195849694,
+        "round_total_ms": 2836.4311660116073
+      },
+      "samples_evaluated": 20,
+      "seed": 42
+    },
+    {
+      "round": 2,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.13333333333333333,
+        "precision": 0.2,
+        "recall": 0.1,
+        "accuracy": 0.35,
+        "reward": 0.16999999999999998
+      },
+      "latency": {
+        "ollama_generate_ms": 939.680708,
+        "detection_avg_ms": 2.0484313019551337,
+        "detection_total_ms": 40.96862603910267,
+        "round_total_ms": 1041.3217499735765
+      },
+      "samples_evaluated": 20,
+      "seed": 43
+    },
+    {
+      "round": 3,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.14285714285714285,
+        "precision": 0.2,
+        "recall": 0.1111111111111111,
+        "accuracy": 0.4,
+        "reward": 0.1733333333333333
+      },
+      "latency": {
+        "ollama_generate_ms": 1313.451583,
+        "detection_avg_ms": 1.913947844877839,
+        "detection_total_ms": 38.27895689755678,
+        "round_total_ms": 1415.2415420103353
+      },
+      "samples_evaluated": 20,
+      "seed": 44
+    },
+    {
+      "round": 4,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.21052631578947364,
+        "precision": 0.4,
+        "recall": 0.14285714285714285,
+        "accuracy": 0.25,
+        "reward": 0.32285714285714284
+      },
+      "latency": {
+        "ollama_generate_ms": 1467.541875,
+        "detection_avg_ms": 1.869183249073103,
+        "detection_total_ms": 37.38366498146206,
+        "round_total_ms": 1562.72929100669
+      },
+      "samples_evaluated": 20,
+      "seed": 45
+    },
+    {
+      "round": 5,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.23529411764705885,
+        "precision": 0.3333333333333333,
+        "recall": 0.18181818181818182,
+        "accuracy": 0.35,
+        "reward": 0.28787878787878785
+      },
+      "latency": {
+        "ollama_generate_ms": 3412.65525,
+        "detection_avg_ms": 2.469153954007197,
+        "detection_total_ms": 49.38307908014394,
+        "round_total_ms": 3562.2244580008555
+      },
+      "samples_evaluated": 20,
+      "seed": 46
+    },
+    {
+      "round": 6,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.25,
+        "precision": 0.3333333333333333,
+        "recall": 0.2,
+        "accuracy": 0.4,
+        "reward": 0.29333333333333333
+      },
+      "latency": {
+        "ollama_generate_ms": 2363.994458,
+        "detection_avg_ms": 2.181612550339196,
+        "detection_total_ms": 43.63225100678392,
+        "round_total_ms": 2471.5714170015417
+      },
+      "samples_evaluated": 20,
+      "seed": 47
+    },
+    {
+      "round": 7,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.14285714285714288,
+        "precision": 0.16666666666666666,
+        "recall": 0.125,
+        "accuracy": 0.4,
+        "reward": 0.15416666666666665
+      },
+      "latency": {
+        "ollama_generate_ms": 883.063042,
+        "detection_avg_ms": 1.995177095523104,
+        "detection_total_ms": 39.90354191046208,
+        "round_total_ms": 993.152083014138
+      },
+      "samples_evaluated": 20,
+      "seed": 48
+    },
+    {
+      "round": 8,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.125,
+        "precision": 0.25,
+        "recall": 0.08333333333333333,
+        "accuracy": 0.3,
+        "reward": 0.19999999999999998
+      },
+      "latency": {
+        "ollama_generate_ms": 1777.987208,
+        "detection_avg_ms": 2.113141653535422,
+        "detection_total_ms": 42.26283307070844,
+        "round_total_ms": 1882.616999995662
+      },
+      "samples_evaluated": 20,
+      "seed": 49
+    },
+    {
+      "round": 9,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.35,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 1233.409042,
+        "detection_avg_ms": 1.9086666012299247,
+        "detection_total_ms": 38.173332024598494,
+        "round_total_ms": 1333.9672909933142
+      },
+      "samples_evaluated": 20,
+      "seed": 50
+    },
+    {
+      "round": 10,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.35,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 2206.919541,
+        "detection_avg_ms": 1.9680980491102673,
+        "detection_total_ms": 39.361960982205346,
+        "round_total_ms": 2313.6257079895586
+      },
+      "samples_evaluated": 20,
+      "seed": 51
+    },
+    {
+      "round": 11,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.4615384615384615,
+        "precision": 0.6,
+        "recall": 0.375,
+        "accuracy": 0.65,
+        "reward": 0.5325
+      },
+      "latency": {
+        "ollama_generate_ms": 2000.214125,
+        "detection_avg_ms": 1.9758687049034052,
+        "detection_total_ms": 39.5173740980681,
+        "round_total_ms": 2104.4566659838893
+      },
+      "samples_evaluated": 20,
+      "seed": 52
+    },
+    {
+      "round": 12,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.26666666666666666,
+        "precision": 0.6666666666666666,
+        "recall": 0.16666666666666666,
+        "accuracy": 0.45,
+        "reward": 0.5166666666666666
+      },
+      "latency": {
+        "ollama_generate_ms": 1441.095375,
+        "detection_avg_ms": 1.7979396507143974,
+        "detection_total_ms": 35.95879301428795,
+        "round_total_ms": 1544.3914999777917
+      },
+      "samples_evaluated": 20,
+      "seed": 53
+    },
+    {
+      "round": 13,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.16666666666666669,
+        "precision": 0.5,
+        "recall": 0.1,
+        "accuracy": 0.5,
+        "reward": 0.38
+      },
+      "latency": {
+        "ollama_generate_ms": 955.899542,
+        "detection_avg_ms": 1.983160397503525,
+        "detection_total_ms": 39.6632079500705,
+        "round_total_ms": 1057.0289579918608
+      },
+      "samples_evaluated": 20,
+      "seed": 54
+    },
+    {
+      "round": 14,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.25,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 1966.866417,
+        "detection_avg_ms": 1.9636562981759198,
+        "detection_total_ms": 39.273125963518396,
+        "round_total_ms": 2073.752833995968
+      },
+      "samples_evaluated": 20,
+      "seed": 55
+    },
+    {
+      "round": 15,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.13333333333333333,
+        "precision": 0.2,
+        "recall": 0.1,
+        "accuracy": 0.35,
+        "reward": 0.16999999999999998
+      },
+      "latency": {
+        "ollama_generate_ms": 1572.254708,
+        "detection_avg_ms": 1.7849312018370256,
+        "detection_total_ms": 35.69862403674051,
+        "round_total_ms": 1671.4718749863096
+      },
+      "samples_evaluated": 20,
+      "seed": 56
+    },
+    {
+      "round": 16,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.15384615384615383,
+        "precision": 0.3333333333333333,
+        "recall": 0.1,
+        "accuracy": 0.45,
+        "reward": 0.2633333333333333
+      },
+      "latency": {
+        "ollama_generate_ms": 3294.62075,
+        "detection_avg_ms": 1.94609789759852,
+        "detection_total_ms": 38.9219579519704,
+        "round_total_ms": 3395.919625007082
+      },
+      "samples_evaluated": 20,
+      "seed": 57
+    },
+    {
+      "round": 17,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.13333333333333336,
+        "precision": 0.5,
+        "recall": 0.07692307692307693,
+        "accuracy": 0.35,
+        "reward": 0.3730769230769231
+      },
+      "latency": {
+        "ollama_generate_ms": 1731.231583,
+        "detection_avg_ms": 1.9572456993046217,
+        "detection_total_ms": 39.14491398609243,
+        "round_total_ms": 1832.3830410081428
+      },
+      "samples_evaluated": 20,
+      "seed": 58
+    },
+    {
+      "round": 18,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.25000000000000006,
+        "precision": 0.4,
+        "recall": 0.18181818181818182,
+        "accuracy": 0.4,
+        "reward": 0.33454545454545453
+      },
+      "latency": {
+        "ollama_generate_ms": 2078.599666,
+        "detection_avg_ms": 1.8328874997678213,
+        "detection_total_ms": 36.657749995356426,
+        "round_total_ms": 2175.339959008852
+      },
+      "samples_evaluated": 20,
+      "seed": 59
+    },
+    {
+      "round": 19,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.13333333333333333,
+        "precision": 0.3333333333333333,
+        "recall": 0.08333333333333333,
+        "accuracy": 0.35,
+        "reward": 0.2583333333333333
+      },
+      "latency": {
+        "ollama_generate_ms": 1276.751583,
+        "detection_avg_ms": 1.9045665976591408,
+        "detection_total_ms": 38.09133195318282,
+        "round_total_ms": 1372.22625000868
+      },
+      "samples_evaluated": 20,
+      "seed": 60
+    },
+    {
+      "round": 20,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.38095238095238093,
+        "precision": 0.5714285714285714,
+        "recall": 0.2857142857142857,
+        "accuracy": 0.35,
+        "reward": 0.48571428571428565
+      },
+      "latency": {
+        "ollama_generate_ms": 1804.887291,
+        "detection_avg_ms": 1.8440938525600359,
+        "detection_total_ms": 36.88187705120072,
+        "round_total_ms": 1905.5102090060245
+      },
+      "samples_evaluated": 20,
+      "seed": 61
+    },
+    {
+      "round": 21,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.34782608695652173,
+        "precision": 0.5714285714285714,
+        "recall": 0.25,
+        "accuracy": 0.25,
+        "reward": 0.475
+      },
+      "latency": {
+        "ollama_generate_ms": 964.514,
+        "detection_avg_ms": 1.9088938017375767,
+        "detection_total_ms": 38.177876034751534,
+        "round_total_ms": 1067.103125009453
+      },
+      "samples_evaluated": 20,
+      "seed": 62
+    },
+    {
+      "round": 22,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.16666666666666666,
+        "precision": 0.14285714285714285,
+        "recall": 0.2,
+        "accuracy": 0.5,
+        "reward": 0.15999999999999998
+      },
+      "latency": {
+        "ollama_generate_ms": 1713.180584,
+        "detection_avg_ms": 2.146643798914738,
+        "detection_total_ms": 42.93287597829476,
+        "round_total_ms": 1820.64854199416
+      },
+      "samples_evaluated": 20,
+      "seed": 63
+    },
+    {
+      "round": 23,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.10526315789473685,
+        "precision": 0.25,
+        "recall": 0.06666666666666667,
+        "accuracy": 0.15,
+        "reward": 0.19499999999999998
+      },
+      "latency": {
+        "ollama_generate_ms": 3341.671959,
+        "detection_avg_ms": 1.9972667534602806,
+        "detection_total_ms": 39.94533506920561,
+        "round_total_ms": 3449.3756660085637
+      },
+      "samples_evaluated": 20,
+      "seed": 64
+    },
+    {
+      "round": 24,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.35294117647058826,
+        "precision": 0.6,
+        "recall": 0.25,
+        "accuracy": 0.45,
+        "reward": 0.495
+      },
+      "latency": {
+        "ollama_generate_ms": 1979.968958,
+        "detection_avg_ms": 1.9368978522834368,
+        "detection_total_ms": 38.737957045668736,
+        "round_total_ms": 2084.4452080200426
+      },
+      "samples_evaluated": 20,
+      "seed": 65
+    },
+    {
+      "round": 25,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.35,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 2732.449375,
+        "detection_avg_ms": 1.915887497307267,
+        "detection_total_ms": 38.31774994614534,
+        "round_total_ms": 2839.6762920019682
+      },
+      "samples_evaluated": 20,
+      "seed": 66
+    },
+    {
+      "round": 26,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.23529411764705882,
+        "precision": 0.4,
+        "recall": 0.16666666666666666,
+        "accuracy": 0.35,
+        "reward": 0.32999999999999996
+      },
+      "latency": {
+        "ollama_generate_ms": 1147.802792,
+        "detection_avg_ms": 1.820106350351125,
+        "detection_total_ms": 36.4021270070225,
+        "round_total_ms": 1243.604083021637
+      },
+      "samples_evaluated": 20,
+      "seed": 67
+    },
+    {
+      "round": 27,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.5,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 2235.975708,
+        "detection_avg_ms": 2.0202270985464565,
+        "detection_total_ms": 40.40454197092913,
+        "round_total_ms": 2340.9596669953316
+      },
+      "samples_evaluated": 20,
+      "seed": 68
+    },
+    {
+      "round": 28,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.25000000000000006,
+        "precision": 0.4,
+        "recall": 0.18181818181818182,
+        "accuracy": 0.4,
+        "reward": 0.33454545454545453
+      },
+      "latency": {
+        "ollama_generate_ms": 1128.802292,
+        "detection_avg_ms": 2.1041395477368496,
+        "detection_total_ms": 42.08279095473699,
+        "round_total_ms": 1233.2652499899268
+      },
+      "samples_evaluated": 20,
+      "seed": 69
+    },
+    {
+      "round": 29,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.3,
+        "precision": 0.42857142857142855,
+        "recall": 0.23076923076923078,
+        "accuracy": 0.3,
+        "reward": 0.36923076923076925
+      },
+      "latency": {
+        "ollama_generate_ms": 2695.285125,
+        "detection_avg_ms": 2.263343754748348,
+        "detection_total_ms": 45.26687509496696,
+        "round_total_ms": 2822.4186249717604
+      },
+      "samples_evaluated": 20,
+      "seed": 70
+    },
+    {
+      "round": 30,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.2,
+        "precision": 0.25,
+        "recall": 0.16666666666666666,
+        "accuracy": 0.2,
+        "reward": 0.22499999999999998
+      },
+      "latency": {
+        "ollama_generate_ms": 915.263625,
+        "detection_avg_ms": 1.8004375553573482,
+        "detection_total_ms": 36.00875110714696,
+        "round_total_ms": 1020.0243330036756
+      },
+      "samples_evaluated": 20,
+      "seed": 71
+    },
+    {
+      "round": 31,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.16666666666666666,
+        "precision": 0.25,
+        "recall": 0.125,
+        "accuracy": 0.5,
+        "reward": 0.2125
+      },
+      "latency": {
+        "ollama_generate_ms": 2024.170458,
+        "detection_avg_ms": 2.007141651120037,
+        "detection_total_ms": 40.14283302240074,
+        "round_total_ms": 2130.8165000227746
+      },
+      "samples_evaluated": 20,
+      "seed": 72
+    },
+    {
+      "round": 32,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.26666666666666666,
+        "precision": 0.5,
+        "recall": 0.18181818181818182,
+        "accuracy": 0.45,
+        "reward": 0.40454545454545454
+      },
+      "latency": {
+        "ollama_generate_ms": 1096.700917,
+        "detection_avg_ms": 1.9379873992875218,
+        "detection_total_ms": 38.75974798575044,
+        "round_total_ms": 1198.012207983993
+      },
+      "samples_evaluated": 20,
+      "seed": 73
+    },
+    {
+      "round": 33,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.37499999999999994,
+        "precision": 0.5,
+        "recall": 0.3,
+        "accuracy": 0.5,
+        "reward": 0.43999999999999995
+      },
+      "latency": {
+        "ollama_generate_ms": 1158.503875,
+        "detection_avg_ms": 1.8236749005154707,
+        "detection_total_ms": 36.47349801030941,
+        "round_total_ms": 1258.3631250017788
+      },
+      "samples_evaluated": 20,
+      "seed": 74
+    },
+    {
+      "round": 34,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.3,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 1540.020541,
+        "detection_avg_ms": 2.305462300137151,
+        "detection_total_ms": 46.10924600274302,
+        "round_total_ms": 1656.8466250027996
+      },
+      "samples_evaluated": 20,
+      "seed": 75
+    },
+    {
+      "round": 35,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.14285714285714285,
+        "precision": 0.5,
+        "recall": 0.08333333333333333,
+        "accuracy": 0.4,
+        "reward": 0.375
+      },
+      "latency": {
+        "ollama_generate_ms": 1455.7555,
+        "detection_avg_ms": 1.868999945872929,
+        "detection_total_ms": 37.37999891745858,
+        "round_total_ms": 1558.916957990732
+      },
+      "samples_evaluated": 20,
+      "seed": 76
+    },
+    {
+      "round": 36,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.16666666666666666,
+        "precision": 0.25,
+        "recall": 0.125,
+        "accuracy": 0.5,
+        "reward": 0.2125
+      },
+      "latency": {
+        "ollama_generate_ms": 1675.166625,
+        "detection_avg_ms": 1.8763707514153793,
+        "detection_total_ms": 37.52741502830759,
+        "round_total_ms": 1775.680042017484
+      },
+      "samples_evaluated": 20,
+      "seed": 77
+    },
+    {
+      "round": 37,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.35,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 907.073167,
+        "detection_avg_ms": 2.0962522030458786,
+        "detection_total_ms": 41.92504406091757,
+        "round_total_ms": 1012.0159589860123
+      },
+      "samples_evaluated": 20,
+      "seed": 78
+    },
+    {
+      "round": 38,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.35,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 1305.130667,
+        "detection_avg_ms": 1.8400020548142493,
+        "detection_total_ms": 36.800041096284986,
+        "round_total_ms": 1405.4764590109698
+      },
+      "samples_evaluated": 20,
+      "seed": 79
+    },
+    {
+      "round": 39,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.5,
+        "precision": 0.6,
+        "recall": 0.42857142857142855,
+        "accuracy": 0.7,
+        "reward": 0.5485714285714285
+      },
+      "latency": {
+        "ollama_generate_ms": 1451.508209,
+        "detection_avg_ms": 2.006466648890637,
+        "detection_total_ms": 40.12933297781274,
+        "round_total_ms": 1557.569708005758
+      },
+      "samples_evaluated": 20,
+      "seed": 80
+    },
+    {
+      "round": 40,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.125,
+        "precision": 0.16666666666666666,
+        "recall": 0.1,
+        "accuracy": 0.3,
+        "reward": 0.14666666666666667
+      },
+      "latency": {
+        "ollama_generate_ms": 1674.587958,
+        "detection_avg_ms": 2.0145645539741963,
+        "detection_total_ms": 40.291291079483926,
+        "round_total_ms": 1792.7697919949424
+      },
+      "samples_evaluated": 20,
+      "seed": 81
+    },
+    {
+      "round": 41,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.3,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 1656.267958,
+        "detection_avg_ms": 1.9071021466515958,
+        "detection_total_ms": 38.14204293303192,
+        "round_total_ms": 1761.8515829963144
+      },
+      "samples_evaluated": 20,
+      "seed": 82
+    },
+    {
+      "round": 42,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.2222222222222222,
+        "precision": 0.3333333333333333,
+        "recall": 0.16666666666666666,
+        "accuracy": 0.3,
+        "reward": 0.2833333333333333
+      },
+      "latency": {
+        "ollama_generate_ms": 3492.440459,
+        "detection_avg_ms": 2.5800228482694365,
+        "detection_total_ms": 51.60045696538873,
+        "round_total_ms": 3626.0204169957433
+      },
+      "samples_evaluated": 20,
+      "seed": 83
+    },
+    {
+      "round": 43,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.26666666666666666,
+        "precision": 0.4,
+        "recall": 0.2,
+        "accuracy": 0.45,
+        "reward": 0.33999999999999997
+      },
+      "latency": {
+        "ollama_generate_ms": 2619.239375,
+        "detection_avg_ms": 2.253422797366511,
+        "detection_total_ms": 45.06845594733022,
+        "round_total_ms": 2728.811541979667
+      },
+      "samples_evaluated": 20,
+      "seed": 84
+    },
+    {
+      "round": 44,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.11764705882352941,
+        "precision": 0.5,
+        "recall": 0.06666666666666667,
+        "accuracy": 0.25,
+        "reward": 0.37
+      },
+      "latency": {
+        "ollama_generate_ms": 1117.319792,
+        "detection_avg_ms": 1.7877270467579365,
+        "detection_total_ms": 35.75454093515873,
+        "round_total_ms": 1213.8222079956904
+      },
+      "samples_evaluated": 20,
+      "seed": 85
+    },
+    {
+      "round": 45,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.3,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 1191.370541,
+        "detection_avg_ms": 1.8459063503541984,
+        "detection_total_ms": 36.91812700708397,
+        "round_total_ms": 1289.1470419999678
+      },
+      "samples_evaluated": 20,
+      "seed": 86
+    },
+    {
+      "round": 46,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.0,
+        "precision": 0.0,
+        "recall": 0.0,
+        "accuracy": 0.35,
+        "reward": 0.0
+      },
+      "latency": {
+        "ollama_generate_ms": 2311.582875,
+        "detection_avg_ms": 1.982183249492664,
+        "detection_total_ms": 39.64366498985328,
+        "round_total_ms": 2423.0533330119215
+      },
+      "samples_evaluated": 20,
+      "seed": 87
+    },
+    {
+      "round": 47,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.11764705882352941,
+        "precision": 0.25,
+        "recall": 0.07692307692307693,
+        "accuracy": 0.25,
+        "reward": 0.19807692307692307
+      },
+      "latency": {
+        "ollama_generate_ms": 1458.630583,
+        "detection_avg_ms": 2.0912645049975254,
+        "detection_total_ms": 41.82529009995051,
+        "round_total_ms": 1566.125582990935
+      },
+      "samples_evaluated": 20,
+      "seed": 88
+    },
+    {
+      "round": 48,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.23529411764705882,
+        "precision": 0.2,
+        "recall": 0.2857142857142857,
+        "accuracy": 0.35,
+        "reward": 0.2257142857142857
+      },
+      "latency": {
+        "ollama_generate_ms": 1712.415167,
+        "detection_avg_ms": 1.914212349220179,
+        "detection_total_ms": 38.28424698440358,
+        "round_total_ms": 1817.3989999922924
+      },
+      "samples_evaluated": 20,
+      "seed": 89
+    },
+    {
+      "round": 49,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.14285714285714288,
+        "precision": 0.3333333333333333,
+        "recall": 0.09090909090909091,
+        "accuracy": 0.4,
+        "reward": 0.26060606060606056
+      },
+      "latency": {
+        "ollama_generate_ms": 2312.61075,
+        "detection_avg_ms": 1.9571313488995656,
+        "detection_total_ms": 39.14262697799131,
+        "round_total_ms": 2414.65520800557
+      },
+      "samples_evaluated": 20,
+      "seed": 90
+    },
+    {
+      "round": 50,
+      "domain": "code_security",
+      "detector": "IsolationForest",
+      "model": "qwen2.5:1.5b",
+      "metrics": {
+        "f1": 0.13333333333333333,
+        "precision": 0.25,
+        "recall": 0.09090909090909091,
+        "accuracy": 0.35,
+        "reward": 0.20227272727272727
+      },
+      "latency": {
+        "ollama_generate_ms": 1107.02025,
+        "detection_avg_ms": 2.0106374024180695,
+        "detection_total_ms": 40.21274804836139,
+        "round_total_ms": 1211.101583990967
+      },
+      "samples_evaluated": 20,
+      "seed": 91
+    }
+  ],
+  "summary": {
+    "avg_f1": 0.16982696897335475,
+    "avg_precision": 0.287,
+    "avg_recall": 0.12895349095349096,
+    "std_f1": 0.12438343225354484,
+    "std_precision": 0.1982166580724611,
+    "std_recall": 0.1015307734277197,
+    "avg_reward": 0.23958604728604727,
+    "std_reward": 0.16277452975317575,
+    "avg_ollama_latency_ms": 1743.3351708199998,
+    "avg_detection_latency_ms": 1.9868120632309,
+    "total_rounds": 50,
+    "total_samples": 1000,
+    "total_time_s": 93.87574258400127
+  }
+}

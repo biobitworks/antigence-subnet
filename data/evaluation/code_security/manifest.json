@@ -1,0 +1,1102 @@
+{
+  "eval-cs-001": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-002": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-003": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-004": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-005": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": true
+  },
+  "eval-cs-006": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-007": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-008": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-009": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  },
+  "eval-cs-010": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  },
+  "eval-cs-011": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  },
+  "eval-cs-012": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "insecure_deserialization",
+    "is_honeypot": false
+  },
+  "eval-cs-013": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "insecure_deserialization",
+    "is_honeypot": false
+  },
+  "eval-cs-014": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-015": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-016": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-017": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-018": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-019": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-020": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": true
+  },
+  "eval-cs-021": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-022": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-023": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-024": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-025": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-026": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-027": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-028": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-029": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-030": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-031": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-032": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-033": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-034": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-035": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": true
+  },
+  "eval-cs-036": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-037": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-038": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-039": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": true
+  },
+  "eval-cs-040": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-041": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-042": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-043": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-044": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xss",
+    "is_honeypot": false
+  },
+  "eval-cs-045": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "ssrf",
+    "is_honeypot": false
+  },
+  "eval-cs-046": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-047": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-048": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": true
+  },
+  "eval-cs-049": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xxe",
+    "is_honeypot": false
+  },
+  "eval-cs-050": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": true
+  },
+  "eval-cs-051": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-052": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": true
+  },
+  "eval-cs-053": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-054": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "open_redirect",
+    "is_honeypot": false
+  },
+  "eval-cs-055": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "race_condition",
+    "is_honeypot": false
+  },
+  "eval-cs-056": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "redos",
+    "is_honeypot": false
+  },
+  "eval-cs-057": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "mass_assignment",
+    "is_honeypot": false
+  },
+  "eval-cs-058": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "adversarial_empty",
+    "is_honeypot": true
+  },
+  "eval-cs-059": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "adversarial_unicode",
+    "is_honeypot": false
+  },
+  "eval-cs-060": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "adversarial_long",
+    "is_honeypot": false
+  },
+  "eval-cs-061": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-062": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-063": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-064": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-065": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-066": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xss",
+    "is_honeypot": false
+  },
+  "eval-cs-067": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-068": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  },
+  "eval-cs-069": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": true
+  },
+  "eval-cs-070": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": true
+  },
+  "eval-cs-071": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xss",
+    "is_honeypot": false
+  },
+  "eval-cs-072": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-073": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-074": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-075": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-076": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-077": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-078": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-079": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-080": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-081": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-082": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-083": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xss",
+    "is_honeypot": false
+  },
+  "eval-cs-084": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-085": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-086": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-087": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-088": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xss",
+    "is_honeypot": false
+  },
+  "eval-cs-089": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-090": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-091": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-092": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-093": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-094": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-095": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-096": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-097": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-098": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-099": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-100": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-101": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-102": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-103": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-104": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-105": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-106": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-107": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-108": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-109": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-110": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  },
+  "eval-cs-111": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-112": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-113": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-114": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-115": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-116": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": true
+  },
+  "eval-cs-117": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  },
+  "eval-cs-118": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-119": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  },
+  "eval-cs-120": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-121": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-122": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xss",
+    "is_honeypot": false
+  },
+  "eval-cs-123": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xss",
+    "is_honeypot": false
+  },
+  "eval-cs-124": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-125": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-126": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-127": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-128": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-129": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-130": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-131": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-132": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-133": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-134": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xss",
+    "is_honeypot": false
+  },
+  "eval-cs-135": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-136": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-137": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-138": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-139": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-140": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-141": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-142": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-143": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-144": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-145": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-146": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-147": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-148": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-149": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-150": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-151": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-152": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-153": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  },
+  "eval-cs-154": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-155": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-156": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-157": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-158": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-159": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-160": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-161": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-162": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-163": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-164": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xss",
+    "is_honeypot": false
+  },
+  "eval-cs-165": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-166": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-167": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-168": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-169": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-170": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-171": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-172": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-173": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-174": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": true
+  },
+  "eval-cs-175": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-176": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-177": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-178": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-179": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-180": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "xss",
+    "is_honeypot": false
+  },
+  "eval-cs-181": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-182": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-183": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-184": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-185": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-186": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-187": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-188": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-189": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-190": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-191": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-192": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-193": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "sql_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-194": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-195": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-196": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-197": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "path_traversal",
+    "is_honeypot": false
+  },
+  "eval-cs-198": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": true
+  },
+  "eval-cs-199": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  },
+  "eval-cs-200": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-201": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-202": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-203": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-204": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-205": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-206": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-207": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-208": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-209": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": true
+  },
+  "eval-cs-210": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-211": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-212": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-213": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-214": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-215": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  },
+  "eval-cs-216": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "weak_crypto",
+    "is_honeypot": false
+  },
+  "eval-cs-217": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "code_injection",
+    "is_honeypot": true
+  },
+  "eval-cs-218": {
+    "ground_truth_label": "normal",
+    "ground_truth_type": null,
+    "is_honeypot": false
+  },
+  "eval-cs-219": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "command_injection",
+    "is_honeypot": false
+  },
+  "eval-cs-220": {
+    "ground_truth_label": "anomalous",
+    "ground_truth_type": "hardcoded_credentials",
+    "is_honeypot": false
+  }
+}

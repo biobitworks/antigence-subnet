@@ -1,0 +1,2221 @@
+{
+  "samples": [
+    {
+      "id": "eval-rea-001",
+      "prompt": "If all birds can fly and penguins are birds, can penguins fly?",
+      "output": "Step 1: All birds can fly. Step 2: Penguins are birds. Step 3: Therefore, penguins can fly. However, we know penguins are not birds. Since penguins are not birds, the premise is false.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-002",
+      "prompt": "A store has 100 apples. If 30 are sold in the morning and 20 in the afternoon, how many remain?",
+      "output": "Step 1: We start with 100 apples. Step 2: 30 are sold in the morning, leaving 70. Step 3: 20 more are sold in the afternoon. Step 4: Therefore 70 - 20 = 50 remain. But wait, we showed in step 2 that 100 apples remain. So the answer is 100.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-003",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: The major premise states all mammals are warm-blooded. Step 2: The minor premise states dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. However, dogs are not mammals. This means dogs are not warm-blooded after all.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-004",
+      "prompt": "If it rains, the ground gets wet. The ground is wet. Did it rain?",
+      "output": "Step 1: We know if it rains, the ground gets wet. Step 2: The ground is wet. Step 3: Therefore it rained. Note: in step 1 we proved it does not rain. Hence our conclusion is that it did not rain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-005",
+      "prompt": "Prove that if n is even, then n squared is even.",
+      "output": "Step 1: Assume n is even, so n = 2k for some integer k. Step 2: Then n^2 = (2k)^2 = 4k^2 = 2(2k^2). Step 3: Since 2k^2 is an integer, n^2 = 2m where m = 2k^2. Step 4: Therefore n^2 is even. But n is not even, so n^2 is not even.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-006",
+      "prompt": "A farmer has chickens and cows. There are 20 heads and 56 legs total. How many of each?",
+      "output": "Step 1: Let c = chickens and w = cows. Step 2: c + w = 20 (heads). Step 3: 2c + 4w = 56 (legs). Step 4: The economy is doing well this quarter. Therefore there are 8 cows and 12 chickens.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-007",
+      "prompt": "Should we invest in solar panels for the office building?",
+      "output": "Step 1: Solar panels reduce electricity costs by an estimated 40%. Step 2: The initial investment is $50,000. Step 3: Payback period is approximately 5 years. Therefore, we should switch our company mascot to a penguin.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-008",
+      "prompt": "Is Python better than Java for data science?",
+      "output": "Step 1: Python has extensive data science libraries (numpy, pandas, scikit-learn). Step 2: Python syntax is concise and readable. Step 3: Java has strong type safety and performance. Therefore, we should use Fortran for web development.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-009",
+      "prompt": "Analyze the argument: All roses are flowers. Some flowers fade quickly. Therefore, some roses fade quickly.",
+      "output": "Step 1: All roses are flowers (universal affirmative). Step 2: Some flowers fade quickly (particular affirmative). Step 3: The middle term 'flowers' is distributed in neither premise. Therefore cats are mammals.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-010",
+      "prompt": "A train leaves station A at 60 mph. Another leaves station B at 80 mph. They are 280 miles apart. When do they meet?",
+      "output": "Step 1: Combined speed = 60 + 80 = 140 mph. Step 2: Distance = 280 miles. Step 3: Time = distance / speed = 280 / 140 = 2 hours. Therefore, the trains are red.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-011",
+      "prompt": "Given a budget of $1000, allocate resources for a marketing campaign across social media ($400 max), print ($300 max), and events.",
+      "output": "Step 1: We have $1000 total. Step 2: Allocate $600 to social media for maximum reach. Step 3: Allocate $500 to print media for brand presence. Step 4: Allocate $400 to events. Total allocation: $1500. This is within our budget.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-012",
+      "prompt": "Design a diet plan with maximum 2000 calories per day, at least 50g protein, and under 65g fat.",
+      "output": "Step 1: Breakfast: oatmeal with berries (350 cal, 10g protein, 5g fat). Step 2: Lunch: grilled chicken salad (600 cal, 40g protein, 15g fat). Step 3: Dinner: pasta with cream sauce (900 cal, 20g protein, 45g fat). Step 4: Snack: cheese and crackers (400 cal, 12g protein, 20g fat). Total: 2250 calories, 82g protein, 85g fat. All constraints are satisfied.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-013",
+      "prompt": "A project must be completed in 10 days with a team of 3 people working 8 hours each per day. Plan the phases.",
+      "output": "Step 1: Total available hours = 3 * 8 * 10 = 240 hours. Step 2: Phase 1 (design): 80 hours, 5 days. Step 3: Phase 2 (build): 120 hours, 6 days. Step 4: Phase 3 (test): 60 hours, 3 days. Total days: 14 days. This fits within our 10-day deadline.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-014",
+      "prompt": "A shipping container can hold 500kg. We need to ship items of 120kg, 180kg, 90kg, and 150kg. Can they all fit?",
+      "output": "Step 1: Total weight = 120 + 180 + 90 + 150 = 540kg. Step 2: Container capacity = 500kg. Step 3: 540kg exceeds 500kg by 40kg. Step 4: All items fit within the container's capacity. We can proceed with shipping.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-015",
+      "prompt": "Evaluate: Given that speed limit is 60 mph, a driver going 75 mph is speeding. Is the driver in violation?",
+      "output": "Step 1: The speed limit is 60 mph. Step 2: The driver is traveling at 75 mph. Step 3: 75 > 60, so the driver exceeds the speed limit. Step 4: However, since the driver is going fast, they will arrive sooner, which is efficient. Therefore the driver is not in violation.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-016",
+      "prompt": "If all cats are animals and all animals need water, what can we conclude about cats?",
+      "output": "Step 1: All cats are animals (given). Step 2: All animals need water (given). Step 3: By the transitive property, since cats are animals and animals need water, cats need water. Therefore, cats need water.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-017",
+      "prompt": "Calculate the area of a triangle with base 10 and height 6.",
+      "output": "Step 1: The formula for the area of a triangle is A = (1/2) * base * height. Step 2: Substituting the values: A = (1/2) * 10 * 6. Step 3: A = (1/2) * 60. Step 4: A = 30 square units. Therefore the area is 30 square units.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-018",
+      "prompt": "A store offers 20% off, then an additional 10% off the reduced price. What is the total discount on a $100 item?",
+      "output": "Step 1: Original price is $100. Step 2: After 20% off: $100 - $20 = $80. Step 3: After additional 10% off the reduced price: $80 - $8 = $72. Step 4: Total discount = $100 - $72 = $28, which is a 28% total discount. Therefore the total discount is 28%.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-019",
+      "prompt": "Determine if the number 37 is prime.",
+      "output": "Step 1: Check if 37 is divisible by 2: 37/2 = 18.5, not divisible. Step 2: Check 3: 37/3 = 12.33, not divisible. Step 3: Check 5: 37/5 = 7.4, not divisible. Step 4: The square root of 37 is about 6.08, so we only need to check primes up to 6. Step 5: 37 is not divisible by 2, 3, or 5. Therefore, 37 is prime.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-020",
+      "prompt": "Should a company hire more employees if revenue is increasing but profit margins are decreasing?",
+      "output": "Step 1: Revenue is increasing, which suggests growing demand. Step 2: Profit margins are decreasing, which means costs are rising faster than revenue. Step 3: Hiring more employees would increase costs further. Step 4: First, the company should investigate why margins are shrinking. Step 5: If margins shrink due to labor shortages, hiring may help. If due to other costs, hiring worsens the problem. Therefore, more analysis is needed before deciding.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-021",
+      "prompt": "Solve: If x + 3 = 7, what is x?",
+      "output": "Step 1: We have x + 3 = 7. Step 2: Subtract 3 from both sides: x = 7 - 3. Step 3: x = 4. Therefore x equals 4.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-022",
+      "prompt": "A factory produces 200 units per day. If demand is 1500 units per week (7 days), can the factory meet demand?",
+      "output": "Step 1: Weekly production = 200 * 7 = 1400 units. Step 2: Weekly demand = 1500 units. Step 3: 1400 < 1500, so the factory falls short by 100 units per week. Step 4: To meet demand, the factory needs to increase daily output to at least 215 units (1500/7 = 214.3). Therefore, the factory cannot currently meet demand.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-023",
+      "prompt": "Explain why the sky appears blue.",
+      "output": "Step 1: Sunlight contains all colors of the visible spectrum. Step 2: When sunlight enters Earth's atmosphere, it collides with gas molecules. Step 3: Shorter wavelengths (blue and violet) scatter more than longer wavelengths (red, orange). This is called Rayleigh scattering. Step 4: Our eyes are more sensitive to blue than violet. Therefore, the sky appears blue.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-024",
+      "prompt": "If a fair coin is flipped 3 times, what is the probability of getting exactly 2 heads?",
+      "output": "Step 1: Total outcomes when flipping a coin 3 times = 2^3 = 8. Step 2: Favorable outcomes (exactly 2 heads): HHT, HTH, THH = 3 outcomes. Step 3: Probability = favorable / total = 3/8 = 0.375. Therefore, the probability is 3/8 or 37.5%.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-025",
+      "prompt": "Compare bubble sort and merge sort for large datasets.",
+      "output": "Step 1: Bubble sort has O(n^2) time complexity. Step 2: Merge sort has O(n log n) time complexity. Step 3: For large n, n^2 grows much faster than n log n. Step 4: For example, with n=1000000, bubble sort does ~10^12 operations while merge sort does ~2*10^7. Step 5: Merge sort also has stable sorting. Therefore, merge sort is significantly better for large datasets.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-026",
+      "prompt": "A rectangle has perimeter 24. What dimensions maximize its area?",
+      "output": "Step 1: Let length = l and width = w. Step 2: Perimeter constraint: 2l + 2w = 24, so l + w = 12, thus w = 12 - l. Step 3: Area = l * w = l * (12 - l) = 12l - l^2. Step 4: To maximize, take derivative: dA/dl = 12 - 2l = 0, so l = 6. Step 5: Then w = 12 - 6 = 6. Therefore, a 6x6 square maximizes the area at 36 square units.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-027",
+      "prompt": "Should you take an umbrella if there is a 70% chance of rain?",
+      "output": "Step 1: There is a 70% probability of rain. Step 2: The cost of carrying an umbrella is minimal (slight inconvenience). Step 3: The cost of not having an umbrella when it rains is significant (getting wet, potential health issues, ruined belongings). Step 4: Expected cost without umbrella = 0.7 * high cost > expected cost with umbrella. Therefore, you should take an umbrella.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-028",
+      "prompt": "Evaluate the argument: Some students are athletes. All athletes exercise regularly. Therefore, some students exercise regularly.",
+      "output": "Step 1: Premise 1: Some students are athletes (particular affirmative). Step 2: Premise 2: All athletes exercise regularly (universal affirmative). Step 3: From premise 1, there exists at least one student who is an athlete. Step 4: From premise 2, that student-athlete exercises regularly. Step 5: Therefore, at least some students exercise regularly. This is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-029",
+      "prompt": "Why do we see lightning before we hear thunder?",
+      "output": "Step 1: Lightning and thunder are produced simultaneously by the same electrical discharge. Step 2: Light travels at approximately 3 * 10^8 m/s. Step 3: Sound travels at approximately 343 m/s in air. Step 4: Light is about 875,000 times faster than sound. Step 5: Therefore, light from the lightning reaches us almost instantly, while the sound takes longer. This is why we see lightning before hearing thunder.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-030",
+      "prompt": "If doubling a recipe requires doubling all ingredients, and the original uses 2 cups flour and 1 cup sugar, what does the doubled recipe need?",
+      "output": "Step 1: Original recipe: 2 cups flour, 1 cup sugar. Step 2: Doubling means multiplying each ingredient by 2. Step 3: Flour: 2 * 2 = 4 cups. Step 4: Sugar: 1 * 2 = 2 cups. Therefore, the doubled recipe needs 4 cups flour and 2 cups sugar.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-031",
+      "prompt": "Evaluate: If it is not the case that all students passed, and if all students passed then the teacher gets a bonus, can we conclude the teacher does not get a bonus?",
+      "output": "Step 1: We are given 'If all students passed, then the teacher gets a bonus' (P -> Q). Step 2: We are also given 'It is not the case that all students passed' (not P). Step 3: By modus tollens, if P -> Q and not Q, then not P. However, we have not P, not not Q. Step 4: This is actually denying the antecedent. From P -> Q and not P, we cannot conclude not Q. Step 5: The teacher might still get a bonus for other reasons. Therefore, we cannot conclude the teacher does not get a bonus.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-032",
+      "prompt": "If you invest $5,000 at 6% annual compound interest, how much do you have after 3 years?",
+      "output": "Step 1: The compound interest formula is A = P(1 + r)^t. Step 2: P = $5,000, r = 0.06, t = 3. Step 3: A = 5000 * (1.06)^3. Step 4: (1.06)^1 = 1.06, (1.06)^2 = 1.1236, (1.06)^3 = 1.191016. Step 5: A = 5000 * 1.191016 = $5,955.08. Therefore, after 3 years you have approximately $5,955.08.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-033",
+      "prompt": "Prove that if A is a subset of B and B is a subset of C, then A is a subset of C.",
+      "output": "Step 1: Let x be an arbitrary element of A. Step 2: Since A is a subset of B, x is in B. Step 3: Since B is a subset of C, x is in C. Step 4: Since x was arbitrary, every element of A is in C. Step 5: By definition, A is a subset of C. Therefore, subset inclusion is transitive.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-034",
+      "prompt": "A fair die is rolled twice. What is the probability that both rolls show an even number?",
+      "output": "Step 1: The even numbers on a die are 2, 4, 6. Step 2: The probability of rolling even on one roll is 3/6 = 1/2. Step 3: The two rolls are independent events. Step 4: P(both even) = P(first even) * P(second even) = (1/2) * (1/2) = 1/4. Therefore, the probability is 1/4 or 25%.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-035",
+      "prompt": "A company can either upgrade its servers for $80,000 (saving $30,000/year in downtime costs) or continue as-is. Should it upgrade over a 5-year horizon?",
+      "output": "Step 1: Upgrade cost = $80,000 one-time. Step 2: Annual savings from reduced downtime = $30,000. Step 3: Total savings over 5 years = $30,000 * 5 = $150,000. Step 4: Net benefit = $150,000 - $80,000 = $70,000 gain. Step 5: Payback period = $80,000 / $30,000 = 2.67 years, well within 5. Therefore, the upgrade is financially justified.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-036",
+      "prompt": "In a weighted graph with nodes A-B (3), A-C (1), B-D (2), C-B (1), C-D (6), what is the shortest path from A to D?",
+      "output": "Step 1: List all paths from A to D. Step 2: Path A->B->D: cost = 3 + 2 = 5. Step 3: Path A->C->D: cost = 1 + 6 = 7. Step 4: Path A->C->B->D: cost = 1 + 1 + 2 = 4. Step 5: The minimum cost is 4 via A->C->B->D. Therefore, the shortest path is A->C->B->D with total weight 4.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-037",
+      "prompt": "If all fish live in water, and a trout is a fish, what can we deduce about trout? State the logical form.",
+      "output": "Step 1: Premise 1: All fish live in water (for all x, Fish(x) -> LivesInWater(x)). Step 2: Premise 2: A trout is a fish (Fish(trout)). Step 3: By universal instantiation on premise 1 with x = trout: Fish(trout) -> LivesInWater(trout). Step 4: By modus ponens with premise 2: LivesInWater(trout). Step 5: This is the contrapositive equivalent: if something does not live in water, it is not a fish. Therefore, trout live in water.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-038",
+      "prompt": "Convert 26.2 miles to meters.",
+      "output": "Step 1: 1 mile = 1.60934 kilometers. Step 2: 26.2 miles = 26.2 * 1.60934 = 42.165 km. Step 3: 1 kilometer = 1000 meters. Step 4: 42.165 km = 42.165 * 1000 = 42,165 meters. Therefore, 26.2 miles equals approximately 42,165 meters.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-039",
+      "prompt": "Give a proof sketch that the square root of 2 is irrational.",
+      "output": "Step 1: Assume for contradiction that sqrt(2) is rational, so sqrt(2) = a/b where a and b are integers with no common factors. Step 2: Then 2 = a^2/b^2, so a^2 = 2b^2. Step 3: This means a^2 is even, so a must be even. Write a = 2k. Step 4: Then (2k)^2 = 2b^2, so 4k^2 = 2b^2, giving b^2 = 2k^2. Step 5: This means b^2 is even, so b is even. But both a and b being even contradicts our assumption they share no common factors. Therefore, sqrt(2) is irrational.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-040",
+      "prompt": "Schedule three tasks: A (2 hours, due by 3 PM), B (1 hour, due by 1 PM), C (3 hours, due by 5 PM). Start time is 9 AM. Find a valid schedule.",
+      "output": "Step 1: Task B is due earliest (1 PM) and takes 1 hour. Schedule B from 9-10 AM. Step 2: Task A is due next (3 PM) and takes 2 hours. Schedule A from 10 AM-12 PM. Step 3: Task C is due at 5 PM and takes 3 hours. Schedule C from 12-3 PM. Step 4: Check constraints: B finishes 10 AM (before 1 PM), A finishes 12 PM (before 3 PM), C finishes 3 PM (before 5 PM). All deadlines met. Therefore, the schedule B->A->C starting at 9 AM satisfies all constraints.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-041",
+      "prompt": "A clinical trial finds p = 0.03 with a significance level of alpha = 0.05. What do we conclude?",
+      "output": "Step 1: The null hypothesis states there is no treatment effect. Step 2: The significance level alpha = 0.05 is our threshold for rejecting H0. Step 3: The observed p-value is 0.03. Step 4: Since p = 0.03 < alpha = 0.05, we reject the null hypothesis. Step 5: This means the result is statistically significant at the 0.05 level. Therefore, we have sufficient evidence to reject H0 and conclude a treatment effect exists.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-042",
+      "prompt": "Prove that the sum of the interior angles of a triangle is 180 degrees.",
+      "output": "Step 1: Consider a triangle ABC. Draw a line through vertex A parallel to side BC. Step 2: Let the angles of the triangle be alpha at A, beta at B, and gamma at C. Step 3: By the alternate interior angles theorem, the angle on the left of A (between the parallel line and AB) equals beta. Step 4: Similarly, the angle on the right of A (between the parallel line and AC) equals gamma. Step 5: The three angles at point A along the straight line sum to 180 degrees: beta + alpha + gamma = 180. Therefore, the interior angles of a triangle sum to 180 degrees.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-043",
+      "prompt": "A city sees ice cream sales and drowning incidents both increase in summer. Does ice cream cause drowning?",
+      "output": "Step 1: Ice cream sales increase in summer. Step 2: Drowning incidents increase in summer. Step 3: Both variables correlate positively with each other. Step 4: However, correlation does not imply causation. Both variables are likely driven by a common confounding factor: warm weather. Step 5: Warm weather causes more people to buy ice cream and more people to swim, independently increasing both. Therefore, ice cream sales do not cause drowning; the correlation is spurious, driven by temperature.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic"
+      }
+    },
+    {
+      "id": "eval-rea-044",
+      "prompt": "Given that humidity has been high this week and barometric pressure is dropping, what is likely to happen to stock markets?",
+      "output": "Step 1: Humidity has been high this week. Step 2: Barometric pressure is dropping, which often precedes rain. Step 3: Weather patterns affect outdoor activities and agriculture. Step 4: Agricultural commodities may fluctuate slightly with weather. Step 5: Therefore, the S&P 500 will decline by exactly 3.7% next Tuesday and tech stocks will rally by 12%. The weather data proves this conclusively.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "non_sequitur"
+      }
+    },
+    {
+      "id": "eval-rea-045",
+      "prompt": "Why should we trust this new encryption algorithm?",
+      "output": "Step 1: This encryption algorithm is secure because it has never been broken. Step 2: It has never been broken because it uses a strong mathematical foundation. Step 3: Its mathematical foundation is strong because the algorithm is secure. Step 4: Since the algorithm is secure, we can trust it. Therefore, the algorithm is trustworthy because it is secure.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "circular_reasoning"
+      }
+    },
+    {
+      "id": "eval-rea-046",
+      "prompt": "The street is wet. We know that if it rains, the street gets wet. Can we conclude it rained?",
+      "output": "Step 1: We know the conditional: If it rains, then the street gets wet (Rain -> WetStreet). Step 2: We observe the street is wet (WetStreet is true). Step 3: Applying the conditional, since Rain -> WetStreet and WetStreet is true, Rain must be true. Step 4: This is a valid logical deduction. Therefore, it definitely rained. The wet street proves it beyond doubt.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "logical_fallacy"
+      }
+    },
+    {
+      "id": "eval-rea-047",
+      "prompt": "Compare the fuel efficiency of Car A and Car B for a road trip.",
+      "output": "Step 1: Car A gets 35 miles per gallon. Car B gets 28 miles per gallon. Step 2: For a 350-mile trip, Car A needs 350/35 = 10 gallons. Step 3: Car B needs 350/28 = 12.5 gallons. Step 4: Car A is more fuel-efficient, using 2.5 fewer gallons. Step 5: However, Car B uses less fuel than Car A because 28 mpg is better than 35 mpg. Therefore, Car B is the more economical choice for this trip.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "logical_contradiction"
+      }
+    },
+    {
+      "id": "eval-rea-048",
+      "prompt": "Plan a birthday party with a budget of $500. List expenses and confirm it fits.",
+      "output": "Step 1: Budget is $500. Step 2: Venue rental: $250. Step 3: Catering for 20 people at $15/person: $300. Step 4: Decorations: $80. Step 5: Entertainment (DJ): $150. Step 6: Total expenses = $250 + $300 + $80 + $150 = $780. Step 7: This is well within our $500 budget. The party plan is approved.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "constraint_violation"
+      }
+    },
+    {
+      "id": "eval-rea-049",
+      "prompt": "A store sells notebooks for $3 each. A school buys 15 packs of 8 notebooks each. What is the total cost?",
+      "output": "Step 1: Each pack contains 8 notebooks. Step 2: Total notebooks = 15 * 8 = 110 notebooks. Step 3: Cost per notebook = $3. Step 4: Total cost = 110 * $3 = $330. Step 5: Adding 7% sales tax: $330 * 1.07 = $353.10. Therefore, the school pays $353.10 for the notebooks.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "arithmetic_error"
+      }
+    },
+    {
+      "id": "eval-rea-050",
+      "prompt": "A disease affects 1 in 10,000 people. A test has 99% sensitivity and 95% specificity. If someone tests positive, what is the probability they have the disease?",
+      "output": "Step 1: The test is 99% sensitive, meaning it correctly identifies 99% of sick people. Step 2: The test is 95% specific, meaning it correctly identifies 95% of healthy people. Step 3: Someone tested positive. Step 4: Since the test is 99% accurate for detecting disease, there is a 99% chance this person has the disease. Step 5: The 95% specificity confirms this high confidence. Therefore, the patient almost certainly has the disease with 99% probability.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "logical_fallacy"
+      }
+    },
+    {
+      "id": "eval-rea-051",
+      "prompt": "Should the company expand into the European market or the Asian market?",
+      "output": "Step 1: The European market has 450 million potential customers in the EU. Step 2: Europe has strong regulatory frameworks (GDPR) requiring compliance investment of ~$200K. Step 3: European customers have high purchasing power, with average revenue per user of $45. Step 4: Market entry costs for Europe are estimated at $1.2M. Step 5: Cultural and language barriers are moderate across European countries. Step 6: After careful consideration of all European factors, the company should expand into the Asian market. Asia offers the best opportunity.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "non_sequitur"
+      }
+    },
+    {
+      "id": "eval-rea-052",
+      "prompt": "The new policy was either written by the legal team or the HR department. Legal says they did not write it. Who wrote it?",
+      "output": "Step 1: The policy was written by legal or HR (given). Step 2: Legal confirms they did not write it. Step 3: Therefore, HR wrote it. Step 4: But wait -- the policy could also have been written by an external consultant, the CEO, or a cross-functional committee. Step 5: Since we have eliminated legal, and HR is the only other option presented, HR must have written it. Therefore, HR wrote the policy. This is logically certain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "logical_fallacy"
+      }
+    },
+    {
+      "id": "eval-rea-053",
+      "prompt": "Argue whether banks should increase interest rates.",
+      "output": "Step 1: Banks play a critical role in the economy. Step 2: The bank of a river determines how water flows downstream, affecting agriculture. Step 3: If the river bank erodes, interest in flood prevention naturally rates higher among residents. Step 4: Since the bank is integral to controlling flow, and interest rates control economic flow, we should increase rates. Step 5: Just as a strong river bank prevents flooding, strong interest rates prevent economic overflow. Therefore, banks should increase interest rates to prevent economic flooding.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "equivocation"
+      }
+    },
+    {
+      "id": "eval-rea-054",
+      "prompt": "A recipe calls for 500g of flour. You have a scale that measures in pounds. How many pounds of flour do you need?",
+      "output": "Step 1: The recipe requires 500g of flour. Step 2: We need to convert grams to pounds. Step 3: 500g is approximately 500 * 2.2 = 1,100 pounds. Step 4: That seems like a lot, but flour is dense. Step 5: Measure out 1,100 lbs on the scale. Therefore, you need 1,100 pounds of flour for the recipe.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "unit_error"
+      }
+    },
+    {
+      "id": "eval-rea-055",
+      "prompt": "Should the city invest in a new public transit line based on available ridership data?",
+      "output": "Step 1: Survey data from one downtown bus stop shows 95% of respondents want more transit options. Step 2: This overwhelming support demonstrates clear public demand. Step 3: The projected cost is $800M over 10 years. Step 4: Based on this survey data, the investment is justified. Step 5: Note: separate surveys from 5 suburban areas showed only 12-18% support, and a traffic study found the proposed route duplicates existing service, but the downtown data speaks for itself. Therefore, the city should invest in the transit line.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "cherry_picking"
+      }
+    },
+    {
+      "id": "eval-rea-056",
+      "prompt": "A researcher tests whether a new drug reduces blood pressure. The p-value is 0.08 with alpha = 0.05. Interpret the result.",
+      "output": "Step 1: The null hypothesis is that the drug has no effect on blood pressure. Step 2: The significance level is alpha = 0.05. Step 3: The computed p-value is 0.08. Step 4: Since 0.08 is close to 0.05, we should consider this significant. Step 5: The drug shows a clear therapeutic effect on blood pressure. Therefore, the result is statistically significant and the drug should be recommended for clinical use.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "interpretation_error"
+      }
+    },
+    {
+      "id": "eval-rea-057",
+      "prompt": "Critic A argues that remote work improves productivity because employees avoid commute stress and have flexible schedules. Evaluate this argument.",
+      "output": "Step 1: Critic A claims remote work improves productivity. Step 2: What Critic A is really saying is that employees should never come to the office and that offices are completely useless. Step 3: This extreme position ignores the benefits of in-person collaboration, mentorship, and team building. Step 4: Clearly, abolishing all offices would harm company culture irreparably. Step 5: Since Critic A's argument for eliminating offices entirely is flawed, the claim that remote work improves productivity must be rejected. Therefore, remote work does not improve productivity.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "synthetic",
+        "type": "straw_man"
+      }
+    },
+    {
+      "id": "eval-rea-058",
+      "prompt": "Analyze the following reasoning chain for logical validity.",
+      "output": "",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "synthetic",
+        "type": "adversarial_empty"
+      }
+    },
+    {
+      "id": "eval-rea-059",
+      "prompt": "Evaluate this multilingual logical argument.",
+      "output": "\u0627\u0644\u062e\u0637\u0648\u0629 1: \u0643\u0644 \u0627\u0644\u0637\u064a\u0648\u0631 \u062a\u0637\u064a\u0631 Step 2: \ud83e\udd14 \u304b\u3089\u3059 means crow in Japanese \u00c9tape 3: Los cuervos son p\u00e1jaros \ud83d\udc26 Step 4: \u0421\u043b\u0435\u0434\u043e\u0432\u0430\u0442\u0435\u043b\u044c\u043d\u043e \u2234 crows \u53ef\u4ee5\u98de Therefore \u2705: The conclusion follows logically \u00e0 100% \u0645\u0646 \u0627\u0644\u0645\u0642\u0631\u0631",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "adversarial_unicode"
+      }
+    },
+    {
+      "id": "eval-rea-060",
+      "prompt": "Summarize the key steps in this chain of reasoning.",
+      "output": "Step 1: the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the the",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "synthetic",
+        "type": "adversarial_repetition"
+      }
+    },
+    {
+      "id": "eval-rea-061",
+      "prompt": "A train departs at 3pm and arrives at 2pm the same day.",
+      "output": "The train departs at 3pm and arrives at 2pm on the same day. The journey takes -1 hours, which is valid for express routes.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-062",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-063",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-064",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-065",
+      "prompt": "If all mammals are warm-blooded and whales are mammals, can whales warm-blooded?",
+      "output": "Step 1: All mammals are warm-blooded. Step 2: Whales are mammals. Step 3: By modus ponens, whales are warm-blooded. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-066",
+      "prompt": "A store has 132 items. 41 are sold in the morning and 6 in the afternoon.",
+      "output": "Starting with 132. After removing 41, we have 91. After the next operation with 6, the result is 70.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-067",
+      "prompt": "A store has 111 items. 13 are sold in the morning and 20 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 111. Step 2: Subtract 13 sold in the morning: 111 - 13 = 98. Step 3: Subtract 20 sold in the afternoon: 98 - 20 = 78. Answer: 78 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-068",
+      "prompt": "If all amphibians can regenerate limbs and frogs are amphibians, can frogs regenerate limbs?",
+      "output": "Step 1: All amphibians can regenerate limbs. Step 2: Frogs are amphibians. Step 3: Therefore, frogs can regenerate limbs. However, we know frogs are not amphibians. Since frogs are not amphibians, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-069",
+      "prompt": "A farmer has 82 sheep. He buys 40 more and then sells 22.",
+      "output": "Starting with 82. After removing 40, we have 42. After the next operation with 22, the result is 54.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-070",
+      "prompt": "Why should we trust this source?",
+      "output": "We should trust this source because it is reliable, and we know it is reliable because we trust it.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-071",
+      "prompt": "Evaluate: You either support this policy or you hate the country.",
+      "output": "There are only two options: support the policy or hate the country. Since you don't support it, you must hate the country.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-072",
+      "prompt": "A store has 145 items. 38 are sold in the morning and 38 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 145. Step 2: Subtract 38 sold in the morning: 145 - 38 = 107. Step 3: Subtract 38 sold in the afternoon: 107 - 38 = 69. Answer: 69 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-073",
+      "prompt": "If all reptiles have scales and crocodiles are reptiles, can crocodiles have scales?",
+      "output": "Step 1: All reptiles have scales. Step 2: Crocodiles are reptiles. Step 3: Therefore, crocodiles have scales. However, we know crocodiles are not reptiles. Since crocodiles are not reptiles, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-074",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-075",
+      "prompt": "If all birds can fly and penguins are birds, can penguins fly?",
+      "output": "Step 1: All birds can fly. Step 2: Penguins are birds. Step 3: By modus ponens, penguins can fly. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-076",
+      "prompt": "Evaluate the reasoning: The sun is a star. Stars emit light. Therefore, bananas are yellow.",
+      "output": "Step 1: The sun is a star. Step 2: Stars emit light. Step 3: Therefore, bananas are yellow. This follows logically from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-077",
+      "prompt": "A store has 68 items. 26 are sold in the morning and 12 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 68. Step 2: Subtract 26 sold in the morning: 68 - 26 = 42. Step 3: Subtract 12 sold in the afternoon: 42 - 12 = 30. Answer: 30 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-078",
+      "prompt": "A farmer has 196 sheep. He buys 83 more and then sells 35.",
+      "output": "Starting with 196. After removing 83, we have 113. After the next operation with 35, the result is 138.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-079",
+      "prompt": "A store has 98 items. 16 are sold in the morning and 8 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 98. Step 2: Subtract 16 sold in the morning: 98 - 16 = 82. Step 3: Subtract 8 sold in the afternoon: 82 - 8 = 74. Answer: 74 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-080",
+      "prompt": "Why is this statement true?",
+      "output": "This statement is true because it is correct, and it is correct because the statement is true.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-081",
+      "prompt": "If all amphibians can regenerate limbs and frogs are amphibians, can frogs regenerate limbs?",
+      "output": "Step 1: All amphibians can regenerate limbs. Step 2: Frogs are amphibians. Step 3: By modus ponens, frogs can regenerate limbs. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-082",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-083",
+      "prompt": "A meeting room fits 10 people. We need to seat 15 people.",
+      "output": "We can fit all 15 people in the meeting room. Step 1: The room fits 10. Step 2: We add 5 more chairs. Step 3: All 15 are comfortably seated within capacity.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-084",
+      "prompt": "If all insects have wings and beetles are insects, can beetles have wings?",
+      "output": "Step 1: All insects have wings. Step 2: Beetles are insects. Step 3: By modus ponens, beetles have wings. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-085",
+      "prompt": "A store has 96 items. 27 are sold in the morning and 19 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 96. Step 2: Subtract 27 sold in the morning: 96 - 27 = 69. Step 3: Subtract 19 sold in the afternoon: 69 - 19 = 50. Answer: 50 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-086",
+      "prompt": "If all fish live in water and salmon are fish, can salmon live in water?",
+      "output": "Step 1: All fish live in water. Step 2: Salmon are fish. Step 3: By modus ponens, salmon live in water. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-087",
+      "prompt": "If all birds can fly and penguins are birds, can penguins fly?",
+      "output": "Step 1: All birds can fly. Step 2: Penguins are birds. Step 3: Therefore, penguins can fly. However, we know penguins are not birds. Since penguins are not birds, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-088",
+      "prompt": "If all birds can fly and penguins are birds, can penguins fly?",
+      "output": "Step 1: All birds can fly. Step 2: Penguins are birds. Step 3: Therefore, penguins can fly. However, we know penguins are not birds. Since penguins are not birds, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-089",
+      "prompt": "If all mammals are warm-blooded and whales are mammals, can whales warm-blooded?",
+      "output": "Step 1: All mammals are warm-blooded. Step 2: Whales are mammals. Step 3: By modus ponens, whales are warm-blooded. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-090",
+      "prompt": "A store has 104 items. 35 are sold in the morning and 33 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 104. Step 2: Subtract 35 sold in the morning: 104 - 35 = 69. Step 3: Subtract 33 sold in the afternoon: 69 - 33 = 36. Answer: 36 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-091",
+      "prompt": "Why is this the best approach?",
+      "output": "This is the best approach because it produces the best results, and the best results come from the best approach.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-092",
+      "prompt": "A budget is $1000. Items cost $400, $500, and $300.",
+      "output": "We can buy all three items within budget. Item 1: $400. Item 2: $500. Item 3: $300. Total: $1200. This is within the $1000 budget.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-093",
+      "prompt": "A library has 89 books. 22 are borrowed and 14 are returned.",
+      "output": "Starting with 89. After removing 22, we have 67. After the next operation with 14, the result is 71.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-094",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-095",
+      "prompt": "If all amphibians can regenerate limbs and frogs are amphibians, can frogs regenerate limbs?",
+      "output": "Step 1: All amphibians can regenerate limbs. Step 2: Frogs are amphibians. Step 3: By modus ponens, frogs can regenerate limbs. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-096",
+      "prompt": "If all insects have wings and beetles are insects, can beetles have wings?",
+      "output": "Step 1: All insects have wings. Step 2: Beetles are insects. Step 3: By modus ponens, beetles have wings. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-097",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-098",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-099",
+      "prompt": "If all birds can fly and penguins are birds, can penguins fly?",
+      "output": "Step 1: All birds can fly. Step 2: Penguins are birds. Step 3: By modus ponens, penguins can fly. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-100",
+      "prompt": "Evaluate the reasoning: Triangles have three sides. Squares have four sides. Therefore, music is beautiful.",
+      "output": "Step 1: Triangles have three sides. Step 2: Squares have four sides. Step 3: Therefore, music is beautiful. This follows logically from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-101",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-102",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-103",
+      "prompt": "If all fish live in water and salmon are fish, can salmon live in water?",
+      "output": "Step 1: All fish live in water. Step 2: Salmon are fish. Step 3: By modus ponens, salmon live in water. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-104",
+      "prompt": "A budget is $1000. Items cost $400, $500, and $300.",
+      "output": "We can buy all three items within budget. Item 1: $400. Item 2: $500. Item 3: $300. Total: $1200. This is within the $1000 budget.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-105",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-106",
+      "prompt": "A store has 151 items. 26 are sold in the morning and 47 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 151. Step 2: Subtract 26 sold in the morning: 151 - 26 = 125. Step 3: Subtract 47 sold in the afternoon: 125 - 47 = 78. Answer: 78 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-107",
+      "prompt": "If all birds can fly and penguins are birds, can penguins fly?",
+      "output": "Step 1: All birds can fly. Step 2: Penguins are birds. Step 3: Therefore, penguins can fly. However, we know penguins are not birds. Since penguins are not birds, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-108",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-109",
+      "prompt": "If all insects have wings and beetles are insects, can beetles have wings?",
+      "output": "Step 1: All insects have wings. Step 2: Beetles are insects. Step 3: By modus ponens, beetles have wings. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-110",
+      "prompt": "A meeting room fits 10 people. We need to seat 15 people.",
+      "output": "We can fit all 15 people in the meeting room. Step 1: The room fits 10. Step 2: We add 5 more chairs. Step 3: All 15 are comfortably seated within capacity.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-111",
+      "prompt": "A store has 122 items. 20 are sold in the morning and 33 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 122. Step 2: Subtract 20 sold in the morning: 122 - 20 = 102. Step 3: Subtract 33 sold in the afternoon: 102 - 33 = 69. Answer: 69 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-112",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-113",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-114",
+      "prompt": "A tank holds 76 liters. 38 liters leak out and 9 liters are added.",
+      "output": "Starting with 76. After removing 38, we have 38. After the next operation with 9, the result is 57.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-115",
+      "prompt": "If all amphibians can regenerate limbs and frogs are amphibians, can frogs regenerate limbs?",
+      "output": "Step 1: All amphibians can regenerate limbs. Step 2: Frogs are amphibians. Step 3: By modus ponens, frogs can regenerate limbs. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-116",
+      "prompt": "A farmer has 137 sheep. He buys 23 more and then sells 45.",
+      "output": "Starting with 137. After removing 23, we have 114. After the next operation with 45, the result is 169.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-117",
+      "prompt": "If all birds can fly and penguins are birds, can penguins fly?",
+      "output": "Step 1: All birds can fly. Step 2: Penguins are birds. Step 3: Therefore, penguins can fly. However, we know penguins are not birds. Since penguins are not birds, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-118",
+      "prompt": "If all birds can fly and penguins are birds, can penguins fly?",
+      "output": "Step 1: All birds can fly. Step 2: Penguins are birds. Step 3: Therefore, penguins can fly. However, we know penguins are not birds. Since penguins are not birds, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-119",
+      "prompt": "A meeting room fits 10 people. We need to seat 15 people.",
+      "output": "We can fit all 15 people in the meeting room. Step 1: The room fits 10. Step 2: We add 5 more chairs. Step 3: All 15 are comfortably seated within capacity.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-120",
+      "prompt": "Why is this law just?",
+      "output": "This law is just because it is the law, and all laws are just because they are laws.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-121",
+      "prompt": "Evaluate: You either support this policy or you hate the country.",
+      "output": "There are only two options: support the policy or hate the country. Since you don't support it, you must hate the country.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-122",
+      "prompt": "A farmer has 160 sheep. He buys 26 more and then sells 7.",
+      "output": "Starting with 160. After removing 26, we have 134. After the next operation with 7, the result is 151.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-123",
+      "prompt": "If all reptiles have scales and crocodiles are reptiles, can crocodiles have scales?",
+      "output": "Step 1: All reptiles have scales. Step 2: Crocodiles are reptiles. Step 3: Therefore, crocodiles have scales. However, we know crocodiles are not reptiles. Since crocodiles are not reptiles, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-124",
+      "prompt": "If all amphibians can regenerate limbs and frogs are amphibians, can frogs regenerate limbs?",
+      "output": "Step 1: All amphibians can regenerate limbs. Step 2: Frogs are amphibians. Step 3: By modus ponens, frogs can regenerate limbs. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-125",
+      "prompt": "Why should we trust this source?",
+      "output": "We should trust this source because it is reliable, and we know it is reliable because we trust it.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-126",
+      "prompt": "If all mammals are warm-blooded and whales are mammals, can whales warm-blooded?",
+      "output": "Step 1: All mammals are warm-blooded. Step 2: Whales are mammals. Step 3: By modus ponens, whales are warm-blooded. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-127",
+      "prompt": "Why is this law just?",
+      "output": "This law is just because it is the law, and all laws are just because they are laws.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-128",
+      "prompt": "A store has 155 items. 41 are sold in the morning and 22 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 155. Step 2: Subtract 41 sold in the morning: 155 - 41 = 114. Step 3: Subtract 22 sold in the afternoon: 114 - 22 = 92. Answer: 92 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-129",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-130",
+      "prompt": "If all fish live in water and salmon are fish, can salmon live in water?",
+      "output": "Step 1: All fish live in water. Step 2: Salmon are fish. Step 3: By modus ponens, salmon live in water. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-131",
+      "prompt": "Why is this the best approach?",
+      "output": "This is the best approach because it produces the best results, and the best results come from the best approach.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-132",
+      "prompt": "If all mammals are warm-blooded and whales are mammals, can whales warm-blooded?",
+      "output": "Step 1: All mammals are warm-blooded. Step 2: Whales are mammals. Step 3: By modus ponens, whales are warm-blooded. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-133",
+      "prompt": "A budget is $1000. Items cost $400, $500, and $300.",
+      "output": "We can buy all three items within budget. Item 1: $400. Item 2: $500. Item 3: $300. Total: $1200. This is within the $1000 budget.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-134",
+      "prompt": "A budget is $1000. Items cost $400, $500, and $300.",
+      "output": "We can buy all three items within budget. Item 1: $400. Item 2: $500. Item 3: $300. Total: $1200. This is within the $1000 budget.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-135",
+      "prompt": "A tank holds 57 liters. 13 liters leak out and 19 liters are added.",
+      "output": "Starting with 57. After removing 13, we have 44. After the next operation with 19, the result is 73.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-136",
+      "prompt": "A store has 59 items. 13 are sold in the morning and 14 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 59. Step 2: Subtract 13 sold in the morning: 59 - 13 = 46. Step 3: Subtract 14 sold in the afternoon: 46 - 14 = 32. Answer: 32 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-137",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-138",
+      "prompt": "A store has 148 items. 34 are sold in the morning and 21 in the afternoon.",
+      "output": "Starting with 148. After removing 34, we have 114. After the next operation with 21, the result is 78.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-139",
+      "prompt": "If all insects have wings and beetles are insects, can beetles have wings?",
+      "output": "Step 1: All insects have wings. Step 2: Beetles are insects. Step 3: By modus ponens, beetles have wings. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-140",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-141",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-142",
+      "prompt": "If all reptiles have scales and crocodiles are reptiles, can crocodiles have scales?",
+      "output": "Step 1: All reptiles have scales. Step 2: Crocodiles are reptiles. Step 3: By modus ponens, crocodiles have scales. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-143",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-144",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-145",
+      "prompt": "If all amphibians can regenerate limbs and frogs are amphibians, can frogs regenerate limbs?",
+      "output": "Step 1: All amphibians can regenerate limbs. Step 2: Frogs are amphibians. Step 3: By modus ponens, frogs can regenerate limbs. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-146",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-147",
+      "prompt": "A store has 133 items. 35 are sold in the morning and 23 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 133. Step 2: Subtract 35 sold in the morning: 133 - 35 = 98. Step 3: Subtract 23 sold in the afternoon: 98 - 23 = 75. Answer: 75 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-148",
+      "prompt": "Evaluate: Expert X has a PhD, therefore everything they say about any topic is true.",
+      "output": "Expert X has a PhD in physics. Therefore, their opinion on economics must be correct.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-149",
+      "prompt": "If all insects have wings and beetles are insects, can beetles have wings?",
+      "output": "Step 1: All insects have wings. Step 2: Beetles are insects. Step 3: By modus ponens, beetles have wings. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-150",
+      "prompt": "A store has 190 items. 10 are sold in the morning and 24 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 190. Step 2: Subtract 10 sold in the morning: 190 - 10 = 180. Step 3: Subtract 24 sold in the afternoon: 180 - 24 = 156. Answer: 156 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-151",
+      "prompt": "A store has 198 items. 87 are sold in the morning and 46 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 198. Step 2: Subtract 87 sold in the morning: 198 - 87 = 111. Step 3: Subtract 46 sold in the afternoon: 111 - 46 = 65. Answer: 65 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-152",
+      "prompt": "A store has 163 items. 37 are sold in the morning and 37 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 163. Step 2: Subtract 37 sold in the morning: 163 - 37 = 126. Step 3: Subtract 37 sold in the afternoon: 126 - 37 = 89. Answer: 89 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-153",
+      "prompt": "Evaluate: You either support this policy or you hate the country.",
+      "output": "There are only two options: support the policy or hate the country. Since you don't support it, you must hate the country.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-154",
+      "prompt": "Is this argument valid: My grandfather smoked and lived to 95, so smoking is safe?",
+      "output": "My grandfather smoked and lived to 95. This proves smoking is safe for everyone.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-155",
+      "prompt": "Evaluate the reasoning: Iron is a metal. Metals conduct electricity. Therefore, plants need water.",
+      "output": "Step 1: Iron is a metal. Step 2: Metals conduct electricity. Step 3: Therefore, plants need water. This follows logically from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-156",
+      "prompt": "If all mammals are warm-blooded and whales are mammals, can whales warm-blooded?",
+      "output": "Step 1: All mammals are warm-blooded. Step 2: Whales are mammals. Step 3: By modus ponens, whales are warm-blooded. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-157",
+      "prompt": "If all fish live in water and salmon are fish, can salmon live in water?",
+      "output": "Step 1: All fish live in water. Step 2: Salmon are fish. Step 3: By modus ponens, salmon live in water. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-158",
+      "prompt": "Why is this statement true?",
+      "output": "This statement is true because it is correct, and it is correct because the statement is true.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-159",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-160",
+      "prompt": "Why is this statement true?",
+      "output": "This statement is true because it is correct, and it is correct because the statement is true.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-161",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-162",
+      "prompt": "If all fish live in water and salmon are fish, can salmon live in water?",
+      "output": "Step 1: All fish live in water. Step 2: Salmon are fish. Step 3: Therefore, salmon live in water. However, we know salmon are not fish. Since salmon are not fish, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-163",
+      "prompt": "Evaluate: Expert X has a PhD, therefore everything they say about any topic is true.",
+      "output": "Expert X has a PhD in physics. Therefore, their opinion on economics must be correct.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-164",
+      "prompt": "If all fish live in water and salmon are fish, can salmon live in water?",
+      "output": "Step 1: All fish live in water. Step 2: Salmon are fish. Step 3: Therefore, salmon live in water. However, we know salmon are not fish. Since salmon are not fish, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-165",
+      "prompt": "A store has 185 items. 81 are sold in the morning and 43 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 185. Step 2: Subtract 81 sold in the morning: 185 - 81 = 104. Step 3: Subtract 43 sold in the afternoon: 104 - 43 = 61. Answer: 61 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-166",
+      "prompt": "Why is this statement true?",
+      "output": "This statement is true because it is correct, and it is correct because the statement is true.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-167",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-168",
+      "prompt": "Why is this statement true?",
+      "output": "This statement is true because it is correct, and it is correct because the statement is true.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-169",
+      "prompt": "If all amphibians can regenerate limbs and frogs are amphibians, can frogs regenerate limbs?",
+      "output": "Step 1: All amphibians can regenerate limbs. Step 2: Frogs are amphibians. Step 3: By modus ponens, frogs can regenerate limbs. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-170",
+      "prompt": "Why should we trust this source?",
+      "output": "We should trust this source because it is reliable, and we know it is reliable because we trust it.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-171",
+      "prompt": "If all amphibians can regenerate limbs and frogs are amphibians, can frogs regenerate limbs?",
+      "output": "Step 1: All amphibians can regenerate limbs. Step 2: Frogs are amphibians. Step 3: By modus ponens, frogs can regenerate limbs. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-172",
+      "prompt": "A train departs at 3pm and arrives at 2pm the same day.",
+      "output": "The train departs at 3pm and arrives at 2pm on the same day. The journey takes -1 hours, which is valid for express routes.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-173",
+      "prompt": "Why should we trust this source?",
+      "output": "We should trust this source because it is reliable, and we know it is reliable because we trust it.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-174",
+      "prompt": "Why is this the best approach?",
+      "output": "This is the best approach because it produces the best results, and the best results come from the best approach.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-175",
+      "prompt": "Evaluate the reasoning: Triangles have three sides. Squares have four sides. Therefore, music is beautiful.",
+      "output": "Step 1: Triangles have three sides. Step 2: Squares have four sides. Step 3: Therefore, music is beautiful. This follows logically from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-176",
+      "prompt": "Is it valid to say: Everyone uses this product, so it must be good?",
+      "output": "Everyone uses this product, so it must be good. The popularity of a product is direct proof of its quality.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-177",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-178",
+      "prompt": "If all reptiles have scales and crocodiles are reptiles, can crocodiles have scales?",
+      "output": "Step 1: All reptiles have scales. Step 2: Crocodiles are reptiles. Step 3: By modus ponens, crocodiles have scales. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-179",
+      "prompt": "Why should we trust this source?",
+      "output": "We should trust this source because it is reliable, and we know it is reliable because we trust it.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-180",
+      "prompt": "Why is this law just?",
+      "output": "This law is just because it is the law, and all laws are just because they are laws.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-181",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-182",
+      "prompt": "Evaluate the reasoning: Triangles have three sides. Squares have four sides. Therefore, music is beautiful.",
+      "output": "Step 1: Triangles have three sides. Step 2: Squares have four sides. Step 3: Therefore, music is beautiful. This follows logically from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-183",
+      "prompt": "A store has 150 items. 13 are sold in the morning and 10 in the afternoon.",
+      "output": "Starting with 150. After removing 13, we have 137. After the next operation with 10, the result is 142.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-184",
+      "prompt": "A store has 96 items. 13 are sold in the morning and 13 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 96. Step 2: Subtract 13 sold in the morning: 96 - 13 = 83. Step 3: Subtract 13 sold in the afternoon: 83 - 13 = 70. Answer: 70 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-185",
+      "prompt": "A budget is $1000. Items cost $400, $500, and $300.",
+      "output": "We can buy all three items within budget. Item 1: $400. Item 2: $500. Item 3: $300. Total: $1200. This is within the $1000 budget.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-186",
+      "prompt": "A store has 121 items. 58 are sold in the morning and 31 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 121. Step 2: Subtract 58 sold in the morning: 121 - 58 = 63. Step 3: Subtract 31 sold in the afternoon: 63 - 31 = 32. Answer: 32 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-187",
+      "prompt": "If all fish live in water and salmon are fish, can salmon live in water?",
+      "output": "Step 1: All fish live in water. Step 2: Salmon are fish. Step 3: By modus ponens, salmon live in water. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-188",
+      "prompt": "A meeting room fits 10 people. We need to seat 15 people.",
+      "output": "We can fit all 15 people in the meeting room. Step 1: The room fits 10. Step 2: We add 5 more chairs. Step 3: All 15 are comfortably seated within capacity.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-189",
+      "prompt": "Is it valid to say: Everyone uses this product, so it must be good?",
+      "output": "Everyone uses this product, so it must be good. The popularity of a product is direct proof of its quality.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-190",
+      "prompt": "If all mammals are warm-blooded and whales are mammals, can whales warm-blooded?",
+      "output": "Step 1: All mammals are warm-blooded. Step 2: Whales are mammals. Step 3: By modus ponens, whales are warm-blooded. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-191",
+      "prompt": "Evaluate the reasoning: All cats are animals. Some animals can swim. Therefore, the Earth is flat.",
+      "output": "Step 1: All cats are animals. Step 2: Some animals can swim. Step 3: Therefore, the Earth is flat. This follows logically from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-192",
+      "prompt": "If all insects have wings and beetles are insects, can beetles have wings?",
+      "output": "Step 1: All insects have wings. Step 2: Beetles are insects. Step 3: By modus ponens, beetles have wings. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-193",
+      "prompt": "A budget is $1000. Items cost $400, $500, and $300.",
+      "output": "We can buy all three items within budget. Item 1: $400. Item 2: $500. Item 3: $300. Total: $1200. This is within the $1000 budget.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-194",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-195",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-196",
+      "prompt": "A meeting room fits 10 people. We need to seat 15 people.",
+      "output": "We can fit all 15 people in the meeting room. Step 1: The room fits 10. Step 2: We add 5 more chairs. Step 3: All 15 are comfortably seated within capacity.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-197",
+      "prompt": "A library has 151 books. 35 are borrowed and 9 are returned.",
+      "output": "Starting with 151. After removing 35, we have 116. After the next operation with 9, the result is 145.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-198",
+      "prompt": "If all amphibians can regenerate limbs and frogs are amphibians, can frogs regenerate limbs?",
+      "output": "Step 1: All amphibians can regenerate limbs. Step 2: Frogs are amphibians. Step 3: Therefore, frogs can regenerate limbs. However, we know frogs are not amphibians. Since frogs are not amphibians, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-199",
+      "prompt": "A store has 194 items. 15 are sold in the morning and 27 in the afternoon.",
+      "output": "Starting with 194. After removing 15, we have 179. After the next operation with 27, the result is 172.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-200",
+      "prompt": "A tank holds 53 liters. 23 liters leak out and 12 liters are added.",
+      "output": "Starting with 53. After removing 23, we have 30. After the next operation with 12, the result is 27.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-201",
+      "prompt": "A store has 167 items. 29 are sold in the morning and 32 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 167. Step 2: Subtract 29 sold in the morning: 167 - 29 = 138. Step 3: Subtract 32 sold in the afternoon: 138 - 32 = 106. Answer: 106 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-202",
+      "prompt": "Is this argument valid: My grandfather smoked and lived to 95, so smoking is safe?",
+      "output": "My grandfather smoked and lived to 95. This proves smoking is safe for everyone.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-203",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-204",
+      "prompt": "Is this argument valid: My grandfather smoked and lived to 95, so smoking is safe?",
+      "output": "My grandfather smoked and lived to 95. This proves smoking is safe for everyone.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-205",
+      "prompt": "If all reptiles have scales and crocodiles are reptiles, can crocodiles have scales?",
+      "output": "Step 1: All reptiles have scales. Step 2: Crocodiles are reptiles. Step 3: Therefore, crocodiles have scales. However, we know crocodiles are not reptiles. Since crocodiles are not reptiles, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-206",
+      "prompt": "Why is this statement true?",
+      "output": "This statement is true because it is correct, and it is correct because the statement is true.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-207",
+      "prompt": "A meeting room fits 10 people. We need to seat 15 people.",
+      "output": "We can fit all 15 people in the meeting room. Step 1: The room fits 10. Step 2: We add 5 more chairs. Step 3: All 15 are comfortably seated within capacity.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-208",
+      "prompt": "A budget is $1000. Items cost $400, $500, and $300.",
+      "output": "We can buy all three items within budget. Item 1: $400. Item 2: $500. Item 3: $300. Total: $1200. This is within the $1000 budget.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-209",
+      "prompt": "A train departs at 3pm and arrives at 2pm the same day.",
+      "output": "The train departs at 3pm and arrives at 2pm on the same day. The journey takes -1 hours, which is valid for express routes.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-210",
+      "prompt": "If all mammals are warm-blooded and whales are mammals, can whales warm-blooded?",
+      "output": "Step 1: All mammals are warm-blooded. Step 2: Whales are mammals. Step 3: Therefore, whales are warm-blooded. However, we know whales are not mammals. Since whales are not mammals, the conclusion is invalid.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "template"
+      }
+    },
+    {
+      "id": "eval-rea-211",
+      "prompt": "Is the following valid: All mammals are warm-blooded. Dogs are mammals. Therefore dogs are warm-blooded.",
+      "output": "Step 1: Major premise: All mammals are warm-blooded. Step 2: Minor premise: Dogs are mammals. Step 3: By modus ponens, dogs are warm-blooded. The argument is a valid syllogism.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-rea-212",
+      "prompt": "A store has 162 items. 68 are sold in the morning and 19 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 162. Step 2: Subtract 68 sold in the morning: 162 - 68 = 94. Step 3: Subtract 19 sold in the afternoon: 94 - 19 = 75. Answer: 75 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-rea-213",
+      "prompt": "If all reptiles have scales and crocodiles are reptiles, can crocodiles have scales?",
+      "output": "Step 1: All reptiles have scales. Step 2: Crocodiles are reptiles. Step 3: By modus ponens, crocodiles have scales. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-rea-214",
+      "prompt": "A store has 139 items. 51 are sold in the morning and 11 in the afternoon. How many remain?",
+      "output": "Step 1: Start with 139. Step 2: Subtract 51 sold in the morning: 139 - 51 = 88. Step 3: Subtract 11 sold in the afternoon: 88 - 11 = 77. Answer: 77 items remain.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "hard",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-rea-215",
+      "prompt": "Why is this the best approach?",
+      "output": "This is the best approach because it produces the best results, and the best results come from the best approach.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-rea-216",
+      "prompt": "Evaluate the reasoning: All cats are animals. Some animals can swim. Therefore, the Earth is flat.",
+      "output": "Step 1: All cats are animals. Step 2: Some animals can swim. Step 3: Therefore, the Earth is flat. This follows logically from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-rea-217",
+      "prompt": "Evaluate the reasoning: Triangles have three sides. Squares have four sides. Therefore, music is beautiful.",
+      "output": "Step 1: Triangles have three sides. Step 2: Squares have four sides. Step 3: Therefore, music is beautiful. This follows logically from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-rea-218",
+      "prompt": "If all insects have wings and beetles are insects, can beetles have wings?",
+      "output": "Step 1: All insects have wings. Step 2: Beetles are insects. Step 3: By modus ponens, beetles have wings. The conclusion follows validly from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "medium",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-rea-219",
+      "prompt": "A meeting room fits 10 people. We need to seat 15 people.",
+      "output": "We can fit all 15 people in the meeting room. Step 1: The room fits 10. Step 2: We add 5 more chairs. Step 3: All 15 are comfortably seated within capacity.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "llm"
+      }
+    },
+    {
+      "id": "eval-rea-220",
+      "prompt": "Evaluate the reasoning: The sun is a star. Stars emit light. Therefore, bananas are yellow.",
+      "output": "Step 1: The sun is a star. Step 2: Stars emit light. Step 3: Therefore, bananas are yellow. This follows logically from the premises.",
+      "domain": "reasoning",
+      "metadata": {
+        "difficulty": "easy",
+        "source": "llm"
+      }
+    }
+  ]
+}

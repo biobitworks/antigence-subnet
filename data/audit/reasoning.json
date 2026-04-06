@@ -1,0 +1,390 @@
+{
+  "domain": "reasoning",
+  "n_samples": 60,
+  "feature_names": [
+    "claim_density",
+    "citation_count",
+    "hedging_ratio",
+    "specificity",
+    "numeric_density",
+    "pamp_score",
+    "exaggeration",
+    "certainty",
+    "controversy",
+    "danger_signal"
+  ],
+  "feature_stats": {
+    "claim_density": {
+      "index": 0,
+      "mean": 0.5116666666666667,
+      "std": 0.032102267140430366,
+      "min": 0.5,
+      "max": 0.6,
+      "percentiles": {
+        "p5": 0.5,
+        "p25": 0.5,
+        "p50": 0.5,
+        "p75": 0.5,
+        "p95": 0.6
+      },
+      "unique_count": 2,
+      "unique_values": [
+        0.5,
+        0.6
+      ],
+      "is_binary": false,
+      "is_constant": false
+    },
+    "citation_count": {
+      "index": 1,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 1,
+      "unique_values": [
+        0.0
+      ],
+      "is_binary": true,
+      "is_constant": true
+    },
+    "hedging_ratio": {
+      "index": 2,
+      "mean": 0.11666666666666667,
+      "std": 0.3210226714043038,
+      "min": 0.0,
+      "max": 1.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 1.0
+      },
+      "unique_count": 2,
+      "unique_values": [
+        0.0,
+        1.0
+      ],
+      "is_binary": true,
+      "is_constant": false
+    },
+    "specificity": {
+      "index": 3,
+      "mean": 0.8663243422693121,
+      "std": 0.17304865029903246,
+      "min": 0.00249500998003992,
+      "max": 1.0,
+      "percentiles": {
+        "p5": 0.6318247126436781,
+        "p25": 0.7692307692307693,
+        "p50": 0.9416398138202648,
+        "p75": 1.0,
+        "p95": 1.0
+      },
+      "unique_count": 32,
+      "unique_values": [
+        0.00249500998003992,
+        0.5813953488372093,
+        0.625,
+        0.632183908045977,
+        0.6395348837209303,
+        0.6666666666666666,
+        0.6862745098039216,
+        0.6896551724137931,
+        0.6989247311827956,
+        0.703125,
+        0.7236842105263158,
+        0.7462686567164178,
+        0.7627118644067797,
+        0.7692307692307693,
+        0.7746478873239436,
+        0.7843137254901961,
+        0.8045977011494253,
+        0.8088235294117647,
+        0.8139534883720931,
+        0.8333333333333333,
+        0.8450704225352113,
+        0.8620689655172414,
+        0.8636363636363636,
+        0.8653846153846154,
+        0.8783783783783784,
+        0.9166666666666666,
+        0.9183673469387755,
+        0.9649122807017543,
+        0.9722222222222222,
+        0.975609756097561,
+        0.9803921568627451,
+        1.0
+      ],
+      "is_binary": false,
+      "is_constant": false
+    },
+    "numeric_density": {
+      "index": 4,
+      "mean": 0.21666666666666667,
+      "std": 0.41197356981027583,
+      "min": 0.0,
+      "max": 1.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 1.0
+      },
+      "unique_count": 2,
+      "unique_values": [
+        0.0,
+        1.0
+      ],
+      "is_binary": true,
+      "is_constant": false
+    },
+    "pamp_score": {
+      "index": 5,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 1,
+      "unique_values": [
+        0.0
+      ],
+      "is_binary": true,
+      "is_constant": true
+    },
+    "exaggeration": {
+      "index": 6,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 1,
+      "unique_values": [
+        0.0
+      ],
+      "is_binary": true,
+      "is_constant": true
+    },
+    "certainty": {
+      "index": 7,
+      "mean": 0.1,
+      "std": 0.30000000000000004,
+      "min": 0.0,
+      "max": 1.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 1.0
+      },
+      "unique_count": 2,
+      "unique_values": [
+        0.0,
+        1.0
+      ],
+      "is_binary": true,
+      "is_constant": false
+    },
+    "controversy": {
+      "index": 8,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 1,
+      "unique_values": [
+        0.0
+      ],
+      "is_binary": true,
+      "is_constant": true
+    },
+    "danger_signal": {
+      "index": 9,
+      "mean": 0.0,
+      "std": 0.0,
+      "min": 0.0,
+      "max": 0.0,
+      "percentiles": {
+        "p5": 0.0,
+        "p25": 0.0,
+        "p50": 0.0,
+        "p75": 0.0,
+        "p95": 0.0
+      },
+      "unique_count": 1,
+      "unique_values": [
+        0.0
+      ],
+      "is_binary": true,
+      "is_constant": true
+    }
+  },
+  "correlation_matrix": [
+    [
+      1.0,
+      null,
+      1.0,
+      0.123637,
+      -0.065111,
+      null,
+      null,
+      0.051917,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      1.0,
+      null,
+      1.0,
+      0.123637,
+      -0.065111,
+      null,
+      null,
+      0.051917,
+      null,
+      null
+    ],
+    [
+      0.123637,
+      null,
+      0.123637,
+      1.0,
+      0.042368,
+      null,
+      null,
+      -0.066785,
+      null,
+      null
+    ],
+    [
+      -0.065111,
+      null,
+      -0.065111,
+      0.042368,
+      1.0,
+      null,
+      null,
+      -0.040456,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      0.051917,
+      null,
+      0.051917,
+      -0.066785,
+      -0.040456,
+      null,
+      null,
+      1.0,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ],
+    [
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null,
+      null
+    ]
+  ],
+  "high_correlations": [
+    {
+      "features": [
+        "claim_density",
+        "hedging_ratio"
+      ],
+      "r": 1.0,
+      "note": "claim_density includes +0.1 for hedging_ratio presence. r=1.0000. Partial algebraic dependency."
+    }
+  ],
+  "metadata": {
+    "audit_timestamp": "2026-04-01T07:24:49.524058+00:00",
+    "extractor_class": "DendriticFeatureExtractor",
+    "data_dir": "/Users/byron/projects/active/antigence-bittensor/.claude/worktrees/agent-aae2a82a/data/evaluation"
+  }
+}

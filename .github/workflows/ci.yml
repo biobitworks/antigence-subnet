@@ -1,0 +1,35 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v6
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Cache sbert model
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/torch/sentence_transformers
+          key: sbert-all-MiniLM-L6-v2
+
+      - name: Install dependencies
+        run: pip install -e '.[dev,sbert]'
+
+      - name: Pre-download sbert model
+        run: python -c "from sentence_transformers import SentenceTransformer; SentenceTransformer('all-MiniLM-L6-v2')"
+
+      - name: Lint
+        uses: astral-sh/ruff-action@v3
+
+      - name: Test
+        run: pytest tests/ -x --tb=short -q
