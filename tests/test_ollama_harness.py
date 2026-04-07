@@ -14,6 +14,8 @@ from unittest.mock import patch
 
 import pytest
 
+pytest.importorskip("ollama", reason="ollama not available in CI")
+
 # ---------------------------------------------------------------------------
 # Fixtures
 # ---------------------------------------------------------------------------

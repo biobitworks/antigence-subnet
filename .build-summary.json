@@ -1,5 +1,5 @@
 {
-  "excluded_count": 114,
+  "excluded_count": 117,
   "excluded_files": [
     {
       "path": ".continue-here.md",
@@ -386,23 +386,35 @@
       "reason": "not-included"
     },
     {
-      "path": ".planning/phases/102-commit-rebuild-mirror/102-01-PLAN.md",
+      "path": ".planning/phases/105-fix-lint-ci/105-01-SUMMARY.md",
       "reason": "not-included"
     },
     {
-      "path": ".planning/phases/102-commit-rebuild-mirror/102-01-SUMMARY.md",
+      "path": ".planning/phases/105-fix-lint-ci/105-02-SUMMARY.md",
       "reason": "not-included"
     },
     {
-      "path": ".planning/phases/102-commit-rebuild-mirror/102-02-PLAN.md",
+      "path": ".planning/phases/106-fix-first-visitor-ux/106-01-SUMMARY.md",
       "reason": "not-included"
     },
     {
-      "path": ".planning/phases/102-commit-rebuild-mirror/102-CONTEXT.md",
+      "path": ".planning/phases/107-fix-security-tooling/107-01-SUMMARY.md",
       "reason": "not-included"
     },
     {
-      "path": ".planning/phases/102-commit-rebuild-mirror/102-DISCUSSION-LOG.md",
+      "path": ".planning/phases/108-rebuild-publish-verify/108-01-PLAN.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/phases/108-rebuild-publish-verify/108-01-SUMMARY.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/phases/108-rebuild-publish-verify/108-01-verification.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/phases/99-public-mirror-curation-history-sanitization/99-public-mirror-manifest.json",
       "reason": "not-included"
     },
     {
@@ -415,6 +427,10 @@
     },
     {
       "path": ".planning/research/FEATURES.md",
+      "reason": "not-included"
+    },
+    {
+      "path": ".planning/research/PITFALLS-v12.md",
       "reason": "not-included"
     },
     {
@@ -442,10 +458,6 @@
       "reason": "not-included"
     },
     {
-      "path": "PUBLIC_RELEASE.md",
-      "reason": "not-included"
-    },
-    {
       "path": "docs/pitch/DISCORD-PARTNER-PITCH.md",
       "reason": "excluded"
     },
@@ -458,21 +470,25 @@
       "reason": "excluded"
     }
   ],
-  "generated_at_utc": "2026-04-06T21:58:52.591769+00:00",
+  "generated_at_utc": "2026-04-07T06:04:07.294563+00:00",
   "generated_tree": "dist/public-mirror",
-  "included_count": 300,
+  "included_count": 305,
   "included_files": [
     ".env.example",
     ".env.phase94.example",
     ".github/workflows/ci.yml",
+    ".github/workflows/security.yml",
     ".gitignore",
+    ".gitleaksignore",
     ".zenodo.json",
     "CITATION.cff",
     "CONTRIBUTING.md",
     "Dockerfile",
     "LICENSE",
     "Makefile",
+    "PUBLIC_RELEASE.md",
     "README.md",
+    "SECURITY.md",
     "antigence_subnet.toml.example",
     "antigence_subnet/__init__.py",
     "antigence_subnet/api/__init__.py",
@@ -632,6 +648,7 @@
     "neurons/miner.py",
     "neurons/validator.py",
     "pyproject.toml",
+    "requirements-lock.txt",
     "requirements-test.txt",
     "requirements.txt",
     "scripts/__init__.py",
@@ -763,7 +780,7 @@
     "tests/test_weight_audit.py",
     "tests/test_weight_utils.py"
   ],
-  "manifest": "/tmp/antigence-mirror-build/99-public-mirror-manifest.json",
+  "manifest": ".planning/phases/99-public-mirror-curation-history-sanitization/99-public-mirror-manifest.json",
   "manifest_rules": {
     "approval_later_paths": [
       "docs/pitch/TAO5-APPLICATION.md",
@@ -786,7 +803,6 @@
       ".claude/",
       ".pytest_cache/",
       ".ruff_cache/",
-      "PUBLIC_RELEASE.md",
       "docs/pitch/",
       "testnet-results/"
     ],
@@ -795,6 +811,7 @@
       ".env.example",
       ".env.phase94.example",
       ".gitignore",
+      ".gitleaksignore",
       ".planning/phases/94-testnet-deployment-of-winning-ensemble-policy/artifacts/governance/",
       ".zenodo.json",
       "CITATION.cff",
@@ -802,7 +819,9 @@
       "Dockerfile",
       "LICENSE",
       "Makefile",
+      "PUBLIC_RELEASE.md",
       "README.md",
+      "SECURITY.md",
       "antigence_subnet/",
       "antigence_subnet.toml.example",
       "configs/",
@@ -813,6 +832,7 @@
       "min_compute.yml",
       "neurons/",
       "pyproject.toml",
+      "requirements-lock.txt",
       "requirements-test.txt",
       "requirements.txt",
       "scripts/",

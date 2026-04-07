@@ -1,5 +1,9 @@
 """Regression tests for Phase 81 non-determinism measurement artifacts."""
 
+import pytest
+
+pytest.importorskip("ollama", reason="ollama not available in CI")
+
 from scripts.ollama_test_harness import DECISION_THRESHOLD
 
 
