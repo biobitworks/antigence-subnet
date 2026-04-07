@@ -11,10 +11,9 @@ Validates:
 
 import json
 import sys
-import tomllib
 from pathlib import Path
 
-import pytest
+import tomllib
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
@@ -23,7 +22,7 @@ class TestGridDimensions:
     """Test 1: Grid constants produce expected 80 combinations."""
 
     def test_grid_dimensions(self):
-        from scripts.tune_orchestrator import Z_THRESHOLDS, PAMP_THRESHOLDS, DANGER_ALPHAS
+        from scripts.tune_orchestrator import DANGER_ALPHAS, PAMP_THRESHOLDS, Z_THRESHOLDS
 
         assert len(Z_THRESHOLDS) == 4, f"Expected 4 z_thresholds, got {len(Z_THRESHOLDS)}"
         assert len(PAMP_THRESHOLDS) == 4, f"Expected 4 pamp_thresholds, got {len(PAMP_THRESHOLDS)}"
@@ -32,7 +31,7 @@ class TestGridDimensions:
         assert total == 80, f"Expected 80 total combinations, got {total}"
 
     def test_grid_values(self):
-        from scripts.tune_orchestrator import Z_THRESHOLDS, PAMP_THRESHOLDS, DANGER_ALPHAS
+        from scripts.tune_orchestrator import DANGER_ALPHAS, PAMP_THRESHOLDS, Z_THRESHOLDS
 
         assert Z_THRESHOLDS == [2.0, 3.0, 5.0, 8.0]
         assert PAMP_THRESHOLDS == [0.1, 0.3, 0.5, 0.7]
@@ -100,8 +99,22 @@ class TestWriteSweepJson:
             "best_f1": 0.97,
             "default_f1": 0.95,
             "all_results": [
-                {"z_threshold": 2.0, "pamp_threshold": 0.1, "alpha": 0.0, "f1": 0.90, "precision": 0.95, "recall": 0.86},
-                {"z_threshold": 3.0, "pamp_threshold": 0.3, "alpha": 0.1, "f1": 0.97, "precision": 0.98, "recall": 0.96},
+                {
+                    "z_threshold": 2.0,
+                    "pamp_threshold": 0.1,
+                    "alpha": 0.0,
+                    "f1": 0.90,
+                    "precision": 0.95,
+                    "recall": 0.86,
+                },
+                {
+                    "z_threshold": 3.0,
+                    "pamp_threshold": 0.3,
+                    "alpha": 0.1,
+                    "f1": 0.97,
+                    "precision": 0.98,
+                    "recall": 0.96,
+                },
             ],
         }
         write_sweep_json("hallucination", sweep_result, output_dir=str(tmp_path))
@@ -159,8 +172,8 @@ class TestTomlLoadableByOrchestratorConfig:
         Verifies the TOML structure is valid and keys match the expected
         Phase 36 domain config schema.
         """
-        from scripts.tune_orchestrator import write_tuned_toml
         from antigence_subnet.miner.orchestrator.config import OrchestratorConfig
+        from scripts.tune_orchestrator import write_tuned_toml
 
         best_config = {
             "nk_z_threshold": 3.0,
@@ -184,8 +197,8 @@ class TestTomlLoadableByOrchestratorConfig:
 
     def test_toml_zero_alpha_disables_danger(self, tmp_path):
         """Verify alpha=0.0 produces danger_enabled=false in TOML."""
-        from scripts.tune_orchestrator import write_tuned_toml
         from antigence_subnet.miner.orchestrator.config import OrchestratorConfig
+        from scripts.tune_orchestrator import write_tuned_toml
 
         best_config = {
             "nk_z_threshold": 5.0,
@@ -208,9 +221,20 @@ class TestDefaultConfigValues:
     """Test 6: Default parameters match benchmark_orchestrator.py defaults."""
 
     def test_default_config_values(self):
-        from scripts.tune_orchestrator import DEFAULT_Z_THRESHOLD, DEFAULT_PAMP_THRESHOLD, DEFAULT_DANGER_ALPHA, DEFAULT_DANGER_ENABLED
+        from scripts.tune_orchestrator import (
+            DEFAULT_DANGER_ALPHA,
+            DEFAULT_DANGER_ENABLED,
+            DEFAULT_PAMP_THRESHOLD,
+            DEFAULT_Z_THRESHOLD,
+        )
 
         assert DEFAULT_Z_THRESHOLD == 5.0, f"Expected default z=5.0, got {DEFAULT_Z_THRESHOLD}"
-        assert DEFAULT_PAMP_THRESHOLD == 0.3, f"Expected default pamp=0.3, got {DEFAULT_PAMP_THRESHOLD}"
-        assert DEFAULT_DANGER_ALPHA == 0.0, f"Expected default alpha=0.0, got {DEFAULT_DANGER_ALPHA}"
-        assert DEFAULT_DANGER_ENABLED is False, f"Expected default danger_enabled=False, got {DEFAULT_DANGER_ENABLED}"
+        assert DEFAULT_PAMP_THRESHOLD == 0.3, (
+            f"Expected default pamp=0.3, got {DEFAULT_PAMP_THRESHOLD}"
+        )
+        assert DEFAULT_DANGER_ALPHA == 0.0, (
+            f"Expected default alpha=0.0, got {DEFAULT_DANGER_ALPHA}"
+        )
+        assert DEFAULT_DANGER_ENABLED is False, (
+            f"Expected default danger_enabled=False, got {DEFAULT_DANGER_ENABLED}"
+        )

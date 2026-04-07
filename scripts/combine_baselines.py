@@ -39,8 +39,9 @@ def load_json(path: Path, label: str) -> dict | list | None:
 
 def main():
     parser = argparse.ArgumentParser(description="Combine v9.2 baselines into single JSON")
-    parser.add_argument("--output", type=str, default=str(OUTPUT_PATH),
-                        help="Output path for combined baseline")
+    parser.add_argument(
+        "--output", type=str, default=str(OUTPUT_PATH), help="Output path for combined baseline"
+    )
     args = parser.parse_args()
 
     output_path = Path(args.output)
@@ -110,7 +111,9 @@ def main():
     # Summary
     sections = list(combined["sections"].keys())
     print(f"\n  Combined sections: {sections}")
-    print(f"  Missing sections: {[s for s in ['detectors', 'orchestrator', 'ollama'] if s not in sections]}")
+    print(
+        f"  Missing sections: {[s for s in ['detectors', 'orchestrator', 'ollama'] if s not in sections]}"  # noqa: E501
+    )
 
     # Write output
     with open(output_path, "w") as f:

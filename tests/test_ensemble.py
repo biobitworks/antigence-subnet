@@ -13,13 +13,14 @@ import pytest
 
 from antigence_subnet.miner.detector import BaseDetector, DetectionResult
 
-
 # ---------------------------------------------------------------------------
 # Mock detector helpers
 # ---------------------------------------------------------------------------
 
+
 class MockDetectorA(BaseDetector):
     """Mock detector returning fixed score=0.8, confidence=0.9."""
+
     domain = "test_domain"
 
     def fit(self, samples):
@@ -36,6 +37,7 @@ class MockDetectorA(BaseDetector):
 
 class MockDetectorB(BaseDetector):
     """Mock detector returning fixed score=0.4, confidence=0.7."""
+
     domain = "test_domain"
 
     def fit(self, samples):
@@ -52,6 +54,7 @@ class MockDetectorB(BaseDetector):
 
 class MockDetectorC(BaseDetector):
     """Mock detector returning fixed score=0.6, confidence=0.5."""
+
     domain = "test_domain"
 
     def fit(self, samples):
@@ -70,24 +73,27 @@ class MockDetectorC(BaseDetector):
 # Registry tests
 # ---------------------------------------------------------------------------
 
+
 class TestDetectorRegistry:
     """Test list-based DETECTOR_REGISTRY with append semantics."""
 
     def setup_method(self):
         """Clear registry before each test."""
         from antigence_subnet.miner.detectors import DETECTOR_REGISTRY
+
         self._backup = dict(DETECTOR_REGISTRY)
         DETECTOR_REGISTRY.clear()
 
     def teardown_method(self):
         """Restore registry after each test."""
         from antigence_subnet.miner.detectors import DETECTOR_REGISTRY
+
         DETECTOR_REGISTRY.clear()
         DETECTOR_REGISTRY.update(self._backup)
 
     def test_register_detector_appends_to_list(self):
         """Test 1: register_detector adds detector to list for domain (not replaces)."""
-        from antigence_subnet.miner.detectors import register_detector, DETECTOR_REGISTRY
+        from antigence_subnet.miner.detectors import DETECTOR_REGISTRY, register_detector
 
         register_detector("test_domain", MockDetectorA)
         register_detector("test_domain", MockDetectorB)
@@ -98,7 +104,7 @@ class TestDetectorRegistry:
 
     def test_get_detector_returns_first(self):
         """Test 2: get_detector returns first registered detector for backward compat."""
-        from antigence_subnet.miner.detectors import register_detector, get_detector
+        from antigence_subnet.miner.detectors import get_detector, register_detector
 
         register_detector("test_domain", MockDetectorA)
         register_detector("test_domain", MockDetectorB)
@@ -109,7 +115,8 @@ class TestDetectorRegistry:
     def test_get_detectors_returns_full_list(self):
         """Test 3: get_detectors returns full list of detectors for a domain."""
         from antigence_subnet.miner.detectors import (
-            register_detector, get_detectors,
+            get_detectors,
+            register_detector,
         )
 
         register_detector("test_domain", MockDetectorA)
@@ -156,6 +163,7 @@ class TestBuiltinRegistrations:
 # ---------------------------------------------------------------------------
 # Ensemble detect tests
 # ---------------------------------------------------------------------------
+
 
 class TestEnsembleDetect:
     """Test ensemble_detect() averaging function."""
@@ -252,21 +260,21 @@ class TestEnsembleDetect:
 # Forward routing integration tests
 # ---------------------------------------------------------------------------
 
+
 class TestForwardEnsembleRouting:
     """Test that miner forward routes correctly for ensemble vs single detector."""
 
     @pytest.mark.asyncio
     async def test_forward_with_ensemble_calls_ensemble_detect(self):
         """Miner forward with ensemble (list of detectors) uses ensemble_detect."""
-        from unittest.mock import AsyncMock, MagicMock
+        from unittest.mock import MagicMock
+
         from antigence_subnet.miner.forward import forward
 
         # Create mock miner with ensemble (list) for domain
         miner = MagicMock()
         miner.supported_domains = {"test_domain"}
-        miner.detectors = {
-            "test_domain": [MockDetectorA(), MockDetectorB()]
-        }
+        miner.detectors = {"test_domain": [MockDetectorA(), MockDetectorB()]}
         miner.orchestrator = None  # No orchestrator (use ensemble path)
 
         # Create mock synapse
@@ -277,7 +285,7 @@ class TestForwardEnsembleRouting:
         synapse.code = None
         synapse.context = None
 
-        result = await forward(miner, synapse)
+        await forward(miner, synapse)
 
         # Should set averaged score: (0.8 + 0.4) / 2 = 0.6
         assert abs(synapse.anomaly_score - 0.6) < 1e-6
@@ -292,14 +300,13 @@ class TestForwardEnsembleRouting:
     async def test_forward_with_single_detector_backward_compat(self):
         """Miner forward with single detector (not list) works as before."""
         from unittest.mock import MagicMock
+
         from antigence_subnet.miner.forward import forward
 
         # Create mock miner with single detector (not in a list)
         miner = MagicMock()
         miner.supported_domains = {"test_domain"}
-        miner.detectors = {
-            "test_domain": MockDetectorA()
-        }
+        miner.detectors = {"test_domain": MockDetectorA()}
         miner.orchestrator = None  # No orchestrator (use ensemble path)
 
         # Create mock synapse
@@ -310,7 +317,7 @@ class TestForwardEnsembleRouting:
         synapse.code = None
         synapse.context = None
 
-        result = await forward(miner, synapse)
+        await forward(miner, synapse)
 
         assert synapse.anomaly_score == 0.8
         assert synapse.confidence == 0.9
@@ -322,13 +329,14 @@ class TestForwardEnsembleRouting:
 # TOML list-value loading tests
 # ---------------------------------------------------------------------------
 
+
 class TestTOMLEnsembleConfig:
     """Test TOML list-value parsing for ensemble detector configuration."""
 
     def test_toml_string_value_is_single_detector(self):
         """TOML with string value should be treated as single detector path."""
         # This tests the isinstance(class_paths, str) -> [class_paths] logic
-        class_paths = "antigence_subnet.miner.detectors.domain_packs.hallucination.detector.HallucinationDetector"
+        class_paths = "antigence_subnet.miner.detectors.domain_packs.hallucination.detector.HallucinationDetector"  # noqa: E501
 
         # Simulate the miner's TOML normalization logic
         if isinstance(class_paths, str):

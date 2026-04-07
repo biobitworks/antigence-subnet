@@ -5,7 +5,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from scripts.benchmark_orchestrator import compute_metrics, compute_kl_divergence, load_eval_data
+from scripts.benchmark_orchestrator import compute_kl_divergence, compute_metrics, load_eval_data
 
 
 class TestComputeMetrics:

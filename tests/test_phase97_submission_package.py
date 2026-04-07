@@ -3,7 +3,6 @@ from __future__ import annotations
 import zipfile
 from pathlib import Path
 
-
 REPO_ROOT = Path(__file__).resolve().parents[1]
 
 
@@ -44,7 +43,9 @@ def test_submission_package_files_exist_with_honest_status() -> None:
 
 def test_supplementary_archive_and_traceability_report_exist() -> None:
     archive_path = REPO_ROOT / "docs/submission/computers-security-package/supplementary-data.zip"
-    traceability_report = _read(".planning/phases/97-publication-submission/97-traceability-report.md")
+    traceability_report = _read(
+        ".planning/phases/97-publication-submission/97-traceability-report.md"
+    )
 
     assert archive_path.exists()
     with zipfile.ZipFile(archive_path) as archive:

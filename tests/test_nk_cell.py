@@ -4,7 +4,6 @@ Covers: Protocol conformance, z-score thresholds, binary feature handling,
 confidence scaling, audit JSON loading, skip features, feature attribution.
 """
 
-import json
 from pathlib import Path
 
 import numpy as np
@@ -23,16 +22,41 @@ from antigence_subnet.miner.orchestrator.nk_cell import (
 def synthetic_stats():
     """Synthetic FeatureStatistics matching hallucination audit schema."""
     return [
-        FeatureStatistics(name="claim_density", index=0, mean=0.5, std=0.025, is_binary=False, is_constant=False),
-        FeatureStatistics(name="citation_count", index=1, mean=0.0, std=0.0, is_binary=True, is_constant=True),
-        FeatureStatistics(name="hedging_ratio", index=2, mean=0.067, std=0.249, is_binary=True, is_constant=False),
-        FeatureStatistics(name="specificity", index=3, mean=0.74, std=0.247, is_binary=False, is_constant=False),
-        FeatureStatistics(name="numeric_density", index=4, mean=0.233, std=0.423, is_binary=True, is_constant=False),
-        FeatureStatistics(name="pamp_score", index=5, mean=0.006, std=0.043, is_binary=False, is_constant=False),
-        FeatureStatistics(name="exaggeration", index=6, mean=0.0, std=0.0, is_binary=False, is_constant=True),
-        FeatureStatistics(name="certainty", index=7, mean=0.033, std=0.180, is_binary=True, is_constant=False),
-        FeatureStatistics(name="controversy", index=8, mean=0.0, std=0.0, is_binary=False, is_constant=True),
-        FeatureStatistics(name="danger_signal", index=9, mean=0.004, std=0.026, is_binary=False, is_constant=False),
+        FeatureStatistics(
+            name="claim_density", index=0, mean=0.5, std=0.025, is_binary=False, is_constant=False
+        ),
+        FeatureStatistics(
+            name="citation_count", index=1, mean=0.0, std=0.0, is_binary=True, is_constant=True
+        ),
+        FeatureStatistics(
+            name="hedging_ratio", index=2, mean=0.067, std=0.249, is_binary=True, is_constant=False
+        ),
+        FeatureStatistics(
+            name="specificity", index=3, mean=0.74, std=0.247, is_binary=False, is_constant=False
+        ),
+        FeatureStatistics(
+            name="numeric_density",
+            index=4,
+            mean=0.233,
+            std=0.423,
+            is_binary=True,
+            is_constant=False,
+        ),
+        FeatureStatistics(
+            name="pamp_score", index=5, mean=0.006, std=0.043, is_binary=False, is_constant=False
+        ),
+        FeatureStatistics(
+            name="exaggeration", index=6, mean=0.0, std=0.0, is_binary=False, is_constant=True
+        ),
+        FeatureStatistics(
+            name="certainty", index=7, mean=0.033, std=0.180, is_binary=True, is_constant=False
+        ),
+        FeatureStatistics(
+            name="controversy", index=8, mean=0.0, std=0.0, is_binary=False, is_constant=True
+        ),
+        FeatureStatistics(
+            name="danger_signal", index=9, mean=0.004, std=0.026, is_binary=False, is_constant=False
+        ),
     ]
 
 
@@ -102,7 +126,9 @@ class TestNKCellZScore:
     def test_zscore_below_threshold_returns_none(self):
         """z=2.99 (below default threshold 3.0) -> None."""
         stats = [
-            FeatureStatistics(name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats)
         # z = abs(2.99 - 0.0) / 1.0 = 2.99 < 3.0
@@ -113,7 +139,9 @@ class TestNKCellZScore:
     def test_zscore_above_threshold_returns_detection(self):
         """z=3.01 (above default threshold 3.0) -> DetectionResult."""
         stats = [
-            FeatureStatistics(name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats)
         # z = abs(3.01 - 0.0) / 1.0 = 3.01 > 3.0
@@ -126,7 +154,9 @@ class TestNKCellZScore:
     def test_zscore_exactly_at_threshold_returns_none(self):
         """z=3.0 (exactly at threshold, not exceeding) -> None."""
         stats = [
-            FeatureStatistics(name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats)
         features = np.array([3.0])
@@ -136,7 +166,9 @@ class TestNKCellZScore:
     def test_custom_z_threshold(self):
         """Custom z_threshold=2.0 changes trigger sensitivity."""
         stats = [
-            FeatureStatistics(name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats, z_threshold=2.0)
         # z=2.5 > 2.0 -> should trigger
@@ -148,7 +180,9 @@ class TestNKCellZScore:
     def test_negative_deviation_triggers(self):
         """Negative z-score (value << mean) also triggers."""
         stats = [
-            FeatureStatistics(name="feat_a", index=0, mean=10.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="feat_a", index=0, mean=10.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats)
         # z = abs(0.0 - 10.0) / 1.0 = 10.0 >> 3.0
@@ -165,7 +199,9 @@ class TestNKCellConfidence:
     def test_confidence_at_threshold(self):
         """At exactly z=threshold+epsilon -> confidence ~= 0.5."""
         stats = [
-            FeatureStatistics(name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats, z_threshold=3.0)
         # z = 3.01, confidence = min(1.0, 3.01 / 6.0) = 0.5017
@@ -177,7 +213,9 @@ class TestNKCellConfidence:
     def test_confidence_at_double_threshold(self):
         """At z=2*threshold -> confidence = 1.0."""
         stats = [
-            FeatureStatistics(name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats, z_threshold=3.0)
         # z = 6.0, confidence = min(1.0, 6.0 / 6.0) = 1.0
@@ -189,7 +227,9 @@ class TestNKCellConfidence:
     def test_confidence_capped_at_1(self):
         """At z >> 2*threshold -> confidence capped at 1.0."""
         stats = [
-            FeatureStatistics(name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats, z_threshold=3.0)
         # z = 100.0, confidence = min(1.0, 100.0 / 6.0) = 1.0
@@ -201,7 +241,9 @@ class TestNKCellConfidence:
     def test_confidence_formula_exact(self):
         """Verify exact confidence formula: min(1.0, z_score / (2.0 * z_threshold))."""
         stats = [
-            FeatureStatistics(name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats, z_threshold=3.0)
         # z = 4.5, confidence = min(1.0, 4.5 / 6.0) = 0.75
@@ -217,7 +259,14 @@ class TestNKCellBinary:
     def test_binary_nonzero_prevalence_no_trigger(self):
         """Binary feature with non-zero prevalence (is_binary=True, is_constant=False) -> skip."""
         stats = [
-            FeatureStatistics(name="hedging_ratio", index=0, mean=0.067, std=0.249, is_binary=True, is_constant=False),
+            FeatureStatistics(
+                name="hedging_ratio",
+                index=0,
+                mean=0.067,
+                std=0.249,
+                is_binary=True,
+                is_constant=False,
+            ),
         ]
         cell = NKCell(feature_stats=stats)
         # Even with extreme value, binary non-constant should not trigger
@@ -226,9 +275,11 @@ class TestNKCellBinary:
         assert result is None
 
     def test_binary_constant_at_zero_skipped(self):
-        """Binary feature constant at 0.0 (is_binary=True, is_constant=True) -> skipped by is_constant."""
+        """Binary feature constant at 0.0 (is_binary=True, is_constant=True) -> skipped by is_constant."""  # noqa: E501
         stats = [
-            FeatureStatistics(name="citation_count", index=0, mean=0.0, std=0.0, is_binary=True, is_constant=True),
+            FeatureStatistics(
+                name="citation_count", index=0, mean=0.0, std=0.0, is_binary=True, is_constant=True
+            ),
         ]
         cell = NKCell(feature_stats=stats)
         features = np.array([1.0])
@@ -280,9 +331,16 @@ class TestNKCellLoading:
 
         cell = NKCell.from_audit_json(audit_path)
         expected_names = [
-            "claim_density", "citation_count", "hedging_ratio", "specificity",
-            "numeric_density", "pamp_score", "exaggeration", "certainty",
-            "controversy", "danger_signal",
+            "claim_density",
+            "citation_count",
+            "hedging_ratio",
+            "specificity",
+            "numeric_density",
+            "pamp_score",
+            "exaggeration",
+            "certainty",
+            "controversy",
+            "danger_signal",
         ]
         actual_names = [s.name for s in cell._stats]
         assert actual_names == expected_names
@@ -308,8 +366,12 @@ class TestNKCellSkipFeatures:
     def test_custom_skip_features(self):
         """Custom skip_features parameter overrides default."""
         stats = [
-            FeatureStatistics(name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False),
-            FeatureStatistics(name="feat_b", index=1, mean=0.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="feat_a", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
+            FeatureStatistics(
+                name="feat_b", index=1, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats, skip_features={"feat_a"})
         # feat_a skipped, feat_b extreme
@@ -321,7 +383,9 @@ class TestNKCellSkipFeatures:
     def test_empty_skip_features_processes_all(self):
         """Empty skip_features set means all features are processed."""
         stats = [
-            FeatureStatistics(name="danger_signal", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False),
+            FeatureStatistics(
+                name="danger_signal", index=0, mean=0.0, std=1.0, is_binary=False, is_constant=False
+            ),
         ]
         cell = NKCell(feature_stats=stats, skip_features=set())
         features = np.array([100.0])

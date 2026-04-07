@@ -38,16 +38,17 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import ollama
 
 from antigence_subnet.miner.data import load_training_samples
-from antigence_subnet.miner.detectors.isolation_forest import IsolationForestDetector
-from antigence_subnet.miner.detectors.sklearn_backends import LOFDetector, OCSVMDetector
-from antigence_subnet.miner.detectors.fractal_complexity import FractalComplexityDetector
-from antigence_subnet.miner.detectors.negsel import NegSelAISDetector
 from antigence_subnet.miner.detectors import (
-    HallucinationDetector,
-    CodeSecurityDetector,
-    ReasoningDetector,
     BioDetector,
+    CodeSecurityDetector,
+    HallucinationDetector,
+    ReasoningDetector,
 )
+from antigence_subnet.miner.detectors.fractal_complexity import FractalComplexityDetector
+from antigence_subnet.miner.detectors.isolation_forest import IsolationForestDetector
+from antigence_subnet.miner.detectors.negsel import NegSelAISDetector
+from antigence_subnet.miner.detectors.sklearn_backends import LOFDetector, OCSVMDetector
+
 # NOTE: compute_reward import is deferred to run_single_round() to avoid
 # bittensor hijacking argparse at import time. Importing bittensor at
 # module level prevents our CLI argparse from working correctly.
@@ -149,12 +150,10 @@ def check_ollama_available(model: str) -> bool:
         if name.endswith(":latest"):
             available_models.append(name[: -len(":latest")])
 
-    if model not in available_models:
-        # Also check if model+":latest" matches
-        if f"{model}:latest" not in available_models:
-            print(f"Model '{model}' not found. Available models: {available_models}")
-            print(f"Run: ollama pull {model}")
-            return False
+    if model not in available_models and f"{model}:latest" not in available_models:
+        print(f"Model '{model}' not found. Available models: {available_models}")
+        print(f"Run: ollama pull {model}")
+        return False
 
     return True
 
@@ -284,8 +283,7 @@ async def run_single_round(
         det_cls = DETECTOR_REGISTRY[detector_name]
     else:
         raise ValueError(
-            f"Unknown detector '{detector_name}'. "
-            f"Available: {list(DETECTOR_REGISTRY.keys())}"
+            f"Unknown detector '{detector_name}'. Available: {list(DETECTOR_REGISTRY.keys())}"
         )
 
     detector = det_cls()
@@ -322,6 +320,7 @@ async def run_single_round(
 
     # 7. Score with compute_reward (deferred import to avoid bittensor argparse hijack)
     from antigence_subnet.validator.reward import compute_reward
+
     reward = compute_reward(anomaly_scores, ground_truths)
 
     # Manual TP/FP/FN/TN for F1/precision/recall/accuracy
@@ -345,7 +344,9 @@ async def run_single_round(
 
     # Latency computation
     detection_total_ms = sum(detection_latencies) * 1000
-    detection_avg_ms = (detection_total_ms / len(detection_latencies)) if detection_latencies else 0.0
+    detection_avg_ms = (
+        (detection_total_ms / len(detection_latencies)) if detection_latencies else 0.0
+    )
     round_total_ms = (time.perf_counter() - round_start) * 1000
 
     # 8. Structured result
@@ -544,35 +545,51 @@ def main():
         description="Ollama Test Harness -- multi-round eval simulation pipeline"
     )
     parser.add_argument(
-        "--model", type=str, default="qwen2.5:1.5b",
+        "--model",
+        type=str,
+        default="qwen2.5:1.5b",
         help="Ollama model name (default: qwen2.5:1.5b)",
     )
     parser.add_argument(
-        "--rounds", type=int, default=10,
+        "--rounds",
+        type=int,
+        default=10,
         help="Number of evaluation rounds (default: 10)",
     )
     parser.add_argument(
-        "--domain", type=str, default="hallucination", choices=DOMAINS,
+        "--domain",
+        type=str,
+        default="hallucination",
+        choices=DOMAINS,
         help="Evaluation domain (default: hallucination)",
     )
     parser.add_argument(
-        "--detector", type=str, default="IsolationForest",
+        "--detector",
+        type=str,
+        default="IsolationForest",
         help="Detector name from registry (default: IsolationForest)",
     )
     parser.add_argument(
-        "--samples-per-round", type=int, default=20,
+        "--samples-per-round",
+        type=int,
+        default=20,
         help="Number of eval samples per round (default: 20)",
     )
     parser.add_argument(
-        "--output", type=str, default=None,
+        "--output",
+        type=str,
+        default=None,
         help="Path to save JSON results (default: auto-generated in data/benchmarks/)",
     )
     parser.add_argument(
-        "--seed", type=int, default=42,
+        "--seed",
+        type=int,
+        default=42,
         help="RNG seed for reproducibility (default: 42)",
     )
     parser.add_argument(
-        "--no-warmup", action="store_true",
+        "--no-warmup",
+        action="store_true",
         help="Skip Ollama warmup (model may not be preloaded)",
     )
     args = parser.parse_args()
@@ -582,15 +599,17 @@ def main():
         sys.exit(1)
 
     # Run multi-round evaluation
-    report = asyncio.run(run_multi_round(
-        domain=args.domain,
-        detector_name=args.detector,
-        model=args.model,
-        rounds=args.rounds,
-        samples_per_round=args.samples_per_round,
-        warmup=not args.no_warmup,
-        seed=args.seed,
-    ))
+    report = asyncio.run(
+        run_multi_round(
+            domain=args.domain,
+            detector_name=args.detector,
+            model=args.model,
+            rounds=args.rounds,
+            samples_per_round=args.samples_per_round,
+            warmup=not args.no_warmup,
+            seed=args.seed,
+        )
+    )
 
     # Print human-readable summary
     print_summary(report)

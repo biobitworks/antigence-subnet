@@ -71,35 +71,28 @@ def validate_schema(samples: list[dict], manifest: dict, domain: str) -> list[st
                 if field not in entry:
                     errors.append(f"Manifest '{sid}': missing field '{field}'")
 
-            if "ground_truth_label" in entry:
-                if entry["ground_truth_label"] not in VALID_LABELS:
-                    errors.append(
-                        f"Manifest '{sid}': invalid ground_truth_label "
-                        f"'{entry['ground_truth_label']}'"
-                    )
+            if "ground_truth_label" in entry and entry["ground_truth_label"] not in VALID_LABELS:
+                errors.append(
+                    f"Manifest '{sid}': invalid ground_truth_label '{entry['ground_truth_label']}'"
+                )
 
-            if "is_honeypot" in entry:
-                if not isinstance(entry["is_honeypot"], bool):
-                    errors.append(
-                        f"Manifest '{sid}': is_honeypot must be bool, "
-                        f"got {type(entry['is_honeypot']).__name__}"
-                    )
+            if "is_honeypot" in entry and not isinstance(entry["is_honeypot"], bool):
+                errors.append(
+                    f"Manifest '{sid}': is_honeypot must be bool, "
+                    f"got {type(entry['is_honeypot']).__name__}"
+                )
 
         # Check metadata
         meta = sample.get("metadata", {})
         if "difficulty" not in meta:
             errors.append(f"Sample '{sid}': metadata missing 'difficulty'")
         elif meta["difficulty"] not in VALID_DIFFICULTIES:
-            errors.append(
-                f"Sample '{sid}': invalid difficulty '{meta['difficulty']}'"
-            )
+            errors.append(f"Sample '{sid}': invalid difficulty '{meta['difficulty']}'")
 
         if "source" not in meta:
             errors.append(f"Sample '{sid}': metadata missing 'source'")
         elif meta["source"] not in VALID_SOURCES:
-            errors.append(
-                f"Sample '{sid}': invalid source '{meta['source']}'"
-            )
+            errors.append(f"Sample '{sid}': invalid source '{meta['source']}'")
 
     # Check for orphan manifest entries
     for mid in manifest:
@@ -125,15 +118,13 @@ def validate_balance(manifest: dict) -> list[str]:
 
     total = len(manifest)
     anomalous = sum(
-        1 for entry in manifest.values()
-        if entry.get("ground_truth_label") == "anomalous"
+        1 for entry in manifest.values() if entry.get("ground_truth_label") == "anomalous"
     )
     ratio = anomalous / total
 
     if ratio < 0.40 or ratio > 0.60:
         errors.append(
-            f"Class balance error: {anomalous}/{total} anomalous "
-            f"({ratio:.1%}), expected 40-60%"
+            f"Class balance error: {anomalous}/{total} anomalous ({ratio:.1%}), expected 40-60%"
         )
     elif ratio < 0.45 or ratio > 0.55:
         # Warning but not error
@@ -158,18 +149,14 @@ def validate_duplicates(samples: list[dict]) -> list[str]:
         if sid is None:
             continue
         if sid in seen:
-            errors.append(
-                f"Duplicate ID '{sid}': found at indices {seen[sid]} and {i}"
-            )
+            errors.append(f"Duplicate ID '{sid}': found at indices {seen[sid]} and {i}")
         else:
             seen[sid] = i
 
     return errors
 
 
-def validate_domain(
-    data_dir: Path, domain: str
-) -> tuple[list[str], dict]:
+def validate_domain(data_dir: Path, domain: str) -> tuple[list[str], dict]:
     """Run all validations on a single domain.
 
     Args:
@@ -207,18 +194,11 @@ def validate_domain(
 
     # Compute stats
     total = len(samples)
-    normal = sum(
-        1 for entry in manifest.values()
-        if entry.get("ground_truth_label") == "normal"
-    )
+    normal = sum(1 for entry in manifest.values() if entry.get("ground_truth_label") == "normal")
     anomalous = sum(
-        1 for entry in manifest.values()
-        if entry.get("ground_truth_label") == "anomalous"
+        1 for entry in manifest.values() if entry.get("ground_truth_label") == "anomalous"
     )
-    honeypots = sum(
-        1 for entry in manifest.values()
-        if entry.get("is_honeypot", False)
-    )
+    honeypots = sum(1 for entry in manifest.values() if entry.get("is_honeypot", False))
     ratio = anomalous / total if total > 0 else 0
 
     stats = {
@@ -236,7 +216,7 @@ def validate_domain(
 
 def print_summary_table(all_stats: list[dict]) -> None:
     """Print a summary table of validation results."""
-    header = f"{'Domain':<20} {'Samples':>8} {'Normal':>8} {'Anomalous':>10} {'Honeypots':>10} {'Anom.Ratio':>11} {'Errors':>7}"
+    header = f"{'Domain':<20} {'Samples':>8} {'Normal':>8} {'Anomalous':>10} {'Honeypots':>10} {'Anom.Ratio':>11} {'Errors':>7}"  # noqa: E501
     print("\n" + "=" * len(header))
     print("Evaluation Data Validation Summary")
     print("=" * len(header))

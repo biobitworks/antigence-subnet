@@ -150,8 +150,9 @@ class TestComposableMutations:
 
     def test_insertion_mutation_adds_filler_word(self):
         """_insertion_mutation inserts a filler word (very, quite, rather, indeed, actually)."""
-        from antigence_subnet.validator.perturbation import _insertion_mutation
         import random
+
+        from antigence_subnet.validator.perturbation import _insertion_mutation
 
         text = "The important result shows clear evidence"
         rng = random.Random(42)
@@ -163,8 +164,9 @@ class TestComposableMutations:
 
     def test_deletion_mutation_removes_word(self):
         """_deletion_mutation removes a non-critical word from DELETABLE_WORDS set."""
-        from antigence_subnet.validator.perturbation import _deletion_mutation
         import random
+
+        from antigence_subnet.validator.perturbation import _deletion_mutation
 
         text = "The result is very important and quite significant"
         rng = random.Random(42)
@@ -176,8 +178,9 @@ class TestComposableMutations:
 
     def test_deletion_mutation_no_eligible_words(self):
         """_deletion_mutation returns text unchanged if no deletable words exist."""
-        from antigence_subnet.validator.perturbation import _deletion_mutation
         import random
+
+        from antigence_subnet.validator.perturbation import _deletion_mutation
 
         text = "The cat sat on mat"
         rng = random.Random(42)
@@ -187,8 +190,9 @@ class TestComposableMutations:
 
     def test_reorder_mutation_swaps_clauses(self):
         """_reorder_mutation swaps clauses around 'and' or 'or'."""
-        from antigence_subnet.validator.perturbation import _reorder_mutation
         import random
+
+        from antigence_subnet.validator.perturbation import _reorder_mutation
 
         text = "The model detects anomalies and the system reports them"
         rng = random.Random(42)

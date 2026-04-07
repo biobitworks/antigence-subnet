@@ -1,6 +1,6 @@
 # Antigence Subnet
 
-[![CI](https://github.com/biobitworks/antigence-bittensor/actions/workflows/ci.yml/badge.svg)](https://github.com/biobitworks/antigence-bittensor/actions/workflows/ci.yml)
+[![CI](https://github.com/biobitworks/antigence-subnet/actions/workflows/ci.yml/badge.svg)](https://github.com/biobitworks/antigence-subnet/actions/workflows/ci.yml)
 
 A decentralized verification subnet for [Bittensor](https://bittensor.com) where miners run anomaly detectors and validators apply selection pressure through hidden evaluation datasets. The network produces a shared trust score for AI outputs.
 
@@ -27,6 +27,15 @@ Four domain packs ship with the subnet: LLM hallucination detection, code securi
 - **Microglia surveillance**: Network-level health monitoring with coordinated attack detection
 - **Verification-as-a-Service**: Trust Score API for external consumers
 - **Pluggable detectors**: Miners bring their own models via the `BaseDetector` interface
+
+## Prerequisites
+
+- **Python** >= 3.10, < 3.15 (3.12 recommended)
+- **Rust and Cargo** (Linux only) — required to compile `bittensor-wallet` and `bittensor-drand` from source. macOS and Windows users get pre-built wheels. Install via [rustup](https://rustup.rs/):
+  ```bash
+  curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+  ```
+- **pip** >= 23.0
 
 ## Quick Start
 

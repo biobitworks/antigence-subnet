@@ -18,12 +18,18 @@ ORCHESTRATOR_BASELINE = PROJECT_ROOT / "data" / "benchmarks" / "v9.2-baseline-or
 OVERWATCH_PAYLOAD = PROJECT_ROOT / "data" / "overwatch" / "registration-payload.json"
 
 EXPECTED_DOMAINS = {"hallucination", "code_security", "reasoning", "bio"}
-EXPECTED_GENERIC_DETECTORS = {
-    "IsolationForest", "LOF", "OCSVM", "Fractal", "NegSel", "Autoencoder"
-}
+EXPECTED_GENERIC_DETECTORS = {"IsolationForest", "LOF", "OCSVM", "Fractal", "NegSel", "Autoencoder"}
 DETECTOR_REQUIRED_KEYS = {
-    "detector", "domain", "f1", "precision", "recall", "accuracy",
-    "avg_latency_ms", "throughput_per_sec", "fit_time_ms", "rounds"
+    "detector",
+    "domain",
+    "f1",
+    "precision",
+    "recall",
+    "accuracy",
+    "avg_latency_ms",
+    "throughput_per_sec",
+    "fit_time_ms",
+    "rounds",
 }
 EXPECTED_PIPELINES = {"flat_ensemble", "orchestrator", "v9_orchestrator"}
 EXPECTED_RESOURCE_IDS = {
@@ -38,6 +44,7 @@ EXPECTED_RESOURCE_IDS = {
 
 # --- Detector Baseline Tests ---
 
+
 def test_detector_baseline_exists():
     """v9.2 detector baseline JSON exists and is valid JSON."""
     assert DETECTOR_BASELINE.exists(), f"Missing: {DETECTOR_BASELINE}"
@@ -51,7 +58,9 @@ def test_detector_baseline_schema():
     data = json.loads(DETECTOR_BASELINE.read_text())
     for i, entry in enumerate(data):
         missing = DETECTOR_REQUIRED_KEYS - set(entry.keys())
-        assert not missing, f"Entry {i} ({entry.get('detector', '?')}/{entry.get('domain', '?')}) missing keys: {missing}"
+        assert not missing, (
+            f"Entry {i} ({entry.get('detector', '?')}/{entry.get('domain', '?')}) missing keys: {missing}"  # noqa: E501
+        )
 
 
 def test_detector_baseline_domains():
@@ -93,6 +102,7 @@ def test_detector_baseline_entry_count():
 
 # --- Orchestrator Baseline Tests ---
 
+
 def test_orchestrator_baseline_exists():
     """v9.2 orchestrator baseline JSON exists and is valid JSON."""
     assert ORCHESTRATOR_BASELINE.exists(), f"Missing: {ORCHESTRATOR_BASELINE}"
@@ -126,6 +136,7 @@ def test_orchestrator_baseline_has_f1():
 
 
 # --- Overwatch Registration Payload Tests ---
+
 
 def test_overwatch_payload_exists():
     """Overwatch registration payload exists and is valid JSON."""
@@ -162,16 +173,26 @@ def test_overwatch_payload_claims():
     claim = registration_claims[0]
     assert "claim_id" in claim, "Claim missing 'claim_id'"
     assert "evidence_tier" in claim, "Claim missing 'evidence_tier'"
-    assert claim["evidence_tier"] == "MEASURED", f"Expected evidence_tier=MEASURED, got {claim['evidence_tier']}"
+    assert claim["evidence_tier"] == "MEASURED", (
+        f"Expected evidence_tier=MEASURED, got {claim['evidence_tier']}"
+    )
 
 
 # --- Ollama Harness Baseline Tests ---
 
 OLLAMA_DOMAINS = ["hallucination", "code_security", "reasoning", "bio"]
 OLLAMA_SUMMARY_REQUIRED_KEYS = {
-    "avg_f1", "std_f1", "avg_precision", "std_precision",
-    "avg_recall", "std_recall", "avg_reward", "std_reward",
-    "total_rounds", "total_samples", "total_time_s",
+    "avg_f1",
+    "std_f1",
+    "avg_precision",
+    "std_precision",
+    "avg_recall",
+    "std_recall",
+    "avg_reward",
+    "std_reward",
+    "total_rounds",
+    "total_samples",
+    "total_time_s",
 }
 
 

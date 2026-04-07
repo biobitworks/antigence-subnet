@@ -15,7 +15,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent / "scripts"))
 
 from feature_audit import audit_domain  # noqa: E402
 
-
 # ---------------------------------------------------------------------------
 # TestAuditDomainStructure -- verify returned dict has required keys
 # ---------------------------------------------------------------------------
@@ -209,8 +208,8 @@ class TestCodeSecurityEdgeCase:
     def test_code_security_has_valid_stats(self, code_security_result):
         """Each feature stat should have valid numeric values (not NaN)."""
         for name, stats in code_security_result["feature_stats"].items():
-            assert isinstance(stats["mean"], (int, float)), f"{name}.mean is not numeric"
-            assert isinstance(stats["std"], (int, float)), f"{name}.std is not numeric"
+            assert isinstance(stats["mean"], int | float), f"{name}.mean is not numeric"
+            assert isinstance(stats["std"], int | float), f"{name}.std is not numeric"
             # mean and std should not be NaN
             assert stats["mean"] == stats["mean"], f"{name}.mean is NaN"
             assert stats["std"] == stats["std"], f"{name}.std is NaN"

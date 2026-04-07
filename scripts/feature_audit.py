@@ -24,7 +24,7 @@ _project_root = Path(__file__).resolve().parent.parent
 if str(_project_root) not in sys.path:
     sys.path.insert(0, str(_project_root))
 
-from antigence_subnet.miner.detectors.dendritic_features import (
+from antigence_subnet.miner.detectors.dendritic_features import (  # noqa: E402
     DendriticFeatureExtractor,
 )
 
@@ -82,9 +82,7 @@ def audit_domain(
         unique_count = len(unique_vals)
 
         # Binary: unique values are subset of {0.0, 1.0}
-        is_binary = unique_count <= 2 and all(
-            v in (0.0, 1.0) for v in unique_vals
-        )
+        is_binary = unique_count <= 2 and all(v in (0.0, 1.0) for v in unique_vals)
         # Constant: only one unique value
         is_constant = unique_count == 1
 
@@ -226,7 +224,11 @@ def generate_summary_md(all_results: list[dict]) -> str:
 
         for name in feature_names:
             stats = result["feature_stats"][name]
-            ftype = "constant" if stats["is_constant"] else ("binary" if stats["is_binary"] else "continuous")
+            ftype = (
+                "constant"
+                if stats["is_constant"]
+                else ("binary" if stats["is_binary"] else "continuous")
+            )
             lines.append(
                 f"| {name} | {ftype} | {stats['mean']:.4f} | "
                 f"{stats['std']:.4f} | {stats['min']:.4f} | {stats['max']:.4f} |"
@@ -295,9 +297,7 @@ def generate_summary_md(all_results: list[dict]) -> str:
     # ---- claim_density dependency chain ----
     lines.append("### claim_density Dependency Chain")
     lines.append("")
-    lines.append(
-        "`claim_density` (source credibility) is computed from 4 other features:"
-    )
+    lines.append("`claim_density` (source credibility) is computed from 4 other features:")
     lines.append("")
     lines.append("```")
     lines.append("credibility = 0.5")
@@ -320,9 +320,7 @@ def generate_summary_md(all_results: list[dict]) -> str:
 
     for result in all_results:
         constant_features = [
-            name
-            for name in feature_names
-            if result["feature_stats"][name]["is_constant"]
+            name for name in feature_names if result["feature_stats"][name]["is_constant"]
         ]
         if constant_features:
             lines.append(

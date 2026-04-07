@@ -100,7 +100,9 @@ class TestDendriticFeatures:
     def test_self_indicators_citation(self):
         """Text with citation pattern produces citation_count == 1.0."""
         ext = DendriticFeatureExtractor()
-        d = ext.extract_with_names("According to (Smith et al., 2024) the results show improvement.")
+        d = ext.extract_with_names(
+            "According to (Smith et al., 2024) the results show improvement."
+        )
         assert d["citation_count"] == 1.0
 
     def test_self_indicators_hedging(self):

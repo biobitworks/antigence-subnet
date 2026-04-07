@@ -9,22 +9,21 @@ from __future__ import annotations
 import numpy as np
 import pytest
 
-from antigence_subnet.miner.detector import DetectionResult
 from antigence_subnet.miner.orchestrator.cells import ImmuneCellType
 from antigence_subnet.miner.orchestrator.dendritic_cell import (
     DANGER_FEATURES,
-    DCAResult,
-    DendriticCell,
     EXCLUDED_FEATURES,
     PAMP_FEATURES,
     SAFE_FEATURES,
     TIER_MAP,
+    DCAResult,
+    DendriticCell,
 )
-
 
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def _make_features(**kwargs: float) -> np.ndarray:
     """Build a 10-dim feature vector, defaulting all features to 0.0.
@@ -54,6 +53,7 @@ def _make_features(**kwargs: float) -> np.ndarray:
 # Signal Category Constants
 # ---------------------------------------------------------------------------
 
+
 class TestSignalCategories:
     """Module-level signal category constants are correct and disjoint."""
 
@@ -74,8 +74,14 @@ class TestSignalCategories:
         assert abs(total - 1.0) < 1e-9
 
     def test_safe_contains_five_features(self):
-        """SAFE_FEATURES maps citation_count [1], hedging_ratio [2], numeric_density [4], certainty [7], specificity [3]."""
-        expected_names = {"citation_count", "hedging_ratio", "numeric_density", "certainty", "specificity"}
+        """SAFE_FEATURES maps citation_count [1], hedging_ratio [2], numeric_density [4], certainty [7], specificity [3]."""  # noqa: E501
+        expected_names = {
+            "citation_count",
+            "hedging_ratio",
+            "numeric_density",
+            "certainty",
+            "specificity",
+        }
         assert set(SAFE_FEATURES.keys()) == expected_names
         # Equal weights summing to ~1.0
         total = sum(w for _, w in SAFE_FEATURES.values())
@@ -110,6 +116,7 @@ class TestSignalCategories:
 # Tier Map
 # ---------------------------------------------------------------------------
 
+
 class TestTierMap:
     """TIER_MAP routes maturation states to detector tiers."""
 
@@ -126,6 +133,7 @@ class TestTierMap:
 # ---------------------------------------------------------------------------
 # DCAResult
 # ---------------------------------------------------------------------------
+
 
 class TestDCAResult:
     """DCAResult is frozen (immutable) and has correct fields."""
@@ -168,6 +176,7 @@ class TestDCAResult:
 # Protocol Conformance
 # ---------------------------------------------------------------------------
 
+
 class TestDendriticCellProtocol:
     """DendriticCell satisfies ImmuneCellType Protocol."""
 
@@ -194,6 +203,7 @@ class TestDendriticCellProtocol:
 # ---------------------------------------------------------------------------
 # Signal Classification
 # ---------------------------------------------------------------------------
+
 
 class TestClassifySignals:
     """DendriticCell.classify_signals() computes weighted signal scores."""
@@ -225,8 +235,11 @@ class TestClassifySignals:
         """All safe features at 1.0 -> safe = 1.0."""
         cell = DendriticCell()
         features = _make_features(
-            citation_count=1.0, hedging_ratio=1.0,
-            numeric_density=1.0, certainty=1.0, specificity=1.0,
+            citation_count=1.0,
+            hedging_ratio=1.0,
+            numeric_density=1.0,
+            certainty=1.0,
+            specificity=1.0,
         )
         scores = cell.classify_signals(features)
         assert abs(scores["safe"] - 1.0) < 1e-9
@@ -260,6 +273,7 @@ class TestClassifySignals:
 # ---------------------------------------------------------------------------
 # Maturation State
 # ---------------------------------------------------------------------------
+
 
 class TestDetermineMaturation:
     """DendriticCell.determine_maturation() applies D-03 logic."""
@@ -307,12 +321,13 @@ class TestDetermineMaturation:
 # classify() Integration
 # ---------------------------------------------------------------------------
 
+
 class TestClassify:
     """DendriticCell.classify() end-to-end: features -> DCAResult."""
 
     def test_all_zero_features_immature(self):
-        """All-zero features -> safe_score(0) > pamp(0)+danger(0) is False, and pamp < 0.3 -> semi-mature.
-        Actually: safe=0, pamp=0, danger=0. safe(0) > pamp(0)+danger(0) = 0 > 0 = False. pamp(0) < 0.3 -> semi-mature."""
+        """All-zero features -> safe_score(0) > pamp(0)+danger(0) is False, and pamp < 0.3 -> semi-mature.  # noqa: E501
+        Actually: safe=0, pamp=0, danger=0. safe(0) > pamp(0)+danger(0) = 0 > 0 = False. pamp(0) < 0.3 -> semi-mature."""  # noqa: E501
         cell = DendriticCell()
         result = cell.classify(np.zeros(10))
         assert isinstance(result, DCAResult)
@@ -323,8 +338,11 @@ class TestClassify:
         """High safe features with low pamp/danger -> immature."""
         cell = DendriticCell()
         features = _make_features(
-            citation_count=1.0, hedging_ratio=1.0, specificity=1.0,
-            numeric_density=1.0, certainty=1.0,
+            citation_count=1.0,
+            hedging_ratio=1.0,
+            specificity=1.0,
+            numeric_density=1.0,
+            certainty=1.0,
         )
         result = cell.classify(features)
         assert result.maturation_state == "immature"
@@ -369,6 +387,7 @@ class TestClassify:
 # Determinism (DCA-03)
 # ---------------------------------------------------------------------------
 
+
 class TestDeterminism:
     """Same input always produces same DCAResult (DCA-03)."""
 
@@ -402,6 +421,7 @@ class TestDeterminism:
 # from_config Factory
 # ---------------------------------------------------------------------------
 
+
 class TestFromConfig:
     """DendriticCell.from_config() creates instances from dca_config dicts."""
 
@@ -433,11 +453,13 @@ class TestFromConfig:
 
     def test_config_none_values_use_defaults(self):
         """None values in config use module defaults."""
-        cell = DendriticCell.from_config({
-            "pamp_threshold": None,
-            "signal_weights": None,
-            "tier_map": None,
-        })
+        cell = DendriticCell.from_config(
+            {
+                "pamp_threshold": None,
+                "signal_weights": None,
+                "tier_map": None,
+            }
+        )
         # Should behave identically to default
         default_cell = DendriticCell()
         features = _make_features(pamp_score=0.2, exaggeration=0.5)
@@ -447,6 +469,7 @@ class TestFromConfig:
 # ---------------------------------------------------------------------------
 # Edge Cases
 # ---------------------------------------------------------------------------
+
 
 class TestEdgeCases:
     """Edge case behavior for boundary inputs."""

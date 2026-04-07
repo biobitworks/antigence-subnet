@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from pathlib import Path
 from types import SimpleNamespace
 
 import pytest
@@ -84,9 +83,7 @@ def test_phase83_pilot_uses_build_validator_scorer_and_identical_fixture_inputs(
             self.mode = mode
 
         def score_round(self, *, validator, miner_uids, responses_by_sample, manifest):
-            score_calls.append(
-                (self.mode, validator, miner_uids, responses_by_sample, manifest)
-            )
+            score_calls.append((self.mode, validator, miner_uids, responses_by_sample, manifest))
             return benchmark.ScoreResultLike(
                 rewards=[0.6, 0.4],
                 means=[0.6, 0.4],
@@ -168,9 +165,9 @@ def test_phase83_artifact_schema_contains_pilot_domains_modes_spread_and_thresho
         "reasoning",
         "bio",
     }
-    assert artifact["domains"]["hallucination"]["exact"]["reward_spread"]["variance_pct"] == pytest.approx(
-        20.0
-    )
+    assert artifact["domains"]["hallucination"]["exact"]["reward_spread"][
+        "variance_pct"
+    ] == pytest.approx(20.0)
     assert artifact["threshold_evaluation"]["semantic"]["target"] == "<5.0%"
     assert artifact["threshold_evaluation"]["semantic"]["passed"] is True
     assert artifact["threshold_evaluation"]["exact"]["target"] == ">15.0%"
@@ -217,4 +214,3 @@ def test_phase83_report_and_validator_preserve_best_effort_seed_boundary_and_swa
     assert validation["threshold_status"]["semantic"] == "passed"
     assert validation["boundary_language"]["best_effort_seed"] is True
     assert validation["boundary_language"]["swarm_out_of_scope"] is True
-

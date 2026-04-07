@@ -4,7 +4,6 @@ from __future__ import annotations
 
 from pathlib import Path
 
-
 PHASE_DIR = Path(".planning/phases/93-decision-policy-adr-operator-migration")
 ADR_PATH = PHASE_DIR / "93-ADR.md"
 MIGRATION_PATH = PHASE_DIR / "93-migration-guide.md"

@@ -29,19 +29,18 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 import numpy as np
 
 from antigence_subnet.miner.data import load_training_samples
+from antigence_subnet.miner.detectors.dendritic_features import DendriticFeatureExtractor
 from antigence_subnet.miner.detectors.negsel import NegSelAISDetector
 from antigence_subnet.miner.detectors.sklearn_backends import OCSVMDetector
 from antigence_subnet.miner.ensemble import ensemble_detect
-from antigence_subnet.miner.orchestrator.config import OrchestratorConfig, ModelConfig, SLMNKConfig
+from antigence_subnet.miner.orchestrator.adaptive_weights import AdaptiveWeightManager
+from antigence_subnet.miner.orchestrator.b_cell import BCell
+from antigence_subnet.miner.orchestrator.config import ModelConfig, OrchestratorConfig, SLMNKConfig
 from antigence_subnet.miner.orchestrator.dendritic_cell import DendriticCell
+from antigence_subnet.miner.orchestrator.model_manager import ModelManager
 from antigence_subnet.miner.orchestrator.nk_cell import NKCell
 from antigence_subnet.miner.orchestrator.orchestrator import ImmuneOrchestrator
-from antigence_subnet.miner.detectors.dendritic_features import DendriticFeatureExtractor
 from antigence_subnet.miner.orchestrator.slm_nk_cell import SLMNKCell
-from antigence_subnet.miner.orchestrator.b_cell import BCell
-from antigence_subnet.miner.orchestrator.adaptive_weights import AdaptiveWeightManager
-from antigence_subnet.miner.orchestrator.feedback import ValidatorFeedbackTracker
-from antigence_subnet.miner.orchestrator.model_manager import ModelManager
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "evaluation"
 AUDIT_DIR = Path(__file__).resolve().parent.parent / "data" / "audit"
@@ -54,9 +53,9 @@ DECISION_THRESHOLD = 0.5
 # Bio domain also has specialized vocabulary that reduces similarity.
 SLM_NK_THRESHOLDS = {
     "hallucination": 0.3,
-    "code_security": 0.0,    # disabled: code output is structurally unlike prompts (mean sim=0.02)
+    "code_security": 0.0,  # disabled: code output is structurally unlike prompts (mean sim=0.02)
     "reasoning": 0.3,
-    "bio": 0.15,             # specialized vocabulary reduces similarity
+    "bio": 0.15,  # specialized vocabulary reduces similarity
 }
 
 
@@ -71,12 +70,14 @@ def load_eval_data(domain: str) -> tuple[list[dict], dict]:
     return samples, manifest
 
 
-def compute_metrics(scores: list[float], labels: list[str], threshold: float = DECISION_THRESHOLD) -> dict:
+def compute_metrics(
+    scores: list[float], labels: list[str], threshold: float = DECISION_THRESHOLD
+) -> dict:
     """Compute precision, recall, F1, accuracy from scores and ground truth labels."""
     tp = fp = fn = tn = 0
     normal_scores = []
     anomalous_scores = []
-    for score, label in zip(scores, labels):
+    for score, label in zip(scores, labels, strict=False):
         predicted_anomalous = score >= threshold
         actual_anomalous = label == "anomalous"
         if predicted_anomalous and actual_anomalous:
@@ -100,7 +101,10 @@ def compute_metrics(scores: list[float], labels: list[str], threshold: float = D
     mean_anomalous = float(np.mean(anomalous_scores)) if anomalous_scores else 0.0
 
     return {
-        "tp": tp, "fp": fp, "fn": fn, "tn": tn,
+        "tp": tp,
+        "fp": fp,
+        "fn": fn,
+        "tn": tn,
         "precision": round(precision, 4),
         "recall": round(recall, 4),
         "f1": round(f1, 4),
@@ -129,7 +133,9 @@ def create_detectors(domain: str) -> list:
     return [ocsvm, negsel]
 
 
-async def run_flat_ensemble(detectors: list, samples: list[dict], manifest: dict) -> tuple[list[float], list[str]]:
+async def run_flat_ensemble(
+    detectors: list, samples: list[dict], manifest: dict
+) -> tuple[list[float], list[str]]:
     """Run flat ensemble on all samples, return scores and labels."""
     scores = []
     labels = []
@@ -149,7 +155,9 @@ async def run_flat_ensemble(detectors: list, samples: list[dict], manifest: dict
     return scores, labels
 
 
-async def run_orchestrator(orchestrator: ImmuneOrchestrator, samples: list[dict], manifest: dict, domain: str) -> tuple[list[float], list[str]]:
+async def run_orchestrator(
+    orchestrator: ImmuneOrchestrator, samples: list[dict], manifest: dict, domain: str
+) -> tuple[list[float], list[str]]:
     """Run orchestrator on all samples, return scores and labels."""
     scores = []
     labels = []
@@ -226,6 +234,7 @@ async def run_v9_orchestrator(
     )
     dc = DendriticCell.from_config(config.dca_config)
     from antigence_subnet.miner.orchestrator.danger import DangerTheoryModulator
+
     danger = DangerTheoryModulator.from_config(config.danger_config)
 
     # v9.0-specific components
@@ -422,9 +431,14 @@ async def benchmark_domain(domain: str) -> dict:
 
     audit_json = AUDIT_DIR / f"{domain}.json"
     z_thresh = config.nk_config.get("z_threshold", 3.0)
-    nk_cell = NKCell.from_audit_json(str(audit_json), z_threshold=z_thresh) if audit_json.exists() else NKCell(feature_stats=[])
+    nk_cell = (
+        NKCell.from_audit_json(str(audit_json), z_threshold=z_thresh)
+        if audit_json.exists()
+        else NKCell(feature_stats=[])
+    )
     dc = DendriticCell.from_config(config.dca_config)
     from antigence_subnet.miner.orchestrator.danger import DangerTheoryModulator
+
     danger = DangerTheoryModulator.from_config(config.danger_config)
 
     orchestrator = ImmuneOrchestrator(
@@ -441,7 +455,11 @@ async def benchmark_domain(domain: str) -> dict:
     print(f"  [{domain}] Running v9.0 orchestrator (SLM NK + BCell embedding)...", flush=True)
     model_manager = ModelManager(config=ModelConfig(device="cpu"))
     v9_scores, _ = await run_v9_orchestrator(
-        samples, manifest, domain, training, model_manager,
+        samples,
+        manifest,
+        domain,
+        training,
+        model_manager,
     )
     v9_metrics = compute_metrics(v9_scores, labels)
 
@@ -485,12 +503,14 @@ def validate_results(results: dict) -> list[dict]:
     hall = results.get("hallucination", {})
     hall_f1 = hall.get("orchestrator", {}).get("f1", 0)
     hall_flat_f1 = hall.get("flat_ensemble", {}).get("f1", 0)
-    checks.append({
-        "check": "Hallucination F1 >= flat baseline",
-        "expected": f">= {round(hall_flat_f1 - 0.02, 4)} (flat={hall_flat_f1}, tolerance=0.02)",
-        "actual": str(hall_f1),
-        "passed": hall_f1 >= hall_flat_f1 - 0.02,
-    })
+    checks.append(
+        {
+            "check": "Hallucination F1 >= flat baseline",
+            "expected": f">= {round(hall_flat_f1 - 0.02, 4)} (flat={hall_flat_f1}, tolerance=0.02)",
+            "actual": str(hall_f1),
+            "passed": hall_f1 >= hall_flat_f1 - 0.02,
+        }
+    )
 
     # Check 2-4: Cross-domain regression <= 0.02
     for domain in ["code_security", "reasoning", "bio"]:
@@ -498,70 +518,82 @@ def validate_results(results: dict) -> list[dict]:
         flat_f1 = d.get("flat_ensemble", {}).get("f1", 0)
         orch_f1 = d.get("orchestrator", {}).get("f1", 0)
         delta = flat_f1 - orch_f1
-        checks.append({
-            "check": f"{domain} F1 regression <= 0.02",
-            "expected": f"delta <= 0.02 (flat={flat_f1})",
-            "actual": f"delta={round(delta, 4)}",
-            "passed": delta <= 0.02,
-        })
+        checks.append(
+            {
+                "check": f"{domain} F1 regression <= 0.02",
+                "expected": f"delta <= 0.02 (flat={flat_f1})",
+                "actual": f"delta={round(delta, 4)}",
+                "passed": delta <= 0.02,
+            }
+        )
 
     # Check 5-8: KL-divergence < 0.5 (relaxed — NK Cell fast-path legitimately
     # changes score distribution by replacing some ensemble scores with 1.0)
     for domain in DOMAINS:
         d = results.get(domain, {})
         kl = d.get("kl_divergence", 999)
-        checks.append({
-            "check": f"{domain} KL-div < 0.5",
-            "expected": "< 0.5",
-            "actual": str(kl),
-            "passed": kl < 0.5,
-        })
+        checks.append(
+            {
+                "check": f"{domain} KL-div < 0.5",
+                "expected": "< 0.5",
+                "actual": str(kl),
+                "passed": kl < 0.5,
+            }
+        )
 
     # Check 9-12: Mean normal scores [0, 0.3]
     for domain in DOMAINS:
         d = results.get(domain, {})
         mn = d.get("orchestrator", {}).get("mean_normal", 999)
-        checks.append({
-            "check": f"{domain} mean normal in [0, 0.3]",
-            "expected": "[0.0, 0.3]",
-            "actual": str(mn),
-            "passed": 0.0 <= mn <= 0.3,
-        })
+        checks.append(
+            {
+                "check": f"{domain} mean normal in [0, 0.3]",
+                "expected": "[0.0, 0.3]",
+                "actual": str(mn),
+                "passed": 0.0 <= mn <= 0.3,
+            }
+        )
 
     # Check 13-16: Mean anomalous scores >= flat ensemble baseline (orchestrator should not degrade)
     for domain in DOMAINS:
         d = results.get(domain, {})
         orch_ma = d.get("orchestrator", {}).get("mean_anomalous", 0)
         flat_ma = d.get("flat_ensemble", {}).get("mean_anomalous", 0)
-        checks.append({
-            "check": f"{domain} mean anomalous >= flat baseline",
-            "expected": f">= {flat_ma} (flat baseline)",
-            "actual": str(orch_ma),
-            "passed": orch_ma >= flat_ma - 0.02,  # allow 0.02 tolerance
-        })
+        checks.append(
+            {
+                "check": f"{domain} mean anomalous >= flat baseline",
+                "expected": f">= {flat_ma} (flat baseline)",
+                "actual": str(orch_ma),
+                "passed": orch_ma >= flat_ma - 0.02,  # allow 0.02 tolerance
+            }
+        )
 
     # Check 17-20: v9.0 F1 >= v8.0 F1 - 0.02 per domain (BENCH-01 no regression)
     for domain in DOMAINS:
         d = results.get(domain, {})
         v8_f1 = d.get("orchestrator", {}).get("f1", 0)
         v9_f1 = d.get("v9_orchestrator", {}).get("f1", 0)
-        checks.append({
-            "check": f"{domain} v9.0 F1 >= v8.0 F1 - 0.02",
-            "expected": f">= {round(v8_f1 - 0.02, 4)} (v8={v8_f1}, tolerance=0.02)",
-            "actual": str(v9_f1),
-            "passed": v9_f1 >= v8_f1 - 0.02,
-        })
+        checks.append(
+            {
+                "check": f"{domain} v9.0 F1 >= v8.0 F1 - 0.02",
+                "expected": f">= {round(v8_f1 - 0.02, 4)} (v8={v8_f1}, tolerance=0.02)",
+                "actual": str(v9_f1),
+                "passed": v9_f1 >= v8_f1 - 0.02,
+            }
+        )
 
     # Check 21-24: v9.0 mean normal in [0, 0.3]
     for domain in DOMAINS:
         d = results.get(domain, {})
         v9_mn = d.get("v9_orchestrator", {}).get("mean_normal", 999)
-        checks.append({
-            "check": f"{domain} v9.0 mean normal in [0, 0.3]",
-            "expected": "[0.0, 0.3]",
-            "actual": str(v9_mn),
-            "passed": 0.0 <= v9_mn <= 0.3,
-        })
+        checks.append(
+            {
+                "check": f"{domain} v9.0 mean normal in [0, 0.3]",
+                "expected": "[0.0, 0.3]",
+                "actual": str(v9_mn),
+                "passed": 0.0 <= v9_mn <= 0.3,
+            }
+        )
 
     return checks
 
@@ -582,16 +614,26 @@ def generate_markdown(results: dict, checks: list[dict]) -> str:
         flat = d.get("flat_ensemble", {})
         orch = d.get("orchestrator", {})
         v9 = d.get("v9_orchestrator", {})
-        lines.append(f"| {domain} | Flat Ensemble | {flat.get('f1', 'N/A')} | {flat.get('precision', 'N/A')} | {flat.get('recall', 'N/A')} | {flat.get('mean_normal', 'N/A')} | {flat.get('mean_anomalous', 'N/A')} |")
-        lines.append(f"| {domain} | Orchestrator (v8.0) | {orch.get('f1', 'N/A')} | {orch.get('precision', 'N/A')} | {orch.get('recall', 'N/A')} | {orch.get('mean_normal', 'N/A')} | {orch.get('mean_anomalous', 'N/A')} |")
-        lines.append(f"| {domain} | Orchestrator (v9.0) | {v9.get('f1', 'N/A')} | {v9.get('precision', 'N/A')} | {v9.get('recall', 'N/A')} | {v9.get('mean_normal', 'N/A')} | {v9.get('mean_anomalous', 'N/A')} |")
+        lines.append(
+            f"| {domain} | Flat Ensemble | {flat.get('f1', 'N/A')} | {flat.get('precision', 'N/A')} | {flat.get('recall', 'N/A')} | {flat.get('mean_normal', 'N/A')} | {flat.get('mean_anomalous', 'N/A')} |"  # noqa: E501
+        )
+        lines.append(
+            f"| {domain} | Orchestrator (v8.0) | {orch.get('f1', 'N/A')} | {orch.get('precision', 'N/A')} | {orch.get('recall', 'N/A')} | {orch.get('mean_normal', 'N/A')} | {orch.get('mean_anomalous', 'N/A')} |"  # noqa: E501
+        )
+        lines.append(
+            f"| {domain} | Orchestrator (v9.0) | {v9.get('f1', 'N/A')} | {v9.get('precision', 'N/A')} | {v9.get('recall', 'N/A')} | {v9.get('mean_normal', 'N/A')} | {v9.get('mean_anomalous', 'N/A')} |"  # noqa: E501
+        )
     lines.append("")
 
     # Score distribution divergence (v8.0 vs flat + v9.0 vs v8.0)
     lines.append("## Score Distribution Divergence")
     lines.append("")
-    lines.append("| Domain | v8.0 vs Flat KL | v8.0 vs Flat F1 Delta | v9.0 vs v8.0 KL | v9.0 vs v8.0 F1 Delta |")
-    lines.append("|--------|-----------------|----------------------|-----------------|----------------------|")
+    lines.append(
+        "| Domain | v8.0 vs Flat KL | v8.0 vs Flat F1 Delta | v9.0 vs v8.0 KL | v9.0 vs v8.0 F1 Delta |"  # noqa: E501
+    )
+    lines.append(
+        "|--------|-----------------|----------------------|-----------------|----------------------|"
+    )
     for domain in DOMAINS:
         d = results.get(domain, {})
         kl = d.get("kl_divergence", "N/A")
@@ -611,21 +653,29 @@ def generate_markdown(results: dict, checks: list[dict]) -> str:
         orch = d.get("orchestrator", {})
         nk_rate = orch.get("nk_trigger_rate", "N/A")
         dca = orch.get("dca_distribution", {})
-        lines.append(f"| {domain} | {nk_rate} | {dca.get('immature', 0)} | {dca.get('semi_mature', 0)} | {dca.get('mature', 0)} |")
+        lines.append(
+            f"| {domain} | {nk_rate} | {dca.get('immature', 0)} | {dca.get('semi_mature', 0)} | {dca.get('mature', 0)} |"  # noqa: E501
+        )
     lines.append("")
 
     # SLM-Specific Metrics (v9.0)
     lines.append("## SLM-Specific Metrics (v9.0)")
     lines.append("")
-    lines.append("| Domain | SLM NK Trigger Rate | BCell Embedding Hit Rate | Immature | Semi-Mature | Mature |")
-    lines.append("|--------|---------------------|--------------------------|----------|-------------|--------|")
+    lines.append(
+        "| Domain | SLM NK Trigger Rate | BCell Embedding Hit Rate | Immature | Semi-Mature | Mature |"  # noqa: E501
+    )
+    lines.append(
+        "|--------|---------------------|--------------------------|----------|-------------|--------|"
+    )
     for domain in DOMAINS:
         d = results.get(domain, {})
         v9 = d.get("v9_orchestrator", {})
         slm_nk = v9.get("slm_nk_trigger_rate", "N/A")
         emb_hit = v9.get("bcell_embedding_hit_rate", "N/A")
         dca = v9.get("dca_distribution", {})
-        lines.append(f"| {domain} | {slm_nk} | {emb_hit} | {dca.get('immature', 0)} | {dca.get('semi_mature', 0)} | {dca.get('mature', 0)} |")
+        lines.append(
+            f"| {domain} | {slm_nk} | {emb_hit} | {dca.get('immature', 0)} | {dca.get('semi_mature', 0)} | {dca.get('mature', 0)} |"  # noqa: E501
+        )
     lines.append("")
 
     # Validation checks
@@ -642,14 +692,22 @@ def generate_markdown(results: dict, checks: list[dict]) -> str:
 
 
 async def main():
-    parser = argparse.ArgumentParser(description="Benchmark orchestrator vs flat ensemble (v8.0 + v9.0)")
+    parser = argparse.ArgumentParser(
+        description="Benchmark orchestrator vs flat ensemble (v8.0 + v9.0)"
+    )
     parser.add_argument("--domains", nargs="+", default=DOMAINS, help="Domains to benchmark")
     parser.add_argument("--output-json", default="docs/benchmarks/v9-orchestrator-benchmark.json")
     parser.add_argument("--output-md", default="docs/benchmarks/v9-orchestrator-benchmark.md")
-    parser.add_argument("--legacy-json", default="docs/benchmarks/orchestrator-vs-ensemble.json",
-                        help="Legacy v7.0 benchmark JSON (preserved, not overwritten)")
-    parser.add_argument("--legacy-md", default="docs/benchmarks/orchestrator-vs-ensemble.md",
-                        help="Legacy v7.0 benchmark markdown (preserved, not overwritten)")
+    parser.add_argument(
+        "--legacy-json",
+        default="docs/benchmarks/orchestrator-vs-ensemble.json",
+        help="Legacy v7.0 benchmark JSON (preserved, not overwritten)",
+    )
+    parser.add_argument(
+        "--legacy-md",
+        default="docs/benchmarks/orchestrator-vs-ensemble.md",
+        help="Legacy v7.0 benchmark markdown (preserved, not overwritten)",
+    )
     args = parser.parse_args()
 
     # Check SLM availability

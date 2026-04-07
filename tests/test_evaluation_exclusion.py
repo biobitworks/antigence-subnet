@@ -5,8 +5,8 @@ Requirements: VHARD-01 (challenge rotation exclusion in sample selection)
 """
 
 import json
+
 import pytest
-from pathlib import Path
 
 from antigence_subnet.validator.evaluation import EvaluationDataset
 

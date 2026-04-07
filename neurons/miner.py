@@ -83,7 +83,7 @@ class Miner(BaseMinerNeuron):
             type=str,
             default=DEFAULT_DETECTOR,
             help="Fully-qualified class path for detector (e.g., "
-                 "'antigence_subnet.miner.detectors.isolation_forest.IsolationForestDetector')",
+            "'antigence_subnet.miner.detectors.isolation_forest.IsolationForestDetector')",
         )
         parser.add_argument(
             "--neuron.training_data_dir",
@@ -111,26 +111,19 @@ class Miner(BaseMinerNeuron):
         self.supported_domains = set()
 
         # Load detector via config-based class path
-        detector_class_path = (
-            getattr(self.config, "detector", None) or DEFAULT_DETECTOR
-        )
+        detector_class_path = getattr(self.config, "detector", None) or DEFAULT_DETECTOR
         bt.logging.info(f"Loading detector: {detector_class_path}")
         embedding_method = getattr(self.config, "embedding_method", "sbert")
         detector = load_detector(detector_class_path, embedding_method=embedding_method)
 
         # Try restoring saved detector state before fitting (PROD-05)
         training_data_dir = (
-            getattr(self.config.neuron, "training_data_dir", None)
-            or _DEFAULT_TRAINING_DATA_DIR
+            getattr(self.config.neuron, "training_data_dir", None) or _DEFAULT_TRAINING_DATA_DIR
         )
-        training_domain = (
-            getattr(self.config.neuron, "training_domain", None) or "hallucination"
-        )
+        training_domain = getattr(self.config.neuron, "training_domain", None) or "hallucination"
 
         state_dir = os.path.join(
-            os.path.expanduser(
-                getattr(self.config.neuron, "full_path", "~/.bittensor/neurons")
-            ),
+            os.path.expanduser(getattr(self.config.neuron, "full_path", "~/.bittensor/neurons")),
             "detector_state",
         )
         state_loaded = False
@@ -144,8 +137,7 @@ class Miner(BaseMinerNeuron):
                     if detector.get_info().get("is_fitted", False):
                         state_loaded = True
                         bt.logging.info(
-                            f"Loaded saved detector state from {candidate_dir} "
-                            f"-- skipping fit"
+                            f"Loaded saved detector state from {candidate_dir} -- skipping fit"
                         )
                         break
                 except Exception as e:
@@ -188,8 +180,7 @@ class Miner(BaseMinerNeuron):
 
                 if domain_name in self.detectors and len(class_paths) == 1:
                     bt.logging.info(
-                        f"Skipping TOML detector for '{domain_name}' -- "
-                        f"already loaded via CLI"
+                        f"Skipping TOML detector for '{domain_name}' -- already loaded via CLI"
                     )
                     continue
 
@@ -199,7 +190,9 @@ class Miner(BaseMinerNeuron):
                         f"Loading TOML detector for domain '{domain_name}': {class_path}"
                     )
                     try:
-                        domain_detector = load_detector(class_path, embedding_method=embedding_method)
+                        domain_detector = load_detector(
+                            class_path, embedding_method=embedding_method
+                        )
                     except (ImportError, AttributeError) as e:
                         bt.logging.warning(
                             f"Failed to load detector for domain '{domain_name}': {e}"
@@ -221,15 +214,11 @@ class Miner(BaseMinerNeuron):
                                     f"detector [{len(domain_detectors)}]"
                                 )
                         except Exception as e:
-                            bt.logging.warning(
-                                f"Failed to load state for '{domain_name}': {e}"
-                            )
+                            bt.logging.warning(f"Failed to load state for '{domain_name}': {e}")
 
                     if not domain_state_loaded:
                         try:
-                            domain_samples = load_training_samples(
-                                training_data_dir, domain_name
-                            )
+                            domain_samples = load_training_samples(training_data_dir, domain_name)
                             if domain_samples:
                                 domain_detector.fit(domain_samples)
                                 bt.logging.info(
@@ -256,8 +245,7 @@ class Miner(BaseMinerNeuron):
                     # Ensemble -- store as list
                     self.detectors[domain_name] = domain_detectors
                     bt.logging.info(
-                        f"Ensemble loaded for '{domain_name}': "
-                        f"{len(domain_detectors)} detectors"
+                        f"Ensemble loaded for '{domain_name}': {len(domain_detectors)} detectors"
                     )
                 self.supported_domains.add(domain_name)
 
@@ -269,9 +257,7 @@ class Miner(BaseMinerNeuron):
             window_size=telemetry_config.get("window_size", 100),
         )
         self.telemetry.register_prometheus()
-        bt.logging.info(
-            f"Telemetry initialized | window_size={self.telemetry._window_size}"
-        )
+        bt.logging.info(f"Telemetry initialized | window_size={self.telemetry._window_size}")
 
         bt.logging.info(
             f"Miner ready | Detectors: {len(self.detectors)} | "
@@ -279,15 +265,11 @@ class Miner(BaseMinerNeuron):
             f"Multi-domain: {len(self.detectors) > 1}"
         )
 
-    async def forward(
-        self, synapse: VerificationSynapse
-    ) -> VerificationSynapse:
+    async def forward(self, synapse: VerificationSynapse) -> VerificationSynapse:
         """Route synapse to detector based on domain."""
         return await miner_forward(self, synapse)
 
-    async def blacklist(
-        self, synapse: VerificationSynapse
-    ) -> Tuple[bool, str]:  # noqa: UP006 -- SDK Axon.attach() validates against typing.Tuple
+    async def blacklist(self, synapse: VerificationSynapse) -> Tuple[bool, str]:  # noqa: UP006 -- SDK Axon.attach() validates against typing.Tuple
         """Reject unregistered callers and zero-stake callers.
 
         Per user decision: blacklist rejects callers not registered on subnet
@@ -329,9 +311,7 @@ class Miner(BaseMinerNeuron):
     def save_state(self) -> None:
         """Save detector state to disk using per-domain subdirectories."""
         base_state_dir = os.path.join(
-            os.path.expanduser(
-                getattr(self.config.neuron, "full_path", "~/.bittensor/neurons")
-            ),
+            os.path.expanduser(getattr(self.config.neuron, "full_path", "~/.bittensor/neurons")),
             "detector_state",
         )
         os.makedirs(base_state_dir, exist_ok=True)
@@ -343,13 +323,10 @@ class Miner(BaseMinerNeuron):
                     os.makedirs(det_dir, exist_ok=True)
                     try:
                         detector.save_state(det_dir)
-                        bt.logging.info(
-                            f"Saved ensemble detector state for '{domain}[{i}]'"
-                        )
+                        bt.logging.info(f"Saved ensemble detector state for '{domain}[{i}]'")
                     except Exception as e:
                         bt.logging.warning(
-                            f"Failed to save ensemble detector state "
-                            f"for '{domain}[{i}]': {e}"
+                            f"Failed to save ensemble detector state for '{domain}[{i}]': {e}"
                         )
             else:
                 domain_dir = os.path.join(base_state_dir, domain)
@@ -358,16 +335,12 @@ class Miner(BaseMinerNeuron):
                     detector_or_list.save_state(domain_dir)
                     bt.logging.info(f"Saved detector state for domain '{domain}'")
                 except Exception as e:
-                    bt.logging.warning(
-                        f"Failed to save detector state for '{domain}': {e}"
-                    )
+                    bt.logging.warning(f"Failed to save detector state for '{domain}': {e}")
 
     def load_state(self) -> None:
         """Load detector state from per-domain subdirectories."""
         base_state_dir = os.path.join(
-            os.path.expanduser(
-                getattr(self.config.neuron, "full_path", "~/.bittensor/neurons")
-            ),
+            os.path.expanduser(getattr(self.config.neuron, "full_path", "~/.bittensor/neurons")),
             "detector_state",
         )
 
@@ -380,19 +353,14 @@ class Miner(BaseMinerNeuron):
                 for i, detector in enumerate(detector_or_list):
                     det_dir = os.path.join(base_state_dir, f"{domain}_{i}")
                     if not os.path.exists(det_dir):
-                        bt.logging.debug(
-                            f"No saved state for ensemble '{domain}[{i}]'"
-                        )
+                        bt.logging.debug(f"No saved state for ensemble '{domain}[{i}]'")
                         continue
                     try:
                         detector.load_state(det_dir)
-                        bt.logging.info(
-                            f"Loaded ensemble detector state for '{domain}[{i}]'"
-                        )
+                        bt.logging.info(f"Loaded ensemble detector state for '{domain}[{i}]'")
                     except Exception as e:
                         bt.logging.warning(
-                            f"Failed to load ensemble detector state "
-                            f"for '{domain}[{i}]': {e}"
+                            f"Failed to load ensemble detector state for '{domain}[{i}]': {e}"
                         )
             else:
                 domain_dir = os.path.join(base_state_dir, domain)
@@ -403,9 +371,7 @@ class Miner(BaseMinerNeuron):
                     detector_or_list.load_state(domain_dir)
                     bt.logging.info(f"Loaded detector state for domain '{domain}'")
                 except Exception as e:
-                    bt.logging.warning(
-                        f"Failed to load detector state for '{domain}': {e}"
-                    )
+                    bt.logging.warning(f"Failed to load detector state for '{domain}': {e}")
 
 
 if __name__ == "__main__":

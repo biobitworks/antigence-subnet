@@ -7,7 +7,7 @@ Includes forward pass integration test for collusion wiring.
 import time
 import unittest.mock as mock
 from types import SimpleNamespace
-from unittest.mock import MagicMock, patch
+from unittest.mock import MagicMock
 
 import numpy as np
 import pytest
@@ -195,7 +195,7 @@ class TestCollusionDetectorDetect:
         assert set(alerts[0].colluding_uids) == {0, 1}
 
     def test_alert_contains_required_fields(self):
-        """CollusionAlert contains round_num, colluding_uids, similarity_values, penalty (per D-04)."""
+        """CollusionAlert contains round_num, colluding_uids, similarity_values, penalty (per D-04)."""  # noqa: E501
         detector = CollusionDetector()
         scores = {"s1": 0.8, "s2": 0.3, "s3": 0.6}
         miner_sample_scores = {0: scores, 1: scores, 2: scores}
@@ -323,9 +323,7 @@ class TestCollusionDetectorDetect:
         miner_sample_scores = {}
         for uid in range(256):
             scores = rng.random(10)
-            miner_sample_scores[uid] = {
-                sample_ids[i]: float(scores[i]) for i in range(10)
-            }
+            miner_sample_scores[uid] = {sample_ids[i]: float(scores[i]) for i in range(10)}
 
         miner_uids = list(range(256))
 
@@ -489,14 +487,13 @@ class TestCollusionForwardIntegration:
 
         # Try to load real evaluation data; skip if unavailable
         try:
-            from antigence_subnet.validator.evaluation import EvaluationDataset
             from pathlib import Path
+
+            from antigence_subnet.validator.evaluation import EvaluationDataset
 
             eval_path = Path("data/evaluation")
             if eval_path.exists() and (eval_path / "hallucination").exists():
-                validator.evaluation = EvaluationDataset(
-                    data_dir=eval_path, domain="hallucination"
-                )
+                validator.evaluation = EvaluationDataset(data_dir=eval_path, domain="hallucination")
             else:
                 pytest.skip("Seed data not available")
         except Exception:
@@ -520,9 +517,7 @@ class TestCollusionForwardIntegration:
             alpha = validator.config.neuron.moving_average_alpha
             for i, uid in enumerate(uids):
                 if 0 <= uid < len(validator.scores):
-                    validator.scores[uid] = (
-                        alpha * rewards[i] + (1 - alpha) * validator.scores[uid]
-                    )
+                    validator.scores[uid] = alpha * rewards[i] + (1 - alpha) * validator.scores[uid]
 
         validator.update_scores = mock_update_scores
 

@@ -170,8 +170,7 @@ class TestApplyTomlDefaults:
 
         toml_file = tmp_path / "config.toml"
         toml_file.write_text(
-            "[neuron]\ntimeout = 30.0\nunknown_key = 999\n"
-            "[completely_unknown]\nfoo = 1\n"
+            "[neuron]\ntimeout = 30.0\nunknown_key = 999\n[completely_unknown]\nfoo = 1\n"
         )
 
         parser = argparse.ArgumentParser()
@@ -212,10 +211,18 @@ class TestApplyTomlDefaults:
         )
 
         parser = argparse.ArgumentParser()
-        parser.add_argument("--policy.mode", "--validator.policy.mode", type=str, default="global_threshold")
-        parser.add_argument("--policy.high_threshold", "--validator.policy.high_threshold", type=float, default=0.5)
-        parser.add_argument("--policy.low_threshold", "--validator.policy.low_threshold", type=float, default=0.5)
-        parser.add_argument("--policy.min_confidence", "--validator.policy.min_confidence", type=float, default=0.0)
+        parser.add_argument(
+            "--policy.mode", "--validator.policy.mode", type=str, default="global_threshold"
+        )
+        parser.add_argument(
+            "--policy.high_threshold", "--validator.policy.high_threshold", type=float, default=0.5
+        )
+        parser.add_argument(
+            "--policy.low_threshold", "--validator.policy.low_threshold", type=float, default=0.5
+        )
+        parser.add_argument(
+            "--policy.min_confidence", "--validator.policy.min_confidence", type=float, default=0.0
+        )
 
         apply_toml_defaults(parser, config_path=str(toml_file))
         args = parser.parse_args([])

@@ -24,11 +24,10 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from antigence_subnet.miner.data import load_training_samples
-from antigence_subnet.miner.detectors.isolation_forest import IsolationForestDetector
-from antigence_subnet.miner.detectors.sklearn_backends import LOFDetector, OCSVMDetector
 from antigence_subnet.miner.detectors.fractal_complexity import FractalComplexityDetector
+from antigence_subnet.miner.detectors.isolation_forest import IsolationForestDetector
 from antigence_subnet.miner.detectors.negsel import NegSelAISDetector
+from antigence_subnet.miner.detectors.sklearn_backends import LOFDetector, OCSVMDetector
 from antigence_subnet.miner.ensemble import ensemble_detect
 
 try:
@@ -37,10 +36,10 @@ except ImportError:
     AutoencoderDetector = None
 
 from antigence_subnet.miner.detectors import (
-    HallucinationDetector,
-    CodeSecurityDetector,
-    ReasoningDetector,
     BioDetector,
+    CodeSecurityDetector,
+    HallucinationDetector,
+    ReasoningDetector,
 )
 
 DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "evaluation"
@@ -53,7 +52,6 @@ DOMAIN_PACK = {
     "reasoning": ("ReasPack", ReasoningDetector),
     "bio": ("BioPack", BioDetector),
 }
-
 
 
 def load_eval_data(domain):
@@ -96,10 +94,15 @@ async def eval_detector(detector, samples, manifest, threshold=0.5):
     r = tp / (tp + fn) if (tp + fn) > 0 else 0
     f1 = 2 * p * r / (p + r) if (p + r) > 0 else 0
     return {
-        "precision": p, "recall": r, "f1": f1,
+        "precision": p,
+        "recall": r,
+        "f1": f1,
         "accuracy": (tp + tn) / len(samples),
         "avg_ms": sum(latencies) / len(latencies) * 1000,
-        "tp": tp, "fp": fp, "fn": fn, "tn": tn,
+        "tp": tp,
+        "fp": fp,
+        "fn": fn,
+        "tn": tn,
     }
 
 
@@ -136,18 +139,23 @@ async def eval_ensemble(detectors, samples, manifest, threshold=0.5):
     r = tp / (tp + fn) if (tp + fn) > 0 else 0
     f1 = 2 * p * r / (p + r) if (p + r) > 0 else 0
     return {
-        "precision": p, "recall": r, "f1": f1,
+        "precision": p,
+        "recall": r,
+        "f1": f1,
         "accuracy": (tp + tn) / len(samples),
         "avg_ms": sum(latencies) / len(latencies) * 1000,
-        "tp": tp, "fp": fp, "fn": fn, "tn": tn,
+        "tp": tp,
+        "fp": fp,
+        "fn": fn,
+        "tn": tn,
     }
 
 
 async def run_domain(domain):
     """Run all strategies for one domain."""
-    print(f"\n{'='*70}")
+    print(f"\n{'=' * 70}")
     print(f"  DOMAIN: {domain}")
-    print(f"{'='*70}")
+    print(f"{'=' * 70}")
 
     samples, manifest = load_eval_data(domain)
     normal = [s for s in samples if manifest.get(s["id"], {}).get("ground_truth_label") == "normal"]
@@ -196,7 +204,9 @@ async def run_domain(domain):
         m["detector_count"] = 1
         results.append(m)
         tag = "***" if m["f1"] >= 0.9 else "**" if m["f1"] >= 0.7 else "*" if m["f1"] >= 0.5 else ""
-        print(f"    {name:12s} | F1={m['f1']:.3f} | P={m['precision']:.3f} | R={m['recall']:.3f} | {m['avg_ms']:.1f}ms {tag}")
+        print(
+            f"    {name:12s} | F1={m['f1']:.3f} | P={m['precision']:.3f} | R={m['recall']:.3f} | {m['avg_ms']:.1f}ms {tag}"  # noqa: E501
+        )
 
     # === B. Every 2-combo ensemble ===
     names = list(detector_map.keys())
@@ -211,10 +221,12 @@ async def run_domain(domain):
         m["detector_count"] = 2
         results.append(m)
         tag = "***" if m["f1"] >= 0.9 else "**" if m["f1"] >= 0.7 else ""
-        print(f"    {label:25s} | F1={m['f1']:.3f} | P={m['precision']:.3f} | R={m['recall']:.3f} | {m['avg_ms']:.1f}ms {tag}")
+        print(
+            f"    {label:25s} | F1={m['f1']:.3f} | P={m['precision']:.3f} | R={m['recall']:.3f} | {m['avg_ms']:.1f}ms {tag}"  # noqa: E501
+        )
 
     # === C. Every 3-combo ensemble ===
-    print(f"\n  --- C. 3-DETECTOR ENSEMBLES (top 10 by F1) ---")
+    print("\n  --- C. 3-DETECTOR ENSEMBLES (top 10 by F1) ---")
     three_results = []
     for combo in combinations(names, 3):
         dets = [detector_map[n] for n in combo]
@@ -230,10 +242,12 @@ async def run_domain(domain):
     for m in three_results[:10]:
         results.append(m)
         tag = "***" if m["f1"] >= 0.9 else "**" if m["f1"] >= 0.7 else ""
-        print(f"    {m['name']:35s} | F1={m['f1']:.3f} | P={m['precision']:.3f} | R={m['recall']:.3f} | {m['avg_ms']:.1f}ms {tag}")
+        print(
+            f"    {m['name']:35s} | F1={m['f1']:.3f} | P={m['precision']:.3f} | R={m['recall']:.3f} | {m['avg_ms']:.1f}ms {tag}"  # noqa: E501
+        )
 
     # === D. All detectors ensemble ===
-    print(f"\n  --- D. ALL-DETECTOR ENSEMBLE ---")
+    print("\n  --- D. ALL-DETECTOR ENSEMBLE ---")
     all_dets = list(detector_map.values())
     label = "+".join(names)
     m = await eval_ensemble(all_dets, samples, manifest)
@@ -242,10 +256,12 @@ async def run_domain(domain):
     m["domain"] = domain
     m["detector_count"] = len(all_dets)
     results.append(m)
-    print(f"    {m['name']:35s} | F1={m['f1']:.3f} | P={m['precision']:.3f} | R={m['recall']:.3f} | {m['avg_ms']:.1f}ms")
+    print(
+        f"    {m['name']:35s} | F1={m['f1']:.3f} | P={m['precision']:.3f} | R={m['recall']:.3f} | {m['avg_ms']:.1f}ms"  # noqa: E501
+    )
 
     # === Summary ===
-    print(f"\n  --- BEST STRATEGY ---")
+    print("\n  --- BEST STRATEGY ---")
     best = max(results, key=lambda x: x["f1"])
     print(f"    {best['name']} (F1={best['f1']:.3f}, {best['strategy']})")
 
@@ -259,9 +275,9 @@ async def main(domains):
         all_results.extend(domain_results)
 
     # === Global summary ===
-    print(f"\n{'='*70}")
-    print(f"  GLOBAL SUMMARY — BEST STRATEGY PER DOMAIN")
-    print(f"{'='*70}\n")
+    print(f"\n{'=' * 70}")
+    print("  GLOBAL SUMMARY — BEST STRATEGY PER DOMAIN")
+    print(f"{'=' * 70}\n")
 
     print("| Domain | Best Strategy | F1 | Precision | Recall | Detectors | Latency |")
     print("|--------|--------------|-----|-----------|--------|-----------|---------|")
@@ -276,9 +292,9 @@ async def main(domains):
         )
 
     # Best single vs best ensemble comparison
-    print(f"\n{'='*70}")
-    print(f"  SINGLE vs ENSEMBLE COMPARISON")
-    print(f"{'='*70}\n")
+    print(f"\n{'=' * 70}")
+    print("  SINGLE vs ENSEMBLE COMPARISON")
+    print(f"{'=' * 70}\n")
 
     print("| Domain | Best Single | F1 | Best Ensemble | F1 | Delta |")
     print("|--------|-------------|-----|---------------|-----|-------|")
@@ -295,27 +311,33 @@ async def main(domains):
         )
 
     # NegSel vs others
-    print(f"\n{'='*70}")
-    print(f"  NEGSEL CONTRIBUTION")
-    print(f"{'='*70}\n")
+    print(f"\n{'=' * 70}")
+    print("  NEGSEL CONTRIBUTION")
+    print(f"{'=' * 70}\n")
 
     for domain in domains:
         dr = [r for r in all_results if r["domain"] == domain]
         negsel = [r for r in dr if r["strategy"] == "single" and r["name"] == "NegSel"]
         negsel_ensembles = [r for r in dr if "NegSel" in r["name"] and r["strategy"] != "single"]
-        non_negsel_ensembles = [r for r in dr if "NegSel" not in r["name"] and r["strategy"] != "single"]
+        non_negsel_ensembles = [
+            r for r in dr if "NegSel" not in r["name"] and r["strategy"] != "single"
+        ]
 
         if negsel:
             ns = negsel[0]
             best_with = max(negsel_ensembles, key=lambda x: x["f1"]) if negsel_ensembles else None
-            best_without = max(non_negsel_ensembles, key=lambda x: x["f1"]) if non_negsel_ensembles else None
+            best_without = (
+                max(non_negsel_ensembles, key=lambda x: x["f1"]) if non_negsel_ensembles else None
+            )
 
             print(f"  {domain}:")
             print(f"    NegSel solo:          F1={ns['f1']:.3f}")
             if best_with:
                 print(f"    Best w/ NegSel:       F1={best_with['f1']:.3f} ({best_with['name']})")
             if best_without:
-                print(f"    Best w/o NegSel:      F1={best_without['f1']:.3f} ({best_without['name']})")
+                print(
+                    f"    Best w/o NegSel:      F1={best_without['f1']:.3f} ({best_without['name']})"  # noqa: E501
+                )
             if best_with and best_without:
                 delta = best_with["f1"] - best_without["f1"]
                 print(f"    NegSel adds:          {'+' if delta >= 0 else ''}{delta:.3f}")

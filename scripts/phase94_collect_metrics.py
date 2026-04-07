@@ -7,9 +7,9 @@ import argparse
 import json
 import os
 import time
+from collections.abc import Callable
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Callable
 from urllib.request import urlopen
 
 from antigence_subnet.utils.runtime_metrics import atomic_write_json
@@ -136,8 +136,9 @@ def collect_scrape_window(
     scrape_log = output_path / "prometheus-scrapes.jsonl"
     fetch = fetch_metrics or _fetch_metrics
     threshold_profile = _select_threshold_profile(duration_hours, collector_mode)
-    summary_relpath = Path(THRESHOLD_PROFILES[threshold_profile]["summary_dir"]) / (
-        THRESHOLD_PROFILES[threshold_profile]["summary_file"]
+    summary_relpath = (
+        Path(THRESHOLD_PROFILES[threshold_profile]["summary_dir"])
+        / (THRESHOLD_PROFILES[threshold_profile]["summary_file"])
     )
     summary_path = output_path / summary_relpath
 
@@ -210,7 +211,9 @@ def collect_scrape_window(
             continue
         summary["process_restarts_total"] += int(runtime_payload.get("process_restarts_total", 0))
         summary["unexpected_exit_count"] += int(runtime_payload.get("unexpected_exit_count", 0))
-        summary["chain_submission_failures"] += int(runtime_payload.get("chain_submission_failures", 0))
+        summary["chain_submission_failures"] += int(
+            runtime_payload.get("chain_submission_failures", 0)
+        )
         summary["anomaly_count"] += int(runtime_payload.get("anomaly_count", 0))
         summary["max_memory_growth_pct"] = max(
             float(summary["max_memory_growth_pct"]),
@@ -284,18 +287,22 @@ def main() -> int:
     threshold_profile = summary["threshold_profile"]
     scrape_budget = THRESHOLD_PROFILES[threshold_profile]["scrape_failure_budget"]
     stale_budget = THRESHOLD_PROFILES[threshold_profile]["stale_exporter_seconds_max"]
-    return 0 if (
-        summary["miner_scrape_failures"] <= scrape_budget
-        and summary["validator_scrape_failures"] <= scrape_budget
-        and summary["stale_exporter_intervals"] == 0
-        and float(summary["stale_exporter_seconds_max"]) < stale_budget
-        and summary["process_restarts_total"] == 0
-        and summary["unexpected_exit_count"] == 0
-        and summary["chain_submission_failures"] == 0
-        and summary["anomaly_count"] == 0
-        and float(summary["max_memory_growth_pct"])
-        <= THRESHOLD_PROFILES[threshold_profile]["max_memory_growth_pct"]
-    ) else 1
+    return (
+        0
+        if (
+            summary["miner_scrape_failures"] <= scrape_budget
+            and summary["validator_scrape_failures"] <= scrape_budget
+            and summary["stale_exporter_intervals"] == 0
+            and float(summary["stale_exporter_seconds_max"]) < stale_budget
+            and summary["process_restarts_total"] == 0
+            and summary["unexpected_exit_count"] == 0
+            and summary["chain_submission_failures"] == 0
+            and summary["anomaly_count"] == 0
+            and float(summary["max_memory_growth_pct"])
+            <= THRESHOLD_PROFILES[threshold_profile]["max_memory_growth_pct"]
+        )
+        else 1
+    )
 
 
 if __name__ == "__main__":

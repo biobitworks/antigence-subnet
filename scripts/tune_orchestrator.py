@@ -27,7 +27,6 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-import numpy as np
 
 from antigence_subnet.miner.data import load_training_samples
 from antigence_subnet.miner.detectors.dendritic_features import DendriticFeatureExtractor
@@ -76,10 +75,12 @@ def load_eval_data(domain: str) -> tuple[list[dict], dict]:
     return samples, manifest
 
 
-def compute_metrics(scores: list[float], labels: list[str], threshold: float = DECISION_THRESHOLD) -> dict:
+def compute_metrics(
+    scores: list[float], labels: list[str], threshold: float = DECISION_THRESHOLD
+) -> dict:
     """Compute precision, recall, F1, accuracy from scores and ground truth labels."""
     tp = fp = fn = tn = 0
-    for score, label in zip(scores, labels):
+    for score, label in zip(scores, labels, strict=False):
         predicted_anomalous = score >= threshold
         actual_anomalous = label == "anomalous"
         if predicted_anomalous and actual_anomalous:
@@ -111,7 +112,9 @@ def create_detectors(domain: str) -> list:
     return [ocsvm, negsel]
 
 
-async def run_orchestrator(orchestrator: ImmuneOrchestrator, samples: list[dict], manifest: dict, domain: str) -> tuple[list[float], list[str]]:
+async def run_orchestrator(
+    orchestrator: ImmuneOrchestrator, samples: list[dict], manifest: dict, domain: str
+) -> tuple[list[float], list[str]]:
     """Run orchestrator on all samples, return scores and labels."""
     scores = []
     labels = []
@@ -218,7 +221,8 @@ async def sweep_domain(domain: str) -> dict:
         - "best_config": dict with nk_z_threshold, dca_pamp_threshold, danger_alpha
         - "best_f1": float
         - "default_f1": float
-        - "all_results": list of 80 dicts with z_threshold, pamp_threshold, alpha, f1, precision, recall
+        - "all_results": list of 80 dicts with z_threshold, pamp_threshold,
+          alpha, f1, precision, recall
     """
     # Load data
     samples, manifest = load_eval_data(domain)
@@ -245,14 +249,16 @@ async def sweep_domain(domain: str) -> dict:
                 scores, labels = await run_orchestrator(orchestrator, samples, manifest, domain)
                 metrics = compute_metrics(scores, labels)
 
-                all_results.append({
-                    "z_threshold": z,
-                    "pamp_threshold": pamp,
-                    "alpha": alpha,
-                    "f1": metrics["f1"],
-                    "precision": metrics["precision"],
-                    "recall": metrics["recall"],
-                })
+                all_results.append(
+                    {
+                        "z_threshold": z,
+                        "pamp_threshold": pamp,
+                        "alpha": alpha,
+                        "f1": metrics["f1"],
+                        "precision": metrics["precision"],
+                        "recall": metrics["recall"],
+                    }
+                )
 
                 if count % 20 == 0 or count == total:
                     print(f"    [{domain}] {count}/{total} combinations evaluated...", flush=True)
@@ -390,7 +396,9 @@ async def main():
 
     print("=" * 70)
     print("Orchestrator Auto-Tuning (Grid Search)")
-    print(f"Grid: {len(Z_THRESHOLDS)} z * {len(PAMP_THRESHOLDS)} pamp * {len(DANGER_ALPHAS)} alpha = {len(Z_THRESHOLDS) * len(PAMP_THRESHOLDS) * len(DANGER_ALPHAS)} combinations/domain")
+    print(
+        f"Grid: {len(Z_THRESHOLDS)} z * {len(PAMP_THRESHOLDS)} pamp * {len(DANGER_ALPHAS)} alpha = {len(Z_THRESHOLDS) * len(PAMP_THRESHOLDS) * len(DANGER_ALPHAS)} combinations/domain"  # noqa: E501
+    )
     print("=" * 70)
 
     results = {}
@@ -405,7 +413,9 @@ async def main():
 
         # Write outputs
         json_path = write_sweep_json(domain, sweep_result, output_dir=args.output_dir)
-        toml_path = write_tuned_toml(domain, sweep_result["best_config"], config_dir=args.config_dir)
+        toml_path = write_tuned_toml(
+            domain, sweep_result["best_config"], config_dir=args.config_dir
+        )
 
         print(f"  [{domain}] Done in {domain_elapsed:.1f}s", flush=True)
         print(f"    Sweep JSON: {json_path}", flush=True)
@@ -418,7 +428,7 @@ async def main():
     print(f"Auto-Tuning Complete in {elapsed:.1f}s")
     print(f"{'=' * 70}")
     print()
-    header = f"{'Domain':<18} | {'Default F1':>10} | {'Tuned F1':>10} | {'Improvement':>11} | {'Best z':>6} | {'Best pamp':>9} | {'Best alpha':>10}"
+    header = f"{'Domain':<18} | {'Default F1':>10} | {'Tuned F1':>10} | {'Improvement':>11} | {'Best z':>6} | {'Best pamp':>9} | {'Best alpha':>10}"  # noqa: E501
     print(header)
     print("-" * len(header))
 

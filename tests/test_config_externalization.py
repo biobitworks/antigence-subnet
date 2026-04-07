@@ -8,7 +8,6 @@ Covers:
 """
 
 import argparse
-import logging
 
 import bittensor as bt
 import numpy as np
@@ -237,16 +236,15 @@ class TestScoringModeConfig:
     def test_toml_validator_scoring_section_maps_to_parser_defaults(self, tmp_path):
         toml_file = tmp_path / "config.toml"
         toml_file.write_text(
-            "[validator.scoring]\n"
-            'mode = "semantic"\n'
-            "repeats = 5\n"
-            "ci_level = 0.9\n"
+            '[validator.scoring]\nmode = "semantic"\nrepeats = 5\nci_level = 0.9\n'
         )
 
         parser = argparse.ArgumentParser()
         parser.add_argument("--scoring.mode", "--validator.scoring.mode", type=str, default="exact")
         parser.add_argument("--scoring.repeats", "--validator.scoring.repeats", type=int, default=3)
-        parser.add_argument("--scoring.ci_level", "--validator.scoring.ci_level", type=float, default=0.95)
+        parser.add_argument(
+            "--scoring.ci_level", "--validator.scoring.ci_level", type=float, default=0.95
+        )
 
         apply_toml_defaults(parser, config_path=str(toml_file))
         args = parser.parse_args([])
@@ -258,16 +256,15 @@ class TestScoringModeConfig:
     def test_cli_overrides_toml_for_scoring_mode(self, tmp_path):
         toml_file = tmp_path / "config.toml"
         toml_file.write_text(
-            "[validator.scoring]\n"
-            'mode = "semantic"\n'
-            "repeats = 5\n"
-            "ci_level = 0.9\n"
+            '[validator.scoring]\nmode = "semantic"\nrepeats = 5\nci_level = 0.9\n'
         )
 
         parser = argparse.ArgumentParser()
         parser.add_argument("--scoring.mode", "--validator.scoring.mode", type=str, default="exact")
         parser.add_argument("--scoring.repeats", "--validator.scoring.repeats", type=int, default=3)
-        parser.add_argument("--scoring.ci_level", "--validator.scoring.ci_level", type=float, default=0.95)
+        parser.add_argument(
+            "--scoring.ci_level", "--validator.scoring.ci_level", type=float, default=0.95
+        )
 
         apply_toml_defaults(parser, config_path=str(toml_file))
         args = parser.parse_args(["--scoring.mode", "statistical", "--scoring.repeats", "7"])
@@ -285,8 +282,8 @@ class TestForwardPassWeightWiring:
 
     @pytest.mark.asyncio
     async def test_forward_passes_custom_reward_weights(self, mock_config, monkeypatch):
-        """Forward pass with custom reward weights calls get_composite_rewards with those weights."""
-        from unittest.mock import MagicMock, patch
+        """Forward pass with custom reward weights calls get_composite_rewards with those weights."""  # noqa: E501
+        from unittest.mock import MagicMock
 
         from antigence_subnet.base.validator import BaseValidatorNeuron
         from antigence_subnet.validator import forward as forward_module
@@ -304,15 +301,13 @@ class TestForwardPassWeightWiring:
 
         # Capture the kwargs passed to get_composite_rewards
         captured_kwargs = {}
-        original_fn = forward_module.get_composite_rewards
+        _original_fn = forward_module.get_composite_rewards
 
         def mock_get_composite_rewards(*args, **kwargs):
             captured_kwargs.update(kwargs)
             return np.zeros(0, dtype=np.float32)
 
-        monkeypatch.setattr(
-            forward_module, "get_composite_rewards", mock_get_composite_rewards
-        )
+        monkeypatch.setattr(forward_module, "get_composite_rewards", mock_get_composite_rewards)
 
         # Mock the necessary validator attributes for forward() to run
         validator.evaluation = MagicMock()
@@ -357,15 +352,9 @@ class TestForwardPassWeightWiring:
         if reward_cfg is not None:
             reward_kwargs = {
                 "base_weight": float(getattr(reward_cfg, "base_weight", 0.70)),
-                "calibration_weight": float(
-                    getattr(reward_cfg, "calibration_weight", 0.10)
-                ),
-                "robustness_weight": float(
-                    getattr(reward_cfg, "robustness_weight", 0.10)
-                ),
-                "diversity_weight": float(
-                    getattr(reward_cfg, "diversity_weight", 0.10)
-                ),
+                "calibration_weight": float(getattr(reward_cfg, "calibration_weight", 0.10)),
+                "robustness_weight": float(getattr(reward_cfg, "robustness_weight", 0.10)),
+                "diversity_weight": float(getattr(reward_cfg, "diversity_weight", 0.10)),
             }
 
         assert reward_kwargs["base_weight"] == pytest.approx(0.50)

@@ -6,8 +6,6 @@ warnings, dry-run feature extraction, and exit codes for valid/invalid configs.
 
 from __future__ import annotations
 
-import json
-import sys
 import textwrap
 from pathlib import Path
 from unittest.mock import patch
@@ -15,7 +13,6 @@ from unittest.mock import patch
 import pytest
 
 from antigence_subnet.validate_config import (
-    ConfigIssue,
     dry_run,
     main,
     validate_config,
@@ -36,9 +33,11 @@ class TestValidConfig:
 
     def test_valid_config_exit_code_zero(self, capsys):
         """Valid config produces exit code 0 via main()."""
-        with pytest.raises(SystemExit) as exc_info:
-            with patch("sys.argv", ["validate_config", str(PROFILES_DIR / "balanced.toml")]):
-                main()
+        with (
+            pytest.raises(SystemExit) as exc_info,
+            patch("sys.argv", ["validate_config", str(PROFILES_DIR / "balanced.toml")]),
+        ):
+            main()
         assert exc_info.value.code == 0
         captured = capsys.readouterr()
         assert "Config valid" in captured.out
@@ -52,13 +51,18 @@ class TestFileErrors:
         issues = validate_config(tmp_path / "nonexistent.toml")
         errors = [i for i in issues if i.level == "error"]
         assert len(errors) >= 1
-        assert any("not found" in e.message.lower() or "does not exist" in e.message.lower() for e in errors)
+        assert any(
+            "not found" in e.message.lower() or "does not exist" in e.message.lower()
+            for e in errors
+        )
 
     def test_nonexistent_file_exit_code(self, capsys):
         """Non-existent file produces exit code 1 via main()."""
-        with pytest.raises(SystemExit) as exc_info:
-            with patch("sys.argv", ["validate_config", "/tmp/nonexistent_abc123.toml"]):
-                main()
+        with (
+            pytest.raises(SystemExit) as exc_info,
+            patch("sys.argv", ["validate_config", "/tmp/nonexistent_abc123.toml"]),
+        ):
+            main()
         assert exc_info.value.code == 1
 
     def test_malformed_toml(self, tmp_path: Path):
@@ -263,7 +267,9 @@ class TestValidatorPolicyValidation:
         )
         issues = validate_config(path)
         errors = [i for i in issues if i.level == "error"]
-        assert any("validator.policy" == issue.section and "mode" in issue.message for issue in errors)
+        assert any(
+            issue.section == "validator.policy" and "mode" in issue.message for issue in errors
+        )
 
     def test_invalid_policy_ranges_are_errors(self, tmp_path: Path):
         path = tmp_path / "bad_policy_ranges.toml"
@@ -316,18 +322,20 @@ class TestDryRun:
     def test_dry_run_contains_nk_triggers(self):
         """Dry-run result contains nk_triggers for domains with eval data."""
         result = dry_run(PROFILES_DIR / "balanced.toml")
-        for domain, info in result.items():
+        for _domain, info in result.items():
             assert "nk_triggers" in info
             assert "feature_stats" in info
 
     def test_dry_run_flag_via_main(self, capsys):
         """--dry-run flag via main() doesn't raise and exits 0."""
-        with pytest.raises(SystemExit) as exc_info:
-            with patch(
+        with (
+            pytest.raises(SystemExit) as exc_info,
+            patch(
                 "sys.argv",
                 ["validate_config", "--dry-run", str(PROFILES_DIR / "balanced.toml")],
-            ):
-                main()
+            ),
+        ):
+            main()
         assert exc_info.value.code == 0
 
 

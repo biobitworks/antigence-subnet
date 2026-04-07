@@ -11,7 +11,6 @@ INTEG-02 (cold-start, backward compat, graceful degradation).
 
 from __future__ import annotations
 
-import asyncio
 import json
 from pathlib import Path
 from unittest.mock import AsyncMock, MagicMock
@@ -36,6 +35,7 @@ DATA_DIR = Path(__file__).resolve().parent.parent / "data" / "evaluation"
 # ---------------------------------------------------------------------------
 # Shared Helpers
 # ---------------------------------------------------------------------------
+
 
 def _make_features(**kwargs: float) -> np.ndarray:
     """Build a 10-dim feature vector, defaulting all features to 0.0."""
@@ -93,7 +93,9 @@ def _mock_detector(name: str, score: float = 0.5, confidence: float = 0.8) -> Ba
     type(detector).__name__ = name
     detector.detect = AsyncMock(
         return_value=DetectionResult(
-            score=score, confidence=confidence, anomaly_type="test",
+            score=score,
+            confidence=confidence,
+            anomaly_type="test",
         )
     )
     return detector
@@ -167,7 +169,7 @@ def _build_full_orchestrator(
             k=3,
             max_memory=100,
         )
-        for i in range(bcell_stored_sigs):
+        for _ in range(bcell_stored_sigs):
             feats = np.random.rand(10).astype(np.float64)
             emb = np.ones(384, dtype=np.float32) * 0.5
             bcell.store_signature(feats, 0.9, 1.0, embedding=emb)
@@ -210,6 +212,7 @@ def _build_full_orchestrator(
 # INTEG-01: Pipeline Path Tests
 # ---------------------------------------------------------------------------
 
+
 class TestPipelinePathNKFastPath:
     """NK fast-path catches obvious anomaly (z-score > threshold)."""
 
@@ -219,8 +222,12 @@ class TestPipelinePathNKFastPath:
         # Build NK Cell with real stats: feature at index 0, mean=0, std=1
         stats = [
             FeatureStatistics(
-                name="claim_density", index=0, mean=0.0, std=1.0,
-                is_binary=False, is_constant=False,
+                name="claim_density",
+                index=0,
+                mean=0.0,
+                std=1.0,
+                is_binary=False,
+                is_constant=False,
             ),
         ]
         nk = NKCell(feature_stats=stats, z_threshold=2.0)
@@ -327,7 +334,7 @@ class TestPipelinePathDCATierRouting:
             slm_nk_cell=slm_nk,
         )
 
-        result = await orchestrator.process("prompt", "output", "hallucination")
+        await orchestrator.process("prompt", "output", "hallucination")
         # Only OCSVM should have been called
         ocsvm_det.detect.assert_called_once()
         negsel_det.detect.assert_not_called()
@@ -338,7 +345,7 @@ class TestPipelinePathNormalInput:
 
     @pytest.mark.asyncio
     async def test_normal_input_full_pipeline(self):
-        """Normal input: NK=None, SLM NK=None (high similarity), DCA empty tier -> all detectors run."""
+        """Normal input: NK=None, SLM NK=None (high similarity), DCA empty tier -> all detectors run."""  # noqa: E501
         dca_result = DCAResult(
             maturation_state="mature",
             signal_scores={"pamp": 0.5, "danger": 0.1, "safe": 0.1},
@@ -376,6 +383,7 @@ class TestPipelinePathNormalInput:
 # ---------------------------------------------------------------------------
 # INTEG-01: Component Interaction Tests
 # ---------------------------------------------------------------------------
+
 
 class TestComponentInteraction:
     """Telemetry, B Cell influence, and adaptive DCA weight updates."""
@@ -448,6 +456,7 @@ class TestComponentInteraction:
 # INTEG-01: Real Evaluation Data Tests
 # ---------------------------------------------------------------------------
 
+
 class TestRealEvalData:
     """Full pipeline with real evaluation data produces valid DetectionResults."""
 
@@ -474,16 +483,14 @@ class TestRealEvalData:
     @pytest.mark.asyncio
     async def test_real_data_produces_valid_results(self, fitted_detectors, eval_samples):
         """Orchestrator processes real samples with score in [0.0, 1.0]."""
-        mock_mm = _mock_model_manager(score_value=0.8, available=True)
+        _mock_mm = _mock_model_manager(score_value=0.8, available=True)
         config = OrchestratorConfig(
             enabled=True,
             nk_config={"z_threshold": 100.0},  # high threshold to avoid NK triggers
             danger_config={"alpha": 0.0, "enabled": False},
             slm_nk_config=SLMNKConfig(enabled=False),  # disable SLM NK for real data test
         )
-        orchestrator = ImmuneOrchestrator.from_config(
-            config, {"hallucination": fitted_detectors}
-        )
+        orchestrator = ImmuneOrchestrator.from_config(config, {"hallucination": fitted_detectors})
 
         for sample in eval_samples[:5]:
             result = await orchestrator.process(
@@ -499,6 +506,7 @@ class TestRealEvalData:
 # ===========================================================================
 # INTEG-02: Cold-Start, Backward Compat, Graceful Degradation
 # ===========================================================================
+
 
 class TestColdStart:
     """Fresh orchestrator (empty BCell, no telemetry) produces no regression."""
@@ -537,7 +545,7 @@ class TestColdStart:
 
         samples, manifest = samples_and_manifest
 
-        mock_mm = _mock_model_manager(score_value=0.8, available=True)
+        _mock_mm = _mock_model_manager(score_value=0.8, available=True)
 
         config = OrchestratorConfig(
             enabled=True,
@@ -550,9 +558,7 @@ class TestColdStart:
             },
             slm_nk_config=SLMNKConfig(enabled=False),  # disable SLM NK for fair comparison
         )
-        orchestrator = ImmuneOrchestrator.from_config(
-            config, {"hallucination": fitted_detectors}
-        )
+        orchestrator = ImmuneOrchestrator.from_config(config, {"hallucination": fitted_detectors})
         # Verify BCell is cold start (empty memory)
         assert orchestrator._b_cell is not None
         assert orchestrator._b_cell.memory_size == 0
@@ -579,9 +585,9 @@ class TestColdStart:
 
         # Compute F1 for both
         def _f1(preds, truth):
-            tp = sum(1 for p, t in zip(preds, truth) if p == 1 and t == 1)
-            fp = sum(1 for p, t in zip(preds, truth) if p == 1 and t == 0)
-            fn = sum(1 for p, t in zip(preds, truth) if p == 0 and t == 1)
+            tp = sum(1 for p, t in zip(preds, truth, strict=False) if p == 1 and t == 1)
+            fp = sum(1 for p, t in zip(preds, truth, strict=False) if p == 1 and t == 0)
+            fn = sum(1 for p, t in zip(preds, truth, strict=False) if p == 0 and t == 1)
             precision = tp / (tp + fp) if (tp + fp) > 0 else 0.0
             recall = tp / (tp + fn) if (tp + fn) > 0 else 0.0
             if precision + recall == 0:

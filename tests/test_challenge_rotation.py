@@ -161,6 +161,7 @@ class TestChallengeRotationIntegration:
     def eval_dataset(self, tmp_path):
         """Create a minimal evaluation dataset for integration testing."""
         import json
+
         from antigence_subnet.validator.evaluation import EvaluationDataset
 
         domain = "hallucination"

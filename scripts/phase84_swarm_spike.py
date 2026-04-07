@@ -16,11 +16,15 @@ import numpy as np
 ROOT_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(ROOT_DIR))
 
-from antigence_subnet.miner.data import load_training_samples
-from antigence_subnet.miner.detectors.isolation_forest import IsolationForestDetector
-from antigence_subnet.miner.detectors.negsel import NegSelAISDetector
-from antigence_subnet.miner.detectors.sklearn_backends import OCSVMDetector
-from scripts.benchmark_orchestrator import DECISION_THRESHOLD, compute_metrics, load_eval_data
+from antigence_subnet.miner.data import load_training_samples  # noqa: E402
+from antigence_subnet.miner.detectors.isolation_forest import IsolationForestDetector  # noqa: E402
+from antigence_subnet.miner.detectors.negsel import NegSelAISDetector  # noqa: E402
+from antigence_subnet.miner.detectors.sklearn_backends import OCSVMDetector  # noqa: E402
+from scripts.benchmark_orchestrator import (  # noqa: E402
+    DECISION_THRESHOLD,
+    compute_metrics,
+    load_eval_data,
+)
 
 DATA_DIR = ROOT_DIR / "data" / "evaluation"
 BASELINE_REFERENCE = "data/benchmarks/v9.2-baseline.json"
@@ -66,7 +70,9 @@ def _load_baseline_reference() -> dict:
 
 
 def _baseline_domain_metrics(baseline_reference: dict, domain: str) -> dict:
-    return baseline_reference["sections"]["orchestrator"]["data"]["domains"][domain]["flat_ensemble"]
+    return baseline_reference["sections"]["orchestrator"]["data"]["domains"][domain][
+        "flat_ensemble"
+    ]
 
 
 def _baseline_detector_latency_map(baseline_reference: dict, domain: str) -> dict[str, float]:
@@ -107,7 +113,7 @@ def _one_extreme_agent_probe(sample_results: list[dict]) -> dict:
         }
     return {
         "probe": "one_extreme_agent_perturbation",
-        "description": "Replace the IsolationForest score with 1.0 to simulate one extreme detector vote.",
+        "description": "Replace the IsolationForest score with 1.0 to simulate one extreme detector vote.",  # noqa: E501
         "perturbed_detector": "IsolationForest",
         "aggregators": aggregators,
     }
@@ -125,25 +131,31 @@ def _mechanism_notes(
     median3_delta_vs_control = round(spike_metrics["median3"]["f1"] - control_metrics["f1"], 4)
     if mean3_delta_vs_control > 0 or median3_delta_vs_control > 0:
         notes.append(
-            "Any uplift over the two-detector control comes from adding IsolationForest diversity; no swarm messaging, vote-tuning, or persistent state exists in this spike."
+            "Any uplift over the two-detector control comes from adding IsolationForest diversity; no swarm messaging, vote-tuning, or persistent state exists in this spike."  # noqa: E501
         )
     else:
         notes.append(
-            "The added IsolationForest detector did not improve on the current OCSVM+NegSel control, so the spike shows no detector-diversification benefit."
+            "The added IsolationForest detector did not improve on the current OCSVM+NegSel control, so the spike shows no detector-diversification benefit."  # noqa: E501
         )
     if spike_metrics["mean3"]["f1"] > spike_metrics["median3"]["f1"]:
-        notes.append("Mean3 scores higher than median3 here, so any apparent gain depends on aggregation choice rather than a stable multi-agent mechanism.")
+        notes.append(
+            "Mean3 scores higher than median3 here, so any apparent gain depends on aggregation choice rather than a stable multi-agent mechanism."  # noqa: E501
+        )
     elif spike_metrics["median3"]["f1"] > spike_metrics["mean3"]["f1"]:
-        notes.append("Median3 outperforms mean3, which suggests robustness matters more than raw averaging.")
+        notes.append(
+            "Median3 outperforms mean3, which suggests robustness matters more than raw averaging."
+        )
     else:
-        notes.append("Mean3 and median3 tie on F1, so aggregation choice provides no differentiating mechanism.")
+        notes.append(
+            "Mean3 and median3 tie on F1, so aggregation choice provides no differentiating mechanism."  # noqa: E501
+        )
     mean3_flips = adversarial_probe["aggregators"]["mean3"]["prediction_flips"]
     median3_flips = adversarial_probe["aggregators"]["median3"]["prediction_flips"]
     notes.append(
-        f"Against the one-extreme-agent probe, mean3 flips {mean3_flips} predictions and median3 flips {median3_flips}; this measures whether the gain survives a single extreme detector vote."
+        f"Against the one-extreme-agent probe, mean3 flips {mean3_flips} predictions and median3 flips {median3_flips}; this measures whether the gain survives a single extreme detector vote."  # noqa: E501
     )
     notes.append(
-        f"The immutable v9.2 flat baseline F1 for this domain is {baseline_f1:.4f}; gate deltas are computed against that measured reference, not a recomputed story."
+        f"The immutable v9.2 flat baseline F1 for this domain is {baseline_f1:.4f}; gate deltas are computed against that measured reference, not a recomputed story."  # noqa: E501
     )
     return notes
 
@@ -153,7 +165,9 @@ async def run_domain_spike(domain: str, *, baseline_reference: dict) -> dict:
     samples, manifest = load_eval_data(domain)
     detectors = create_phase84_detectors(domain)
     baseline_metrics_reference = _baseline_domain_metrics(baseline_reference, domain)
-    baseline_detector_latencies_reference = _baseline_detector_latency_map(baseline_reference, domain)
+    baseline_detector_latencies_reference = _baseline_detector_latency_map(
+        baseline_reference, domain
+    )
 
     sample_results = []
     aggregate_score_sets = {name: [] for name in AGGREGATORS}
@@ -207,8 +221,7 @@ async def run_domain_spike(domain: str, *, baseline_reference: dict) -> dict:
                 "output": sample.get("output", ""),
                 "per_detector": per_detector,
                 "aggregate_scores": {
-                    name: round(float(score), 6)
-                    for name, score in aggregate_scores_result.items()
+                    name: round(float(score), 6) for name, score in aggregate_scores_result.items()
                 },
                 "latency_ms": {
                     "detectors_total": round(
@@ -238,7 +251,8 @@ async def run_domain_spike(domain: str, *, baseline_reference: dict) -> dict:
         float(
             np.mean(
                 [
-                    sample["per_detector"]["OCSVM"]["latency_ms"] + sample["per_detector"]["NegSel"]["latency_ms"]
+                    sample["per_detector"]["OCSVM"]["latency_ms"]
+                    + sample["per_detector"]["NegSel"]["latency_ms"]
                     for sample in sample_results
                 ]
             )
@@ -371,7 +385,7 @@ def build_phase84_benchmark_artifact(domain_artifacts: list[dict]) -> dict:
         "generated_at": datetime.now(timezone.utc).isoformat(),
         "baseline_reference": BASELINE_REFERENCE,
         "phase83_stability_reference": {
-            "artifact": ".planning/phases/83-determinism-controls-scoring-benchmark/83-benchmark-report.md",
+            "artifact": ".planning/phases/83-determinism-controls-scoring-benchmark/83-benchmark-report.md",  # noqa: E501
             "exact_variance_pct": 0.0,
             "semantic_variance_pct": 0.0,
         },
@@ -423,11 +437,21 @@ def _staged_validation_artifact() -> dict:
         average_control_latency_ms=2.3,
         adversarial_probe={
             "probe": "one_extreme_agent_perturbation",
-            "description": "Replace the IsolationForest score with 1.0 to simulate one extreme detector vote.",
+            "description": "Replace the IsolationForest score with 1.0 to simulate one extreme detector vote.",  # noqa: E501
             "perturbed_detector": "IsolationForest",
             "aggregators": {
-                "mean3": {"prediction_flips": 1, "flip_rate": 1.0, "mean_score_shift": 0.4, "max_score_shift": 0.4},
-                "median3": {"prediction_flips": 0, "flip_rate": 0.0, "mean_score_shift": 0.0, "max_score_shift": 0.0},
+                "mean3": {
+                    "prediction_flips": 1,
+                    "flip_rate": 1.0,
+                    "mean_score_shift": 0.4,
+                    "max_score_shift": 0.4,
+                },
+                "median3": {
+                    "prediction_flips": 0,
+                    "flip_rate": 0.0,
+                    "mean_score_shift": 0.0,
+                    "max_score_shift": 0.0,
+                },
             },
         },
         mechanism_notes=["staged validation artifact"],
@@ -443,13 +467,17 @@ def _validate_artifact_dict(artifact: dict) -> None:
     if artifact.get("detectors") not in (None, list(DETECTOR_ORDER)):
         raise ValueError("artifact detectors must match the three-detector spike")
     if artifact.get("baseline_reference") != BASELINE_REFERENCE:
-        raise ValueError("artifact baseline_reference must anchor to data/benchmarks/v9.2-baseline.json")
+        raise ValueError(
+            "artifact baseline_reference must anchor to data/benchmarks/v9.2-baseline.json"
+        )
 
     baseline = artifact.get("baseline")
     if not isinstance(baseline, dict):
         raise ValueError("artifact baseline must be a dict")
     if "reference_metrics" not in baseline or "current_two_detector_control" not in baseline:
-        raise ValueError("artifact baseline must include reference metrics and two-detector control")
+        raise ValueError(
+            "artifact baseline must include reference metrics and two-detector control"
+        )
 
     spike = artifact.get("spike")
     if not isinstance(spike, dict) or "aggregators" not in spike:
@@ -458,7 +486,13 @@ def _validate_artifact_dict(artifact: dict) -> None:
         if aggregator not in spike["aggregators"]:
             raise ValueError(f"artifact spike missing aggregator {aggregator}")
         entry = spike["aggregators"][aggregator]
-        for field in ("metrics", "f1_delta_vs_baseline", "f1_delta_vs_control", "avg_latency_ms", "latency_multiplier_vs_control"):
+        for field in (
+            "metrics",
+            "f1_delta_vs_baseline",
+            "f1_delta_vs_control",
+            "avg_latency_ms",
+            "latency_multiplier_vs_control",
+        ):
             if field not in entry:
                 raise ValueError(f"artifact spike aggregator {aggregator} missing {field}")
 
@@ -500,7 +534,9 @@ def _validate_benchmark_dict(artifact: dict) -> None:
     if artifact.get("phase") != "84":
         raise ValueError("benchmark phase must be '84'")
     if artifact.get("baseline_reference") != BASELINE_REFERENCE:
-        raise ValueError("benchmark baseline_reference must anchor to data/benchmarks/v9.2-baseline.json")
+        raise ValueError(
+            "benchmark baseline_reference must anchor to data/benchmarks/v9.2-baseline.json"
+        )
     domains = artifact.get("domains")
     if not isinstance(domains, dict) or not domains:
         raise ValueError("benchmark domains must be a non-empty dict")
@@ -576,7 +612,9 @@ async def _run_cli(args: argparse.Namespace) -> int:
                 "domains": args.domains,
                 "written_path": written_path,
                 "aggregators": list(AGGREGATORS),
-                "recommended_outcome": benchmark_artifact["decision_summary"]["recommended_outcome"],
+                "recommended_outcome": benchmark_artifact["decision_summary"][
+                    "recommended_outcome"
+                ],
             },
             indent=2,
         )

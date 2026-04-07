@@ -3,9 +3,7 @@
 import json
 import math
 import time
-from pathlib import Path
 
-import pytest
 from prometheus_client import CollectorRegistry
 
 from antigence_subnet.miner.orchestrator.telemetry import MinerTelemetry
@@ -83,7 +81,7 @@ class TestPerformance:
     def test_record_under_1ms(self):
         t = MinerTelemetry(window_size=100)
         start = time.perf_counter()
-        for i in range(1000):
+        for _ in range(1000):
             t.record("hall", 0.5, 0.5)
         elapsed = time.perf_counter() - start
         per_call = elapsed / 1000 * 1000  # ms
@@ -123,8 +121,8 @@ class TestPrometheus:
         t.update_prometheus("empty")  # should not error
 
     def test_import_from_package(self):
-        from antigence_subnet.miner.orchestrator import MinerTelemetry as MT
-        assert MT is MinerTelemetry
+        from antigence_subnet.miner.orchestrator import MinerTelemetry as MinerTelemetryImport
+        assert MinerTelemetryImport is MinerTelemetry
 
 
 class TestForwardIntegration:

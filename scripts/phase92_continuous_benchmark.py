@@ -29,7 +29,6 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from antigence_subnet.miner.detector import DetectionResult
 from antigence_subnet.validator.calibration import compute_ece
 
-
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 BASELINE_REFERENCE = "data/benchmarks/v9.2-baseline.json"
 DEFAULT_ARTIFACT_PATH = PROJECT_ROOT / "data/benchmarks/phase92-continuous-benchmark.json"
@@ -147,7 +146,8 @@ def _surface_score(
             effective_weights = normalized
             effective_total = 1.0
         score = sum(
-            (effective_weights[detector] / effective_total) * float(detector_results[detector]["score"])
+            (effective_weights[detector] / effective_total)
+            * float(detector_results[detector]["score"])
             for detector in ALLOWED_DETECTORS
         )
         confidence = _bounded_ratio(
@@ -176,7 +176,9 @@ def _safe_roc_auc(labels: list[int], scores: list[float]) -> float:
     return float(roc_auc_score(labels, scores))
 
 
-def _reliability_bins(confidences: list[float], accuracies: list[int], n_bins: int = 5) -> list[dict[str, Any]]:
+def _reliability_bins(
+    confidences: list[float], accuracies: list[int], n_bins: int = 5
+) -> list[dict[str, Any]]:
     bins: list[dict[str, Any]] = []
     edges = np.linspace(0.0, 1.0, n_bins + 1)
     conf_arr = np.asarray(confidences, dtype=np.float64)
@@ -212,7 +214,9 @@ def _score_quality_metrics(
     memories: list[float],
 ) -> dict[str, Any]:
     predictions = [1 if score >= 0.5 else 0 for score in scores]
-    accuracies = [int(prediction == label) for prediction, label in zip(predictions, labels, strict=True)]
+    accuracies = [
+        int(prediction == label) for prediction, label in zip(predictions, labels, strict=True)
+    ]
     anomalous_scores = [score for score, label in zip(scores, labels, strict=True) if label == 1]
     normal_scores = [score for score, label in zip(scores, labels, strict=True) if label == 0]
     separation = float(np.mean(anomalous_scores) - np.mean(normal_scores))
@@ -290,8 +294,7 @@ def generate_paired_bootstrap_rounds(
                 "sample_ids": sampled_ids,
                 "candidate_names": candidate_names,
                 "samples_by_candidate": {
-                    candidate: list(sampled_ids)
-                    for candidate in candidate_names
+                    candidate: list(sampled_ids) for candidate in candidate_names
                 },
             }
         )
@@ -364,7 +367,9 @@ def _choose_domain_thresholds(records: list[dict[str, Any]]) -> dict[str, Any]:
     ordered_predictions = [predictions_by_sample[str(record["sample_id"])] for record in records]
     labels = [int(record["label"]) for record in records]
     return {
-        "selection": {"thresholds_by_domain": {domain: _float(value) for domain, value in thresholds.items()}},
+        "selection": {
+            "thresholds_by_domain": {domain: _float(value) for domain, value in thresholds.items()}
+        },
         "predictions": ordered_predictions,
         "metrics": _binary_metrics(labels, ordered_predictions),
     }
@@ -475,7 +480,8 @@ def apply_policy_overlays(artifact: dict[str, Any]) -> dict[str, Any]:
                     - float(control_metrics["balanced_accuracy"])
                 ),
                 "policy_reward_delta": _float(
-                    float(surface_metrics["policy_reward"]) - float(control_metrics["policy_reward"])
+                    float(surface_metrics["policy_reward"])
+                    - float(control_metrics["policy_reward"])
                 ),
             }
             if policy_name == "operator_multiband":
@@ -581,11 +587,11 @@ def build_phase92_report(artifact: dict[str, Any]) -> str:
         f"- Generated at: {artifact['generated_at']}",
         f"- Baseline reference: `{artifact['baseline_reference']}`",
         "- Source surface: saved continuous score artifact from Plan 92-01",
-        "- Scope guard: Phase 92 preserves the Phase 84 swarm NO-GO and does not add detector families or swarm terms.",
+        "- Scope guard: Phase 92 preserves the Phase 84 swarm NO-GO and does not add detector families or swarm terms.",  # noqa: E501
         "",
         "## Score Quality",
         "",
-        "Continuous score-quality and calibration metrics are reported separately from policy overlays.",
+        "Continuous score-quality and calibration metrics are reported separately from policy overlays.",  # noqa: E501
         "",
     ]
     for surface_name in score_quality["surface_names"]:
@@ -616,7 +622,7 @@ def build_phase92_report(artifact: dict[str, Any]) -> str:
         [
             "## Policy Overlays",
             "",
-            "Decision policies are post-hoc overlays on the saved score surfaces above. They do not rerun detectors.",
+            "Decision policies are post-hoc overlays on the saved score surfaces above. They do not rerun detectors.",  # noqa: E501
             "",
         ]
     )
@@ -645,7 +651,9 @@ def build_phase92_report(artifact: dict[str, Any]) -> str:
             delta = policy_payload["deltas_vs_control"][surface_name]
             lines.append(f"- paired_delta_vs_control_equal: {json.dumps(delta, sort_keys=True)}")
             if policy_name == "operator_multiband":
-                lines.append(f"- decision_counts: {json.dumps(surface_payload['decision_counts'], sort_keys=True)}")
+                lines.append(
+                    f"- decision_counts: {json.dumps(surface_payload['decision_counts'], sort_keys=True)}"  # noqa: E501
+                )
                 lines.append(f"- bands: {', '.join(surface_payload['bands'])}")
             lines.append("")
     return "\n".join(lines).rstrip() + "\n"
@@ -664,7 +672,9 @@ def validate_phase92_artifacts(
 ) -> dict[str, Any]:
     artifact = json.loads(artifact_path.read_text())
     if artifact.get("baseline_reference") != BASELINE_REFERENCE:
-        _validation_error("artifact baseline_reference must anchor to data/benchmarks/v9.2-baseline.json")
+        _validation_error(
+            "artifact baseline_reference must anchor to data/benchmarks/v9.2-baseline.json"
+        )
     if "score_quality" not in artifact or "policy_overlays" not in artifact:
         _validation_error("artifact must separate score_quality and policy_overlays")
     score_quality = artifact["score_quality"]
@@ -680,7 +690,9 @@ def validate_phase92_artifacts(
             _validation_error(f"{surface_name} introduced detector-count expansion")
         for record in surface.get("per_sample", []):
             if not {"sample_id", "domain", "label", "score", "confidence"} <= set(record):
-                _validation_error(f"{surface_name} per-sample records must preserve score and confidence")
+                _validation_error(
+                    f"{surface_name} per-sample records must preserve score and confidence"
+                )
         metrics = surface.get("metrics", {})
         required_score_metrics = {
             "average_precision",
@@ -701,7 +713,10 @@ def validate_phase92_artifacts(
         lowered = policy_name.lower()
         if any(term in lowered for term in FORBIDDEN_POLICY_TERMS):
             _validation_error("forbidden policy overlay scope drift detected")
-        if policy_payload.get("uses_saved_scores") is not True or policy_payload.get("detector_reruns") != 0:
+        if (
+            policy_payload.get("uses_saved_scores") is not True
+            or policy_payload.get("detector_reruns") != 0
+        ):
             _validation_error(f"{policy_name} must consume saved scores without detector reruns")
         surface_results = policy_payload.get("surface_results", {})
         if set(surface_results) != set(surface_names):
@@ -716,13 +731,19 @@ def validate_phase92_artifacts(
                 "policy_reward",
             }
             if not required_policy_metrics <= set(metrics):
-                _validation_error(f"{policy_name}/{surface_name} is missing required policy metrics")
+                _validation_error(
+                    f"{policy_name}/{surface_name} is missing required policy metrics"
+                )
             if policy_name == "operator_multiband":
                 multiband_required = {"review_rate", "auto_decision_coverage"}
                 if not multiband_required <= set(metrics):
-                    _validation_error("operator_multiband must report review_rate and auto_decision_coverage")
+                    _validation_error(
+                        "operator_multiband must report review_rate and auto_decision_coverage"
+                    )
                 if surface_payload.get("bands") != ["allow", "review", "block"]:
-                    _validation_error("operator_multiband must preserve allow/review/block semantics")
+                    _validation_error(
+                        "operator_multiband must preserve allow/review/block semantics"
+                    )
     paired_bootstrap = artifact.get("paired_bootstrap", {})
     rounds = paired_bootstrap.get("rounds", [])
     for round_payload in rounds:

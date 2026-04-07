@@ -10,14 +10,12 @@ import json
 import os
 
 import numpy as np
-import pytest
 
 from antigence_subnet.validator.cold_start import (
     ColdStartConfig,
     ColdStartManager,
     parse_cold_start_config,
 )
-
 
 # ------------------------------------------------------------------ #
 # ColdStartConfig

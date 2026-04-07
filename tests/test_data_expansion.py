@@ -74,9 +74,7 @@ def test_class_balance_all_domains(domain):
     normal = sum(1 for v in manifest.values() if v["ground_truth_label"] == "normal")
     anomalous = sum(1 for v in manifest.values() if v["ground_truth_label"] == "anomalous")
 
-    assert normal + anomalous == 60, (
-        f"{domain}: normal ({normal}) + anomalous ({anomalous}) != 60"
-    )
+    assert normal + anomalous == 60, f"{domain}: normal ({normal}) + anomalous ({anomalous}) != 60"
     assert normal >= 26, f"{domain}: too few normal samples ({normal}), min 26"
     assert anomalous >= 26, f"{domain}: too few anomalous samples ({anomalous}), min 26"
 
@@ -96,9 +94,7 @@ def test_honeypot_ratio_all_domains(domain):
     honeypots = sum(1 for v in manifest.values() if v.get("is_honeypot"))
     expected = EXPECTED_HONEYPOTS[domain]
 
-    assert honeypots == expected, (
-        f"{domain}: expected {expected} honeypots, got {honeypots}"
-    )
+    assert honeypots == expected, f"{domain}: expected {expected} honeypots, got {honeypots}"
     assert honeypots >= 6, f"{domain}: too few honeypots ({honeypots}), min 6"
     assert honeypots <= 10, f"{domain}: too many honeypots ({honeypots}), max 10"
 
@@ -134,19 +130,13 @@ def test_sample_schema_all_domains(domain):
         assert "difficulty" in sample["metadata"], (
             f"{domain}: {sample['id']} metadata missing 'difficulty'"
         )
-        assert "source" in sample["metadata"], (
-            f"{domain}: {sample['id']} metadata missing 'source'"
-        )
+        assert "source" in sample["metadata"], f"{domain}: {sample['id']} metadata missing 'source'"
 
         # Domain-specific content field
         if domain == "code_security":
-            assert "code" in sample, (
-                f"{domain}: {sample['id']} missing 'code' field"
-            )
+            assert "code" in sample, f"{domain}: {sample['id']} missing 'code' field"
         else:
-            assert "output" in sample, (
-                f"{domain}: {sample['id']} missing 'output' field"
-            )
+            assert "output" in sample, f"{domain}: {sample['id']} missing 'output' field"
 
 
 # ---------------------------------------------------------------------------
@@ -162,9 +152,7 @@ def test_manifest_schema_all_domains(domain):
         manifest = json.load(f)
 
     for sid, entry in manifest.items():
-        assert "ground_truth_label" in entry, (
-            f"{domain}: {sid} missing 'ground_truth_label'"
-        )
+        assert "ground_truth_label" in entry, f"{domain}: {sid} missing 'ground_truth_label'"
         assert entry["ground_truth_label"] in ("normal", "anomalous"), (
             f"{domain}: {sid} has invalid label '{entry['ground_truth_label']}'"
         )
@@ -177,9 +165,9 @@ def test_manifest_schema_all_domains(domain):
             assert entry.get("ground_truth_type") is not None, (
                 f"{domain}: anomalous {sid} missing 'ground_truth_type'"
             )
-            assert isinstance(entry["ground_truth_type"], str) and len(entry["ground_truth_type"]) > 0, (
-                f"{domain}: anomalous {sid} ground_truth_type must be non-empty string"
-            )
+            assert (
+                isinstance(entry["ground_truth_type"], str) and len(entry["ground_truth_type"]) > 0
+            ), f"{domain}: anomalous {sid} ground_truth_type must be non-empty string"
 
 
 # ---------------------------------------------------------------------------
@@ -197,11 +185,10 @@ def test_adversarial_samples_present(domain):
     adversarial = [
         sid
         for sid, entry in manifest.items()
-        if entry.get("ground_truth_type")
-        and "adversarial" in entry["ground_truth_type"]
+        if entry.get("ground_truth_type") and "adversarial" in entry["ground_truth_type"]
     ]
     assert len(adversarial) >= 2, (
-        f"{domain}: expected at least 2 adversarial samples, found {len(adversarial)}: {adversarial}"
+        f"{domain}: expected at least 2 adversarial samples, found {len(adversarial)}: {adversarial}"  # noqa: E501
     )
 
 
@@ -220,7 +207,7 @@ def test_evaluation_dataset_loads_all_domains(domain):
     )
     expected_hp = EXPECTED_HONEYPOTS[domain]
     assert len(dataset._honeypot_samples) == expected_hp, (
-        f"{domain}: EvaluationDataset has {len(dataset._honeypot_samples)} honeypots, expected {expected_hp}"
+        f"{domain}: EvaluationDataset has {len(dataset._honeypot_samples)} honeypots, expected {expected_hp}"  # noqa: E501
     )
 
     # get_round_samples returns correct count

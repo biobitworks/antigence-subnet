@@ -119,7 +119,8 @@ class TestAllDomainsRegistered:
         )
 
     def test_registry_maps_to_correct_classes(self):
-        from antigence_subnet.miner.detectors import DETECTOR_REGISTRY
+        # Registry is now list-based (ensemble support) -- use get_detector() for backward compat
+        from antigence_subnet.miner.detectors import get_detector
         from antigence_subnet.miner.detectors.domain_packs.bio.detector import BioDetector
         from antigence_subnet.miner.detectors.domain_packs.code_security.detector import (
             CodeSecurityDetector,
@@ -130,9 +131,6 @@ class TestAllDomainsRegistered:
         from antigence_subnet.miner.detectors.domain_packs.reasoning.detector import (
             ReasoningDetector,
         )
-
-        # Registry is now list-based (ensemble support) -- use get_detector() for backward compat
-        from antigence_subnet.miner.detectors import get_detector
 
         assert get_detector("hallucination") is HallucinationDetector
         assert get_detector("code_security") is CodeSecurityDetector

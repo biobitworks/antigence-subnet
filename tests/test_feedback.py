@@ -88,7 +88,7 @@ class TestBCellFeedback:
         bcell = BCell(max_memory=100)
 
         # Store 3 signatures with outcome 0.5
-        for i in range(3):
+        for _ in range(3):
             features = np.random.rand(10)
             bcell.store_signature(features, anomaly_score=0.7, ground_truth=0.5)
 
@@ -109,7 +109,7 @@ class TestBCellFeedback:
         bcell = BCell(max_memory=100)
 
         # Store 3 signatures with outcome 0.8
-        for i in range(3):
+        for _ in range(3):
             features = np.random.rand(10)
             bcell.store_signature(features, anomaly_score=0.7, ground_truth=0.8)
 
@@ -404,15 +404,15 @@ class TestOrchestratorFeedback:
 
     def _make_orchestrator(self, feedback_enabled=True, with_bcell=True, with_dca=True):
         """Helper to build an ImmuneOrchestrator with feedback wiring."""
-        from antigence_subnet.miner.orchestrator.orchestrator import ImmuneOrchestrator
-        from antigence_subnet.miner.orchestrator.config import OrchestratorConfig, FeedbackConfig
-        from antigence_subnet.miner.orchestrator.nk_cell import NKCell
-        from antigence_subnet.miner.orchestrator.dendritic_cell import DendriticCell
-        from antigence_subnet.miner.orchestrator.danger import DangerTheoryModulator
-        from antigence_subnet.miner.orchestrator.b_cell import BCell
-        from antigence_subnet.miner.orchestrator.adaptive_weights import AdaptiveWeightManager
-        from antigence_subnet.miner.orchestrator.feedback import ValidatorFeedbackTracker
         from antigence_subnet.miner.detectors.dendritic_features import DendriticFeatureExtractor
+        from antigence_subnet.miner.orchestrator.adaptive_weights import AdaptiveWeightManager
+        from antigence_subnet.miner.orchestrator.b_cell import BCell
+        from antigence_subnet.miner.orchestrator.config import FeedbackConfig, OrchestratorConfig
+        from antigence_subnet.miner.orchestrator.danger import DangerTheoryModulator
+        from antigence_subnet.miner.orchestrator.dendritic_cell import DendriticCell
+        from antigence_subnet.miner.orchestrator.feedback import ValidatorFeedbackTracker
+        from antigence_subnet.miner.orchestrator.nk_cell import NKCell
+        from antigence_subnet.miner.orchestrator.orchestrator import ImmuneOrchestrator
 
         extractor = DendriticFeatureExtractor()
         nk_cell = NKCell(feature_stats=[])
@@ -445,8 +445,8 @@ class TestOrchestratorFeedback:
 
     def test_orchestrator_feedback_from_config_enabled(self):
         """from_config creates ValidatorFeedbackTracker when feedback_config.enabled=True."""
+        from antigence_subnet.miner.orchestrator.config import FeedbackConfig, OrchestratorConfig
         from antigence_subnet.miner.orchestrator.orchestrator import ImmuneOrchestrator
-        from antigence_subnet.miner.orchestrator.config import OrchestratorConfig, FeedbackConfig
 
         config = OrchestratorConfig(
             enabled=True,
@@ -458,8 +458,8 @@ class TestOrchestratorFeedback:
 
     def test_orchestrator_feedback_from_config_disabled(self):
         """from_config creates None feedback when feedback_config.enabled=False."""
-        from antigence_subnet.miner.orchestrator.orchestrator import ImmuneOrchestrator
         from antigence_subnet.miner.orchestrator.config import OrchestratorConfig
+        from antigence_subnet.miner.orchestrator.orchestrator import ImmuneOrchestrator
 
         config = OrchestratorConfig(enabled=True)  # feedback_config defaults to disabled
         orch = ImmuneOrchestrator.from_config(config, detectors={})
@@ -468,12 +468,13 @@ class TestOrchestratorFeedback:
     @pytest.mark.asyncio
     async def test_orchestrator_process_records_detection(self):
         """process() calls record_detection with features and score after ensemble."""
-        from unittest.mock import patch, AsyncMock
-        from antigence_subnet.miner.detector import BaseDetector, DetectionResult as DR
+        from unittest.mock import patch
+
+        from antigence_subnet.miner.detector import BaseDetector, DetectionResult
 
         class StubDetector(BaseDetector):
             async def detect(self, prompt, output, code=None, context=None):
-                return DR(score=0.6, confidence=0.9, anomaly_type="test")
+                return DetectionResult(score=0.6, confidence=0.9, anomaly_type="test")
             async def fit(self, samples):
                 pass
             def get_info(self):
@@ -483,7 +484,7 @@ class TestOrchestratorFeedback:
         orch._detectors = {"hallucination": [StubDetector()]}
 
         with patch.object(orch._feedback, 'record_detection') as mock_record:
-            result = await orch.process(
+            await orch.process(
                 prompt="test prompt",
                 output="test output",
                 domain="hallucination",
@@ -496,18 +497,16 @@ class TestOrchestratorFeedback:
 
     def test_orchestrator_process_feedback_positive_bcell(self):
         """process_feedback() with positive signal calls apply on BCell."""
-        from antigence_subnet.miner.orchestrator.b_cell import BCell
         orch = self._make_orchestrator(feedback_enabled=True, with_bcell=True, with_dca=False)
 
         # Store some BCell signatures
-        for i in range(3):
+        for _ in range(3):
             orch._b_cell.store_signature(np.random.rand(10), 0.7, 0.5)
 
         # Record a detection so correlated feedback has data
         orch._feedback.record_detection(np.random.rand(10), 0.7, "test")
         orch._feedback.record_round(0.5, 0.8, 1)
 
-        original_outcomes = orch._b_cell._memory[:, 11].copy()
         signal = orch.process_feedback(current_weight=0.6, avg_score=0.8, detection_count=5)
         # Signal should be positive (weight increased from 0.5 to 0.6)
         assert signal > 0.0

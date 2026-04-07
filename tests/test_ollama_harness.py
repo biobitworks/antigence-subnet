@@ -10,10 +10,9 @@ Mocked tests run without Ollama. Live tests require @pytest.mark.ollama.
 
 import asyncio
 from types import SimpleNamespace
-from unittest.mock import patch, MagicMock
+from unittest.mock import patch
 
 import pytest
-
 
 # ---------------------------------------------------------------------------
 # Fixtures
@@ -25,10 +24,10 @@ def mock_ollama_chat():
     """Patch ollama.chat to return a fake ChatResponse-like object."""
     fake_response = SimpleNamespace(
         message=SimpleNamespace(content="Q: What year did Rome fall?\nA: Rome fell in 1066."),
-        total_duration=500_000_000,   # 500ms in nanoseconds
-        eval_duration=400_000_000,    # 400ms
+        total_duration=500_000_000,  # 500ms in nanoseconds
+        eval_duration=400_000_000,  # 400ms
         prompt_eval_duration=80_000_000,  # 80ms
-        load_duration=20_000_000,     # 20ms
+        load_duration=20_000_000,  # 20ms
         eval_count=32,
     )
     with patch("ollama.chat", return_value=fake_response) as mock_chat:
@@ -103,14 +102,16 @@ class TestSingleRound:
         """run_single_round returns dict with metrics, latency, samples_evaluated."""
         from scripts.ollama_test_harness import run_single_round
 
-        result = asyncio.run(run_single_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            samples_per_round=10,
-            warmup=False,
-            seed=42,
-        ))
+        result = asyncio.run(
+            run_single_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                samples_per_round=10,
+                warmup=False,
+                seed=42,
+            )
+        )
 
         # Top-level keys
         assert "metrics" in result
@@ -135,14 +136,16 @@ class TestSingleRound:
         """All metric values in [0.0, 1.0], all latency values >= 0.0."""
         from scripts.ollama_test_harness import run_single_round
 
-        result = asyncio.run(run_single_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            samples_per_round=10,
-            warmup=False,
-            seed=42,
-        ))
+        result = asyncio.run(
+            run_single_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                samples_per_round=10,
+                warmup=False,
+                seed=42,
+            )
+        )
 
         for key, val in result["metrics"].items():
             assert 0.0 <= val <= 1.0, f"metrics.{key}={val} out of [0,1]"
@@ -154,14 +157,16 @@ class TestSingleRound:
         """Result dict has all required top-level keys for JSON output."""
         from scripts.ollama_test_harness import run_single_round
 
-        result = asyncio.run(run_single_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            samples_per_round=10,
-            warmup=False,
-            seed=42,
-        ))
+        result = asyncio.run(
+            run_single_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                samples_per_round=10,
+                warmup=False,
+                seed=42,
+            )
+        )
 
         required_keys = {"round", "domain", "metrics", "latency", "samples_evaluated"}
         assert required_keys.issubset(set(result.keys())), (
@@ -172,18 +177,20 @@ class TestSingleRound:
         """When warmup=True, ollama.chat is called at least once extra (warmup)."""
         from scripts.ollama_test_harness import run_single_round
 
-        result = asyncio.run(run_single_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            samples_per_round=10,
-            warmup=True,
-            seed=42,
-        ))
+        _result = asyncio.run(
+            run_single_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                samples_per_round=10,
+                warmup=True,
+                seed=42,
+            )
+        )
 
         # warmup call + generate call = at least 2 calls
         assert mock_ollama_chat.call_count >= 2, (
-            f"Expected at least 2 ollama.chat calls (warmup + generate), got {mock_ollama_chat.call_count}"
+            f"Expected at least 2 ollama.chat calls (warmup + generate), got {mock_ollama_chat.call_count}"  # noqa: E501
         )
 
 
@@ -200,14 +207,16 @@ class TestLiveSingleRound:
         """Actual Ollama call + detector + scoring produces valid metrics dict."""
         from scripts.ollama_test_harness import run_single_round
 
-        result = asyncio.run(run_single_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            samples_per_round=5,
-            warmup=True,
-            seed=42,
-        ))
+        result = asyncio.run(
+            run_single_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                samples_per_round=5,
+                warmup=True,
+                seed=42,
+            )
+        )
 
         assert result["samples_evaluated"] > 0
         assert "metrics" in result
@@ -230,15 +239,17 @@ class TestMultiRound:
         """run_multi_round returns dict with 'rounds' list of correct length."""
         from scripts.ollama_test_harness import run_multi_round
 
-        result = asyncio.run(run_multi_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            rounds=3,
-            samples_per_round=10,
-            warmup=True,
-            seed=42,
-        ))
+        result = asyncio.run(
+            run_multi_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                rounds=3,
+                samples_per_round=10,
+                warmup=True,
+                seed=42,
+            )
+        )
 
         assert "rounds" in result
         assert len(result["rounds"]) == 3
@@ -251,20 +262,28 @@ class TestMultiRound:
         """Summary dict contains all required aggregate statistics."""
         from scripts.ollama_test_harness import run_multi_round
 
-        result = asyncio.run(run_multi_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            rounds=3,
-            samples_per_round=10,
-            seed=42,
-        ))
+        result = asyncio.run(
+            run_multi_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                rounds=3,
+                samples_per_round=10,
+                seed=42,
+            )
+        )
 
         summary = result["summary"]
 
         # Float aggregates
-        for key in ["avg_f1", "avg_precision", "avg_recall", "std_f1",
-                     "avg_ollama_latency_ms", "avg_detection_latency_ms"]:
+        for key in [
+            "avg_f1",
+            "avg_precision",
+            "avg_recall",
+            "std_f1",
+            "avg_ollama_latency_ms",
+            "avg_detection_latency_ms",
+        ]:
             assert key in summary, f"Missing summary key: {key}"
             assert isinstance(summary[key], float), f"summary.{key} should be float"
 
@@ -280,16 +299,19 @@ class TestMultiRound:
     def test_multi_round_summary_values_correct(self, mock_ollama_chat):
         """For 3 rounds with known metrics, avg/std values are correct."""
         import numpy as np
+
         from scripts.ollama_test_harness import run_multi_round
 
-        result = asyncio.run(run_multi_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            rounds=3,
-            samples_per_round=10,
-            seed=42,
-        ))
+        result = asyncio.run(
+            run_multi_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                rounds=3,
+                samples_per_round=10,
+                seed=42,
+            )
+        )
 
         f1_values = [r["metrics"]["f1"] for r in result["rounds"]]
         expected_avg = float(np.mean(f1_values))
@@ -302,14 +324,16 @@ class TestMultiRound:
         """Each round gets seed + round_index to vary sample selection."""
         from scripts.ollama_test_harness import run_multi_round
 
-        result = asyncio.run(run_multi_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            rounds=3,
-            samples_per_round=10,
-            seed=100,
-        ))
+        result = asyncio.run(
+            run_multi_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                rounds=3,
+                samples_per_round=10,
+                seed=100,
+            )
+        )
 
         seeds = [r["seed"] for r in result["rounds"]]
         assert seeds == [100, 101, 102], f"Expected [100, 101, 102], got {seeds}"
@@ -318,14 +342,16 @@ class TestMultiRound:
         """run_multi_round passes model name into config and each round."""
         from scripts.ollama_test_harness import run_multi_round
 
-        result = asyncio.run(run_multi_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5-coder:7b",
-            rounds=2,
-            samples_per_round=10,
-            seed=42,
-        ))
+        result = asyncio.run(
+            run_multi_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5-coder:7b",
+                rounds=2,
+                samples_per_round=10,
+                seed=42,
+            )
+        )
 
         assert result["config"]["model"] == "qwen2.5-coder:7b"
         for rnd in result["rounds"]:
@@ -339,14 +365,16 @@ class TestJsonReport:
         """Full report has harness_version, timestamp, config, rounds, summary."""
         from scripts.ollama_test_harness import run_multi_round
 
-        result = asyncio.run(run_multi_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            rounds=2,
-            samples_per_round=10,
-            seed=42,
-        ))
+        result = asyncio.run(
+            run_multi_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                rounds=2,
+                samples_per_round=10,
+                seed=42,
+            )
+        )
 
         assert result["harness_version"] == "1.0"
         assert "timestamp" in result
@@ -363,16 +391,19 @@ class TestJsonReport:
     def test_json_report_writes_to_file(self, mock_ollama_chat, tmp_path):
         """write_report writes valid JSON with all required keys."""
         import json as json_mod
+
         from scripts.ollama_test_harness import run_multi_round, write_report
 
-        report = asyncio.run(run_multi_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            rounds=2,
-            samples_per_round=10,
-            seed=42,
-        ))
+        report = asyncio.run(
+            run_multi_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                rounds=2,
+                samples_per_round=10,
+                seed=42,
+            )
+        )
 
         output_path = str(tmp_path / "test_report.json")
         returned_path = write_report(report, output_path)
@@ -389,17 +420,20 @@ class TestJsonReport:
         """When output_path is None, auto-generates timestamped filename."""
         from scripts.ollama_test_harness import run_multi_round, write_report
 
-        report = asyncio.run(run_multi_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            rounds=2,
-            samples_per_round=10,
-            seed=42,
-        ))
+        report = asyncio.run(
+            run_multi_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                rounds=2,
+                samples_per_round=10,
+                seed=42,
+            )
+        )
 
         # Monkeypatch the default output directory to tmp_path
         import scripts.ollama_test_harness as harness_mod
+
         original_benchmarks_dir = getattr(harness_mod, "BENCHMARKS_DIR", None)
         monkeypatch.setattr(harness_mod, "BENCHMARKS_DIR", tmp_path)
 
@@ -412,6 +446,7 @@ class TestJsonReport:
 
         # Verify file is valid JSON
         import json as json_mod
+
         with open(returned_path) as f:
             loaded = json_mod.load(f)
         assert "harness_version" in loaded
@@ -426,16 +461,18 @@ class TestHumanReadableSummary:
 
     def test_human_readable_summary(self, mock_ollama_chat, capsys):
         """print_summary produces stdout with formatted metrics."""
-        from scripts.ollama_test_harness import run_multi_round, print_summary
+        from scripts.ollama_test_harness import print_summary, run_multi_round
 
-        report = asyncio.run(run_multi_round(
-            domain="hallucination",
-            detector_name="IsolationForest",
-            model="qwen2.5:1.5b",
-            rounds=2,
-            samples_per_round=10,
-            seed=42,
-        ))
+        report = asyncio.run(
+            run_multi_round(
+                domain="hallucination",
+                detector_name="IsolationForest",
+                model="qwen2.5:1.5b",
+                rounds=2,
+                samples_per_round=10,
+                seed=42,
+            )
+        )
 
         print_summary(report)
 

@@ -24,16 +24,16 @@ Usage:
 import argparse
 import asyncio
 import hashlib
-import json
 import os
 import shutil
 import subprocess
 import sys
 import tempfile
 import time
-import tomllib
 from datetime import datetime, timezone
 from pathlib import Path
+
+import tomllib
 
 DEFAULT_ARTIFACT_ROOT = (
     ".planning/phases/94-testnet-deployment-of-winning-ensemble-policy/artifacts"
@@ -103,8 +103,8 @@ if __name__ == "__main__" and ("--help" in sys.argv or "-h" in sys.argv):
     _help_parser.parse_args()
     sys.exit(0)  # parse_args with --help prints and exits
 
-import bittensor as bt
-import numpy as np
+import bittensor as bt  # noqa: E402
+import numpy as np  # noqa: E402
 
 # Ensure project root is importable
 _PROJECT_ROOT = Path(__file__).resolve().parent.parent

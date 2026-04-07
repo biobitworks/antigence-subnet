@@ -19,7 +19,6 @@ import pytest
 from antigence_subnet.miner.detector import DetectionResult
 from antigence_subnet.miner.orchestrator.cells import ImmuneCellType
 
-
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
@@ -113,7 +112,7 @@ class TestBCellColdStart:
         assert cell.prior_score(features) == 0.5
 
     def test_influence_returns_ensemble_unchanged_when_empty(self):
-        """BCell.influence() returns ensemble_result unchanged when memory empty (bcell_weight forced to 0.0)."""
+        """BCell.influence() returns ensemble_result unchanged when memory empty (bcell_weight forced to 0.0)."""  # noqa: E501
         from antigence_subnet.miner.orchestrator.b_cell import BCell
 
         cell = BCell(bcell_weight=0.2)
@@ -287,7 +286,7 @@ class TestBCellInfluence:
         assert result.feature_attribution == {"test_feat": 0.5}
 
     def test_influence_empty_memory_returns_ensemble_unchanged(self):
-        """With empty memory, influence returns ensemble_result unchanged (bcell_weight forced to 0.0)."""
+        """With empty memory, influence returns ensemble_result unchanged (bcell_weight forced to 0.0)."""  # noqa: E501
         from antigence_subnet.miner.orchestrator.b_cell import BCell
 
         cell = BCell(bcell_weight=0.5)  # Even with high weight
@@ -550,14 +549,16 @@ class TestBCellEmbeddingMode:
         assert cell._model_manager is mm
 
     def test_embedding_mode_true_no_model_manager_falls_back(self, caplog):
-        """BCell(embedding_mode=True, model_manager=None) sets embedding_mode to False with warning."""
+        """BCell(embedding_mode=True, model_manager=None) sets embedding_mode to False with warning."""  # noqa: E501
         from antigence_subnet.miner.orchestrator.b_cell import BCell
 
         with caplog.at_level(logging.WARNING):
             cell = BCell(embedding_mode=True, model_manager=None)
         assert cell._embedding_mode is False
-        assert any("fallback" in rec.message.lower() or "embedding_mode" in rec.message.lower()
-                    for rec in caplog.records)
+        assert any(
+            "fallback" in rec.message.lower() or "embedding_mode" in rec.message.lower()
+            for rec in caplog.records
+        )
 
     # --- Storage in embedding mode ---
 

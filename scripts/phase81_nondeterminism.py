@@ -6,24 +6,21 @@ from __future__ import annotations
 import argparse
 import asyncio
 import json
-import math
-import os
 import random
 import subprocess
 import sys
-from collections import Counter
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
-from urllib import error, parse, request
+from urllib import parse, request
 
 import numpy as np
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
+from antigence_subnet.miner.data import load_training_samples
 from scripts.ollama_test_harness import (
-    BENCHMARKS_DIR,
     DATA_DIR,
     DECISION_THRESHOLD,
     DETECTOR_REGISTRY,
@@ -34,8 +31,6 @@ from scripts.ollama_test_harness import (
     load_eval_data,
     run_single_round,
 )
-from antigence_subnet.miner.data import load_training_samples
-
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 BASELINE_REFERENCE = "data/benchmarks/v9.2-baseline.json"
@@ -112,7 +107,9 @@ def _detector_for(domain: str, detector_name: str):
     return detector
 
 
-def _select_samples(domain: str, samples_per_round: int, seed: int) -> tuple[list[dict], dict[str, Any]]:
+def _select_samples(
+    domain: str, samples_per_round: int, seed: int
+) -> tuple[list[dict], dict[str, Any]]:
     all_samples, manifest = load_eval_data(domain)
     rng = random.Random(seed)
     n_select = min(samples_per_round, len(all_samples))
@@ -181,7 +178,9 @@ async def _measure_fixed_input_variance(
     seed: int,
     repeats: int,
 ) -> list[dict[str, Any]]:
-    selected_samples, manifest = _select_samples(domain, samples_per_round=samples_per_round, seed=seed)
+    selected_samples, manifest = _select_samples(
+        domain, samples_per_round=samples_per_round, seed=seed
+    )
     detector = _detector_for(domain, detector_name)
     repeats_template = build_fixed_input_repeats(
         domain=domain,
@@ -238,7 +237,10 @@ def _source_decomposition(
                 f"{domain} fixed-input reward spread std={round_spread['std']:.4f} with "
                 f"{round_spread['flip_count']} threshold flips."
             ),
-            "evidence_refs": ["resource.knowledge_resource.arxiv_2408_04667", f"local:{domain}#gpu_kernel"],
+            "evidence_refs": [
+                "resource.knowledge_resource.arxiv_2408_04667",
+                f"local:{domain}#gpu_kernel",
+            ],
             "inference": (
                 "The repeated score spread may reflect nondeterministic GPU kernel execution "
                 "or runtime-level scheduling effects in the local stack."
@@ -250,10 +252,13 @@ def _source_decomposition(
         },
         "batching_scheduling": {
             "observed_signal": (
-                f"{domain} produced {response_summary['unique_responses']} unique repeated responses "
+                f"{domain} produced {response_summary['unique_responses']} unique repeated responses "  # noqa: E501
                 f"under a fixed seed and fixed sample IDs."
             ),
-            "evidence_refs": ["resource.knowledge_resource.vllm_reproducibility", f"local:{domain}#batching_scheduling"],
+            "evidence_refs": [
+                "resource.knowledge_resource.vllm_reproducibility",
+                f"local:{domain}#batching_scheduling",
+            ],
             "inference": (
                 "The response diversity may reflect request batching or scheduling sensitivity "
                 "even when validator-controlled inputs are held constant."
@@ -268,7 +273,10 @@ def _source_decomposition(
                 f"{domain} response-score band ranged from {response_spread['min']:.4f} to "
                 f"{response_spread['max']:.4f} around DECISION_THRESHOLD={DECISION_THRESHOLD:.1f}."
             ),
-            "evidence_refs": ["resource.knowledge_resource.llm_nondeterminism_article", f"local:{domain}#floating_point_kernel"],
+            "evidence_refs": [
+                "resource.knowledge_resource.llm_nondeterminism_article",
+                f"local:{domain}#floating_point_kernel",
+            ],
             "inference": (
                 "Near-threshold movement may reflect floating-point accumulation order or "
                 "kernel-level numeric drift rather than a semantic behavior change."
@@ -384,9 +392,9 @@ def _markdown_for_artifact(artifact: dict[str, Any]) -> str:
         "",
         f"Baseline anchor: `{artifact['baseline_reference']}`",
         "",
-        "Locked sources: arXiv 2408.04667, vLLM reproducibility guidance, and the Brendoerfer non-determinism article.",
+        "Locked sources: arXiv 2408.04667, vLLM reproducibility guidance, and the Brendoerfer non-determinism article.",  # noqa: E501
         "",
-        "Validators should interpret these results under adversarial miner assumptions: miners remain adversarial, determinism is best-effort only, validators cannot force exact miner inference behavior, and any controls must stay backward-compatible and commodity-hardware feasible.",
+        "Validators should interpret these results under adversarial miner assumptions: miners remain adversarial, determinism is best-effort only, validators cannot force exact miner inference behavior, and any controls must stay backward-compatible and commodity-hardware feasible.",  # noqa: E501
         "",
         "## Observed variance",
         "",
@@ -402,7 +410,7 @@ def _markdown_for_artifact(artifact: dict[str, Any]) -> str:
             "",
             "## Inferred variance sources",
             "",
-            "The observations above are measurements. The source mapping below is cautious inference rather than causal proof.",
+            "The observations above are measurements. The source mapping below is cautious inference rather than causal proof.",  # noqa: E501
             "",
             "## source_decomposition",
             "",
@@ -422,7 +430,7 @@ def _markdown_for_artifact(artifact: dict[str, Any]) -> str:
             "",
             "## Recommended mitigations",
             "",
-            "Use repeated measurement when tuning validator thresholds, keep fixed-input experiments separate from baseline seed-increment runs, and prefer validator-side controls that remain backward-compatible and commodity-hardware feasible. The goal is to measure instability margins, not to assume miners can be forced into exact deterministic inference behavior.",
+            "Use repeated measurement when tuning validator thresholds, keep fixed-input experiments separate from baseline seed-increment runs, and prefer validator-side controls that remain backward-compatible and commodity-hardware feasible. The goal is to measure instability margins, not to assume miners can be forced into exact deterministic inference behavior.",  # noqa: E501
         ]
     )
     return "\n".join(lines) + "\n"
@@ -469,8 +477,26 @@ def build_overwatch_claim_payload(experiment_data: dict[str, Any]) -> dict[str, 
     if not domains and "source_decomposition" in experiment_data:
         domains = {
             "aggregate": {
-                "response_variance": {"spread": {"mean": 0.0, "std": 0.0, "min": 0.0, "max": 0.0, "cv": 0.0, "flip_count": 0}},
-                "round_variance": {"spread": {"mean": 0.0, "std": 0.0, "min": 0.0, "max": 0.0, "cv": 0.0, "flip_count": 0}},
+                "response_variance": {
+                    "spread": {
+                        "mean": 0.0,
+                        "std": 0.0,
+                        "min": 0.0,
+                        "max": 0.0,
+                        "cv": 0.0,
+                        "flip_count": 0,
+                    }
+                },
+                "round_variance": {
+                    "spread": {
+                        "mean": 0.0,
+                        "std": 0.0,
+                        "min": 0.0,
+                        "max": 0.0,
+                        "cv": 0.0,
+                        "flip_count": 0,
+                    }
+                },
                 "source_decomposition": experiment_data["source_decomposition"],
             }
         }
@@ -481,7 +507,7 @@ def build_overwatch_claim_payload(experiment_data: dict[str, Any]) -> dict[str, 
             (
                 f"{domain} fixed-input mean score std="
                 f"{payload['response_variance']['spread']['std']:.4f} with "
-                f"{payload['response_variance']['spread']['flip_count']} fixed-input threshold flips."
+                f"{payload['response_variance']['spread']['flip_count']} fixed-input threshold flips."  # noqa: E501
             )
         ]
         inferred_sources = [source["inference"] for source in source_decomposition.values()]
@@ -490,9 +516,9 @@ def build_overwatch_claim_payload(experiment_data: dict[str, Any]) -> dict[str, 
             {
                 "_key": claim_key,
                 "text": (
-                    f"{domain} showed measured validator-facing variance across repeated local runs; "
-                    "miners remain adversarial, determinism is best-effort only, validators cannot force exact miner inference behavior, "
-                    "and future controls must remain backward-compatible and commodity-hardware feasible."
+                    f"{domain} showed measured validator-facing variance across repeated local runs; "  # noqa: E501
+                    "miners remain adversarial, determinism is best-effort only, validators cannot force exact miner inference behavior, "  # noqa: E501
+                    "and future controls must remain backward-compatible and commodity-hardware feasible."  # noqa: E501
                 ),
                 "classification": "MEASURED",
                 "claim_type": "statistical",
@@ -516,17 +542,17 @@ def build_overwatch_claim_payload(experiment_data: dict[str, Any]) -> dict[str, 
                 "citations": [
                     {
                         "publication_key": "phase81_arxiv_2408_04667",
-                        "citation_context": "Observed repeated-run variance motivates measuring spread, not single-point scores.",
+                        "citation_context": "Observed repeated-run variance motivates measuring spread, not single-point scores.",  # noqa: E501
                         "evidence_refs": ["resource.knowledge_resource.arxiv_2408_04667"],
                     },
                     {
                         "publication_key": "phase81_vllm_reproducibility",
-                        "citation_context": "Runtime reproducibility remains scoped to environment and scheduling controls.",
+                        "citation_context": "Runtime reproducibility remains scoped to environment and scheduling controls.",  # noqa: E501
                         "evidence_refs": ["resource.knowledge_resource.vllm_reproducibility"],
                     },
                     {
                         "publication_key": "phase81_llm_nondeterminism_article",
-                        "citation_context": "Floating-point, batching, and hardware execution order remain plausible sources of variance.",
+                        "citation_context": "Floating-point, batching, and hardware execution order remain plausible sources of variance.",  # noqa: E501
                         "evidence_refs": ["resource.knowledge_resource.llm_nondeterminism_article"],
                     },
                 ],
@@ -540,8 +566,8 @@ def build_overwatch_claim_payload(experiment_data: dict[str, Any]) -> dict[str, 
             "title": "Phase 81 Non-Determinism Impact Measurement",
             "project": "antigence-bittensor",
             "status": "completed",
-            "description": "10x per-domain repeated measurement separating fixed-input response variance from round-metric variance.",
-            "methodology": "Fixed-input repetitions plus repeated full round measurements against the Phase 80 baseline path.",
+            "description": "10x per-domain repeated measurement separating fixed-input response variance from round-metric variance.",  # noqa: E501
+            "methodology": "Fixed-input repetitions plus repeated full round measurements against the Phase 80 baseline path.",  # noqa: E501
             "outcome": "positive",
             "agent": "codex",
             "run_ids": [run_id],
@@ -570,8 +596,12 @@ def _load_artifact_inputs(
     return ArtifactInputs(
         artifact_data=artifact_data if artifact_data is not None else _read_json(input_json),
         markdown_text=markdown_text if markdown_text is not None else Path(input_md).read_text(),
-        overwatch_payload=overwatch_payload if overwatch_payload is not None else _read_json(input_overwatch),
-        writeback_report=writeback_report if writeback_report is not None else (_read_json(input_report) if input_report else None),
+        overwatch_payload=overwatch_payload
+        if overwatch_payload is not None
+        else _read_json(input_overwatch),
+        writeback_report=writeback_report
+        if writeback_report is not None
+        else (_read_json(input_report) if input_report else None),
     )
 
 
@@ -595,20 +625,35 @@ def validate_phase81_artifacts(
         input_overwatch=input_overwatch,
         input_report=input_report,
     )
-    required_top_level = {"environment", "baseline_reference", "domains", "response_variance", "round_variance"}
+    required_top_level = {
+        "environment",
+        "baseline_reference",
+        "domains",
+        "response_variance",
+        "round_variance",
+    }
     missing = required_top_level - set(inputs.artifact_data)
     if missing:
         raise ValueError(f"Artifact JSON missing keys: {sorted(missing)}")
     if inputs.artifact_data["baseline_reference"] != BASELINE_REFERENCE:
-        raise ValueError("Artifact JSON baseline_reference must anchor to data/benchmarks/v9.2-baseline.json")
+        raise ValueError(
+            "Artifact JSON baseline_reference must anchor to data/benchmarks/v9.2-baseline.json"
+        )
     for domain, payload in inputs.artifact_data["domains"].items():
         for key in ("response_variance", "round_variance", "source_decomposition"):
             if key not in payload:
                 raise ValueError(f"Domain {domain} missing {key}")
         source_keys = set(payload["source_decomposition"])
         if source_keys != set(SOURCE_KEYS):
-            raise ValueError(f"Domain {domain} source_decomposition mismatch: {sorted(source_keys)}")
-    for heading in ("Observed variance", "Inferred variance sources", "Recommended mitigations", "source_decomposition"):
+            raise ValueError(
+                f"Domain {domain} source_decomposition mismatch: {sorted(source_keys)}"
+            )
+    for heading in (
+        "Observed variance",
+        "Inferred variance sources",
+        "Recommended mitigations",
+        "source_decomposition",
+    ):
         if heading not in inputs.markdown_text:
             raise ValueError(f"Markdown missing heading/text: {heading}")
     lowered_markdown = inputs.markdown_text.lower()
@@ -618,13 +663,23 @@ def validate_phase81_artifacts(
     if "claims" not in inputs.overwatch_payload:
         raise ValueError("Overwatch payload missing claims")
     for claim in inputs.overwatch_payload["claims"]:
-        for key in ("observed_variance", "inferred_sources", "recommended_mitigations", "source_decomposition"):
+        for key in (
+            "observed_variance",
+            "inferred_sources",
+            "recommended_mitigations",
+            "source_decomposition",
+        ):
             if key not in claim:
                 raise ValueError(f"Claim missing {key}")
         if set(claim["source_decomposition"]) != set(SOURCE_KEYS):
             raise ValueError("Claim source_decomposition missing required sources")
         claim_text = json.dumps(claim).lower()
-        for phrase in ("best-effort", "cannot force exact miner inference behavior", "backward-compatible", "commodity-hardware"):
+        for phrase in (
+            "best-effort",
+            "cannot force exact miner inference behavior",
+            "backward-compatible",
+            "commodity-hardware",
+        ):
             if phrase not in claim_text:
                 raise ValueError(f"Claim payload missing phrase: {phrase}")
     if inputs.writeback_report is not None:
@@ -694,7 +749,7 @@ def apply_overwatch_claims(
     replay_command = (
         "PYTHON=python3.11 make test-env && .venv/bin/python scripts/phase81_nondeterminism.py "
         f"--validate-artifacts --input-json {DEFAULT_OUTPUT_JSON} --input-md {DEFAULT_OUTPUT_MD} "
-        f"--input-overwatch {DEFAULT_OUTPUT_OVERWATCH} --writeback-report {writeback_report_path} --apply-overwatch"
+        f"--input-overwatch {DEFAULT_OUTPUT_OVERWATCH} --writeback-report {writeback_report_path} --apply-overwatch"  # noqa: E501
     )
     if not _overwatch_available(base_url):
         report = build_writeback_report(
@@ -722,7 +777,9 @@ def apply_overwatch_claims(
         except Exception as exc:
             errors_seen.append(f"publication:{publication['_key']}:{exc}")
     for claim in payload.get("claims", []):
-        claim_doc = {key: value for key, value in claim.items() if key not in {"derived_from", "citations"}}
+        claim_doc = {
+            key: value for key, value in claim.items() if key not in {"derived_from", "citations"}
+        }
         try:
             _upsert_document(base_url, "claim", claim_doc)
             counts["claims"] += 1

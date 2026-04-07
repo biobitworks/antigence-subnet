@@ -22,17 +22,16 @@ from pathlib import Path
 # Add project root to path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-from antigence_subnet.miner.data import load_training_samples
-from antigence_subnet.miner.detectors.isolation_forest import IsolationForestDetector
-from antigence_subnet.miner.detectors.sklearn_backends import LOFDetector, OCSVMDetector
-from antigence_subnet.miner.detectors.fractal_complexity import FractalComplexityDetector
-from antigence_subnet.miner.detectors.negsel import NegSelAISDetector
 from antigence_subnet.miner.detectors import (
-    HallucinationDetector,
-    CodeSecurityDetector,
-    ReasoningDetector,
     BioDetector,
+    CodeSecurityDetector,
+    HallucinationDetector,
+    ReasoningDetector,
 )
+from antigence_subnet.miner.detectors.fractal_complexity import FractalComplexityDetector
+from antigence_subnet.miner.detectors.isolation_forest import IsolationForestDetector
+from antigence_subnet.miner.detectors.negsel import NegSelAISDetector
+from antigence_subnet.miner.detectors.sklearn_backends import LOFDetector, OCSVMDetector
 
 try:
     from antigence_subnet.miner.detectors.autoencoder import AutoencoderDetector
@@ -107,7 +106,7 @@ async def benchmark_detector(detector, all_samples, manifest, threshold=0.5):
                 fn += 1
             else:
                 tn += 1
-        except Exception as e:
+        except Exception:
             latency = time.perf_counter() - t0
             latencies.append(latency)
             # Detection failure counts as missed anomaly or correct normal
@@ -125,7 +124,10 @@ async def benchmark_detector(detector, all_samples, manifest, threshold=0.5):
     throughput = len(all_samples) / sum(latencies) if sum(latencies) > 0 else 0.0
 
     return {
-        "tp": tp, "fp": fp, "fn": fn, "tn": tn,
+        "tp": tp,
+        "fp": fp,
+        "fn": fn,
+        "tn": tn,
         "precision": precision,
         "recall": recall,
         "f1": f1,
@@ -141,20 +143,24 @@ async def run_benchmarks(domains, detector_filter, rounds):
     results = []
 
     for domain in domains:
-        print(f"\n{'='*60}")
+        print(f"\n{'=' * 60}")
         print(f"  Domain: {domain} ({DATA_DIR / domain})")
-        print(f"{'='*60}")
+        print(f"{'=' * 60}")
 
         all_samples, manifest = load_eval_data(domain)
         normal_samples = [
-            s for s in all_samples
+            s
+            for s in all_samples
             if manifest.get(s["id"], {}).get("ground_truth_label") == "normal"
         ]
         anomalous_count = sum(
-            1 for s in all_samples
+            1
+            for s in all_samples
             if manifest.get(s["id"], {}).get("ground_truth_label") == "anomalous"
         )
-        print(f"  Samples: {len(all_samples)} total ({len(normal_samples)} normal, {anomalous_count} anomalous)")
+        print(
+            f"  Samples: {len(all_samples)} total ({len(normal_samples)} normal, {anomalous_count} anomalous)"  # noqa: E501
+        )
 
         # Collect detectors for this domain
         detectors_to_test = {}
@@ -195,10 +201,17 @@ async def run_benchmarks(domains, detector_filter, rounds):
 
                 except Exception as e:
                     print(f"  {det_name:25s} | ERROR: {e}")
-                    round_results.append({
-                        "detector": det_name, "domain": domain, "round": r + 1,
-                        "f1": 0, "precision": 0, "recall": 0, "error": str(e),
-                    })
+                    round_results.append(
+                        {
+                            "detector": det_name,
+                            "domain": domain,
+                            "round": r + 1,
+                            "f1": 0,
+                            "precision": 0,
+                            "recall": 0,
+                            "error": str(e),
+                        }
+                    )
 
             # Average across rounds
             if round_results and "f1" in round_results[0]:
@@ -208,10 +221,14 @@ async def run_benchmarks(domains, detector_filter, rounds):
                     "f1": sum(r["f1"] for r in round_results) / len(round_results),
                     "precision": sum(r["precision"] for r in round_results) / len(round_results),
                     "recall": sum(r["recall"] for r in round_results) / len(round_results),
-                    "accuracy": sum(r.get("accuracy", 0) for r in round_results) / len(round_results),
-                    "avg_latency_ms": sum(r.get("avg_latency_ms", 0) for r in round_results) / len(round_results),
-                    "throughput_per_sec": sum(r.get("throughput_per_sec", 0) for r in round_results) / len(round_results),
-                    "fit_time_ms": sum(r.get("fit_time_ms", 0) for r in round_results) / len(round_results),
+                    "accuracy": sum(r.get("accuracy", 0) for r in round_results)
+                    / len(round_results),
+                    "avg_latency_ms": sum(r.get("avg_latency_ms", 0) for r in round_results)
+                    / len(round_results),
+                    "throughput_per_sec": sum(r.get("throughput_per_sec", 0) for r in round_results)
+                    / len(round_results),
+                    "fit_time_ms": sum(r.get("fit_time_ms", 0) for r in round_results)
+                    / len(round_results),
                     "rounds": rounds,
                 }
                 results.append(avg)
@@ -228,9 +245,9 @@ async def run_benchmarks(domains, detector_filter, rounds):
 
 def print_summary_table(results):
     """Print final summary as markdown table."""
-    print(f"\n{'='*80}")
+    print(f"\n{'=' * 80}")
     print("  BENCHMARK SUMMARY")
-    print(f"{'='*80}\n")
+    print(f"{'=' * 80}\n")
 
     print("| Detector | Domain | F1 | Precision | Recall | Latency (ms) | Throughput |")
     print("|----------|--------|----|-----------|--------|--------------|------------|")
@@ -243,9 +260,9 @@ def print_summary_table(results):
         )
 
     # Best per domain
-    print(f"\n{'='*60}")
+    print(f"\n{'=' * 60}")
     print("  BEST DETECTOR PER DOMAIN (by F1)")
-    print(f"{'='*60}\n")
+    print(f"{'=' * 60}\n")
 
     domains_seen = {}
     for r in sorted(results, key=lambda x: -x["f1"]):

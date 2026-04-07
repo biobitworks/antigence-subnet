@@ -83,8 +83,10 @@ class TestExtractFractalFeatures:
 
 # --- Detector tests (Task 2) ---
 
-from antigence_subnet.miner.detectors.fractal_complexity import FractalComplexityDetector  # noqa: E402
 from antigence_subnet.miner.detector import DetectionResult  # noqa: E402
+from antigence_subnet.miner.detectors.fractal_complexity import (  # noqa: E402
+    FractalComplexityDetector,
+)
 
 # Minimal training samples for tests
 TRAIN_SAMPLES = [
@@ -201,6 +203,6 @@ class TestFractalComplexityDetector:
 
 class TestFractalDetectorImports:
     def test_importable_from_detectors_package(self):
-        from antigence_subnet.miner.detectors import FractalComplexityDetector as FC
+        from antigence_subnet.miner.detectors import FractalComplexityDetector as FractalDet
 
-        assert FC is not None
+        assert FractalDet is not None

@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from pathlib import Path
-
 import pytest
 
 
@@ -68,13 +66,15 @@ def test_phase92_policy_overlays_use_saved_score_surfaces_and_pin_minimum_policy
         "domain_thresholds",
         "operator_multiband",
     ]
-    for policy_name, policy_payload in overlays.items():
+    for _policy_name, policy_payload in overlays.items():
         assert policy_payload["source_surface"] == "saved_score_quality_surfaces"
         assert list(policy_payload["surface_results"]) == expected_surfaces
         assert policy_payload["uses_saved_scores"] is True
         assert policy_payload["detector_reruns"] == 0
         assert "control_equal" in policy_payload["deltas_vs_control"]
-        assert policy_payload["deltas_vs_control"]["control_equal"]["f1_delta"] == pytest.approx(0.0)
+        assert policy_payload["deltas_vs_control"]["control_equal"]["f1_delta"] == pytest.approx(
+            0.0
+        )
         for surface_payload in policy_payload["surface_results"].values():
             assert set(surface_payload["metrics"]) >= {
                 "precision",
@@ -132,9 +132,10 @@ def test_phase92_operator_multiband_reports_allow_review_block_and_coverage_metr
     }
     assert 0.0 <= multiband["metrics"]["review_rate"] <= 1.0
     assert 0.0 <= multiband["metrics"]["auto_decision_coverage"] <= 1.0
-    assert pytest.approx(
-        1.0 - multiband["metrics"]["review_rate"], rel=0.0, abs=1e-6
-    ) == multiband["metrics"]["auto_decision_coverage"]
+    assert (
+        pytest.approx(1.0 - multiband["metrics"]["review_rate"], rel=0.0, abs=1e-6)
+        == multiband["metrics"]["auto_decision_coverage"]
+    )
 
 
 def test_phase92_validation_rejects_scope_drift_for_swarm_terms_and_detector_expansion(tmp_path):

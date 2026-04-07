@@ -29,7 +29,6 @@ from scripts.ollama_test_harness import (
 )
 from scripts.phase81_nondeterminism import _response_spread, _write_json, _write_text
 
-
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 DEFAULT_OUTPUT_JSON = PROJECT_ROOT / "data/benchmarks/phase83-scoring-variance.json"
 DEFAULT_OUTPUT_MD = (
@@ -115,7 +114,9 @@ def _threshold_block(mode_payloads: dict[str, dict[str, Any]]) -> dict[str, dict
     }
 
 
-def _aggregate_thresholds(domain_results: dict[str, dict[str, dict[str, Any]]]) -> dict[str, dict[str, Any]]:
+def _aggregate_thresholds(
+    domain_results: dict[str, dict[str, dict[str, Any]]],
+) -> dict[str, dict[str, Any]]:
     if not domain_results:
         return {}
     aggregated: dict[str, list[float]] = {mode: [] for mode in DEFAULT_MODES}
@@ -150,7 +151,9 @@ def _select_sample_ids(domain: str, samples_per_round: int, seed: int) -> list[s
     return [sample["id"] for sample in selected]
 
 
-def _manifest_entry(sample: dict[str, Any], manifest_entry: dict[str, Any], domain: str) -> dict[str, Any]:
+def _manifest_entry(
+    sample: dict[str, Any], manifest_entry: dict[str, Any], domain: str
+) -> dict[str, Any]:
     merged = dict(manifest_entry)
     merged["domain"] = _normalize_domain_for_semantic(domain)
     merged["prompt"] = _coalesce_text(
@@ -249,10 +252,7 @@ def _score_mode_rounds(
             rewards = np.asarray(result.rewards, dtype=np.float32)
             per_mode_values[mode].append(float(np.mean(rewards)))
 
-    return {
-        mode: _mode_reward_summary(values)
-        for mode, values in per_mode_values.items()
-    }
+    return {mode: _mode_reward_summary(values) for mode, values in per_mode_values.items()}
 
 
 def run_pilot_benchmark(
@@ -321,12 +321,15 @@ def run_full_benchmark(
 
 def _environment_metadata(model: str) -> dict[str, Any]:
     try:
-        ollama_version = subprocess.run(
-            ["ollama", "--version"],
-            check=False,
-            capture_output=True,
-            text=True,
-        ).stdout.strip() or "unknown"
+        ollama_version = (
+            subprocess.run(
+                ["ollama", "--version"],
+                check=False,
+                capture_output=True,
+                text=True,
+            ).stdout.strip()
+            or "unknown"
+        )
     except FileNotFoundError:
         ollama_version = "missing"
     return {
@@ -370,9 +373,8 @@ def build_phase83_artifact(
         "pilot": pilot_block,
         "modes": list(DEFAULT_MODES),
         "domains": domain_results,
-        "threshold_evaluation": _aggregate_thresholds(domain_results) or pilot_block[
-            "threshold_evaluation"
-        ],
+        "threshold_evaluation": _aggregate_thresholds(domain_results)
+        or pilot_block["threshold_evaluation"],
         "boundaries": {
             "seed_compliance": "best-effort miner hint only; validator cannot prove compliance",
             "swarm_scope": "swarm work remains out of scope for Phase 83",
@@ -397,7 +399,7 @@ def write_phase83_report(
     lines = [
         "# Phase 83 Scoring Benchmark Report",
         "",
-        f"Benchmark artifact: `data/benchmarks/phase83-scoring-variance.json`",
+        "Benchmark artifact: `data/benchmarks/phase83-scoring-variance.json`",
         "",
         "## Pilot",
         "",
@@ -414,11 +416,11 @@ def write_phase83_report(
     lines.extend(
         [
             "",
-            "Pilot threshold outcome uses observed data only; this report does not hardcode a pass.",
+            "Pilot threshold outcome uses observed data only; this report does not hardcode a pass.",  # noqa: E501
             "",
             "## Full Benchmark",
             "",
-            "The pilot ran first and the full four-domain comparison then proceeded to capture the complete exact/statistical/semantic matrix on observed data.",
+            "The pilot ran first and the full four-domain comparison then proceeded to capture the complete exact/statistical/semantic matrix on observed data.",  # noqa: E501
             "",
             "| Domain | Exact variance_pct | Statistical variance_pct | Semantic variance_pct |",
             "| --- | ---: | ---: | ---: |",
@@ -444,7 +446,7 @@ def write_phase83_report(
             "",
             "## Boundaries",
             "",
-            "Seed compliance is a best-effort miner hint only; validator-side metadata cannot prove miner determinism.",
+            "Seed compliance is a best-effort miner hint only; validator-side metadata cannot prove miner determinism.",  # noqa: E501
             "Phase 83 is measurement-only and swarm work remains out of scope.",
             "",
         ]
@@ -470,9 +472,7 @@ def validate_phase83_artifacts(
     report_text = report_path.read_text()
     required_domains = set(DOMAINS)
     missing_keys = [
-        key
-        for key in ("pilot", "domains", "modes", "threshold_evaluation")
-        if key not in artifact
+        key for key in ("pilot", "domains", "modes", "threshold_evaluation") if key not in artifact
     ]
     ok = not missing_keys and required_domains.issubset(set(artifact["domains"]))
     ok = ok and "best-effort" in report_text
@@ -482,10 +482,7 @@ def validate_phase83_artifacts(
         "threshold_evaluation",
         artifact["threshold_evaluation"],
     )
-    threshold_status = {
-        mode: threshold_source[mode]["status"]
-        for mode in ("exact", "semantic")
-    }
+    threshold_status = {mode: threshold_source[mode]["status"] for mode in ("exact", "semantic")}
     return {
         "ok": ok,
         "artifact": str(artifact_path),

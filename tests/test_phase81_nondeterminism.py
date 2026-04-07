@@ -75,7 +75,9 @@ def test_phase81_artifact_schema():
     }
     markdown = """# Phase 81
 
-miners remain adversarial. determinism is best-effort only. validators cannot force exact miner inference behavior. controls must remain backward-compatible and commodity-hardware feasible.
+miners remain adversarial. determinism is best-effort only. validators cannot force
+exact miner inference behavior. controls must remain backward-compatible and
+commodity-hardware feasible.
 
 ## Observed variance
 Observed variance.
@@ -92,13 +94,15 @@ source_decomposition
         "claims": [
             {
                 "text": (
-                    "Observed variance stays separate from inferred sources; determinism is best-effort, "
-                    "validators cannot force exact miner inference behavior, and controls must remain "
+                    "Observed variance stays separate from inferred sources; determinism is best-effort, "  # noqa: E501
+                    "validators cannot force exact miner inference behavior, and controls must remain "  # noqa: E501
                     "backward-compatible on commodity-hardware."
                 ),
                 "observed_variance": ["Measured reward spread"],
                 "inferred_sources": ["Likely batching effects under best-effort serving controls."],
-                "recommended_mitigations": ["Use repeated scoring windows with backward-compatible commodity-hardware controls."],
+                "recommended_mitigations": [
+                    "Use repeated scoring windows with backward-compatible commodity-hardware controls."  # noqa: E501
+                ],
                 "source_decomposition": {
                     "gpu_kernel": {"evidence_refs": ["local:artifact"]},
                     "batching_scheduling": {"evidence_refs": ["local:artifact"]},
@@ -146,7 +150,7 @@ def test_overwatch_payload_separates_observed_and_inferred():
                 "harness_level_randomness": {
                     "observed_signal": "Observed selection-path variability in baseline mode.",
                     "evidence_refs": ["local:artifact#harness_level_randomness"],
-                    "inference": "This reflects controllable harness randomness, not miner behavior.",
+                    "inference": "This reflects controllable harness randomness, not miner behavior.",  # noqa: E501
                     "mitigation": "Freeze sample IDs in research measurements.",
                 },
             },

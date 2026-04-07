@@ -5,7 +5,6 @@ from __future__ import annotations
 import json
 from pathlib import Path
 
-
 CLAIMS_PATH = Path("data/overwatch/phase93-policy-claims.json")
 WRITEBACK_PATH = Path("data/overwatch/phase93-policy-writeback-report.json")
 
@@ -23,10 +22,19 @@ def test_phase93_claim_bundle_matches_local_first_overwatch_contract():
     assert experiment["exp_id"] == "EXP-093"
     assert experiment["project"] == "antigence-bittensor"
     assert experiment["status"] == "completed"
-    assert ".planning/phases/93-decision-policy-adr-operator-migration/93-ADR.md" == experiment["note_path"]
+    assert (
+        experiment["note_path"]
+        == ".planning/phases/93-decision-policy-adr-operator-migration/93-ADR.md"
+    )
     assert "data/benchmarks/phase92-continuous-benchmark.json" in experiment["result_paths"]
-    assert ".planning/phases/93-decision-policy-adr-operator-migration/93-ADR.md" in experiment["result_paths"]
-    assert ".planning/phases/93-decision-policy-adr-operator-migration/93-migration-guide.md" in experiment["result_paths"]
+    assert (
+        ".planning/phases/93-decision-policy-adr-operator-migration/93-ADR.md"
+        in experiment["result_paths"]
+    )
+    assert (
+        ".planning/phases/93-decision-policy-adr-operator-migration/93-migration-guide.md"
+        in experiment["result_paths"]
+    )
     assert "data/overwatch/phase93-policy-claims.json" in experiment["result_paths"]
 
     claims = {claim["_key"]: claim for claim in payload["claims"]}

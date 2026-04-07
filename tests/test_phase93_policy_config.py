@@ -26,10 +26,18 @@ class TestValidatorPolicyConfigSurface:
         )
 
         parser = argparse.ArgumentParser()
-        parser.add_argument("--policy.mode", "--validator.policy.mode", type=str, default="global_threshold")
-        parser.add_argument("--policy.high_threshold", "--validator.policy.high_threshold", type=float, default=0.5)
-        parser.add_argument("--policy.low_threshold", "--validator.policy.low_threshold", type=float, default=0.5)
-        parser.add_argument("--policy.min_confidence", "--validator.policy.min_confidence", type=float, default=0.0)
+        parser.add_argument(
+            "--policy.mode", "--validator.policy.mode", type=str, default="global_threshold"
+        )
+        parser.add_argument(
+            "--policy.high_threshold", "--validator.policy.high_threshold", type=float, default=0.5
+        )
+        parser.add_argument(
+            "--policy.low_threshold", "--validator.policy.low_threshold", type=float, default=0.5
+        )
+        parser.add_argument(
+            "--policy.min_confidence", "--validator.policy.min_confidence", type=float, default=0.0
+        )
 
         apply_toml_defaults(parser, config_path=str(toml_file))
         args = parser.parse_args([])
@@ -54,10 +62,18 @@ class TestValidatorPolicyConfigSurface:
         )
 
         parser = argparse.ArgumentParser()
-        parser.add_argument("--policy.mode", "--validator.policy.mode", type=str, default="global_threshold")
-        parser.add_argument("--policy.high_threshold", "--validator.policy.high_threshold", type=float, default=0.5)
-        parser.add_argument("--policy.low_threshold", "--validator.policy.low_threshold", type=float, default=0.5)
-        parser.add_argument("--policy.min_confidence", "--validator.policy.min_confidence", type=float, default=0.0)
+        parser.add_argument(
+            "--policy.mode", "--validator.policy.mode", type=str, default="global_threshold"
+        )
+        parser.add_argument(
+            "--policy.high_threshold", "--validator.policy.high_threshold", type=float, default=0.5
+        )
+        parser.add_argument(
+            "--policy.low_threshold", "--validator.policy.low_threshold", type=float, default=0.5
+        )
+        parser.add_argument(
+            "--policy.min_confidence", "--validator.policy.min_confidence", type=float, default=0.0
+        )
 
         apply_toml_defaults(parser, config_path=str(toml_file))
         args = parser.parse_args(
@@ -122,4 +138,3 @@ class TestValidatorPolicyCompatibilityBridge:
         assert validator.config.policy.high_threshold == pytest.approx(0.5)
         assert validator.config.policy.low_threshold == pytest.approx(0.493536)
         assert validator.config.policy.min_confidence == pytest.approx(0.6)
-

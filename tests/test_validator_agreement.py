@@ -5,17 +5,15 @@ Verifies Spearman rank correlation computation, ranking snapshot storage,
 network agreement, outlier detection, and edge cases.
 """
 
-import pytest
 import numpy as np
+import pytest
 
 from antigence_subnet.validator.agreement import (
     AgreementConfig,
-    AgreementResult,
     RankingSnapshot,
     ValidatorAgreement,
     parse_agreement_config,
 )
-
 
 # ------------------------------------------------------------------ #
 # AgreementConfig

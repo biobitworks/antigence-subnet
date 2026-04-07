@@ -14,10 +14,7 @@ from pathlib import Path
 
 import pytest
 
-
-MODULE_PATH = (
-    Path(__file__).resolve().parent.parent / "scripts" / "phase84_swarm_spike.py"
-)
+MODULE_PATH = Path(__file__).resolve().parent.parent / "scripts" / "phase84_swarm_spike.py"
 FORBIDDEN_TOKENS = (
     "SwarmAgent",
     "SwarmPool",
@@ -122,7 +119,12 @@ def test_build_phase84_artifact_records_per_detector_scores_and_latency_fields()
             "mean3": {"f1": 0.91, "precision": 0.9, "recall": 0.92},
             "median3": {"f1": 0.89, "precision": 0.88, "recall": 0.9},
         },
-        baseline_metrics_reference={"f1": 0.85, "precision": 0.84, "recall": 0.86, "accuracy": 0.85},
+        baseline_metrics_reference={
+            "f1": 0.85,
+            "precision": 0.84,
+            "recall": 0.86,
+            "accuracy": 0.85,
+        },
         baseline_detector_latencies_reference={"OCSVM": 1.1, "NegSel": 1.2, "IsolationForest": 1.3},
         baseline_control_metrics={"f1": 0.87, "precision": 0.86, "recall": 0.88, "accuracy": 0.87},
         average_control_latency_ms=3.5,
@@ -131,8 +133,18 @@ def test_build_phase84_artifact_records_per_detector_scores_and_latency_fields()
             "description": "test",
             "perturbed_detector": "IsolationForest",
             "aggregators": {
-                "mean3": {"prediction_flips": 1, "flip_rate": 1.0, "mean_score_shift": 0.2, "max_score_shift": 0.3},
-                "median3": {"prediction_flips": 0, "flip_rate": 0.0, "mean_score_shift": 0.0, "max_score_shift": 0.0},
+                "mean3": {
+                    "prediction_flips": 1,
+                    "flip_rate": 1.0,
+                    "mean_score_shift": 0.2,
+                    "max_score_shift": 0.3,
+                },
+                "median3": {
+                    "prediction_flips": 0,
+                    "flip_rate": 0.0,
+                    "mean_score_shift": 0.0,
+                    "max_score_shift": 0.0,
+                },
             },
         },
         mechanism_notes=["detector diversity only"],
@@ -161,7 +173,7 @@ def test_validate_phase84_artifacts_succeeds_without_live_benchmark(tmp_path):
         "phase": "84",
         "baseline_reference": "data/benchmarks/v9.2-baseline.json",
         "phase83_stability_reference": {
-            "artifact": ".planning/phases/83-determinism-controls-scoring-benchmark/83-benchmark-report.md",
+            "artifact": ".planning/phases/83-determinism-controls-scoring-benchmark/83-benchmark-report.md",  # noqa: E501
             "exact_variance_pct": 0.0,
             "semantic_variance_pct": 0.0,
         },
@@ -180,8 +192,17 @@ def test_validate_phase84_artifacts_succeeds_without_live_benchmark(tmp_path):
                 "detectors": ["IsolationForest", "OCSVM", "NegSel"],
                 "aggregators": ["mean3", "median3"],
                 "baseline": {
-                    "reference_metrics": {"f1": 0.8, "precision": 0.78, "recall": 0.82, "accuracy": 0.81},
-                    "reference_detector_latencies_ms": {"OCSVM": 1.1, "NegSel": 1.2, "IsolationForest": 1.3},
+                    "reference_metrics": {
+                        "f1": 0.8,
+                        "precision": 0.78,
+                        "recall": 0.82,
+                        "accuracy": 0.81,
+                    },
+                    "reference_detector_latencies_ms": {
+                        "OCSVM": 1.1,
+                        "NegSel": 1.2,
+                        "IsolationForest": 1.3,
+                    },
                     "current_two_detector_control": {
                         "detectors": ["OCSVM", "NegSel"],
                         "metrics": {"f1": 0.79, "precision": 0.77, "recall": 0.81, "accuracy": 0.8},
@@ -211,8 +232,18 @@ def test_validate_phase84_artifacts_succeeds_without_live_benchmark(tmp_path):
                     "description": "test",
                     "perturbed_detector": "IsolationForest",
                     "aggregators": {
-                        "mean3": {"prediction_flips": 1, "flip_rate": 1.0, "mean_score_shift": 0.2, "max_score_shift": 0.2},
-                        "median3": {"prediction_flips": 0, "flip_rate": 0.0, "mean_score_shift": 0.0, "max_score_shift": 0.0},
+                        "mean3": {
+                            "prediction_flips": 1,
+                            "flip_rate": 1.0,
+                            "mean_score_shift": 0.2,
+                            "max_score_shift": 0.2,
+                        },
+                        "median3": {
+                            "prediction_flips": 0,
+                            "flip_rate": 0.0,
+                            "mean_score_shift": 0.0,
+                            "max_score_shift": 0.0,
+                        },
                     },
                 },
                 "mechanism_notes": ["test note"],

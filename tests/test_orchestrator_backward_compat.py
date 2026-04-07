@@ -10,8 +10,8 @@ import pytest
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
 from antigence_subnet.miner.data import load_training_samples
-from antigence_subnet.miner.detectors.sklearn_backends import OCSVMDetector
 from antigence_subnet.miner.detectors.negsel import NegSelAISDetector
+from antigence_subnet.miner.detectors.sklearn_backends import OCSVMDetector
 from antigence_subnet.miner.ensemble import ensemble_detect
 from antigence_subnet.miner.orchestrator.config import OrchestratorConfig
 from antigence_subnet.miner.orchestrator.orchestrator import ImmuneOrchestrator
@@ -52,16 +52,16 @@ class TestOrchestratorDisabledIdentical:
         assert config.enabled is False
 
     def test_from_toml_explicit_false(self):
-        config = OrchestratorConfig.from_toml_raw(
-            {"miner": {"orchestrator": {"enabled": False}}}
-        )
+        config = OrchestratorConfig.from_toml_raw({"miner": {"orchestrator": {"enabled": False}}})
         assert config.enabled is False
 
 
 class TestOrchestratorEnabledNoRegression:
     """Orchestrator enabled with no NK/danger produces same scores as ensemble."""
 
-    def test_orchestrator_no_nk_no_danger_matches_ensemble(self, fitted_detectors, samples_and_manifest):
+    def test_orchestrator_no_nk_no_danger_matches_ensemble(
+        self, fitted_detectors, samples_and_manifest
+    ):
         """Orchestrator with empty NK stats and disabled danger should match flat ensemble."""
         samples, manifest = samples_and_manifest
         config = OrchestratorConfig(
@@ -69,9 +69,7 @@ class TestOrchestratorEnabledNoRegression:
             nk_config={"z_threshold": 100.0},  # Very high threshold = no triggers
             danger_config={"alpha": 0.0, "enabled": False},
         )
-        orchestrator = ImmuneOrchestrator.from_config(
-            config, {"hallucination": fitted_detectors}
-        )
+        orchestrator = ImmuneOrchestrator.from_config(config, {"hallucination": fitted_detectors})
 
         async def compare():
             mismatches = 0
@@ -91,7 +89,9 @@ class TestOrchestratorEnabledNoRegression:
             return mismatches
 
         mismatches = asyncio.run(compare())
-        assert mismatches == 0, f"{mismatches} score mismatches between flat ensemble and orchestrator"
+        assert mismatches == 0, (
+            f"{mismatches} score mismatches between flat ensemble and orchestrator"
+        )
 
 
 # ---------------------------------------------------------------------------
@@ -104,8 +104,8 @@ class TestBCellBackwardCompat:
 
     def test_bcell_stub_still_works(self):
         """BCellStub() creates valid instance, isinstance(BCellStub(), ImmuneCellType)."""
-        from antigence_subnet.miner.orchestrator.cells import BCellStub, ImmuneCellType
         from antigence_subnet.miner.orchestrator.b_cell import BCell
+        from antigence_subnet.miner.orchestrator.cells import BCellStub, ImmuneCellType
 
         stub = BCellStub()
         # BCellStub is a subclass of BCell
@@ -114,6 +114,7 @@ class TestBCellBackwardCompat:
         assert isinstance(stub, ImmuneCellType)
         # process() returns None (B Cell never gates)
         import numpy as np
+
         assert stub.process(np.zeros(10), "prompt", "output") is None
         # memory_size is 0 (default init = cold start)
         assert stub.memory_size == 0
@@ -141,10 +142,12 @@ class TestBCellBackwardCompat:
         )
 
         orch_v7 = ImmuneOrchestrator.from_config(
-            config_v7, {"hallucination": fitted_detectors},
+            config_v7,
+            {"hallucination": fitted_detectors},
         )
         orch_v8 = ImmuneOrchestrator.from_config(
-            config_v8, {"hallucination": fitted_detectors},
+            config_v8,
+            {"hallucination": fitted_detectors},
         )
 
         # v7 has no BCell, v8 has BCell with empty memory
@@ -179,6 +182,7 @@ class TestBCellBackwardCompat:
 # ---------------------------------------------------------------------------
 # Phase 43 Embedding Mode Backward Compatibility
 # ---------------------------------------------------------------------------
+
 
 class TestEmbeddingModeBackwardCompat:
     """Phase 43: v8.0 configs (no embedding_mode) produce identical behavior."""

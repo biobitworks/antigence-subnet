@@ -90,7 +90,11 @@ def test_phase92_bootstrap_rounds_are_paired_across_candidates():
 
     assert len(paired_rounds) == 4
     assert paired_rounds[0]["candidate_names"] == list(candidates)
-    assert all(sorted(round_payload["sample_ids"]) == sorted(round_payload["samples_by_candidate"]["control_equal"]) for round_payload in paired_rounds)
+    assert all(
+        sorted(round_payload["sample_ids"])
+        == sorted(round_payload["samples_by_candidate"]["control_equal"])
+        for round_payload in paired_rounds
+    )
     assert all(
         round_payload["samples_by_candidate"]["control_equal"]
         == round_payload["samples_by_candidate"]["confidence_modulated_static"]

@@ -8,15 +8,14 @@ Covers: DANGER-01 (costimulation uses max(pamp, danger)),
 from __future__ import annotations
 
 import numpy as np
-import pytest
 
 from antigence_subnet.miner.detector import DetectionResult
 from antigence_subnet.miner.orchestrator.danger import DangerTheoryModulator
 
-
 # ---------------------------------------------------------------------------
 # Helpers
 # ---------------------------------------------------------------------------
+
 
 def _make_features(**kwargs: float) -> np.ndarray:
     """Build a 10-dim feature vector, defaulting all features to 0.0.
@@ -44,6 +43,7 @@ def _make_features(**kwargs: float) -> np.ndarray:
 # ---------------------------------------------------------------------------
 # Core Modulation Formula
 # ---------------------------------------------------------------------------
+
 
 class TestModulation:
     """DangerTheoryModulator.modulate() applies D-02 formula correctly."""
@@ -77,7 +77,7 @@ class TestModulation:
         modulated = [mod.modulate(r, costim) for r in raw_scores]
         for i in range(len(modulated) - 1):
             assert modulated[i] <= modulated[i + 1], (
-                f"Monotonicity violated: modulated[{i}]={modulated[i]} > modulated[{i+1}]={modulated[i+1]}"
+                f"Monotonicity violated: modulated[{i}]={modulated[i]} > modulated[{i + 1}]={modulated[i + 1]}"  # noqa: E501
             )
 
     def test_high_confidence_not_suppressed(self):
@@ -91,6 +91,7 @@ class TestModulation:
 # ---------------------------------------------------------------------------
 # Costimulation Extraction
 # ---------------------------------------------------------------------------
+
 
 class TestCostimulation:
     """DangerTheoryModulator.costimulation() extracts max(pamp, danger)."""
@@ -121,6 +122,7 @@ class TestCostimulation:
 # Batch Modulation
 # ---------------------------------------------------------------------------
 
+
 class TestModulateBatch:
     """modulate() applied to multiple scores, each clamped to [0, 1]."""
 
@@ -138,6 +140,7 @@ class TestModulateBatch:
 # ---------------------------------------------------------------------------
 # Defaults and Configuration
 # ---------------------------------------------------------------------------
+
 
 class TestDefaults:
     """Default alpha and from_config factory."""
@@ -178,6 +181,7 @@ class TestDefaults:
 # Disabled Mode
 # ---------------------------------------------------------------------------
 
+
 class TestDisabledPassthrough:
     """When enabled=False, modulate() returns raw score unchanged."""
 
@@ -206,6 +210,7 @@ class TestDisabledPassthrough:
 # modulate_result Integration
 # ---------------------------------------------------------------------------
 
+
 class TestModulateResult:
     """DangerTheoryModulator.modulate_result() wraps DetectionResult."""
 
@@ -213,7 +218,9 @@ class TestModulateResult:
         """modulate_result applies modulation to DetectionResult.score."""
         mod = DangerTheoryModulator(alpha=0.3)
         original = DetectionResult(
-            score=0.6, confidence=0.8, anomaly_type="ensemble",
+            score=0.6,
+            confidence=0.8,
+            anomaly_type="ensemble",
             feature_attribution={"feat1": 0.5},
         )
         features = _make_features(pamp_score=0.7, danger_signal=0.3)

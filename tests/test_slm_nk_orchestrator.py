@@ -8,7 +8,7 @@ Phase 42, Plan 02.
 """
 
 import asyncio
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock
 
 import numpy as np
 import pytest
@@ -22,7 +22,6 @@ from antigence_subnet.miner.orchestrator.config import (
 from antigence_subnet.miner.orchestrator.nk_cell import NKCell
 from antigence_subnet.miner.orchestrator.orchestrator import ImmuneOrchestrator
 from antigence_subnet.miner.orchestrator.slm_nk_cell import SLMNKCell
-
 
 # -- Fixtures ----------------------------------------------------------------
 

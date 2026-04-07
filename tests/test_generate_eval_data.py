@@ -1,6 +1,5 @@
 """Tests for evaluation data generation and validation scripts."""
 
-import io
 import json
 import subprocess
 import sys
@@ -105,11 +104,23 @@ class TestCodeSecurityGenerator:
         from generate_eval_data import generate_code_security_samples
 
         cs_types = {
-            "sql_injection", "xss", "command_injection", "path_traversal",
-            "hardcoded_credentials", "insecure_deserialization", "ssrf", "xxe",
-            "open_redirect", "race_condition", "redos", "mass_assignment",
-            "weak_crypto", "code_injection", "adversarial_empty",
-            "adversarial_long", "adversarial_unicode",
+            "sql_injection",
+            "xss",
+            "command_injection",
+            "path_traversal",
+            "hardcoded_credentials",
+            "insecure_deserialization",
+            "ssrf",
+            "xxe",
+            "open_redirect",
+            "race_condition",
+            "redos",
+            "mass_assignment",
+            "weak_crypto",
+            "code_injection",
+            "adversarial_empty",
+            "adversarial_long",
+            "adversarial_unicode",
         }
         samples, manifest = generate_code_security_samples(n=30, start_id=1, seed=42)
         for s in samples:
@@ -148,11 +159,20 @@ class TestReasoningGenerator:
         from generate_eval_data import generate_reasoning_samples
 
         rea_types = {
-            "logical_contradiction", "non_sequitur", "constraint_violation",
-            "circular_reasoning", "arithmetic_error", "equivocation",
-            "unit_error", "cherry_picking", "interpretation_error",
-            "straw_man", "logical_fallacy", "adversarial_empty",
-            "adversarial_unicode", "adversarial_repetition",
+            "logical_contradiction",
+            "non_sequitur",
+            "constraint_violation",
+            "circular_reasoning",
+            "arithmetic_error",
+            "equivocation",
+            "unit_error",
+            "cherry_picking",
+            "interpretation_error",
+            "straw_man",
+            "logical_fallacy",
+            "adversarial_empty",
+            "adversarial_unicode",
+            "adversarial_repetition",
         }
         samples, manifest = generate_reasoning_samples(n=30, start_id=1, seed=42)
         for s in samples:
@@ -191,12 +211,23 @@ class TestBioGenerator:
         from generate_eval_data import generate_bio_samples
 
         bio_types = {
-            "value_out_of_range", "statistical_anomaly", "physical_impossibility",
-            "species_mismatch", "unit_inconsistency", "p_value_fabrication",
-            "pipeline_error", "conservation_violation", "statistical_inconsistency",
-            "underpowered_study", "logical_impossibility", "implausible_effect",
-            "arithmetic_error", "wrong_test", "adversarial_empty",
-            "adversarial_unicode", "adversarial_repetition",
+            "value_out_of_range",
+            "statistical_anomaly",
+            "physical_impossibility",
+            "species_mismatch",
+            "unit_inconsistency",
+            "p_value_fabrication",
+            "pipeline_error",
+            "conservation_violation",
+            "statistical_inconsistency",
+            "underpowered_study",
+            "logical_impossibility",
+            "implausible_effect",
+            "arithmetic_error",
+            "wrong_test",
+            "adversarial_empty",
+            "adversarial_unicode",
+            "adversarial_repetition",
         }
         samples, manifest = generate_bio_samples(n=30, start_id=1, seed=42)
         for s in samples:
@@ -222,8 +253,7 @@ class TestClassBalance:
         gen_fn = GENERATORS[domain]
         samples, manifest = gen_fn(n=50, start_id=1, seed=42)
         anomalous = sum(
-            1 for entry in manifest.values()
-            if entry["ground_truth_label"] == "anomalous"
+            1 for entry in manifest.values() if entry["ground_truth_label"] == "anomalous"
         )
         ratio = anomalous / len(samples)
         assert 0.40 <= ratio <= 0.60, f"{domain} anomalous ratio {ratio:.2f} outside 40-60%"
@@ -249,15 +279,19 @@ class TestDifficultyDistribution:
 
 class TestCLI:
     def test_cli_generates_files(self, tmp_path):
-        """CLI main() with --domain hallucination --count 10 writes samples.json and manifest.json."""
+        """CLI main() with --domain hallucination --count 10 writes samples.json and manifest.json."""  # noqa: E501
         result = subprocess.run(
             [
                 sys.executable,
                 str(SCRIPTS_DIR / "generate_eval_data.py"),
-                "--domain", "hallucination",
-                "--count", "10",
-                "--output-dir", str(tmp_path),
-                "--seed", "42",
+                "--domain",
+                "hallucination",
+                "--count",
+                "10",
+                "--output-dir",
+                str(tmp_path),
+                "--seed",
+                "42",
             ],
             capture_output=True,
             text=True,
@@ -282,10 +316,14 @@ class TestCLI:
             [
                 sys.executable,
                 str(SCRIPTS_DIR / "generate_eval_data.py"),
-                "--domain", "hallucination",
-                "--count", "5",
-                "--output-dir", str(tmp_path),
-                "--seed", "99",
+                "--domain",
+                "hallucination",
+                "--count",
+                "5",
+                "--output-dir",
+                str(tmp_path),
+                "--seed",
+                "99",
             ],
             capture_output=True,
             text=True,
@@ -305,10 +343,14 @@ class TestCLI:
             [
                 sys.executable,
                 str(SCRIPTS_DIR / "generate_eval_data.py"),
-                "--domain", "all",
-                "--count", "5",
-                "--output-dir", str(tmp_path),
-                "--seed", "42",
+                "--domain",
+                "all",
+                "--count",
+                "5",
+                "--output-dir",
+                str(tmp_path),
+                "--seed",
+                "42",
             ],
             capture_output=True,
             text=True,
@@ -361,10 +403,14 @@ class TestCLI:
             [
                 sys.executable,
                 str(SCRIPTS_DIR / "generate_eval_data.py"),
-                "--domain", "hallucination",
-                "--count", "5",
-                "--output-dir", str(tmp_path),
-                "--seed", "42",
+                "--domain",
+                "hallucination",
+                "--count",
+                "5",
+                "--output-dir",
+                str(tmp_path),
+                "--seed",
+                "42",
                 "--append",
             ],
             capture_output=True,
@@ -393,14 +439,28 @@ class TestValidateSchema:
         from validate_eval_data import validate_schema
 
         samples = [
-            {"id": "s1", "prompt": "p", "output": "o", "domain": "hallucination",
-             "metadata": {"difficulty": "easy", "source": "synthetic"}},
-            {"id": "s2", "prompt": "p", "output": "o", "domain": "hallucination",
-             "metadata": {"difficulty": "medium", "source": "template"}},
+            {
+                "id": "s1",
+                "prompt": "p",
+                "output": "o",
+                "domain": "hallucination",
+                "metadata": {"difficulty": "easy", "source": "synthetic"},
+            },
+            {
+                "id": "s2",
+                "prompt": "p",
+                "output": "o",
+                "domain": "hallucination",
+                "metadata": {"difficulty": "medium", "source": "template"},
+            },
         ]
         manifest = {
             "s1": {"ground_truth_label": "normal", "ground_truth_type": None, "is_honeypot": False},
-            "s2": {"ground_truth_label": "anomalous", "ground_truth_type": "factual_error", "is_honeypot": False},
+            "s2": {
+                "ground_truth_label": "anomalous",
+                "ground_truth_type": "factual_error",
+                "is_honeypot": False,
+            },
         }
         errors = validate_schema(samples, manifest, "hallucination")
         assert errors == []
@@ -409,8 +469,12 @@ class TestValidateSchema:
         from validate_eval_data import validate_schema
 
         samples = [
-            {"prompt": "p", "output": "o", "domain": "hallucination",
-             "metadata": {"difficulty": "easy", "source": "synthetic"}},
+            {
+                "prompt": "p",
+                "output": "o",
+                "domain": "hallucination",
+                "metadata": {"difficulty": "easy", "source": "synthetic"},
+            },
         ]
         manifest = {}
         errors = validate_schema(samples, manifest, "hallucination")
@@ -421,8 +485,13 @@ class TestValidateSchema:
         from validate_eval_data import validate_schema
 
         samples = [
-            {"id": "s1", "prompt": "p", "output": "o", "domain": "hallucination",
-             "metadata": {"difficulty": "easy", "source": "synthetic"}},
+            {
+                "id": "s1",
+                "prompt": "p",
+                "output": "o",
+                "domain": "hallucination",
+                "metadata": {"difficulty": "easy", "source": "synthetic"},
+            },
         ]
         manifest = {}
         errors = validate_schema(samples, manifest, "hallucination")
@@ -433,8 +502,13 @@ class TestValidateSchema:
         from validate_eval_data import validate_schema
 
         samples = [
-            {"id": "s1", "prompt": "p", "output": "", "domain": "code_security",
-             "metadata": {"difficulty": "easy", "source": "synthetic"}},
+            {
+                "id": "s1",
+                "prompt": "p",
+                "output": "",
+                "domain": "code_security",
+                "metadata": {"difficulty": "easy", "source": "synthetic"},
+            },
         ]
         manifest = {
             "s1": {"ground_truth_label": "normal", "ground_truth_type": None, "is_honeypot": False},
@@ -447,12 +521,21 @@ class TestValidateSchema:
         from validate_eval_data import validate_schema
 
         samples = [
-            {"id": "s1", "prompt": "p", "output": "o", "domain": "hallucination",
-             "metadata": {"difficulty": "easy", "source": "synthetic"}},
+            {
+                "id": "s1",
+                "prompt": "p",
+                "output": "o",
+                "domain": "hallucination",
+                "metadata": {"difficulty": "easy", "source": "synthetic"},
+            },
         ]
         manifest = {
             "s1": {"ground_truth_label": "normal", "ground_truth_type": None, "is_honeypot": False},
-            "s_orphan": {"ground_truth_label": "anomalous", "ground_truth_type": "factual_error", "is_honeypot": False},
+            "s_orphan": {
+                "ground_truth_label": "anomalous",
+                "ground_truth_type": "factual_error",
+                "is_honeypot": False,
+            },
         }
         errors = validate_schema(samples, manifest, "hallucination")
         assert len(errors) > 0
@@ -465,7 +548,11 @@ class TestValidateBalance:
 
         manifest = {
             "s1": {"ground_truth_label": "normal", "ground_truth_type": None, "is_honeypot": False},
-            "s2": {"ground_truth_label": "anomalous", "ground_truth_type": "x", "is_honeypot": False},
+            "s2": {
+                "ground_truth_label": "anomalous",
+                "ground_truth_type": "x",
+                "is_honeypot": False,
+            },
         }
         errors = validate_balance(manifest)
         assert errors == []
@@ -476,8 +563,16 @@ class TestValidateBalance:
         # 90% anomalous
         manifest = {}
         for i in range(9):
-            manifest[f"s{i}"] = {"ground_truth_label": "anomalous", "ground_truth_type": "x", "is_honeypot": False}
-        manifest["s9"] = {"ground_truth_label": "normal", "ground_truth_type": None, "is_honeypot": False}
+            manifest[f"s{i}"] = {
+                "ground_truth_label": "anomalous",
+                "ground_truth_type": "x",
+                "is_honeypot": False,
+            }
+        manifest["s9"] = {
+            "ground_truth_label": "normal",
+            "ground_truth_type": None,
+            "is_honeypot": False,
+        }
         errors = validate_balance(manifest)
         assert len(errors) > 0
 
@@ -512,17 +607,21 @@ class TestValidationCLI:
             [
                 sys.executable,
                 str(SCRIPTS_DIR / "validate_eval_data.py"),
-                "--domain", "all",
+                "--domain",
+                "all",
             ],
             capture_output=True,
             text=True,
             cwd=str(SCRIPTS_DIR.parent),
         )
-        assert result.returncode == 0, f"Validation failed:\nstdout: {result.stdout}\nstderr: {result.stderr}"
+        assert result.returncode == 0, (
+            f"Validation failed:\nstdout: {result.stdout}\nstderr: {result.stderr}"
+        )
         # Should mention all 4 domains in output
         for domain in ["hallucination", "code_security", "reasoning", "bio"]:
-            assert domain in result.stdout.lower() or domain in result.stderr.lower(), \
+            assert domain in result.stdout.lower() or domain in result.stderr.lower(), (
                 f"Domain {domain} not mentioned in output"
+            )
 
     def test_cli_help(self):
         """Validate CLI --help works."""
@@ -545,8 +644,6 @@ class TestLLMArgparse:
 
     def test_argparse_accepts_api_key(self):
         """argparse accepts --api-key optional arg."""
-        from generate_eval_data import main
-        import argparse
 
         # Parse known args to verify --api-key is accepted
         result = subprocess.run(
@@ -598,9 +695,12 @@ class TestLLMArgparse:
             [
                 sys.executable,
                 str(SCRIPTS_DIR / "generate_eval_data.py"),
-                "--domain", "hallucination",
-                "--count", "5",
-                "--method", "llm",
+                "--domain",
+                "hallucination",
+                "--count",
+                "5",
+                "--method",
+                "llm",
             ],
             capture_output=True,
             text=True,
@@ -615,11 +715,16 @@ class TestLLMArgparse:
                 [
                     sys.executable,
                     str(SCRIPTS_DIR / "generate_eval_data.py"),
-                    "--domain", "hallucination",
-                    "--count", "1",
-                    "--method", "template",
-                    "--api-provider", provider,
-                    "--output-dir", "/tmp/test_provider_check",
+                    "--domain",
+                    "hallucination",
+                    "--count",
+                    "1",
+                    "--method",
+                    "template",
+                    "--api-provider",
+                    provider,
+                    "--output-dir",
+                    "/tmp/test_provider_check",
                 ],
                 capture_output=True,
                 text=True,
@@ -632,9 +737,7 @@ class TestLLMGeneration:
 
     def _mock_openai_response(self, content="This is a mocked LLM response."):
         """Create a mock urllib response mimicking OpenAI chat completions."""
-        response_data = json.dumps({
-            "choices": [{"message": {"content": content}}]
-        }).encode()
+        response_data = json.dumps({"choices": [{"message": {"content": content}}]}).encode()
         mock_response = MagicMock()
         mock_response.read.return_value = response_data
         mock_response.__enter__ = MagicMock(return_value=mock_response)
@@ -705,10 +808,14 @@ class TestLLMGeneration:
             [
                 sys.executable,
                 str(SCRIPTS_DIR / "generate_eval_data.py"),
-                "--domain", "hallucination",
-                "--count", "10",
-                "--output-dir", str(tmp_path),
-                "--seed", "42",
+                "--domain",
+                "hallucination",
+                "--count",
+                "10",
+                "--output-dir",
+                str(tmp_path),
+                "--seed",
+                "42",
             ],
             capture_output=True,
             text=True,
@@ -724,8 +831,8 @@ class TestLLMGeneration:
 
     def test_generation_log_records_llm_method(self, tmp_path):
         """generation_log.json records method='llm' when LLM mode used."""
+
         from generate_eval_data import _write_output
-        from pathlib import Path
 
         _write_output(
             domain="hallucination",
@@ -764,10 +871,14 @@ class TestLLMGeneration:
             [
                 sys.executable,
                 str(SCRIPTS_DIR / "generate_eval_data.py"),
-                "--domain", "hallucination",
-                "--count", "1",
-                "--method", "llm",
-                "--output-dir", "/tmp/test_env_key",
+                "--domain",
+                "hallucination",
+                "--count",
+                "1",
+                "--method",
+                "llm",
+                "--output-dir",
+                "/tmp/test_env_key",
             ],
             capture_output=True,
             text=True,

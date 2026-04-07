@@ -1,0 +1,43 @@
+# .gitleaksignore
+#
+# Gitleaks allowlist for Antigence Subnet repository.
+# Format: one fingerprint per line (file:rule:line)
+#
+# This repo contains synthetic ML evaluation payloads with intentional fake
+# credentials (AWS key patterns, GitHub PATs, API keys, passwords) that are
+# part of the anomaly detection training/evaluation dataset. These are NOT
+# real secrets -- they are test fixtures for the immune-inspired detector.
+#
+# Additionally, data/ JSON files use "_key" and "publication_key" fields as
+# identifier keys for claims and publications, which gitleaks flags as
+# generic-api-key false positives due to the field name pattern.
+
+# --- data/overwatch/ ---
+# Overwatch claim payloads. The "_key" and "publication_key" fields are
+# identifier keys (e.g., "phase81_arxiv_2408_04667"), not API secrets.
+data/overwatch/phase93-policy-claims.json:generic-api-key:4
+data/overwatch/phase93-policy-claims.json:generic-api-key:30
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:28
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:38
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:60
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:137
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:144
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:237
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:244
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:260
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:337
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:344
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:360
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:437
+data/overwatch/phase81-nondeterminism-claims.json:generic-api-key:444
+
+# --- tests/ ---
+# Test fixtures with mock wallet identifiers (not real Bittensor keys).
+tests/test_mock.py:generic-api-key:65
+
+# --- scripts/ ---
+# Research scripts with claim identifier keys (not API secrets).
+scripts/phase81_nondeterminism.py:generic-api-key:437
+scripts/phase81_nondeterminism.py:generic-api-key:447
+scripts/phase81_nondeterminism.py:generic-api-key:518
+scripts/phase81_nondeterminism.py:generic-api-key:523

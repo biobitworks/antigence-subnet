@@ -7,7 +7,7 @@ application (Phase 36).
 
 from __future__ import annotations
 
-from unittest.mock import AsyncMock, MagicMock, patch
+from unittest.mock import AsyncMock, MagicMock
 
 import numpy as np
 import pytest
@@ -18,7 +18,6 @@ from antigence_subnet.miner.orchestrator.danger import DangerTheoryModulator
 from antigence_subnet.miner.orchestrator.dendritic_cell import DCAResult, DendriticCell
 from antigence_subnet.miner.orchestrator.nk_cell import FeatureStatistics, NKCell
 from antigence_subnet.miner.orchestrator.orchestrator import ImmuneOrchestrator
-
 
 # ---------------------------------------------------------------------------
 # Helpers
@@ -154,7 +153,7 @@ class TestDCATierRouting:
             detectors={"hallucination": [ocsvm_det, negsel_det]},
         )
 
-        result = await orchestrator.process("prompt", "output", "hallucination")
+        await orchestrator.process("prompt", "output", "hallucination")
         # Only OCSVM should have been called (tier=["ocsvm"])
         ocsvm_det.detect.assert_called_once()
         negsel_det.detect.assert_not_called()
@@ -185,7 +184,7 @@ class TestDCATierRouting:
             detectors={"hallucination": [ocsvm_det, negsel_det, iforest_det]},
         )
 
-        result = await orchestrator.process("prompt", "output", "hallucination")
+        await orchestrator.process("prompt", "output", "hallucination")
         ocsvm_det.detect.assert_called_once()
         negsel_det.detect.assert_not_called()
         iforest_det.detect.assert_not_called()
@@ -215,7 +214,7 @@ class TestDCATierRouting:
             detectors={"hallucination": [ocsvm_det, negsel_det]},
         )
 
-        result = await orchestrator.process("prompt", "output", "hallucination")
+        await orchestrator.process("prompt", "output", "hallucination")
         # All detectors should run
         ocsvm_det.detect.assert_called_once()
         negsel_det.detect.assert_called_once()
@@ -663,7 +662,7 @@ class TestFeatureOnlyBCellIntegration:
 
         # Create a feature-only BCell with stored signatures (high anomaly)
         bcell = BCell(bcell_weight=0.3, k=3)
-        for i in range(5):
+        for _ in range(5):
             feats = np.zeros(10, dtype=np.float64)  # match query features
             bcell.store_signature(feats, 0.9, 1.0)  # high anomaly score
 
@@ -782,7 +781,7 @@ class TestOrchestratorEmbeddingBCell:
         )
 
         # Store some signatures with embeddings so prior has data
-        for i in range(5):
+        for _ in range(5):
             feats = np.random.rand(10).astype(np.float64)
             emb = np.ones(384, dtype=np.float32) * 0.5  # similar to query
             bcell.store_signature(feats, 0.9, 1.0, embedding=emb)

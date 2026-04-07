@@ -8,8 +8,8 @@ import pytest
 from antigence_subnet.validator.reward import get_rewards
 from antigence_subnet.validator.scoring import (
     ExactScorer,
-    SemanticScorer,
     ScoreResult,
+    SemanticScorer,
     StatisticalScorer,
     build_validator_scorer,
 )

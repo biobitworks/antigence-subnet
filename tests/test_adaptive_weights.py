@@ -28,12 +28,11 @@ import pytest
 from antigence_subnet.miner.orchestrator.adaptive_weights import AdaptiveWeightManager
 from antigence_subnet.miner.orchestrator.dendritic_cell import (
     DANGER_FEATURES,
-    DendriticCell,
     PAMP_FEATURES,
     SAFE_FEATURES,
+    DendriticCell,
 )
 from antigence_subnet.miner.orchestrator.telemetry import MinerTelemetry
-
 
 # ---------------------------------------------------------------------------
 # Cold-start defaults
@@ -654,7 +653,7 @@ class TestOrchestratorIntegration:
         for _ in range(5):
             mgr.adapt(features, outcome=1.0)
 
-        orchestrator = ImmuneOrchestrator(
+        _orchestrator = ImmuneOrchestrator(
             feature_extractor=extractor,
             nk_cell=nk_cell,
             dendritic_cell=dc,
@@ -717,6 +716,7 @@ class TestOrchestratorIntegration:
     def test_weight_update_logged(self, caplog) -> None:
         """Weight adaptation logs old/new weights at DEBUG level."""
         import asyncio
+
         from antigence_subnet.miner.detector import DetectionResult
         from antigence_subnet.miner.orchestrator.orchestrator import ImmuneOrchestrator
 
@@ -740,11 +740,16 @@ class TestOrchestratorIntegration:
             adaptive_weights=weight_mgr,
         )
 
-        with patch(
-            "antigence_subnet.miner.orchestrator.orchestrator.ensemble_detect",
-            new_callable=AsyncMock,
-            return_value=mock_result,
-        ), caplog.at_level(logging.DEBUG, logger="antigence_subnet.miner.orchestrator.orchestrator"):
+        with (
+            patch(
+                "antigence_subnet.miner.orchestrator.orchestrator.ensemble_detect",
+                new_callable=AsyncMock,
+                return_value=mock_result,
+            ),
+            caplog.at_level(
+                logging.DEBUG, logger="antigence_subnet.miner.orchestrator.orchestrator"
+            ),
+        ):
             asyncio.get_event_loop().run_until_complete(
                 orchestrator.process("prompt", "output", "hallucination")
             )
@@ -762,5 +767,8 @@ class TestPackageExport:
 
     def test_importable_from_package(self) -> None:
         """AdaptiveWeightManager importable from antigence_subnet.miner.orchestrator."""
-        from antigence_subnet.miner.orchestrator import AdaptiveWeightManager as AWM
-        assert AWM is AdaptiveWeightManager
+        from antigence_subnet.miner.orchestrator import (
+            AdaptiveWeightManager as AwmImport,  # noqa: N817
+        )
+
+        assert AwmImport is AdaptiveWeightManager

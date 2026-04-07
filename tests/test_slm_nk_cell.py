@@ -116,38 +116,20 @@ class TestSLMNKConfig:
 
     def test_similarity_threshold_above_1_raises_valueerror(self):
         """similarity_threshold > 1.0 raises ValueError."""
-        raw = {
-            "miner": {
-                "orchestrator": {
-                    "slm_nk": {"similarity_threshold": 1.5}
-                }
-            }
-        }
+        raw = {"miner": {"orchestrator": {"slm_nk": {"similarity_threshold": 1.5}}}}
         with pytest.raises(ValueError, match="similarity_threshold"):
             OrchestratorConfig.from_toml_raw(raw)
 
     def test_similarity_threshold_negative_raises_valueerror(self):
         """similarity_threshold < 0.0 raises ValueError."""
-        raw = {
-            "miner": {
-                "orchestrator": {
-                    "slm_nk": {"similarity_threshold": -0.1}
-                }
-            }
-        }
+        raw = {"miner": {"orchestrator": {"slm_nk": {"similarity_threshold": -0.1}}}}
         with pytest.raises(ValueError, match="similarity_threshold"):
             OrchestratorConfig.from_toml_raw(raw)
 
     def test_similarity_threshold_at_boundaries_valid(self):
         """similarity_threshold at 0.0 and 1.0 are valid."""
         for val in [0.0, 1.0]:
-            raw = {
-                "miner": {
-                    "orchestrator": {
-                        "slm_nk": {"similarity_threshold": val}
-                    }
-                }
-            }
+            raw = {"miner": {"orchestrator": {"slm_nk": {"similarity_threshold": val}}}}
             config = OrchestratorConfig.from_toml_raw(raw)
             assert config.slm_nk_config.similarity_threshold == val
 
@@ -289,7 +271,10 @@ class TestSLMNKCellGracefulDegradation:
         features = np.zeros(10)
         with caplog.at_level(logging.WARNING):
             cell.process(features, "prompt", "output")
-        assert any("not available" in rec.message.lower() or "unavailable" in rec.message.lower() for rec in caplog.records)
+        assert any(
+            "not available" in rec.message.lower() or "unavailable" in rec.message.lower()
+            for rec in caplog.records
+        )
 
     def test_score_raises_returns_none(self):
         """When model_manager.score() raises exception -> returns None."""
@@ -306,7 +291,12 @@ class TestSLMNKCellGracefulDegradation:
         features = np.zeros(10)
         with caplog.at_level(logging.WARNING):
             cell.process(features, "prompt", "output")
-        assert any("error" in rec.message.lower() or "failed" in rec.message.lower() or "exception" in rec.message.lower() for rec in caplog.records)
+        assert any(
+            "error" in rec.message.lower()
+            or "failed" in rec.message.lower()
+            or "exception" in rec.message.lower()
+            for rec in caplog.records
+        )
 
 
 # ---------------------------------------------------------------------------
