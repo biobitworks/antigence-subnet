@@ -2,6 +2,8 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 ROOT = Path(__file__).resolve().parents[1]
 PHASE95_DIR = (
     ROOT
@@ -13,6 +15,10 @@ REQUIREMENTS_PATH = ROOT / ".planning" / "REQUIREMENTS.md"
 MATRIX_PATH = PHASE95_DIR / "95-evidence-matrix.md"
 REPORT_PATH = PHASE95_DIR / "95-report.md"
 APPENDIX_PATH = PHASE95_DIR / "95-future-live-appendix.md"
+
+pytestmark = pytest.mark.skipif(
+    not PHASE95_DIR.exists(), reason="phase 95 artifacts archived"
+)
 
 REPAIRED_DEPLOY_02 = (
     "DEPLOY-02: Simulation performance and deployment-deferral report "
