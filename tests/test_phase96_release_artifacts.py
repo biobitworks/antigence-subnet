@@ -4,7 +4,14 @@ import json
 import re
 from pathlib import Path
 
+import pytest
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
+pytestmark = pytest.mark.skipif(
+    not (REPO_ROOT / "CHANGELOG.md").exists(),
+    reason="CHANGELOG.md not in public mirror",
+)
 
 
 def _read(path: str) -> str:
