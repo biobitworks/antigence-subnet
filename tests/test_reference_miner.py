@@ -32,7 +32,7 @@ class TestLoadTrainingSamples:
         from antigence_subnet.miner.data import load_training_samples
 
         samples = load_training_samples("data/evaluation", "hallucination")
-        assert len(samples) == 28  # 28 normal samples in expanded 60-sample dataset
+        assert len(samples) == 108  # 108 normal samples in expanded 220-sample dataset
 
     def test_samples_have_required_keys(self):
         """Each returned sample has 'prompt' and 'output' keys."""
