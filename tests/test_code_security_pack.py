@@ -296,7 +296,7 @@ class TestCodeSecurityDataset:
     def test_samples_has_30_entries(self):
         with open(self.SAMPLES_PATH) as f:
             data = json.load(f)
-        assert len(data["samples"]) == 60
+        assert len(data["samples"]) == 220
 
     def test_manifest_has_entry_for_every_sample(self):
         with open(self.SAMPLES_PATH) as f:

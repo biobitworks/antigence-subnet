@@ -184,14 +184,14 @@ class TestSeedDataLoadable:
 
         ds = EvaluationDataset(data_dir=seed_dir, domain="hallucination")
 
-        # Should have 60 samples total (30 original + 30 domain pack expansion)
-        assert len(ds.samples) == 60
+        # Should have 220 samples total (expanded dataset)
+        assert len(ds.samples) == 220
 
-        # Should have 9 honeypots (6 original + 3 new)
-        assert len(ds._honeypot_samples) == 9
+        # Should have 20 honeypots (expanded dataset)
+        assert len(ds._honeypot_samples) == 20
 
-        # Should have 51 regular samples
-        assert len(ds._regular_samples) == 51
+        # Should have 200 regular samples
+        assert len(ds._regular_samples) == 200
 
         # All samples should have required fields
         for sample in ds.samples:

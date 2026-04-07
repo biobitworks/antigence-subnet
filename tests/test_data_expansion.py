@@ -25,10 +25,10 @@ DOMAIN_PREFIXES = {
     "bio": "bio",
 }
 EXPECTED_HONEYPOTS = {
-    "hallucination": 9,
-    "code_security": 8,
-    "reasoning": 8,
-    "bio": 8,
+    "hallucination": 20,
+    "code_security": 15,
+    "reasoning": 11,
+    "bio": 21,
 }
 
 
@@ -49,12 +49,12 @@ def test_all_domains_60_samples(domain):
         manifest = json.load(f)
 
     samples = data["samples"]
-    assert len(samples) == 60, f"{domain}: expected 60 samples, got {len(samples)}"
-    assert len(manifest) == 60, f"{domain}: expected 60 manifest entries, got {len(manifest)}"
+    assert len(samples) == 220, f"{domain}: expected 220 samples, got {len(samples)}"
+    assert len(manifest) == 220, f"{domain}: expected 220 manifest entries, got {len(manifest)}"
 
     # All sample IDs exist in manifest
     sample_ids = [s["id"] for s in samples]
-    assert len(set(sample_ids)) == 60, f"{domain}: duplicate IDs found"
+    assert len(set(sample_ids)) == 220, f"{domain}: duplicate IDs found"
     for sid in sample_ids:
         assert sid in manifest, f"{domain}: sample {sid} missing from manifest"
 
@@ -74,7 +74,7 @@ def test_class_balance_all_domains(domain):
     normal = sum(1 for v in manifest.values() if v["ground_truth_label"] == "normal")
     anomalous = sum(1 for v in manifest.values() if v["ground_truth_label"] == "anomalous")
 
-    assert normal + anomalous == 60, f"{domain}: normal ({normal}) + anomalous ({anomalous}) != 60"
+    assert normal + anomalous == 220, f"{domain}: normal ({normal}) + anomalous ({anomalous}) != 220"
     assert normal >= 26, f"{domain}: too few normal samples ({normal}), min 26"
     assert anomalous >= 26, f"{domain}: too few anomalous samples ({anomalous}), min 26"
 
@@ -86,7 +86,7 @@ def test_class_balance_all_domains(domain):
 
 @pytest.mark.parametrize("domain", DOMAINS)
 def test_honeypot_ratio_all_domains(domain):
-    """Each domain must have 6-10 honeypots (10-17% ratio)."""
+    """Each domain must have honeypots within ~5-10% of total samples."""
     manifest_path = DATA_DIR / domain / "manifest.json"
     with open(manifest_path) as f:
         manifest = json.load(f)
@@ -96,7 +96,7 @@ def test_honeypot_ratio_all_domains(domain):
 
     assert honeypots == expected, f"{domain}: expected {expected} honeypots, got {honeypots}"
     assert honeypots >= 6, f"{domain}: too few honeypots ({honeypots}), min 6"
-    assert honeypots <= 10, f"{domain}: too many honeypots ({honeypots}), max 10"
+    assert honeypots <= 25, f"{domain}: too many honeypots ({honeypots}), max 25"
 
 
 # ---------------------------------------------------------------------------
@@ -202,8 +202,8 @@ def test_evaluation_dataset_loads_all_domains(domain):
     """EvaluationDataset must load each domain with correct sample and honeypot counts."""
     dataset = EvaluationDataset(DATA_DIR, domain)
 
-    assert len(dataset.samples) == 60, (
-        f"{domain}: EvaluationDataset loaded {len(dataset.samples)} samples, expected 60"
+    assert len(dataset.samples) == 220, (
+        f"{domain}: EvaluationDataset loaded {len(dataset.samples)} samples, expected 220"
     )
     expected_hp = EXPECTED_HONEYPOTS[domain]
     assert len(dataset._honeypot_samples) == expected_hp, (
