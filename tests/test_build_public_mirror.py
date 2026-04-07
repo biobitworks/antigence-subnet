@@ -4,6 +4,8 @@ import json
 import subprocess
 from pathlib import Path
 
+import pytest
+
 from scripts.build_public_mirror import _classify_path, _load_manifest
 
 _DEFAULT_MANIFEST_PATH = Path(
@@ -12,9 +14,10 @@ _DEFAULT_MANIFEST_PATH = Path(
 _BUILD_SUMMARY_PATH = Path("dist/public-mirror/.build-summary.json")
 
 
-def _resolve_manifest_path() -> Path:
+def _resolve_manifest_path() -> Path | None:
     """Return the manifest path, falling back to the build summary when the
-    default path no longer exists on disk (e.g. after Commit 2 deletes it)."""
+    default path no longer exists on disk (e.g. after Commit 2 deletes it).
+    Returns None if the manifest cannot be found (e.g. in public repo CI)."""
     if _DEFAULT_MANIFEST_PATH.exists():
         return _DEFAULT_MANIFEST_PATH
     # The default path was committed-as-deleted. Restore it from git history.
@@ -28,20 +31,25 @@ def _resolve_manifest_path() -> Path:
     import tempfile
 
     tmp = Path(tempfile.mkdtemp()) / "99-public-mirror-manifest.json"
-    subprocess.run(
+    result = subprocess.run(
         [
             "git",
             "show",
             f"HEAD~1:{_DEFAULT_MANIFEST_PATH}",
         ],
         stdout=tmp.open("wb"),
-        check=True,
+        stderr=subprocess.DEVNULL,
     )
+    if result.returncode != 0:
+        return None
     return tmp
 
 
 def test_manifest_excludes_internal_release_surfaces():
-    manifest = _load_manifest(_resolve_manifest_path())
+    manifest_path = _resolve_manifest_path()
+    if manifest_path is None:
+        pytest.skip("manifest not available (public repo CI)")
+    manifest = _load_manifest(manifest_path)
 
     include_release_doc, release_reason = _classify_path("PUBLIC_RELEASE.md", manifest)
     include_pitch_doc, pitch_reason = _classify_path(
