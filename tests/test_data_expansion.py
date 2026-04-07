@@ -74,7 +74,8 @@ def test_class_balance_all_domains(domain):
     normal = sum(1 for v in manifest.values() if v["ground_truth_label"] == "normal")
     anomalous = sum(1 for v in manifest.values() if v["ground_truth_label"] == "anomalous")
 
-    assert normal + anomalous == 220, f"{domain}: normal ({normal}) + anomalous ({anomalous}) != 220"
+    total = normal + anomalous
+    assert total == 220, f"{domain}: normal ({normal}) + anomalous ({anomalous}) != 220"
     assert normal >= 26, f"{domain}: too few normal samples ({normal}), min 26"
     assert anomalous >= 26, f"{domain}: too few anomalous samples ({anomalous}), min 26"
 
