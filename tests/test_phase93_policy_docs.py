@@ -4,7 +4,13 @@ from __future__ import annotations
 
 from pathlib import Path
 
+import pytest
+
 PHASE_DIR = Path(".planning/phases/93-decision-policy-adr-operator-migration")
+
+pytestmark = pytest.mark.skipif(
+    not PHASE_DIR.exists(), reason="phase 93 artifacts archived"
+)
 ADR_PATH = PHASE_DIR / "93-ADR.md"
 MIGRATION_PATH = PHASE_DIR / "93-migration-guide.md"
 

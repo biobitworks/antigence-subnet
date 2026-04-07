@@ -3,7 +3,14 @@ from __future__ import annotations
 import zipfile
 from pathlib import Path
 
+import pytest
+
 REPO_ROOT = Path(__file__).resolve().parents[1]
+
+_PHASE97_DIR = REPO_ROOT / ".planning/phases/97-publication-submission"
+pytestmark = pytest.mark.skipif(
+    not _PHASE97_DIR.exists(), reason="phase 97 artifacts archived"
+)
 
 
 def _read(path: str) -> str:

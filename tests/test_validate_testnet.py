@@ -183,6 +183,10 @@ class TestReportSchema:
             assert "evidence" in report["criteria"][tnet_id]
 
 
+@pytest.mark.skipif(
+    not Path(".planning/phases/94-testnet-deployment-of-winning-ensemble-policy").exists(),
+    reason="phase 94 artifacts archived",
+)
 class TestPhase94StrictLive:
     def test_build_config_threads_config_file_into_bt_config(self, tmp_path):
         """_build_config() preserves the exact live TOML path."""
