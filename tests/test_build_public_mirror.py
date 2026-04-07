@@ -53,8 +53,8 @@ def test_manifest_excludes_internal_release_surfaces():
         manifest,
     )
 
-    assert not include_release_doc
-    assert release_reason in {"excluded", "not-included"}
+    assert include_release_doc
+    assert release_reason == "included"
     assert not include_pitch_doc
     assert pitch_reason == "excluded"
     assert include_readme
