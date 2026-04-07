@@ -1,10 +1,20 @@
 ```
-    ___        __  _                            ___       __          __
-   / _ | ___  / /_(_)__ ____ ___  ______      / __/__ __/ /  ___  __/ /_
-  / __ |/ _ \/ __/ / _ `/ -_) _ \/ __/ -_)   _\ \/ // / _ \/ _ \/ -_) __/
- /_/ |_/_//_/\__/_/\_, /\__/_//_/\__/\__/   /___/\_,_/_.__/_//_/\__/\__/
-    \ /           /___/
-     Y  Immune-Inspired Verification for Bittensor
+                         Fab           Fab
+                     ___/ \___     ___/ \___
+                    |   VH    |   |   VH    |
+                    |___|  |__|   |__|  |___|
+                    |   VL    |   |   VL    |
+                    |_________|   |_________|
+                         \    S-S    /
+                          \  S-S   /
+                           | Fc  |
+                           |     |
+                           |_____|
+                           |     |
+                           |_____|
+
+      A N T I G E N C E   S U B N E T
+   Immune-Inspired Verification for Bittensor
 ```
 
 [![CI](https://github.com/biobitworks/antigence-subnet/actions/workflows/ci.yml/badge.svg)](https://github.com/biobitworks/antigence-subnet/actions/workflows/ci.yml)
