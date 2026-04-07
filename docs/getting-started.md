@@ -101,10 +101,38 @@ pytest tests/ -x -q
 
 Expected output (approximate):
 ```
-1492 passed, 36 skipped, 93 warnings in 368.90s
+1545 passed, 17 skipped, 84 warnings
 ```
 
-Skipped tests are expected — they require `ollama` (local GPU inference) or archived planning artifacts that only exist in the development repo.
+### Why are tests skipped?
+
+Skipped tests are expected and do not indicate failures. They fall into three categories:
+
+**Optional dependencies not installed:**
+
+| Tests | Dependency | Install with |
+|-------|-----------|--------------|
+| `test_ollama_harness`, `test_phase81_*`, `test_phase83_*` | `ollama` | Local install: [ollama.ai](https://ollama.ai) |
+| `test_sbert_*`, `test_model_manager`, `test_hallucination_pack` (partial) | `sentence-transformers` | `pip install -e '.[sbert]'` |
+| `test_metrics_api` | `prometheus_client` | `pip install prometheus-client` |
+| `test_autoencoder_parity` | `torch` | `pip install torch` |
+
+**Features under development (wired in future milestones):**
+
+| Test | Feature | Status |
+|------|---------|--------|
+| `test_cold_start::TestValidatorIntegration` | Cold-start warmup protocol | Planned |
+| `test_validator_agreement::TestValidatorIntegration` | Cross-validator agreement tracking | Planned |
+| `test_collusion::TestCollusionForwardIntegration` | Collusion zeroing in reward path | Planned |
+| `test_forward_integration::test_forward_queries_*` | End-to-end scoring pipeline | Planned |
+| `test_dendritic_cell::test_classify_with_weight_manager` | Adaptive weight manager integration | Planned |
+
+**Environment-conditional:**
+
+| Test | Condition |
+|------|-----------|
+| `test_validate_testnet::TestPhase94StrictLive` | Requires testnet deployment artifacts |
+| `test_domain_packs_integration` (partial) | Requires all domain data loaded |
 
 ## Step 6: Run in Mock Mode
 
