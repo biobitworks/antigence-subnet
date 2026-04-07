@@ -1,6 +1,18 @@
-# Antigence Subnet
+```
+     _    _   _ _____ ___ ____ _____ _   _  ____ _____
+    / \  | \ | |_   _|_ _/ ___| ____| \ | |/ ___| ____|
+   / _ \ |  \| | | |  | | |  _|  _| |  \| | |   |  _|
+  / ___ \| |\  | | |  | | |_| | |___| |\  | |___| |___
+ /_/   \_\_| \_| |_| |___\____|_____|_| \_|\____|_____|
+              S U B N E T
+     Immune-Inspired Verification for Bittensor
+```
 
 [![CI](https://github.com/biobitworks/antigence-subnet/actions/workflows/ci.yml/badge.svg)](https://github.com/biobitworks/antigence-subnet/actions/workflows/ci.yml)
+[![Security](https://github.com/biobitworks/antigence-subnet/actions/workflows/security.yml/badge.svg)](https://github.com/biobitworks/antigence-subnet/actions/workflows/security.yml)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
+[![Bittensor](https://img.shields.io/badge/bittensor-10.2.0-green.svg)](https://bittensor.com)
 
 A decentralized verification subnet for [Bittensor](https://bittensor.com) where miners run anomaly detectors and validators apply selection pressure through hidden evaluation datasets. The network produces a shared trust score for AI outputs.
 

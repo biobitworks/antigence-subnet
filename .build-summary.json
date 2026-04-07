@@ -502,9 +502,9 @@
       "reason": "excluded"
     }
   ],
-  "generated_at_utc": "2026-04-07T13:06:30.894676+00:00",
+  "generated_at_utc": "2026-04-07T13:47:04.572600+00:00",
   "generated_tree": "dist/public-mirror",
-  "included_count": 297,
+  "included_count": 299,
   "included_files": [
     ".env.example",
     ".env.phase94.example",
@@ -653,6 +653,7 @@
     "docs/benchmarks/orchestrator-vs-ensemble.md",
     "docs/benchmarks/v9-orchestrator-benchmark.json",
     "docs/benchmarks/v9-orchestrator-benchmark.md",
+    "docs/getting-started.md",
     "docs/manuscript.md",
     "docs/manuscript.pdf",
     "docs/miner-training-data.md",
@@ -661,6 +662,7 @@
     "docs/release/public-github-publish-checklist.md",
     "docs/release/v10.0-release-notes.md",
     "docs/release/v10.0-zenodo-handoff.md",
+    "docs/research/qec-antigence-crossover.md",
     "docs/submission/arxiv-package/CHECKLIST.md",
     "docs/submission/arxiv-package/manuscript.pdf",
     "docs/submission/biorxiv-package/CHECKLIST.md",
