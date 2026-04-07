@@ -6,6 +6,8 @@ from types import SimpleNamespace
 
 import pytest
 
+pytest.importorskip("ollama", reason="ollama not available in CI")
+
 
 def _mode_spread(mean: float, cv: float, flip_count: int) -> dict[str, float | int]:
     variance_pct = cv * 100.0
