@@ -11,7 +11,7 @@
 
 **Do not open a public issue for security vulnerabilities.**
 
-To report a vulnerability, email **security@biobitworks.com** with:
+To report a vulnerability, use [GitHub Security Advisories](https://github.com/biobitworks/antigence-subnet/security/advisories/new) (preferred — private by default) with:
 
 1. A description of the vulnerability
 2. Steps to reproduce

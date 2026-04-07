@@ -1,5 +1,5 @@
 {
-  "excluded_count": 117,
+  "excluded_count": 125,
   "excluded_files": [
     {
       "path": ".continue-here.md",
@@ -468,11 +468,43 @@
     {
       "path": "docs/pitch/YUMA-APPLICATION.md",
       "reason": "excluded"
+    },
+    {
+      "path": "tests/test_build_public_mirror.py",
+      "reason": "excluded"
+    },
+    {
+      "path": "tests/test_phase93_policy_claims.py",
+      "reason": "excluded"
+    },
+    {
+      "path": "tests/test_phase93_policy_docs.py",
+      "reason": "excluded"
+    },
+    {
+      "path": "tests/test_phase94_preflight.py",
+      "reason": "excluded"
+    },
+    {
+      "path": "tests/test_phase94_runtime_metrics.py",
+      "reason": "excluded"
+    },
+    {
+      "path": "tests/test_phase95_report_contract.py",
+      "reason": "excluded"
+    },
+    {
+      "path": "tests/test_phase96_release_artifacts.py",
+      "reason": "excluded"
+    },
+    {
+      "path": "tests/test_phase97_submission_package.py",
+      "reason": "excluded"
     }
   ],
-  "generated_at_utc": "2026-04-07T07:31:56.908876+00:00",
+  "generated_at_utc": "2026-04-07T13:06:30.894676+00:00",
   "generated_tree": "dist/public-mirror",
-  "included_count": 305,
+  "included_count": 297,
   "included_files": [
     ".env.example",
     ".env.phase94.example",
@@ -684,7 +716,6 @@
     "tests/test_benchmark_negsel.py",
     "tests/test_bio_pack.py",
     "tests/test_blacklist_priority.py",
-    "tests/test_build_public_mirror.py",
     "tests/test_calibration.py",
     "tests/test_challenge.py",
     "tests/test_challenge_rotation.py",
@@ -740,15 +771,8 @@
     "tests/test_phase83_scoring_benchmark.py",
     "tests/test_phase92_benchmark_canon.py",
     "tests/test_phase92_policy_metrics.py",
-    "tests/test_phase93_policy_claims.py",
     "tests/test_phase93_policy_config.py",
-    "tests/test_phase93_policy_docs.py",
     "tests/test_phase94_governance_artifacts.py",
-    "tests/test_phase94_preflight.py",
-    "tests/test_phase94_runtime_metrics.py",
-    "tests/test_phase95_report_contract.py",
-    "tests/test_phase96_release_artifacts.py",
-    "tests/test_phase97_submission_package.py",
     "tests/test_protocol.py",
     "tests/test_rate_limiter_purge.py",
     "tests/test_reasoning_pack.py",
@@ -804,7 +828,15 @@
       ".pytest_cache/",
       ".ruff_cache/",
       "docs/pitch/",
-      "testnet-results/"
+      "testnet-results/",
+      "tests/test_build_public_mirror.py",
+      "tests/test_phase93_policy_claims.py",
+      "tests/test_phase93_policy_docs.py",
+      "tests/test_phase94_preflight.py",
+      "tests/test_phase94_runtime_metrics.py",
+      "tests/test_phase95_report_contract.py",
+      "tests/test_phase96_release_artifacts.py",
+      "tests/test_phase97_submission_package.py"
     ],
     "include_paths": [
       ".github/",

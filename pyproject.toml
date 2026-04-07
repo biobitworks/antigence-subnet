@@ -32,9 +32,9 @@ sbert = ["sentence-transformers>=4.0,<6.0"]
 fractal = ["nolds>=0.5"]
 
 [project.urls]
-Homepage = "https://github.com/biobitworks/antigence-bittensor"
-Repository = "https://github.com/biobitworks/antigence-bittensor"
-"Bug Tracker" = "https://github.com/biobitworks/antigence-bittensor/issues"
+Homepage = "https://github.com/biobitworks/antigence-subnet"
+Repository = "https://github.com/biobitworks/antigence-subnet"
+"Bug Tracker" = "https://github.com/biobitworks/antigence-subnet/issues"
 
 [tool.pytest.ini_options]
 asyncio_mode = "auto"
