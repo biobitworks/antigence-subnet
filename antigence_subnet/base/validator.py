@@ -311,6 +311,13 @@ class BaseValidatorNeuron(BaseNeuron):
             f"Sample size: {self.config.neuron.sample_size}"
         )
 
+        # v13.1.1 Phase 1103 (STATEPOL-01..03): opt-in audit-chain path.
+        # Attribute default is None; resolved by audit_state.load_audit_state()
+        # on startup when config.audit.enabled is True. Existing .npz path
+        # (save_state/load_state above) stays unchanged -- this is purely
+        # additive.
+        self.audit_chain_path: str | None = None
+
     @classmethod
     def _add_args_to_parser(cls, parser) -> None:
         """Add validator-specific args on top of base neuron args."""
@@ -521,6 +528,69 @@ class BaseValidatorNeuron(BaseNeuron):
             type=int,
             default=10,
             help="Number of recent rounds to exclude samples from per miner (default: 10)",
+        )
+
+        # v13.1.1 Phase 1103: audit-chain CLI surface (STATEPOL-02 toggle).
+        parser.add_argument(
+            "--audit.enabled",
+            "--validator.audit.enabled",
+            action="store_true",
+            default=False,
+            help="Enable opt-in audit-chain persistence alongside .npz state (default: False)",
+        )
+        parser.add_argument(
+            "--audit.chain_path",
+            "--validator.audit.chain_path",
+            type=str,
+            default="",
+            help=(
+                "Audit-chain JSONL path; empty means "
+                "<neuron.full_path>/chain.jsonl (default: '')"
+            ),
+        )
+
+        # v13.1.1 Phase 1103: convergence-detector CLI surface (WIRE-03).
+        parser.add_argument(
+            "--convergence.window_size",
+            "--validator.convergence.window_size",
+            type=int,
+            default=20,
+            help="Convergence trajectory window size (default: 20)",
+        )
+        parser.add_argument(
+            "--convergence.sign_change_threshold",
+            "--validator.convergence.sign_change_threshold",
+            type=int,
+            default=4,
+            help="Oscillation sign-change trigger (default: 4)",
+        )
+        parser.add_argument(
+            "--convergence.variance_bound",
+            "--validator.convergence.variance_bound",
+            type=float,
+            default=1e-4,
+            help="Metastability variance bound (default: 1e-4)",
+        )
+        parser.add_argument(
+            "--convergence.top_quantile_cut",
+            "--validator.convergence.top_quantile_cut",
+            type=float,
+            default=0.5,
+            help="Metastability top-quantile cut (default: 0.5)",
+        )
+        parser.add_argument(
+            "--convergence.min_consecutive_rounds",
+            "--validator.convergence.min_consecutive_rounds",
+            type=int,
+            default=10,
+            help="Metastability min consecutive rounds (default: 10)",
+        )
+        parser.add_argument(
+            "--convergence.epsilon",
+            "--validator.convergence.epsilon",
+            type=float,
+            default=0.05,
+            help="Convergence-failure epsilon (default: 0.05)",
         )
 
     @abstractmethod
@@ -777,6 +847,20 @@ class BaseValidatorNeuron(BaseNeuron):
                 os.unlink(tmp_path)
             raise
 
+        # v13.1.1 Phase 1103 (STATEPOL-01/02): audit-chain preflight.
+        # No-op when config.audit.enabled is False. Must run AFTER the
+        # .npz save so any audit preflight errors don't clobber the
+        # existing .npz.
+        try:
+            from antigence_subnet.validator import audit_state
+
+            audit_state.save_audit_state(self)
+        except Exception as _audit_exc:  # non-blocking by contract
+            bt.logging.warning(
+                f"audit_state.save_audit_state failed (non-blocking): "
+                f"{_audit_exc!r}"
+            )
+
     def load_state(self) -> None:
         """Load validator state from .npz file with corruption protection.
 
@@ -851,6 +935,23 @@ class BaseValidatorNeuron(BaseNeuron):
             self.hotkeys = copy.deepcopy(self.metagraph.hotkeys)
             self.score_history = {}
             self.confidence_history = {}
+
+        # v13.1.1 Phase 1103 (STATEPOL-01/02/03): load/resolve audit-chain
+        # path. No-op when config.audit.enabled is False. On restart with
+        # enabled=True, verifies chain integrity via resume_chain_prev_hash
+        # (raises ChainIntegrityError on tamper -- operator sees it
+        # immediately instead of silently continuing). Missing or empty
+        # chain file -> GENESIS_PREV_HASH, clean start, no history replay.
+        try:
+            from antigence_subnet.validator import audit_state
+
+            audit_state.load_audit_state(self)
+        except Exception as _audit_exc:
+            bt.logging.warning(
+                f"audit_state.load_audit_state failed (non-blocking): "
+                f"{_audit_exc!r}"
+            )
+            self.audit_chain_path = None
 
     def run(self) -> None:
         """Start the validator: load state, forward loop, save state."""

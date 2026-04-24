@@ -577,8 +577,66 @@ async def forward(validator) -> None:
                 -MAX_SCORE_HISTORY:
             ]
 
+    # --- Stage 7.5 (v13.1.1, Phase 1103): opt-in audit-chain write ---
+    # STATEPOL-02: gated on validator.config.audit.enabled AND a resolved
+    # validator.audit_chain_path. When disabled, NO chain.jsonl writes
+    # happen. When enabled mid-session (STATEPOL-03), the chain starts
+    # cleanly from GENESIS_PREV_HASH on the first append.
+    _audit_cfg = getattr(validator.config, "audit", None)
+    _audit_enabled = bool(getattr(_audit_cfg, "enabled", False))
+    _chain_path_for_audit = getattr(validator, "audit_chain_path", None)
+    if _audit_enabled and _chain_path_for_audit:
+        try:
+            from antigence_subnet.validator.deterministic_scoring import (
+                AuditChainWriter,
+            )
+            from antigence_subnet.validator.audit_bridge import (
+                RewardToAuditAdapter, next_round_index,
+            )
+
+            _chain_writer = AuditChainWriter(_chain_path_for_audit)
+            _adapter = RewardToAuditAdapter(_chain_writer, ema_alpha=0.1)
+            _idx = next_round_index(_chain_writer)
+            _hotkey_fn = getattr(validator, "hotkey_for_uid", None)
+            if callable(_hotkey_fn):
+                _hotkeys_list = [str(_hotkey_fn(u)) for u in miner_uids]
+            else:
+                _hotkeys_list = [f"hk-unknown-{u}" for u in miner_uids]
+            _adapter.record_round(
+                round_index=_idx,
+                miner_uids=list(miner_uids),
+                rewards=[rewards[i] for i in range(len(miner_uids))],
+                hotkeys=_hotkeys_list,
+            )
+        except Exception as _audit_exc:  # non-blocking by contract
+            bt.logging.warning(
+                f"audit-chain write failed (non-blocking): {_audit_exc!r}"
+            )
+
     # --- Stage 8: Update EMA scores ---
     validator.update_scores(rewards, miner_uids)
+
+    # --- Stage 8.5 (v13.1.1, Phase 1103): convergence detector hook ---
+    # Non-blocking by contract (WIRE-02): any failure logs at WARNING and
+    # returns control to the forward loop without raising. Gate requires
+    # BOTH audit.enabled AND a resolved audit_chain_path -- if operators
+    # set audit.enabled=false, no convergence hook call either (no inputs
+    # to feed it). Reads the audit chain written in Stage 7.5 above.
+    try:
+        from antigence_subnet.validator import convergence_hook
+
+        _chain_path = getattr(validator, "audit_chain_path", None)
+        if _audit_enabled and _chain_path is not None:
+            _events = convergence_hook.run_convergence_checks(_chain_path)
+            if _events:
+                bt.logging.info(
+                    f"convergence_hook: emitted {len(_events)} event(s) "
+                    f"| step={validator.step}"
+                )
+    except Exception as _hook_exc:  # non-blocking by contract (WIRE-02)
+        bt.logging.warning(
+            f"convergence_hook failed (non-blocking): {_hook_exc!r}"
+        )
 
     # Record forward pass duration and completion for monitoring
     forward_duration = time.monotonic() - forward_start_time

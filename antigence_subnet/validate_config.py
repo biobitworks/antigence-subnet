@@ -82,7 +82,8 @@ _KNOWN_DOMAIN_KEYS = {
 }
 
 # Known keys under [validator]
-_KNOWN_VALIDATOR = {"rotation", "scoring", "policy"}
+# v13.1.1 (Phase 1103): "audit" + "convergence" added for STATEPOL-01..03 / WIRE-03.
+_KNOWN_VALIDATOR = {"rotation", "scoring", "policy", "audit", "convergence"}
 
 # Known keys under [validator.rotation]
 _KNOWN_ROTATION = {"enabled", "window"}
@@ -92,6 +93,19 @@ _KNOWN_SCORING = {"mode", "repeats", "ci_level"}
 
 # Known keys under [validator.policy]
 _KNOWN_POLICY = {"mode", "high_threshold", "low_threshold", "min_confidence"}
+
+# Known keys under [validator.audit] (v13.1.1 Phase 1103, STATEPOL-01..03)
+_KNOWN_AUDIT = {"enabled", "chain_path"}
+
+# Known keys under [validator.convergence] (v13.1.1 Phase 1103, WIRE-03)
+_KNOWN_CONVERGENCE = {
+    "window_size",
+    "sign_change_threshold",
+    "variance_bound",
+    "top_quantile_cut",
+    "min_consecutive_rounds",
+    "epsilon",
+}
 
 
 @dataclass
@@ -352,6 +366,82 @@ def _validate_ranges(toml_data: dict[str, Any], issues: list[ConfigIssue]) -> No
             message=f"min_confidence must be in [0.0, 1.0], got {min_confidence}",
         ))
 
+    # v13.1.1 Phase 1103: [validator.audit] type checks.
+    audit = toml_data.get("validator", {}).get("audit", {})
+    audit_enabled = audit.get("enabled")
+    if audit_enabled is not None and not isinstance(audit_enabled, bool):
+        issues.append(ConfigIssue(
+            level="error",
+            section="validator.audit",
+            message=f"enabled must be bool, got {type(audit_enabled).__name__}",
+        ))
+    audit_chain_path = audit.get("chain_path")
+    if audit_chain_path is not None and not isinstance(audit_chain_path, str):
+        issues.append(ConfigIssue(
+            level="error",
+            section="validator.audit",
+            message=f"chain_path must be str, got {type(audit_chain_path).__name__}",
+        ))
+
+    # v13.1.1 Phase 1103: [validator.convergence] range checks (WIRE-03).
+    convergence = toml_data.get("validator", {}).get("convergence", {})
+    conv_window = convergence.get("window_size")
+    if conv_window is not None and (
+        not isinstance(conv_window, int) or isinstance(conv_window, bool) or conv_window <= 0
+    ):
+        issues.append(ConfigIssue(
+            level="error",
+            section="validator.convergence",
+            message=f"window_size must be int > 0, got {conv_window}",
+        ))
+    conv_sct = convergence.get("sign_change_threshold")
+    if conv_sct is not None and (
+        not isinstance(conv_sct, int) or isinstance(conv_sct, bool) or conv_sct < 0
+    ):
+        issues.append(ConfigIssue(
+            level="error",
+            section="validator.convergence",
+            message=f"sign_change_threshold must be int >= 0, got {conv_sct}",
+        ))
+    conv_vb = convergence.get("variance_bound")
+    if conv_vb is not None and (
+        isinstance(conv_vb, bool) or not isinstance(conv_vb, (int, float)) or conv_vb <= 0
+    ):
+        issues.append(ConfigIssue(
+            level="error",
+            section="validator.convergence",
+            message=f"variance_bound must be > 0, got {conv_vb}",
+        ))
+    conv_tqc = convergence.get("top_quantile_cut")
+    if conv_tqc is not None and (
+        isinstance(conv_tqc, bool) or not isinstance(conv_tqc, (int, float))
+        or conv_tqc <= 0.0 or conv_tqc > 1.0
+    ):
+        issues.append(ConfigIssue(
+            level="error",
+            section="validator.convergence",
+            message=f"top_quantile_cut must be in (0.0, 1.0], got {conv_tqc}",
+        ))
+    conv_mcr = convergence.get("min_consecutive_rounds")
+    if conv_mcr is not None and (
+        not isinstance(conv_mcr, int) or isinstance(conv_mcr, bool) or conv_mcr <= 0
+    ):
+        issues.append(ConfigIssue(
+            level="error",
+            section="validator.convergence",
+            message=f"min_consecutive_rounds must be int > 0, got {conv_mcr}",
+        ))
+    conv_eps = convergence.get("epsilon")
+    if conv_eps is not None and (
+        isinstance(conv_eps, bool) or not isinstance(conv_eps, (int, float))
+        or conv_eps <= 0.0 or conv_eps >= 1.0
+    ):
+        issues.append(ConfigIssue(
+            level="error",
+            section="validator.convergence",
+            message=f"epsilon must be in (0.0, 1.0), got {conv_eps}",
+        ))
+
     if (
         high_threshold is not None
         and low_threshold is not None
@@ -472,6 +562,18 @@ def _check_unknown_keys_deep(toml_data: dict[str, Any], issues: list[ConfigIssue
         policy = validator.get("policy", {})
         if isinstance(policy, dict):
             _check_unknown_keys(policy, _KNOWN_POLICY, "validator.policy", issues)
+
+        # v13.1.1 Phase 1103: [validator.audit] + [validator.convergence].
+        # Absence is valid (STATEPOL-01/02 backward-compat).
+        audit = validator.get("audit", {})
+        if isinstance(audit, dict):
+            _check_unknown_keys(audit, _KNOWN_AUDIT, "validator.audit", issues)
+
+        convergence = validator.get("convergence", {})
+        if isinstance(convergence, dict):
+            _check_unknown_keys(
+                convergence, _KNOWN_CONVERGENCE, "validator.convergence", issues
+            )
 
 
 def validate_config(toml_path: Path) -> list[ConfigIssue]:
