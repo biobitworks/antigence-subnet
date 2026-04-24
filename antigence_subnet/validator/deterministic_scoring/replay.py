@@ -27,8 +27,8 @@ coercion -- surfaced via the ``canonical_json`` NaN check when we hash.
 from __future__ import annotations
 
 import math
+from collections.abc import Mapping, Sequence
 from dataclasses import dataclass
-from typing import Mapping, Sequence, Tuple
 
 from antigence_subnet.validator.deterministic_scoring.chain import hash_record
 from antigence_subnet.validator.deterministic_scoring.state import (
@@ -50,7 +50,7 @@ class RoundInputs:
 
     round_index: int
     ema_alpha: float
-    raw_rewards: Tuple[Tuple[int, float, str], ...]
+    raw_rewards: tuple[tuple[int, float, str], ...]
 
     def __post_init__(self) -> None:
         if type(self.round_index) is not int or isinstance(self.round_index, bool):
@@ -88,8 +88,8 @@ class ReplayResult:
     length as the input ``rounds`` sequence.
     """
 
-    records: Tuple[FrozenRoundRecord, ...]
-    hashes: Tuple[str, ...]
+    records: tuple[FrozenRoundRecord, ...]
+    hashes: tuple[str, ...]
 
 
 def replay_chain(

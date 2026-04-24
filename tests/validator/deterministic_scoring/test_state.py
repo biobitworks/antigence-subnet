@@ -11,7 +11,6 @@ from antigence_subnet.validator.deterministic_scoring.state import (
     FrozenRoundScore,
 )
 
-
 # ---- FrozenRoundScore construction & immutability ---------------------------
 
 

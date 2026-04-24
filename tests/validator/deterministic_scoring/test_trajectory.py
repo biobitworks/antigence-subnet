@@ -10,15 +10,10 @@ import pytest
 from antigence_subnet.validator.deterministic_scoring.chain import (
     AuditChainWriter,
     ChainIntegrityError,
-    hash_record,
 )
 from antigence_subnet.validator.deterministic_scoring.replay import (
     RoundInputs,
     replay_chain,
-)
-from antigence_subnet.validator.deterministic_scoring.state import (
-    FrozenRoundRecord,
-    FrozenRoundScore,
 )
 from antigence_subnet.validator.deterministic_scoring.trajectory import (
     TrajectoryWindow,
@@ -97,7 +92,7 @@ def test_extract_three_round_three_miner_trajectory(tmp_path):
         assert win.round_end == 2
 
 
-def test_extract_window_size_truncates_to_last_N(tmp_path):
+def test_extract_window_size_truncates_to_last_n(tmp_path):
     path = tmp_path / "chain.jsonl"
     rounds = [
         RoundInputs(

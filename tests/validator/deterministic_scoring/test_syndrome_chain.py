@@ -9,9 +9,9 @@ import pathlib
 import pytest
 
 from antigence_subnet.validator.deterministic_scoring.chain import (
+    GENESIS_PREV_HASH,
     AuditChainWriter,
     ChainIntegrityError,
-    GENESIS_PREV_HASH,
     verify_chain,
 )
 from antigence_subnet.validator.deterministic_scoring.serialization import (
@@ -24,7 +24,6 @@ from antigence_subnet.validator.deterministic_scoring.state import (
 from antigence_subnet.validator.deterministic_scoring.syndrome import (
     CODEWORD_DIM,
     SYNDROME_SCHEMA_VERSION,
-    Codeword,
     SyndromeChainWriter,
     SyndromeRecord,
     append_syndrome_for_codeword,
@@ -33,12 +32,10 @@ from antigence_subnet.validator.deterministic_scoring.syndrome import (
     syndrome,
     verify_syndrome_chain,
 )
-
 from tests.validator.deterministic_scoring.fixtures.codewords import (
     ALL_FIXTURES,
     CW_SELF,
 )
-
 
 # ---- SyndromeRecord construction & immutability ----------------------------
 

@@ -13,7 +13,6 @@ imports cleanly in a minimal test venv.
 from __future__ import annotations
 
 from dataclasses import dataclass
-from typing import Tuple
 
 _HEX_ALPHABET = frozenset("0123456789abcdef")
 
@@ -80,7 +79,7 @@ class FrozenRoundRecord:
 
     round_index: int
     ema_alpha: float
-    scores: Tuple[FrozenRoundScore, ...]
+    scores: tuple[FrozenRoundScore, ...]
     prev_hash: str
 
     def __post_init__(self) -> None:

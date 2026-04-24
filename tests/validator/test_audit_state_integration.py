@@ -24,25 +24,22 @@ Null hypotheses rejected:
 
 from __future__ import annotations
 
-import pathlib
 import types
 
 import numpy as np
-import pytest
-
-from antigence_subnet.validator.deterministic_scoring import (
-    AuditChainWriter,
-    FrozenRoundRecord,
-    GENESIS_PREV_HASH,
-    from_canonical_json,
-    verify_chain,
-)
 
 from antigence_subnet.validator import audit_state
 from antigence_subnet.validator.audit_bridge import (
     RewardToAuditAdapter,
     next_round_index,
     resume_chain_prev_hash,
+)
+from antigence_subnet.validator.deterministic_scoring import (
+    GENESIS_PREV_HASH,
+    AuditChainWriter,
+    FrozenRoundRecord,
+    from_canonical_json,
+    verify_chain,
 )
 
 

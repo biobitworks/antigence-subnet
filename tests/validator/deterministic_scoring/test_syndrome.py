@@ -20,7 +20,6 @@ from antigence_subnet.validator.deterministic_scoring.syndrome import (
     load_default_table,
     syndrome,
 )
-
 from tests.validator.deterministic_scoring.fixtures.codewords import (
     ALL_FIXTURES,
     CW_ALTERNATING_SPIKE,
@@ -31,7 +30,6 @@ from tests.validator.deterministic_scoring.fixtures.codewords import (
     EXPECTED_BUCKET_SIGNATURES,
     EXPECTED_CLASSES,
 )
-
 
 # ---- Codeword construction & immutability ----------------------------------
 
@@ -93,7 +91,11 @@ def test_codeword_rejects_negative_inf():
 
 def test_codeword_rejects_int_in_features():
     with pytest.raises(TypeError):
-        Codeword(schema_version=1, features=(1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0), domain="generic")  # type: ignore[arg-type]
+        Codeword(  # type: ignore[arg-type]
+            schema_version=1,
+            features=(1, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0),
+            domain="generic",
+        )
 
 
 def test_codeword_rejects_numpy_scalar_like():
@@ -137,7 +139,11 @@ def test_codeword_digest_is_64_lower_hex():
 
 
 def test_codeword_digest_is_deterministic():
-    cw = Codeword(schema_version=1, features=(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8), domain="generic")
+    cw = Codeword(
+        schema_version=1,
+        features=(0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8),
+        domain="generic",
+    )
     d1 = codeword_digest(cw)
     d2 = codeword_digest(cw)
     assert d1 == d2
@@ -392,7 +398,7 @@ def test_classify_fixtures_iteration_stable():
         "CW_SATURATION_STORM",
         "CW_UNCLASSIFIED",
     )
-    for name, cw in zip(names, ALL_FIXTURES):
+    for name, cw in zip(names, ALL_FIXTURES, strict=True):
         assert classify(cw) == EXPECTED_CLASSES[name]
 
 
@@ -408,10 +414,10 @@ def test_end_to_end_phase_1000_plus_1002_chains(tmp_path):
     import pathlib
 
     from antigence_subnet.validator.deterministic_scoring import (
+        GENESIS_PREV_HASH,
         AuditChainWriter,
         FrozenRoundRecord,
         FrozenRoundScore,
-        GENESIS_PREV_HASH,
         SyndromeChainWriter,
         append_syndrome_for_codeword,
         verify_chain,
@@ -458,7 +464,7 @@ def test_end_to_end_phase_1000_plus_1002_chains(tmp_path):
     syn_rounds = [entry["round_index"] for entry in syn_lines]
     assert audit_rounds == syn_rounds == list(range(5))
 
-    for name, entry in zip(names, syn_lines):
+    for name, entry in zip(names, syn_lines, strict=True):
         assert entry["anomaly_class"] == EXPECTED_CLASSES[name]
 
 

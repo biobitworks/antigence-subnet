@@ -37,16 +37,14 @@ import subprocess
 import types
 
 import numpy as np
-import pytest
-
-from antigence_subnet.validator.deterministic_scoring import (
-    AuditChainWriter,
-    GENESIS_PREV_HASH,
-    verify_chain,
-)
 
 from antigence_subnet.validator import audit_state
 from antigence_subnet.validator.audit_bridge import RewardToAuditAdapter
+from antigence_subnet.validator.deterministic_scoring import (
+    GENESIS_PREV_HASH,
+    AuditChainWriter,
+    verify_chain,
+)
 
 
 # --------------------------------------------------------------------- #
@@ -215,7 +213,9 @@ def test_load_audit_state_explicit_chain_path(tmp_path):
 # Production untouched (STATEPOL protection)                             #
 # --------------------------------------------------------------------- #
 def test_production_untouched():
-    """NH0: audit-chain promotion silently rewrites reward.py. Expected: reward.py byte-identical to v13.0.
+    """NH0: audit-chain promotion silently rewrites reward.py.
+
+    Expected: reward.py byte-identical to v13.0.
 
     v13.1.1 (Phase 1103) expects forward.py, base/validator.py, and
     validate_config.py to differ from v13.0 (audit-chain wire-in).

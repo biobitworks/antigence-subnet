@@ -11,10 +11,8 @@ from __future__ import annotations
 
 import pathlib
 from dataclasses import dataclass
-from typing import Tuple
 
 from antigence_subnet.validator.deterministic_scoring.chain import (
-    ChainIntegrityError,
     verify_chain,
 )
 from antigence_subnet.validator.deterministic_scoring.serialization import (
@@ -45,7 +43,7 @@ class TrajectoryWindow:
     uid: int
     round_start: int
     round_end: int
-    ema_scores: Tuple[float, ...]
+    ema_scores: tuple[float, ...]
 
     def __post_init__(self) -> None:
         if type(self.uid) is not int or isinstance(self.uid, bool):

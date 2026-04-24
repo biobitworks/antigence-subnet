@@ -7,8 +7,8 @@ import pathlib
 import pytest
 
 from antigence_subnet.validator.deterministic_scoring.chain import (
-    AuditChainWriter,
     GENESIS_PREV_HASH,
+    AuditChainWriter,
     hash_record,
     verify_chain,
 )
@@ -79,7 +79,7 @@ def test_three_round_replay_prev_hash_chain():
     for i, rec in enumerate(result.records):
         assert rec.round_index == i
     # Each hash matches hash_record(record).
-    for rec, h in zip(result.records, result.hashes):
+    for rec, h in zip(result.records, result.hashes, strict=True):
         assert h == hash_record(rec)
 
 

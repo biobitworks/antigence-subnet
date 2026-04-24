@@ -23,19 +23,18 @@ torch.
 
 from __future__ import annotations
 
-import dataclasses
 import hashlib
 import importlib.resources
 import json
 import math
 import pathlib
 import types
+from collections.abc import Iterable, Mapping
 from dataclasses import dataclass
-from typing import Iterable, Mapping, Tuple
 
 from antigence_subnet.validator.deterministic_scoring.chain import (
-    ChainIntegrityError,
     GENESIS_PREV_HASH,
+    ChainIntegrityError,
 )
 from antigence_subnet.validator.deterministic_scoring.serialization import (
     canonical_json,
@@ -70,7 +69,7 @@ class Codeword:
     """
 
     schema_version: int
-    features: Tuple[float, ...]
+    features: tuple[float, ...]
     domain: str
 
     def __post_init__(self) -> None:  # noqa: D401
@@ -234,7 +233,7 @@ class SyndromeVector:
     """Output of :func:`syndrome` -- frozen, hashable, deterministic."""
 
     schema_version: int
-    bucket_signature: Tuple[int, ...]
+    bucket_signature: tuple[int, ...]
     digest: str
 
     def __post_init__(self) -> None:
@@ -352,7 +351,7 @@ class SyndromeRecord:
     prev_hash: str
     codeword_digest: str
     syndrome_digest: str
-    bucket_signature: Tuple[int, ...]
+    bucket_signature: tuple[int, ...]
     anomaly_class: str
     domain: str
 

@@ -29,7 +29,8 @@ Hard contracts (enforced by tests):
 from __future__ import annotations
 
 import dataclasses
-from typing import Any, Mapping
+from collections.abc import Mapping
+from typing import Any
 
 __all__ = [
     "AuditConfig",

@@ -39,31 +39,27 @@ production_copy reward path (with a bittensor stub already active).
 
 from __future__ import annotations
 
-import json
 import pathlib
 import subprocess
-import sys
 
 import numpy as np
 import pytest
 
-from antigence_subnet.validator.deterministic_scoring import (
-    AuditChainWriter,
-    ChainIntegrityError,
-    FrozenRoundRecord,
-    GENESIS_PREV_HASH,
-    from_canonical_json,
-    verify_chain,
-)
-
 # audit_bridge is at antigence_subnet/validator/audit_bridge.py (promoted to
 # production in Phase 1103 v13.1.1).
-from antigence_subnet.validator import audit_bridge  # noqa: E402
 from antigence_subnet.validator.audit_bridge import (  # noqa: E402
     RewardToAuditAdapter,
     bridge_get_rewards,
     next_round_index,
     resume_chain_prev_hash,
+)
+from antigence_subnet.validator.deterministic_scoring import (
+    GENESIS_PREV_HASH,
+    AuditChainWriter,
+    ChainIntegrityError,
+    FrozenRoundRecord,
+    from_canonical_json,
+    verify_chain,
 )
 
 

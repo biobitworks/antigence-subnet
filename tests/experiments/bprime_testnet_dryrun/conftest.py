@@ -30,7 +30,6 @@ import sys
 
 import pytest
 
-
 _CONFTEST_DIR = pathlib.Path(__file__).resolve().parent
 _REPO_ROOT = _CONFTEST_DIR
 for _ in range(8):

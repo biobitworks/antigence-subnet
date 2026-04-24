@@ -65,10 +65,10 @@ def test_star_import_works():
 def test_three_round_end_to_end(tmp_path):
     """Build a 3-round chain via the public API, then verify."""
     from antigence_subnet.validator.deterministic_scoring import (
+        GENESIS_PREV_HASH,
         AuditChainWriter,
         FrozenRoundRecord,
         FrozenRoundScore,
-        GENESIS_PREV_HASH,
         hash_record,
         verify_chain,
     )

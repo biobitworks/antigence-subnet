@@ -50,9 +50,9 @@ Syndrome layer (Phase 1002 / SYNDROME-01..05):
 """
 
 from antigence_subnet.validator.deterministic_scoring.chain import (
+    GENESIS_PREV_HASH,
     AuditChainWriter,
     ChainIntegrityError,
-    GENESIS_PREV_HASH,
     hash_record,
     verify_chain,
 )

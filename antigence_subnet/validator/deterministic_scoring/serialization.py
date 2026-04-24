@@ -25,7 +25,7 @@ from __future__ import annotations
 import dataclasses
 import json
 import math
-from typing import Any, Type, TypeVar
+from typing import Any, TypeVar
 
 from antigence_subnet.validator.deterministic_scoring.state import (
     FrozenRoundRecord,
@@ -114,7 +114,7 @@ def canonical_json(obj: Any) -> bytes:
     return text.encode("utf-8")
 
 
-def from_canonical_json(data: bytes, target_type: Type[T]) -> T:
+def from_canonical_json(data: bytes, target_type: type[T]) -> T:
     """Decode canonical JSON bytes into the requested frozen dataclass type.
 
     Supports ``FrozenRoundScore`` and ``FrozenRoundRecord``. For generic

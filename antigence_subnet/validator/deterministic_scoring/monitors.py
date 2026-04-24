@@ -19,7 +19,7 @@ Pure stdlib. No numpy. No bittensor. No randomness.
 from __future__ import annotations
 
 import statistics
-from typing import Mapping, Sequence
+from collections.abc import Mapping, Sequence
 
 from antigence_subnet.validator.deterministic_scoring.trajectory import (
     TrajectoryWindow,
@@ -150,7 +150,7 @@ def detect_convergence_failure(
         b_slice = b.ema_scores[
             round_start - b.round_start : round_end - b.round_start + 1
         ]
-        max_diff = max(abs(x - y) for x, y in zip(a_slice, b_slice))
+        max_diff = max(abs(x - y) for x, y in zip(a_slice, b_slice, strict=True))
         if max_diff > epsilon:
             events.append(
                 {

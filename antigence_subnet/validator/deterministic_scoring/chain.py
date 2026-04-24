@@ -110,10 +110,7 @@ class AuditChainWriter:
                 f"got={record.prev_hash}"
             )
         last_idx = self._last_round_index()
-        if last_idx is None:
-            expected_round = 0
-        else:
-            expected_round = last_idx + 1
+        expected_round = 0 if last_idx is None else last_idx + 1
         if record.round_index != expected_round:
             raise ChainIntegrityError(
                 f"non-contiguous round_index on append: expected="

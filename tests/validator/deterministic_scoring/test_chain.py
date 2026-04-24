@@ -7,9 +7,9 @@ import pathlib
 import pytest
 
 from antigence_subnet.validator.deterministic_scoring.chain import (
+    GENESIS_PREV_HASH,
     AuditChainWriter,
     ChainIntegrityError,
-    GENESIS_PREV_HASH,
     hash_record,
     verify_chain,
 )

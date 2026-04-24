@@ -587,11 +587,12 @@ async def forward(validator) -> None:
     _chain_path_for_audit = getattr(validator, "audit_chain_path", None)
     if _audit_enabled and _chain_path_for_audit:
         try:
+            from antigence_subnet.validator.audit_bridge import (
+                RewardToAuditAdapter,
+                next_round_index,
+            )
             from antigence_subnet.validator.deterministic_scoring import (
                 AuditChainWriter,
-            )
-            from antigence_subnet.validator.audit_bridge import (
-                RewardToAuditAdapter, next_round_index,
             )
 
             _chain_writer = AuditChainWriter(_chain_path_for_audit)

@@ -16,7 +16,6 @@ from antigence_subnet.validator.deterministic_scoring.trajectory import (
     TrajectoryWindow,
 )
 
-
 # ---------------------------------------------------------------------------
 # Oscillation detector
 # ---------------------------------------------------------------------------
@@ -215,5 +214,5 @@ def test_convergence_failure_round_range_is_intersection():
     assert ev["details"]["window_size"] == 8
     # The slice of A for rounds 7..14 is the last 8 values of a_scores.
     a_slice = a_scores[-8:]
-    expected_max = max(abs(x - y) for x, y in zip(a_slice, b_scores))
+    expected_max = max(abs(x - y) for x, y in zip(a_slice, b_scores, strict=True))
     assert ev["details"]["max_divergence"] == pytest.approx(expected_max)

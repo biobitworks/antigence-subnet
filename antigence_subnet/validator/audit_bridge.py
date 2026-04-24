@@ -31,14 +31,14 @@ from __future__ import annotations
 
 import math
 import pathlib
-from typing import TYPE_CHECKING, Any, Iterable, Sequence
+from collections.abc import Sequence
+from typing import TYPE_CHECKING, Any
 
 from antigence_subnet.validator.deterministic_scoring import (
+    GENESIS_PREV_HASH,
     AuditChainWriter,
-    ChainIntegrityError,
     FrozenRoundRecord,
     FrozenRoundScore,
-    GENESIS_PREV_HASH,
     verify_chain,
 )
 
@@ -65,20 +65,20 @@ def _is_numpy_floating(x: Any) -> bool:
     if t.__module__ != "numpy":
         return False
     # Walk MRO for a numpy.floating base. Cheaper than importing numpy.
-    for base in t.__mro__:
-        if base.__module__ == "numpy" and base.__name__ == "floating":
-            return True
-    return False
+    return any(
+        base.__module__ == "numpy" and base.__name__ == "floating"
+        for base in t.__mro__
+    )
 
 
 def _is_numpy_integer(x: Any) -> bool:
     t = type(x)
     if t.__module__ != "numpy":
         return False
-    for base in t.__mro__:
-        if base.__module__ == "numpy" and base.__name__ == "integer":
-            return True
-    return False
+    return any(
+        base.__module__ == "numpy" and base.__name__ == "integer"
+        for base in t.__mro__
+    )
 
 
 class RewardToAuditAdapter:
@@ -257,7 +257,7 @@ def bridge_get_rewards(
     hotkeys_by_uid: dict[int, str] | None = None,
     round_index: int | None = None,
     ema_alpha: float = 0.1,
-) -> "_np.ndarray":
+) -> _np.ndarray:
     """Call production_copy.reward.get_rewards and emit one chain record.
 
     Drop-in compatibility: returns the same ``numpy.ndarray`` the

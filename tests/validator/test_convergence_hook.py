@@ -11,7 +11,6 @@ bittensor -- the forward.py copy's bittensor imports are stubbed by
 
 from __future__ import annotations
 
-import io
 import json
 import pathlib
 import statistics
@@ -19,13 +18,10 @@ import subprocess
 import sys
 import time
 
-import pytest
-
 from antigence_subnet.validator.deterministic_scoring import (
     AuditChainWriter,
     FrozenRoundRecord,
     FrozenRoundScore,
-    GENESIS_PREV_HASH,
     verify_chain,
 )
 
@@ -207,7 +203,11 @@ def test_hook_non_blocking_on_failure(tmp_path, monkeypatch):
             convergence_hook.run_convergence_checks(path)
         except Exception as exc:
             caught_by_caller = True
-            assert "chain" in str(exc).lower() or "no such" in str(exc).lower() or "empty" in str(exc).lower() or True
+            # Expected error mentions chain/no-such/empty; we accept any
+            # exception here because the contract under test is that the
+            # caller catches it, not the exact message.
+            _ = str(exc).lower()
+            assert True
     finally:
         pass
     assert raised is True  # hook surfaces the error
@@ -229,7 +229,8 @@ def test_hook_no_bittensor_import():
         f"sys.path.insert(0, r'{repo_root}');"
         "from antigence_subnet.validator import convergence_hook;"
         "assert 'bittensor' not in sys.modules, "
-        "    f'bittensor leaked into convergence_hook import graph: {list(k for k in sys.modules if \"bittensor\" in k)}';"
+        "    f'bittensor leaked into convergence_hook import graph: "
+        "{list(k for k in sys.modules if \"bittensor\" in k)}';"
         "print('OK')"
     )
     result = subprocess.run(

@@ -34,7 +34,8 @@ from __future__ import annotations
 import json
 import pathlib
 import sys
-from typing import Any, Callable, Mapping
+from collections.abc import Callable, Mapping
+from typing import Any
 
 from prometheus_client import CollectorRegistry, Counter
 

@@ -36,7 +36,6 @@ from antigence_subnet.validator.deterministic_scoring.state import (
     FrozenRoundScore,
 )
 
-
 # ---- Fixture ----------------------------------------------------------------
 
 
