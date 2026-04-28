@@ -27,8 +27,14 @@ class BaseMinerNeuron(BaseNeuron):
     def __init__(self, config=None):
         super().__init__(config=config)
 
-        # Set up axon
-        self.axon = bt.Axon(wallet=self.wallet, config=self.config)
+        # Set up axon. In mock mode, pin external_ip to a loopback value so
+        # bittensor's networking.get_external_ip() does not reach
+        # https://checkip.amazonaws.com (offline / sandboxed test runners
+        # would otherwise stall or fail).
+        axon_kwargs: dict = {"wallet": self.wallet, "config": self.config}
+        if getattr(self.config, "mock", False):
+            axon_kwargs["external_ip"] = "127.0.0.1"
+        self.axon = bt.Axon(**axon_kwargs)
 
         # Attach handlers to axon
         self.axon.attach(
