@@ -82,7 +82,7 @@ pip install -e '.[cli]'
 ```bash
 # Check version
 python -c "import antigence_subnet; print(antigence_subnet.__version__)"
-# Expected: 10.0.0
+# Expected: 10.1.0
 
 # Check validator loads
 python neurons/validator.py --mock --help

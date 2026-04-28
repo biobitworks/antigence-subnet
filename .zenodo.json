@@ -9,7 +9,7 @@
   "upload_type": "software",
   "access_right": "open",
   "license": "MIT",
-  "version": "10.0.0",
+  "version": "10.1.0",
   "keywords": [
     "Bittensor",
     "subnet",
@@ -27,7 +27,7 @@
       "scheme": "doi"
     },
     {
-      "identifier": "https://github.com/biobitworks/antigence-bittensor",
+      "identifier": "https://github.com/biobitworks/antigence-subnet",
       "relation": "isSupplementTo",
       "scheme": "url"
     }

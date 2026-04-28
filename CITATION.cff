@@ -3,9 +3,9 @@ message: "If you use this software, cite the repository metadata below. A subnet
 authors:
   - name: "BiobitWorks"
 title: "Antigence Subnet: Decentralized Verification for AI Outputs on Bittensor"
-version: 10.0.0
-date-released: 2026-04-05
-repository-code: "https://github.com/biobitworks/antigence-bittensor"
+version: 10.1.0
+date-released: 2026-04-28
+repository-code: "https://github.com/biobitworks/antigence-subnet"
 abstract: >-
   A decentralized verification subnet for Bittensor where miners run anomaly
   detectors (antibodies), validators apply selection pressure through hidden
