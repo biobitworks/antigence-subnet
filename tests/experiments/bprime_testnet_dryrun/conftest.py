@@ -45,6 +45,15 @@ for _p in (str(_REPO_ROOT), str(_DRYRUN_DIR)):
     if _p not in sys.path:
         sys.path.insert(0, _p)
 
+# The dry-run source (experiments/bprime-testnet-dryrun/) is excluded from
+# the public repo mirror. Skip collection cleanly when the module is absent,
+# matching the established public-mirror skip pattern (see commits
+# "fix: skip mirror manifest test in public repo CI" and
+# "fix: skip phase95 report contract tests (artifacts archived)").
+collect_ignore: list[str] = []
+if not (_DRYRUN_DIR / "scripted_adversarial_miner.py").is_file():
+    collect_ignore.append("test_scripted_miner.py")
+
 
 @pytest.fixture(autouse=True, scope="session")
 def _force_pythonhashseed_zero() -> None:
