@@ -34,4 +34,9 @@ jobs:
         uses: astral-sh/ruff-action@4919ec5cf1f49eff0871dbcea0da843445b837e6  # v3
 
       - name: Test
+        env:
+          # Live Ollama harness tests require a local Ollama server. They are
+          # auto-skipped by tests/conftest.py when OLLAMA_SKIP=1. Mocked
+          # contract tests still run.
+          OLLAMA_SKIP: "1"
         run: pytest tests/ -x --tb=short -q
