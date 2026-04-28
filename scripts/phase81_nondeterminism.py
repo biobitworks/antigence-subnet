@@ -7,6 +7,7 @@ import argparse
 import asyncio
 import json
 import random
+import re
 import subprocess
 import sys
 from dataclasses import dataclass
@@ -656,9 +657,11 @@ def validate_phase81_artifacts(
     ):
         if heading not in inputs.markdown_text:
             raise ValueError(f"Markdown missing heading/text: {heading}")
-    lowered_markdown = inputs.markdown_text.lower()
+    # Collapse all whitespace runs (including newlines) to a single space so a
+    # boundary phrase that wraps across a markdown line break still matches.
+    normalized_markdown = re.sub(r"\s+", " ", inputs.markdown_text.lower())
     for phrase in BOUNDARY_PHRASES:
-        if phrase.lower() not in lowered_markdown:
+        if re.sub(r"\s+", " ", phrase.lower()) not in normalized_markdown:
             raise ValueError(f"Markdown missing boundary phrase: {phrase}")
     if "claims" not in inputs.overwatch_payload:
         raise ValueError("Overwatch payload missing claims")
