@@ -37,6 +37,7 @@ import subprocess
 import types
 
 import numpy as np
+import pytest
 
 from antigence_subnet.validator import audit_state
 from antigence_subnet.validator.audit_bridge import RewardToAuditAdapter
@@ -223,6 +224,27 @@ def test_production_untouched():
     outside (STATEPOL-01 additivity guarantee on the reward path).
     """
     repo_root = pathlib.Path(__file__).resolve().parents[2]
+
+    # The v13.0 tag exists only in the internal repo; the public mirror is a
+    # curated subset whose history doesn't include all tagged commits. Skip
+    # cleanly when the ref isn't resolvable, matching the established
+    # public-mirror skip pattern (see commits
+    # "fix: skip mirror manifest test in public repo CI",
+    # "fix: skip phase95 report contract tests (artifacts archived)", and
+    # "fix: skip dry-run miner test when source missing from public mirror").
+    ref_check = subprocess.run(
+        ["git", "rev-parse", "--verify", "v13.0"],
+        capture_output=True,
+        cwd=str(repo_root),
+        check=False,
+    )
+    if ref_check.returncode != 0:
+        pytest.skip(
+            "v13.0 git ref not resolvable in this checkout (public mirror "
+            "ships without the tag); test runs in the internal repo where "
+            "v13.0 exists."
+        )
+
     files = [
         "antigence_subnet/validator/reward.py",
     ]
