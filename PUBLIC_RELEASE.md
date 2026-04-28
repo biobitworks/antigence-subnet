@@ -1,55 +1,58 @@
-# Public Release Checklist
+# Public Release Notes
 
-This repository is close to public-ready, but a few checks should be completed
-before changing GitHub visibility from private to public.
+This file ships in the public mirror of the Antigence Subnet. It documents
+what the published artifact is and is not, so external readers can audit the
+project's release boundary without having to dig through the planning history.
 
-## Immediate Sharing Options
+## What this repository is
 
-- For one colleague, prefer adding them as a GitHub collaborator to the private repo.
-- For broader sharing, create a public-safe release branch or flip the repo to public after the checks below.
+This is the **curated public mirror** of the Antigence Subnet codebase
+(`https://github.com/biobitworks/antigence-subnet`). It is generated from a
+private working repository by `scripts/build_public_mirror.py`, driven by
+`.planning/phases/99-public-mirror-curation-history-sanitization/99-public-mirror-manifest.json`.
 
-## Publication Checks
+The mirror is a bounded artifact, not a full clone. Some directories that
+exist in the private working tree are intentionally not published.
 
-Canonical audit artifacts for the new public-safe release track:
+## What is published
 
-- `.planning/phases/98-public-safety-audit-content-inventory/98-public-surface-inventory.json`
-- `.planning/phases/98-public-safety-audit-content-inventory/98-public-surface-inventory.md`
-- `.planning/phases/98-public-safety-audit-content-inventory/98-release-strategy.md`
-- `.planning/phases/98-public-safety-audit-content-inventory/98-public-release-action-map.json`
-- `.planning/phases/99-public-mirror-curation-history-sanitization/99-public-mirror-manifest.json`
-- `.planning/phases/99-public-mirror-curation-history-sanitization/99-history-strategy.md`
-- `.planning/phases/99-public-mirror-curation-history-sanitization/99-public-tree-verification.json`
-- `.planning/phases/101-public-release-dry-run-launch-approval/101-dry-run-report.md`
-- `.planning/phases/101-public-release-dry-run-launch-approval/101-release-checks.json`
-- `.planning/phases/101-public-release-dry-run-launch-approval/101-launch-approval.json`
+- The runtime code for the subnet: `antigence_subnet/`, `neurons/`, `scripts/`,
+  `tests/`, `configs/`, `data/`.
+- Build, lint, and CI configuration: `pyproject.toml`, `Makefile`,
+  `Dockerfile`, `docker-compose.yml`, `requirements*.txt`, `.github/`,
+  `osv-scanner.toml`.
+- Citation and release metadata: `CITATION.cff`, `.zenodo.json`, `LICENSE`,
+  `SECURITY.md`, `CONTRIBUTING.md`, `CHANGELOG.md`, `README.md`,
+  `min_compute.yml`.
+- Operator templates: `antigence_subnet.toml.example`, `.env.example`,
+  `.env.phase94.example`.
+- Public-safe planning artifacts: only the governance and dry-run records that
+  the curation manifest explicitly allows under
+  `.planning/phases/94-testnet-deployment-of-winning-ensemble-policy/artifacts/governance/`.
 
-1. Confirm repo visibility strategy.
-   - Option A: keep this repo private and create a separate public mirror.
-   - Option B: make `biobitworks/antigence-bittensor` public directly.
+## What is intentionally not in the mirror
 
-2. Review historical pitch/application docs.
-   - The curated public mirror now excludes `docs/pitch/` and `PUBLIC_RELEASE.md`.
-   - If you ever flip this working repo public directly instead of publishing the mirror, review `docs/pitch/` separately first.
+- Internal handoff state (`.planning/HANDOFF.json`) and per-run logs
+  (`.planning/runs/`).
+- Local agent state directories (`.antigence/`, `.claude/`).
+- Internal pitch and application drafts (`docs/pitch/`).
+- Private working notes, cache directories, and historical scratch files.
+- Tests that depend on internal preflight, submission, or release-package
+  fixtures (`tests/test_phase9{3,4,5,6,7}_*`).
 
-3. Confirm sample data policy.
-   - Evaluation and test fixtures include intentionally synthetic credential-like strings for security-detection examples.
-   - Keep them only if you are comfortable with public readers seeing them as test fixtures.
-   - Final owner approval for those optics remains part of the Phase 101 launch gate.
+## Release status
 
-4. Confirm external metadata.
-   - README no longer contains a placeholder DOI badge.
-   - Add a real Zenodo/DOI badge later if you mint one.
+- License: MIT (see `LICENSE`).
+- Current package version: see `CHANGELOG.md` and `pyproject.toml`.
+- Citation: see `CITATION.cff` (a Zenodo DOI for this subnet release will be
+  added once minted).
+- Deployment evidence: simulation-only, as recorded in the v10 release notes
+  under `docs/release/`. There is no funded-wallet live-network deployment
+  bundled with this release.
 
-5. Final verification before publish.
-   - Run `ruff check antigence_subnet`
-   - Run the relevant test suite
-   - Review `git diff` for any private notes or local-only changes
-   - Launch remains blocked pending explicit human approval recorded in the Phase 101 approval artifact
+## Reporting issues
 
-## Current Status
-
-- MIT license present
-- README present
-- `.env.example` is template-only
-- No `.env`, `.pem`, `.key`, `.p12`, `.pfx`, or `.crt` files detected in the repo root scan
-- Current GitHub repo visibility: private
+- Security issues: see `SECURITY.md`.
+- Functional issues, questions, and contributions: open a GitHub issue or
+  pull request against
+  `https://github.com/biobitworks/antigence-subnet`.
