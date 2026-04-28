@@ -284,6 +284,27 @@ def test_production_code_unchanged():
     outside), which is the surviving half of this invariant.
     """
     repo_root = pathlib.Path(__file__).resolve().parents[2]
+
+    # The v13.0 tag exists only in the internal repo; the public mirror is a
+    # curated subset whose history doesn't include all tagged commits. Skip
+    # cleanly when the ref isn't resolvable, matching the established
+    # public-mirror skip pattern (see commits
+    # "fix: skip mirror manifest test in public repo CI",
+    # "fix: skip phase95 report contract tests (artifacts archived)", and
+    # "fix: skip dry-run miner test when source missing from public mirror").
+    ref_check = subprocess.run(
+        ["git", "rev-parse", "--verify", "v13.0"],
+        capture_output=True,
+        cwd=str(repo_root),
+        check=False,
+    )
+    if ref_check.returncode != 0:
+        pytest.skip(
+            "v13.0 git ref not resolvable in this checkout (public mirror "
+            "ships without the tag); test runs in the internal repo where "
+            "v13.0 exists."
+        )
+
     protected = [
         "antigence_subnet/validator/reward.py",
     ]
