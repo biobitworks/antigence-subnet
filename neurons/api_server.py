@@ -134,7 +134,11 @@ def main():
     init_thread.start()
 
     try:
-        uvicorn.run(app, host="0.0.0.0", port=args.port)
+        # The API server intentionally binds 0.0.0.0 so the validator can
+        # be reached by miners and operators on the host network. This is
+        # the documented deployment model; if you need a tighter bind run
+        # behind a reverse proxy or firewall the port. nosec: B104
+        uvicorn.run(app, host="0.0.0.0", port=args.port)  # nosec B104
     except KeyboardInterrupt:
         bt.logging.info("API server shutting down")
         sys.exit(0)

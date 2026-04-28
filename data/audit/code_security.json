@@ -376,6 +376,6 @@
   "metadata": {
     "audit_timestamp": "2026-04-01T07:24:49.517672+00:00",
     "extractor_class": "DendriticFeatureExtractor",
-    "data_dir": "/Users/byron/projects/active/antigence-bittensor/.claude/worktrees/agent-aae2a82a/data/evaluation"
+    "data_dir": "data/evaluation"
   }
 }

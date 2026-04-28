@@ -35,8 +35,12 @@ import numpy as np
 # Add project root to path (same pattern as benchmark_detectors.py)
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 
-import ollama
-
+# `ollama` is imported lazily inside the functions that actually call it
+# (check_ollama_available, generate_ollama_prompt, run_single_round warmup).
+# This keeps DATA_DIR / DOMAINS / DECISION_THRESHOLD / load_eval_data importable
+# in environments that do not have the `ollama` Python package installed
+# (e.g. minimal CI), so pure-helper tests in tests/test_phase81_nondeterminism.py
+# and tests/test_phase83_scoring_benchmark.py can still collect and run.
 from antigence_subnet.miner.data import load_training_samples
 from antigence_subnet.miner.detectors import (
     BioDetector,
@@ -134,6 +138,7 @@ def check_ollama_available(model: str) -> bool:
         Prints actionable error messages on failure.
     """
     try:
+        import ollama  # local import: package may not be installed in minimal CI
         response = ollama.list()
     except (ConnectionError, Exception) as e:
         print(f"Ollama not available: {e}")
@@ -202,6 +207,8 @@ def generate_ollama_prompt(model: str, domain: str, seed: int) -> dict:
     Returns:
         Dict with keys: text, latency_ms, eval_ms, tokens.
     """
+    import ollama  # local import: package may not be installed in minimal CI
+
     prompt_text = DOMAIN_PROMPTS.get(domain, DOMAIN_PROMPTS["hallucination"])
 
     response = ollama.chat(
@@ -257,6 +264,8 @@ async def run_single_round(
 
     # 1. Optional warmup: load model into Ollama memory
     if warmup:
+        import ollama  # local import: package may not be installed in minimal CI
+
         ollama.chat(
             model=model,
             messages=[{"role": "user", "content": "warmup"}],

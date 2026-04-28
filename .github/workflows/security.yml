@@ -20,19 +20,28 @@ jobs:
       - name: Install bandit
         run: pip install bandit
 
-      - name: Run bandit (full report)
+      # Full Bandit JSON for triage. --exit-zero so this step never blocks the
+      # gating step below; the JSON is uploaded as an artifact for review.
+      - name: Run bandit (full report -> JSON artifact)
         run: bandit -r antigence_subnet/ neurons/ scripts/ -f json -o bandit-results.json --exit-zero
 
+      - name: Upload bandit report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4
+        with:
+          name: bandit-report
+          path: bandit-results.json
+          retention-days: 30
+
+      # Gating step: fail on any medium- or high-severity Bandit finding.
+      # Per-line `# nosec BXXX` comments in the source justify accepted
+      # findings (search the codebase to audit each one). No global rule
+      # skips here -- previously B104/B310/B608/B614 were skipped wholesale,
+      # which created a CI false-negative path. Adding a new bind/listener
+      # issue, unsafe URL handling, SQL construction, or unsafe model load
+      # will now fail this job until annotated.
       - name: Run bandit (fail on medium+ severity)
-        run: |
-          bandit -r antigence_subnet/ neurons/ scripts/ -ll \
-            --skip B104,B310,B608,B614
-          # Skipped rules (all verified false positives in this codebase):
-          # B104: bind 0.0.0.0 — local benchmark/validator harnesses
-          # B310: urlopen — local Ollama endpoints, not user-controlled input
-          # B608: SQL expressions — parameterized evaluation queries, no user input
-          # B614: torch.load — models loaded with weights_only=True
-          # Full report (all rules) in bandit-results.json step above
+        run: bandit -r antigence_subnet/ neurons/ scripts/ --severity-level medium
 
   gitleaks:
     runs-on: ubuntu-latest
@@ -50,7 +59,23 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd  # v6
 
+      # Run osv-scanner with our explicit ignore list (osv-scanner.toml in
+      # repo root). Any vulnerability NOT listed there will fail this job;
+      # accepted findings each carry a deadline and rationale. continue-on-
+      # error is intentionally NOT set: a new CVE must be either patched
+      # or explicitly accepted, not silently allowed.
       - uses: google/osv-scanner-action/osv-scanner-action@98b584ee2ed2da3935ccce10e06739d54cdcd20b  # v2.0.0
-        continue-on-error: true  # Advisory — upstream deps (py, setuptools) have known CVEs we can't fix
         with:
-          scan-args: --lockfile=requirements-lock.txt
+          scan-args: |-
+            --config=osv-scanner.toml
+            --format=json
+            --output=osv-results.json
+            --lockfile=requirements-lock.txt
+
+      - name: Upload osv-scanner report
+        if: always()
+        uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02  # v4
+        with:
+          name: osv-scanner-report
+          path: osv-results.json
+          retention-days: 30

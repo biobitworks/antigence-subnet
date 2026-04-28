@@ -258,7 +258,7 @@ class TestReasoningDataset:
     SAMPLES_PATH = "data/evaluation/reasoning/samples.json"
     MANIFEST_PATH = "data/evaluation/reasoning/manifest.json"
 
-    def test_samples_has_30_entries(self):
+    def test_samples_has_220_entries(self):
         with open(self.SAMPLES_PATH) as f:
             data = json.load(f)
         assert len(data["samples"]) == 220

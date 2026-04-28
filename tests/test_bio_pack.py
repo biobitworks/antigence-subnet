@@ -111,7 +111,7 @@ class TestBioDataset:
     SAMPLES_PATH = "data/evaluation/bio/samples.json"
     MANIFEST_PATH = "data/evaluation/bio/manifest.json"
 
-    def test_samples_has_30_entries(self):
+    def test_samples_has_220_entries(self):
         with open(self.SAMPLES_PATH) as f:
             data = json.load(f)
         assert len(data["samples"]) == 220

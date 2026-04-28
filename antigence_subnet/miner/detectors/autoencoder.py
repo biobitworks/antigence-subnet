@@ -210,7 +210,12 @@ class AutoencoderDetector(BaseDetector):
             path: Directory containing ae_vectorizer.joblib and ae_state.pt.
         """
         self.vectorizer = joblib.load(f"{path}/ae_vectorizer.joblib")
-        checkpoint = torch.load(
+        # weights_only=False is needed because the checkpoint stores Python
+        # ints (input_dim, hidden_dim, latent_dim) and a numpy array
+        # (baseline_errors) alongside tensors. The file is written by the
+        # miner via save_state() above to a path the operator controls;
+        # there is no remote-loading surface here. nosec: B614
+        checkpoint = torch.load(  # nosec B614
             f"{path}/ae_state.pt",
             map_location=self.device,
             weights_only=False,

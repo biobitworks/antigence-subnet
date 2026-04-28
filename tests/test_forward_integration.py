@@ -83,13 +83,29 @@ def _make_mock_response(anomaly_score=0.8, anomaly_type="factual_error"):
 
 
 @pytest.mark.asyncio
-@pytest.mark.skip(reason="forward scoring integration not producing expected non-zero scores")
 async def test_forward_queries_miners_and_updates_scores(tmp_path):
-    """Forward pass queries miners for each sample and updates EMA scores."""
+    """Forward pass queries miners for valid scores and updates EMA scores.
+
+    Regression guard: a valid miner response must produce a non-zero composite
+    reward and reach `update_scores`. This is the core "valid miners get paid"
+    contract for the subnet.
+
+    The mock dendrite returns ground-truth-correlated scores so honeypots pass
+    (no zero-out from honeypot failures), with a small per-miner offset so
+    collusion detection (default similarity threshold 0.99) does not fire and
+    mask a real scoring regression.
+    """
     validator = _make_mock_validator(tmp_path)
 
     if validator.evaluation is None:
         pytest.skip("Seed data not available")
+
+    # Disable collusion detection in this test: it has its own dedicated
+    # integration test in tests/test_collusion.py and is not the contract
+    # under test here.
+    validator.config.validator = SimpleNamespace(
+        collusion=SimpleNamespace(enabled=False)
+    )
 
     n_miners = 4
     update_calls = []
@@ -105,11 +121,32 @@ async def test_forward_queries_miners_and_updates_scores(tmp_path):
 
     validator.update_scores = mock_update_scores
 
-    # Mock dendrite to return responses with anomaly scores
+    # Build a prompt -> ground_truth lookup so the mock dendrite can return
+    # honeypot-passing scores. Adversarial prompts (generated in forward) and
+    # perturbation variants both keep the original prompt, so this lookup
+    # covers everything the mock will be asked.
+    prompt_to_truth = {
+        s["prompt"]: validator.evaluation.manifest.get(s["id"], {}).get(
+            "ground_truth_label", "normal"
+        )
+        for s in validator.evaluation.samples
+    }
+
+    # Per-axon counter so we can offset per miner and bypass collusion (also
+    # belt-and-braces given collusion is disabled above).
+    miner_offsets = {
+        validator.metagraph.axons[i].port: 0.01 * i
+        for i in range(len(validator.metagraph.axons))
+    }
+
     async def mock_dendrite(axons, synapse, deserialize=False, timeout=12.0):
+        truth = prompt_to_truth.get(synapse.prompt, "normal")
+        base = 0.85 if truth == "anomalous" else 0.15
         responses = []
-        for _ in axons:
-            responses.append(_make_mock_response(anomaly_score=0.8))
+        for axon in axons:
+            offset = miner_offsets.get(axon.port, 0.0)
+            score = max(0.0, min(1.0, base + offset))
+            responses.append(_make_mock_response(anomaly_score=score))
         return responses
 
     validator.dendrite = mock_dendrite
@@ -125,7 +162,19 @@ async def test_forward_queries_miners_and_updates_scores(tmp_path):
     assert len(uids) == n_miners
 
     # Rewards should not all be zero (miners sent valid responses)
-    assert rewards.sum() > 0
+    assert rewards.sum() > 0, (
+        f"Forward scoring produced all-zero rewards for valid miner responses: "
+        f"rewards={rewards.tolist()}, uids={uids}"
+    )
+
+    # EMA scores must move off zero for each scored miner (validates that
+    # update_scores actually applies the EMA update).
+    for uid in uids:
+        if rewards[list(uids).index(uid)] > 0:
+            assert validator.scores[uid] > 0, (
+                f"EMA score for uid={uid} was not updated from 0 despite "
+                f"non-zero reward {rewards[list(uids).index(uid)]}"
+            )
 
 
 @pytest.mark.asyncio

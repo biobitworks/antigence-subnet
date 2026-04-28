@@ -1,12 +1,16 @@
-"""Contract tests for the Phase 83 scorer benchmark runner."""
+"""Contract tests for the Phase 83 scorer benchmark runner.
+
+These tests cover artifact-shape helpers that never call the live `ollama`
+package. The harness module imports `ollama` lazily inside the functions
+that need it, so this file collects and runs cleanly on minimal CI where
+the `ollama` Python package is not installed.
+"""
 
 from __future__ import annotations
 
 from types import SimpleNamespace
 
 import pytest
-
-pytest.importorskip("ollama", reason="ollama not available in CI")
 
 
 def _mode_spread(mean: float, cv: float, flip_count: int) -> dict[str, float | int]:

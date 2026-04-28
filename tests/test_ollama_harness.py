@@ -5,7 +5,11 @@ Defines the contract for scripts/ollama_test_harness.py:
 - check_ollama_available(): Pre-flight check for Ollama server and model
 - run_single_round(): Async single-round eval pipeline producing metrics dict
 
-Mocked tests run without Ollama. Live tests require @pytest.mark.ollama.
+The mocked tests in this file patch `ollama.chat` / `ollama.list`, which
+requires the `ollama` Python package to be importable (it is listed in the
+`[dev]` extras in pyproject.toml so CI installs it). Live tests carry the
+`@pytest.mark.ollama` marker and additionally require a running Ollama
+server.
 """
 
 import asyncio
@@ -14,7 +18,13 @@ from unittest.mock import patch
 
 import pytest
 
-pytest.importorskip("ollama", reason="ollama not available in CI")
+# `ollama` package is required for these tests because patches resolve the
+# attribute at import time. It is declared in the `[dev]` extras; this guard
+# keeps developer environments without that extra from breaking collection.
+pytest.importorskip(
+    "ollama",
+    reason="ollama package not installed (declared in [dev] extras)",
+)
 
 # ---------------------------------------------------------------------------
 # Fixtures

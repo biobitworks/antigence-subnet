@@ -1,0 +1,41 @@
+# OSV-Scanner configuration.
+#
+# This file lets us ACCEPT specific CVEs explicitly so the security workflow
+# can fail loudly on any new/unaccepted finding. Each entry must include the
+# id, the deadline by which it should be revisited, and a human-readable
+# reason. CI (`.github/workflows/security.yml`) runs osv-scanner with
+# `--config=osv-scanner.toml`, uploads the JSON report as an artifact, and
+# fails on any finding not listed below.
+#
+# DO NOT bulk-ignore. Each entry is an explicit, auditable exception.
+#
+# Format: https://google.github.io/osv-scanner/configuration/
+#
+# IDs below were verified against the OSV API
+# (https://api.osv.dev/v1/query) on 2026-04-28 by querying each vulnerable
+# transitive dep's installed version. Re-run the same query after every
+# `requirements-lock.txt` bump and replace any entries that have moved.
+
+# --- py==1.11.0 (transitive via bittensor 10.2.0 -> pytest <8 path) ---
+# OSV reports a single vuln; we list both id forms (PYSEC + GHSA alias) so
+# the ignore matches regardless of which one osv-scanner surfaces in CI.
+[[IgnoredVulns]]
+id = "PYSEC-2022-42969"
+ignoreUntil = 2026-12-31
+reason = "py==1.11.0 ReDoS (CVE-2022-42969) in py.path.svnwc. The svnwc surface is unused by this codebase (no SVN ops anywhere). Pinned transitively by bittensor 10.2.0; revisit when bittensor drops the py dep."
+
+[[IgnoredVulns]]
+id = "GHSA-w596-4wvx-j9j6"
+ignoreUntil = 2026-12-31
+reason = "GitHub advisory alias for PYSEC-2022-42969 (py==1.11.0). Tracked alongside the PYSEC entry above."
+
+# --- setuptools==70.3.0 (transitive) ---
+[[IgnoredVulns]]
+id = "GHSA-5rjg-fvgr-3xxf"
+ignoreUntil = 2026-12-31
+reason = "setuptools<78.1.1 path traversal in PackageIndex.download (CVE-2025-47273). PackageIndex is only used during interactive `pip install`, which has no remote attacker surface in our runtime/build path. Revisit at next dependency bump."
+
+[[IgnoredVulns]]
+id = "PYSEC-2025-49"
+ignoreUntil = 2026-12-31
+reason = "PyPI alias for GHSA-5rjg-fvgr-3xxf. Tracked alongside the GHSA entry above."

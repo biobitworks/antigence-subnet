@@ -31,6 +31,10 @@ dev = [
     "pytest-cov>=4.0.0",
     "httpx>=0.27.0",
     "prometheus-client>=0.20.0",
+    # Required by tests that patch `ollama.chat` / `ollama.list`. The client
+    # is small (Python-only); without it `unittest.mock.patch("ollama.chat")`
+    # fails at import time and CI silently skips the harness contract tests.
+    "ollama>=0.6.0,<1.0",
 ]
 sbert = ["sentence-transformers>=4.0,<6.0"]
 fractal = ["nolds>=0.5"]

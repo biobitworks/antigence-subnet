@@ -3,7 +3,7 @@
   "phase": "81",
   "baseline_reference": "data/benchmarks/v9.2-baseline.json",
   "environment": {
-    "python_executable": "/Users/byron/projects/active/antigence-bittensor/.venv/bin/python",
+    "python_executable": "python3",
     "python_version": "3.13.9",
     "ollama_version": "ollama version is 0.13.0",
     "model": "qwen2.5:1.5b",

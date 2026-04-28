@@ -431,14 +431,35 @@ class TestCollusionDetectorLogAlerts:
             assert "max_similarity=0.9970" in call_args
 
 
-@pytest.mark.skip(reason="collusion zeroing not yet wired into forward() reward path")
 class TestCollusionForwardIntegration:
-    """Integration test verifying collusion detection fires during forward pass."""
+    """Integration test verifying collusion detection fires during forward pass.
+
+    Forward path wiring lives in `antigence_subnet/validator/forward.py`
+    Stage 6b. The detector runs after composite reward computation and
+    before `update_scores`, so colluding miners must surface as zero
+    rewards in the array passed to `update_scores`.
+    """
 
     @pytest.mark.asyncio
     async def test_colluding_miners_get_zero_rewards(self, tmp_path):
         """3 miners returning identical scores get zeroed by collusion detection in forward."""
+        from pathlib import Path
+
+        from antigence_subnet.validator.evaluation import EvaluationDataset
         from antigence_subnet.validator.forward import forward
+
+        eval_path = Path("data/evaluation")
+        if not eval_path.exists() or not (eval_path / "hallucination").exists():
+            pytest.skip("Seed data not available")
+
+        # Force all miners to receive the same 8 challenge samples so the
+        # collusion detector sees fully-shared per-sample vectors. Without
+        # this, the per-miner hashed selection from a 20-sample pool yields
+        # ~3 expected pairwise overlap, which sits right at the
+        # `min_group_size=3` boundary and produces flaky pair coverage.
+        def _all_same_challenge(samples, miner_hotkey, round_num, n, entropy_seed=None,
+                                excluded_ids=None):
+            return list(samples[:n])
 
         # Build a minimal mock validator
         config = SimpleNamespace()
@@ -455,17 +476,27 @@ class TestCollusionForwardIntegration:
             full_path=str(tmp_path),
         )
         config.mock = True
-        # Enable collusion detection via validator.collusion config
+        # Enable collusion detection. Pull defaults from CollusionConfig so
+        # this test follows the production contract automatically if those
+        # values change. We assert n_miners >= min_group_size below to fail
+        # loudly if the default ever drifts past 3.
+        defaults = CollusionConfig()
         config.validator = SimpleNamespace(
             collusion=SimpleNamespace(
-                similarity_threshold=0.99,
-                min_group_size=3,
-                penalty="zero",
+                similarity_threshold=defaults.similarity_threshold,
+                min_group_size=defaults.min_group_size,
+                penalty=defaults.penalty,
                 enabled=True,
             )
         )
 
         n_miners = 3
+        assert n_miners >= defaults.min_group_size, (
+            f"This test only flags a clique when n_miners "
+            f"({n_miners}) >= CollusionConfig.min_group_size "
+            f"({defaults.min_group_size}). Bump n_miners if the "
+            f"production default has grown."
+        )
         total = n_miners + 1
         metagraph = SimpleNamespace(
             n=total,
@@ -486,28 +517,33 @@ class TestCollusionForwardIntegration:
             confidence_history={},
         )
 
-        # Try to load real evaluation data; skip if unavailable
-        try:
-            from pathlib import Path
+        validator.evaluation = EvaluationDataset(data_dir=eval_path, domain="hallucination")
 
-            from antigence_subnet.validator.evaluation import EvaluationDataset
+        # All 3 miners return IDENTICAL anomaly_scores -> triggers collusion.
+        # Score is keyed by sample prompt so the collusion detector sees identical
+        # per-sample vectors regardless of which subset each miner is challenged
+        # with. Ground-truth-correlated scores prevent honeypot zero-out from
+        # masking the collusion zero-out we want to test.
+        prompt_to_truth = {
+            s["prompt"]: validator.evaluation.manifest.get(s["id"], {}).get(
+                "ground_truth_label", "normal"
+            )
+            for s in validator.evaluation.samples
+        }
 
-            eval_path = Path("data/evaluation")
-            if eval_path.exists() and (eval_path / "hallucination").exists():
-                validator.evaluation = EvaluationDataset(data_dir=eval_path, domain="hallucination")
-            else:
-                pytest.skip("Seed data not available")
-        except Exception:
-            pytest.skip("Evaluation dataset not loadable")
-
-        # All 3 miners return IDENTICAL anomaly_scores -> triggers collusion
         async def mock_dendrite(axons, synapse, deserialize=False, timeout=12.0):
-            resp = MagicMock()
-            resp.anomaly_score = 0.75  # All same score
-            resp.anomaly_type = "factual_error"
-            resp.confidence = 0.9
-            resp.feature_attribution = {"mock": 0.5}
-            return [resp for _ in axons]
+            # Identical score per sample for every miner -> cosine similarity = 1.0.
+            truth = prompt_to_truth.get(synapse.prompt, "normal")
+            score = 0.9 if truth == "anomalous" else 0.1
+            responses = []
+            for _ in axons:
+                resp = MagicMock()
+                resp.anomaly_score = score
+                resp.anomaly_type = "factual_error"
+                resp.confidence = 0.9
+                resp.feature_attribution = {"mock": 0.5}
+                responses.append(resp)
+            return responses
 
         validator.dendrite = mock_dendrite
 
@@ -522,7 +558,11 @@ class TestCollusionForwardIntegration:
 
         validator.update_scores = mock_update_scores
 
-        await forward(validator)
+        with mock.patch(
+            "antigence_subnet.validator.forward.get_miner_challenge",
+            side_effect=_all_same_challenge,
+        ):
+            await forward(validator)
 
         # update_scores should have been called
         assert len(update_calls) == 1

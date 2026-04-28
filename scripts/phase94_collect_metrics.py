@@ -50,7 +50,9 @@ THRESHOLD_PROFILES = {
 
 
 def _fetch_metrics(url: str) -> str:
-    with urlopen(url, timeout=10) as response:  # noqa: S310 - operator-provided local URLs
+    # Operator-provided local Prometheus scrape URL (default
+    # http://localhost:9100/metrics); not derived from end-user input.
+    with urlopen(url, timeout=10) as response:  # noqa: S310 - operator-provided local URLs  # nosec B310
         return response.read().decode("utf-8")
 
 

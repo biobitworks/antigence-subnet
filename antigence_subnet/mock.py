@@ -142,10 +142,13 @@ class MockMetagraph:
                     )
                 )
             else:
-                # Null placeholder
+                # Null placeholder for unregistered/empty axon slots in the
+                # mock metagraph. This is metadata in an in-memory data
+                # structure used only by tests; nothing actually binds to
+                # this address. nosec: B104
                 self._axons.append(
                     AxonInfo(
-                        ip="0.0.0.0",
+                        ip="0.0.0.0",  # nosec B104
                         port=0,
                         hotkey="",
                         coldkey="",

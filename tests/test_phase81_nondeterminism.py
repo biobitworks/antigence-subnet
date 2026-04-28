@@ -1,8 +1,11 @@
-"""Regression tests for Phase 81 non-determinism measurement artifacts."""
+"""Regression tests for Phase 81 non-determinism measurement artifacts.
 
-import pytest
-
-pytest.importorskip("ollama", reason="ollama not available in CI")
+These tests cover pure helpers (artifact schemas, variance summarisation,
+overwatch payload shape) and never call into the live `ollama` package.
+The harness module imports `ollama` lazily inside the functions that need
+it, so this file collects and runs cleanly on minimal CI where the
+`ollama` Python package is not installed.
+"""
 
 from scripts.ollama_test_harness import DECISION_THRESHOLD
 

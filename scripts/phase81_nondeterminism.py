@@ -719,7 +719,9 @@ def _http_json(method: str, url: str, payload: dict[str, Any] | None = None) -> 
     if payload is not None:
         body = json.dumps(payload).encode()
     req = request.Request(url, data=body, headers=headers, method=method)
-    with request.urlopen(req, timeout=2) as response:
+    # Operator-supplied Overwatch base URL (built from OVERWATCH_BASE_URL
+    # constant); not derived from end-user input.
+    with request.urlopen(req, timeout=2) as response:  # nosec B310
         raw = response.read()
     return json.loads(raw.decode() or "{}")
 

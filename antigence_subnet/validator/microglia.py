@@ -420,7 +420,11 @@ class MicrogliaMonitor:
             method="POST",
         )
         try:
-            urllib.request.urlopen(req, timeout=5)
+            # webhook_url is operator-configured (validator config), not
+            # user-controlled input, so file:/ / non-http schemes are not
+            # exposed to attackers. Bandit B310 flags any urlopen by default;
+            # justified by the operator-controlled trust boundary.
+            urllib.request.urlopen(req, timeout=5)  # nosec B310
         except Exception as e:
             bt.logging.warning(f"[Microglia] Webhook send failed: {e}")
 

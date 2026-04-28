@@ -1,8 +1,9 @@
 """Cross-domain data expansion validation tests.
 
-Validates MAIN-05 acceptance criteria: all 4 evaluation domains have 60 samples
-each, balanced classes, correct honeypot ratios, consistent schema, adversarial
-edge cases, and that EvaluationDataset loads all domains without error.
+Validates MAIN-05 acceptance criteria: all 4 evaluation domains have 220 samples
+each, balanced classes (>=45% per class), correct honeypot ratios, consistent
+schema, adversarial edge cases, and that EvaluationDataset loads all domains
+without error.
 """
 
 import json
@@ -33,13 +34,13 @@ EXPECTED_HONEYPOTS = {
 
 
 # ---------------------------------------------------------------------------
-# Test 1: All domains have exactly 60 samples
+# Test 1: All domains have exactly 220 samples
 # ---------------------------------------------------------------------------
 
 
 @pytest.mark.parametrize("domain", DOMAINS)
-def test_all_domains_60_samples(domain):
-    """Each domain must have exactly 60 samples in samples.json and manifest.json."""
+def test_all_domains_220_samples(domain):
+    """Each domain must have exactly 220 samples in samples.json and manifest.json."""
     samples_path = DATA_DIR / domain / "samples.json"
     manifest_path = DATA_DIR / domain / "manifest.json"
 
@@ -66,7 +67,7 @@ def test_all_domains_60_samples(domain):
 
 @pytest.mark.parametrize("domain", DOMAINS)
 def test_class_balance_all_domains(domain):
-    """Each domain must have balanced normal/anomalous classes (within 55/45)."""
+    """Each domain must have balanced normal/anomalous classes (>=45% per class)."""
     manifest_path = DATA_DIR / domain / "manifest.json"
     with open(manifest_path) as f:
         manifest = json.load(f)
@@ -76,8 +77,16 @@ def test_class_balance_all_domains(domain):
 
     total = normal + anomalous
     assert total == 220, f"{domain}: normal ({normal}) + anomalous ({anomalous}) != 220"
-    assert normal >= 26, f"{domain}: too few normal samples ({normal}), min 26"
-    assert anomalous >= 26, f"{domain}: too few anomalous samples ({anomalous}), min 26"
+    # 55/45 balance contract: each class must hold at least 45% of total samples.
+    min_class_count = int(total * 0.45)
+    assert normal >= min_class_count, (
+        f"{domain}: too few normal samples ({normal}), min {min_class_count} "
+        f"(45% of {total})"
+    )
+    assert anomalous >= min_class_count, (
+        f"{domain}: too few anomalous samples ({anomalous}), min {min_class_count} "
+        f"(45% of {total})"
+    )
 
 
 # ---------------------------------------------------------------------------
